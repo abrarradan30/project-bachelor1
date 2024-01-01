@@ -12,5 +12,5 @@ Proyek ini bertujuan untuk mengembangkan Sistem Informasi Learning Management Sy
 
 **Teknologi**
 
-Frontend: HTML, CSS, JavaScript
-Backend: PHP-Laravel
+> Frontend: HTML, CSS, JavaScript
+> Backend: PHP-Laravel

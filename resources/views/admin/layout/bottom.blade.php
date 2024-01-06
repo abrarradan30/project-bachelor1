@@ -1,11 +1,11 @@
 <!-- Footer -->
-    <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-            <div class="copyright text-center my-auto">
-                <span>Copyright &copy; LMS 2024</span>
-            </div>
+<footer class="sticky-footer bg-white">
+    <div class="container my-auto">
+        <div class="copyright text-center my-auto">
+            <span>Copyright &copy; LMS 2024</span>
         </div>
-    </footer>
+    </div>
+</footer>
 <!-- End of Footer -->
 
 <!-- Scroll to Top Button-->

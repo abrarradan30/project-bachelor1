@@ -21,10 +21,17 @@ Route::get('/dashboard', function () {
     return view('admin/dashboard');
 });
 
+Route::get('/user', function () {
+    return view('admin/user/index');
+});
+
+Route::get('/materi', function () {
+    return view('admin/materi/index');
+});
+
 Route::get('/detail_materi', function () {
     return view('admin/detail_materi/index');
 });
-
-Route::get('/user', function () {
-    return view('admin/user/index');
+Route::get('/progres_belajar', function () {
+    return view('admin/progres_belajar/index');
 });

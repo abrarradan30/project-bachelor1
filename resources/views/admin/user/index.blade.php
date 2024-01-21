@@ -7,7 +7,7 @@
 
 <!-- Page Heading -->
 <h1 class="h3 mb-2 text-gray-800">Tabel User</h1>
-<p class="mb-4">Tabel "user" menyimpan data dasar pengguna seperti nama, alamat email, password, dll.  <a target="_blank"
+<p class="mb-4">Menyimpan data dasar pengguna seperti nama, alamat email, password, dll.  <a target="_blank"
         href="https://datatables.net">official DataTables documentation</a>.</p>
 
 <!-- DataTales Example -->

@@ -32,6 +32,11 @@ Route::get('/materi', function () {
 Route::get('/detail_materi', function () {
     return view('admin/detail_materi/index');
 });
+
 Route::get('/progres_belajar', function () {
     return view('admin/progres_belajar/index');
+});
+
+Route::get('/front', function () {
+    return view('front');
 });

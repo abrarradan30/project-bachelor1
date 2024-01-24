@@ -11,6 +11,9 @@
 
     <title>LMS</title>
 
+    <!-- Favicons -->
+    <link href="{{asset('frontend/assets/img/logo_lms2.png')}}" rel="icon">
+
     <!-- Custom fonts for this template-->
     <link href="{{asset('admin/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
     <link

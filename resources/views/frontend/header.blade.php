@@ -69,7 +69,7 @@
       </nav><!-- .navbar -->
 
       <a href="courses.html" class="get-started-btn">Masuk</a>
-      <a href="courses.html" class="get-started-btn">Daftar</a>
+      <a href="courses.html" class="get-started-btn2">Daftar</a>
 
     </div>
   </header><!-- End Header -->

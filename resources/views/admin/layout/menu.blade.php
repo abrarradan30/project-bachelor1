@@ -60,7 +60,7 @@
                 <a class="collapse-item" href="{{url('progres_belajar')}}">Progres Belajar</a>
                 <a class="collapse-item" href="{{url('kuis')}}">Kuis</a>
                 <a class="collapse-item" href="{{url('jawaban')}}">Jawaban</a>
-                <a class="collapse-item" href="{{url('forum diskusi')}}">Forum Diskusi</a>
+                <a class="collapse-item" href="{{url('forum_diskusi')}}">Forum Diskusi</a>
             </div>
         </div>
     </li>

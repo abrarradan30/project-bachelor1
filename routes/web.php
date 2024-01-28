@@ -37,6 +37,10 @@ Route::get('/progres_belajar', function () {
     return view('admin/progres_belajar/index');
 });
 
+Route::get('/forum_diskusi', function () {
+    return view('admin/forum_diskusi/index');
+});
+
 Route::get('/front', function () {
     return view('front');
 });

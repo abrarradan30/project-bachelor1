@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ForumDiskusi extends Controller
+class ForumDiskusiController extends Controller
 {
     /**
      * Display a listing of the resource.

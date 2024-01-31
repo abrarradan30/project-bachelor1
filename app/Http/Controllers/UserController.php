@@ -14,7 +14,6 @@ class UserController extends Controller
         //
         //
         $user = DB::table('users')->get();
-
         return view('admin.user.index', compact('user'));
     }
 

@@ -21,6 +21,10 @@ Route::get('/dashboard', function () {
     return view('admin/dashboard');
 });
 
+Route::get('/profil', function () {
+    return view('admin/profil/index');
+});
+
 Route::get('/user', function () {
     return view('admin/user/index');
 });

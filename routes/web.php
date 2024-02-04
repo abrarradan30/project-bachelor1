@@ -45,6 +45,10 @@ Route::get('/forum_diskusi', function () {
     return view('admin/forum_diskusi/index');
 });
 
+Route::get('admin/forum_diskusi/create', function () {
+    return view('admin/forum_diskusi/create');
+});
+
 Route::get('/front', function () {
     return view('front');
 });

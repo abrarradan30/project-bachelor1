@@ -35,7 +35,7 @@
 
             <!-- Input Detail Pertanyaan (Upload Foto) -->
             <div class="form-group">
-                <label for="detailPertanyaan">Detail Pertanyaan (Upload Foto):</label>
+                <label for="detailPertanyaan">Detail Pertanyaan (Upload Foto - Opsional):</label>
                 <input type="file" class="form-control-file" id="detailPertanyaan" name="detailPertanyaan">
             </div>
 

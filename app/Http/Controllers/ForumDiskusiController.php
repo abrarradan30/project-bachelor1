@@ -22,6 +22,7 @@ class ForumDiskusiController extends Controller
     public function create()
     {
         //
+        return view('admin.forum_diskusi.create');
     }
 
     /**

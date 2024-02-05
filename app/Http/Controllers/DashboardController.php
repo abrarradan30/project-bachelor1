@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
 
-class UserController extends Controller
+class DashboardController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -12,9 +13,7 @@ class UserController extends Controller
     public function index()
     {
         //
-        // $user = DB::table('users')->get();
-        // return view('admin.user.index', compact('user'));
-        return view('admin.user.index');
+        return view('admin.dashboard');
     }
 
     /**
@@ -44,12 +43,9 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($id)
+    public function edit(string $id)
     {
         //
-        $user = DB::table('users')->where('id', $id)->get();
-        $ar_role = ['admin', 'siswa', 'mentor'];
-        return view('admin.user.edit', compact('user', 'ar_role'));
     }
 
     /**

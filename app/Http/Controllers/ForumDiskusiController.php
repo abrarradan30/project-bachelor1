@@ -12,8 +12,12 @@ class ForumDiskusiController extends Controller
     public function index()
     {
         // query builer
-        $forum_diskusi = DB::table('forum_diskusi')->get();
+        $forum_diskusi = DB::table('forum_diskusi')
+            ->join('users', 'forum_diskusi.users_id', '=', 'users.id')
+            ->select('forum_diskusi.*')
+            ->get();
         return view('admin.forum_diskusi.index', compact('forum_diskusi'));
+
     }
 
     /**
@@ -30,7 +34,27 @@ class ForumDiskusiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // fungsi untuk mengisi data pada form
+        $request->validate([
+            'nama'    => 'required|max:45',
+            'jk'      => 'required',
+            'telepon' => 'required',
+            'alamat'  => 'required',
+        ]);
+        [
+            'nama.required'    => 'Nama wajib diisi',
+            'nama.max'         => 'Nama maksimal 45 karakter',
+            'jk.required'      => 'Jenis kelamin wajib diisi',
+            'telepon.required' => 'Telepon wajib diisi',
+            'alamat.required'  => 'Alamat wajib diisi',
+
+        ];
+        DB::table('pelanggan')->insert([
+            'nama'    => $request->nama,
+            'jk'      => $request->jk,
+            'telepon' => $request->telepon,
+            'alamat'  => $request->alamat,
+        ]);
     }
 
     /**

@@ -14,7 +14,7 @@ class ForumDiskusiController extends Controller
         // query builer
         $forum_diskusi = DB::table('forum_diskusi')
             ->join('users', 'forum_diskusi.users_id', '=', 'users.id')
-            ->select('forum_diskusi.*')
+            ->select('forum_diskusi.*', 'users.name as nama')
             ->get();
         return view('admin.forum_diskusi.index', compact('forum_diskusi'));
 
@@ -26,6 +26,12 @@ class ForumDiskusiController extends Controller
     public function create()
     {
         //
+        $users = DB::table('users')->get();
+        $forum_diskusi = DB::table('forum_diskusi')
+            ->join('users', 'forum_diskusi.users_id', '=', 'users.id')
+            ->select('forum_diskusi.*', 'users.name as nama')
+            ->get();
+
         return view('admin.forum_diskusi.create');
     }
 
@@ -36,17 +42,20 @@ class ForumDiskusiController extends Controller
     {
         // fungsi untuk mengisi data pada form
         $request->validate([
-            'nama'    => 'required|max:45',
-            'jk'      => 'required',
-            'telepon' => 'required',
-            'alamat'  => 'required',
+            'users_id'    => 'required',
+            'topik'      => 'required',
+            'pertanyaan' => 'required',
+            // 'detail_pertanyaan' => 'required',
+            'post' => 'required',
+            'status_diskusi' => 'required',
         ]);
         [
-            'nama.required'    => 'Nama wajib diisi',
-            'nama.max'         => 'Nama maksimal 45 karakter',
-            'jk.required'      => 'Jenis kelamin wajib diisi',
-            'telepon.required' => 'Telepon wajib diisi',
-            'alamat.required'  => 'Alamat wajib diisi',
+            'users_id' => 'Nama wajib diisi',
+            'topik.required'    => 'topik wajib diisi',
+            'pertanyaan.max'         => 'pertanyaan maksimal 250 karakter',
+            // 'detail_pertanyaan.required'      => 'Detail pertanyaan wajib diisi',
+            'post.required' => 'Post wajib diisi',
+            'status_diskusi.required'  => 'Status diskusi wajib diisi',
 
         ];
         DB::table('pelanggan')->insert([
@@ -55,6 +64,8 @@ class ForumDiskusiController extends Controller
             'telepon' => $request->telepon,
             'alamat'  => $request->alamat,
         ]);
+
+        return redirect('admin/forum_diskusi');
     }
 
     /**

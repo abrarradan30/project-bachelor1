@@ -10,4 +10,5 @@ class Jawaban extends Model
     use HasFactory;
     protected $table = 'jawaban'; 
     protected $primaryKey = 'id'; 
+    protected $fillable = ['jawaban', 'koreksi', 'kuis_id'];
 }

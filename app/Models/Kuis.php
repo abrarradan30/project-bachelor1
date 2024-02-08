@@ -9,5 +9,6 @@ class Kuis extends Model
 {
     use HasFactory;
     protected $table = 'kuis';
-    protected $primaryKey = 'id'; 
+    protected $primaryKey = 'id';
+    protected $fillable = ['pertanyaan', 'skor', 'materi_id', 'users_id']; 
 }

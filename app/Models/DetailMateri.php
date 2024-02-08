@@ -10,4 +10,5 @@ class DetailMateri extends Model
     use HasFactory;
     protected $table = 'detail_materi'; 
     protected $primaryKey = 'id'; 
+    protected $fillable = ['materi_id', 'sub_judul', 'isi_materi'];
 }

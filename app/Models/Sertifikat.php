@@ -10,4 +10,5 @@ class Sertifikat extends Model
     use HasFactory;
     protected $table = 'sertifikat'; 
     protected $primaryKey = 'id'; 
+    protected $fillable = ['materi_id', 'users_id', 'tanggal_terbit'];
 }

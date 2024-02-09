@@ -11,4 +11,8 @@ class Jawaban extends Model
     protected $table = 'jawaban'; 
     protected $primaryKey = 'id'; 
     protected $fillable = ['jawaban', 'koreksi', 'kuis_id'];
+
+    public function kuis() {
+        return $this->belongsTo(Kuis::class);
+    }
 }

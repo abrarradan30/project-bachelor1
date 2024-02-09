@@ -11,4 +11,13 @@ class Sertifikat extends Model
     protected $table = 'sertifikat'; 
     protected $primaryKey = 'id'; 
     protected $fillable = ['materi_id', 'users_id', 'tanggal_terbit'];
+
+    // Relasi many-to-one dengan model User
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
+    // Relasi one-to-one dengan model Materi
+    public function materi() {
+        return $this->belongsTo(Materi::class);
+    }
 }

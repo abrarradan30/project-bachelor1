@@ -7,6 +7,7 @@
             <!-- Main Content -->
             <div id="content">
             @include('admin.layout.top')
+            @include('sweetalert::alert')
             @yield('content')
             </div>
             <!-- End of Main Content -->

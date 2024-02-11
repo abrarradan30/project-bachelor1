@@ -3,7 +3,9 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DetailMateriController;
 use App\Http\Controllers\ForumDiskusiController;
+use App\Http\Controllers\MateriController;
 use App\Http\Controllers\UserController;
 
 /*
@@ -27,18 +29,18 @@ Route::get('/profil', function () {
     return view('admin/profil/index');
 });
 
-//route user
+// route user
 Route::get('/user', [UserController::class, 'index']);
 Route::get('/user/edit/{id}', [UserController::class, 'edit']);
 Route::post('/user/update', [UserController::class, 'update']);
 
-Route::get('/materi', function () {
-    return view('admin/materi/index');
-});
+// route materi
+Route::get('/materi', [MateriController::class, 'index']);
+Route::get('/materi/create', [MateriController::class, 'create']);
 
-Route::get('/detail_materi', function () {
-    return view('admin/detail_materi/index');
-});
+// route detail_materi
+Route::get('/detail_materi', [MateriController::class, 'index']);
+Route::get('/detail_materi/create', [MateriController::class, 'create']);
 
 Route::get('/progres_belajar', function () {
     return view('admin/progres_belajar/index');

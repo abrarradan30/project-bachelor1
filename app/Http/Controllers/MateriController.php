@@ -14,6 +14,8 @@ class MateriController extends Controller
     public function index()
     {
         //
+        $materi = DB::table('materi')->get();
+        return view('admin.materi.index', compact('materi'));
     }
 
     /**
@@ -22,6 +24,7 @@ class MateriController extends Controller
     public function create()
     {
         //
+        return view('admin.materi.create');
     }
 
     /**

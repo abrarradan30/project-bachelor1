@@ -14,6 +14,11 @@ class DetailMateriController extends Controller
     public function index()
     {
         //
+        $detail_materi = DB::table('detail_materi')
+            ->join('materi', 'detail_materi.materi_id', '=', 'materi.id')
+            ->select('detail_materi.*', 'materi.judul')
+            ->get();
+        return view('admin.detail_materi.index', compact('detail_materi'));
     }
 
     /**
@@ -22,6 +27,13 @@ class DetailMateriController extends Controller
     public function create()
     {
         //
+        $materi = DB::table('materi')->get();
+        $detail_materi = DB::table('detail_materi')
+            ->join('materi', 'detail_materi.materi_id', '=', 'materi.id')
+            ->select('detail_materi.*', 'materi.judul')
+            ->get();
+
+        return view('admin.detail_materi.create');
     }
 
     /**

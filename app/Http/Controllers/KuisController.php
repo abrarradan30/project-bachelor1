@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Kuis;
+use App\Models\User;
+use App\Models\Materi;
 use RealRashid\SweetAlert\Facades\Alert;
 use DB;
 
@@ -14,6 +17,11 @@ class KuisController extends Controller
     public function index()
     {
         //
+        $kuis = Kuis::join('users', 'kuis.users_id', '=', 'users.id')
+            ->join('materi', 'kuis.materi_id', '=', 'materi.id')
+            ->select('kuis.*', 'users.name as nama', 'materi.judul')
+            ->get();
+        return view('admin.kuis.index', compact('kuis'));
     }
 
     /**

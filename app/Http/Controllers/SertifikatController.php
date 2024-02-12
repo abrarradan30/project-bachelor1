@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Sertifikat;
+use App\Models\User;
+use App\Models\Materi;
 use RealRashid\SweetAlert\Facades\Alert;
 use DB;
 

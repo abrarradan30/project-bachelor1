@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\ForumDiskusi;
+use App\Models\User;
 use RealRashid\SweetAlert\Facades\Alert;
 use DB;
 

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Jawaban;
+use App\Models\Kuis;
 use RealRashid\SweetAlert\Facades\Alert;
 use DB;
 
@@ -14,6 +16,11 @@ class JawabanController extends Controller
     public function index()
     {
         //
+        $jawaban = DB::table('jawaban')
+            ->join('kuis', 'jawaban.kuis_id', '=', 'kuis.id')
+            ->select('jawaban.*', 'kuis.pertanyaan')
+            ->get();
+        return view('admin.jawaban.index', compact('jawaban'));
     }
 
     /**

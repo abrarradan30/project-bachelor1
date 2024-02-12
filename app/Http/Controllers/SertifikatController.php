@@ -14,6 +14,11 @@ class SertifikatController extends Controller
     public function index()
     {
         //
+        $sertifikat = Sertifikat::join('users', 'sertifikat.users_id', '=', 'users.id')
+            ->join('materi', 'sertifikat.materi_id', '=', 'materi.id')
+            ->select('sertifikat.*', 'users.name as nama', 'materi.judul')
+            ->get();
+        return view('admin.sertifikat.index', compact('sertifikat'));
     }
 
     /**

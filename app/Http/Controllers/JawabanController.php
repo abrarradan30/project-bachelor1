@@ -29,6 +29,13 @@ class JawabanController extends Controller
     public function create()
     {
         //
+        $kuis = DB::table('kuis')->get();
+        $jawaban = DB::table('jawaban')
+            ->join('kuis', 'jawaban.kuis_id', '=', 'kuis.id')
+            ->select('jawaban.*', 'kuis.pertanyaan')
+            ->get();
+
+        return view('admin.jawaban.create', compact('jawaban', 'kuis'));
     }
 
     /**

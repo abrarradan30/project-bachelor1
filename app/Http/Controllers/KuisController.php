@@ -30,6 +30,14 @@ class KuisController extends Controller
     public function create()
     {
         //
+        $users = DB::table('users')->get();
+        $materi = DB::table('materi')->get();
+        $kuis = Kuis::join('users', 'kuis.users_id', '=', 'users.id')
+            ->join('materi', 'kuis.materi_id', '=', 'materi.id')
+            ->select('kuis.*', 'users.name as nama', 'materi.judul')
+            ->get();
+
+        return view('admin.jawaban.create', compact('kuis','users','materi'));
     }
 
     /**

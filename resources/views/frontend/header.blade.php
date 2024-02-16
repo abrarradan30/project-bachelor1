@@ -42,10 +42,10 @@
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="active" href="index.html">Beranda</a></li>
-          <li><a href="about.html">Tentang</a></li>
-          <li><a href="courses.html">Materi</a></li>
-          <li><a href="trainers.html">Kontak</a></li>
+          <li><a class="active" href="{{url('front')}}">Home</a></li>
+          <li><a href="{{url('about')}}">About</a></li>
+          <li><a href="courses.html">Course</a></li>
+          <li><a href="trainers.html">Contact</a></li>
 
           <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
             <ul>

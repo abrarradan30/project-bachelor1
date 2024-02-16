@@ -2,9 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DetailMateriController;
 use App\Http\Controllers\ForumDiskusiController;
+use App\Http\Controllers\FrontController;
 use App\Http\Controllers\MateriController;
 use App\Http\Controllers\ProgresBelajarController;
 use App\Http\Controllers\SertifikatController;
@@ -54,6 +56,9 @@ Route::get('/forum_diskusi/create', [ForumDiskusiController::class, 'create']);
 // route sertifikat
 Route::get('/sertifikat', [SertifikatController::class, 'index']);
 
-Route::get('/front', function () {
-    return view('front');
-});
+
+// route frontend
+//route front
+Route::get('/front', [FrontController::class, 'index']);
+// route about 
+Route::get('/about', [AboutController::class, 'index']);

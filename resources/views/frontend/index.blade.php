@@ -1,5 +1,5 @@
 <body>
-@Include('frontend.header')
+@include('frontend.header')
 
 @yield('content')
 

@@ -1,12 +1,12 @@
-@Include('frontend.header')
+@extends('frontend.index')
 
 @section('content')
 
 <!-- ======= Hero Section ======= -->
 <section id="hero" class="d-flex justify-content-center align-items-center">
     <div class="container position-relative" data-aos="zoom-in" data-aos-delay="100">
-      <h1>Learning Today,<br>Leading Tomorrow</h1>
-      <h2>We are team of talented designers making websites with Bootstrap</h2>
+      <h1>Belajar Hari Ini,<br>Berani Mengambil Tantangan Esok Hari</h1>
+      <h2>Kalian adalah Pemimpin Masa Depan</h2>
       <a href="courses.html" class="btn-get-started">Get Started</a>
     </div>
 </section><!-- End Hero -->
@@ -367,4 +367,4 @@
 
   </main><!-- End #main -->
 
-@include('frontend.footer')
+@endsection

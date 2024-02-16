@@ -6,6 +6,8 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DetailMateriController;
 use App\Http\Controllers\ForumDiskusiController;
 use App\Http\Controllers\MateriController;
+use App\Http\Controllers\ProgresBelajarController;
+use App\Http\Controllers\SertifikatController;
 use App\Http\Controllers\UserController;
 
 /*
@@ -39,22 +41,19 @@ Route::get('/materi', [MateriController::class, 'index']);
 Route::get('/materi/create', [MateriController::class, 'create']);
 
 // route detail_materi
-Route::get('/detail_materi', [MateriController::class, 'index']);
-Route::get('/detail_materi/create', [MateriController::class, 'create']);
+Route::get('/detail_materi', [DetailMateriController::class, 'index']);
+Route::get('/detail_materi/create', [DetailMateriController::class, 'create']);
 
-Route::get('/progres_belajar', function () {
-    return view('admin/progres_belajar/index');
-});
+// route progres belajar
+Route::get('/progres_belajar', [ProgresBelajarController::class, 'index']);
 
-Route::get('/forum_diskusi', function () {
-    return view('admin/forum_diskusi/index');
-});
+// route forum diskusi
+Route::get('/forum_diskusi', [ForumDiskusiController::class, 'index']);
+Route::get('/forum_diskusi/create', [ForumDiskusiController::class, 'create']);
 
-Route::get('admin/forum_diskusi/create', function () {
-    return view('admin/forum_diskusi/create');
-});
+// route sertifikat
+Route::get('/sertifikat', [SertifikatController::class, 'index']);
 
-Route::resource('forum_diskusi', ForumDiskusiController::class);
 Route::get('/front', function () {
     return view('front');
 });

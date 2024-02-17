@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DetailMateriController;
 use App\Http\Controllers\ForumDiskusiController;
@@ -62,3 +63,5 @@ Route::get('/sertifikat', [SertifikatController::class, 'index']);
 Route::get('/front', [FrontController::class, 'index']);
 // route about 
 Route::get('/about', [AboutController::class, 'index']);
+// route course 
+Route::get('/course', [CourseController::class, 'index']);

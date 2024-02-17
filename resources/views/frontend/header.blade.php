@@ -45,7 +45,7 @@
           <li><a href="{{url('front')}}">Home</a></li>
           <li><a href="{{url('about')}}">About</a></li>
           <li><a href="{{url('course')}}">Course</a></li>
-          <li><a href="trainers.html">Contact</a></li>
+          <li><a href="{{url('contact')}}">Contact</a></li>
 
           <li class="dropdown"><a href="#"><span>Category</span> <i class="bi bi-chevron-down"></i></a>
             <ul>

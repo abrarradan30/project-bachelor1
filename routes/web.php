@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DetailMateriController;
@@ -65,3 +66,5 @@ Route::get('/front', [FrontController::class, 'index']);
 Route::get('/about', [AboutController::class, 'index']);
 // route course 
 Route::get('/course', [CourseController::class, 'index']);
+// route contact 
+Route::get('/contact', [ContactController::class, 'index']);

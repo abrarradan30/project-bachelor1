@@ -19,21 +19,21 @@
 
         <div class="row">
           <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
-            <img src="assets/img/about.jpg" class="img-fluid" alt="">
+            <img src="{{asset('frontend/assets/img/about.jpg')}}" class="img-fluid" alt="">
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
-            <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
+            <h3>Manfaat LMS</h3>
             <p class="fst-italic">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
+              Sebagai upaya peningkatan pengalaman belajar, LMS ini buat dengan interaktif dan responsif untuk kebutuhan belajar siswa/mahasiswa.
             </p>
             <ul>
-              <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-              <li><i class="bi bi-check-circle"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-              <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+              <li><i class="bi bi-check-circle"></i> Aksesibilitas materi, impelementasi LMS dapat memfasilitasi belajar mandiri dan menghilangkan hambatan terkait aksesibilitas materi bagi siswa/mahasiswa.</li>
+              <li><i class="bi bi-check-circle"></i> Fleksibilitas waktu dan tempat, dengan LMS siswa/mahasiswa tidak terbatas pada jadwal kelas dan ruang fisik.</li>
+              <li><i class="bi bi-check-circle"></i> Pelacakan kemajuan, LMS terdapat pelacakan kemajuan individu siswa/mahasiswa.</li>
+              <li><i class="bi bi-check-circle"></i> Materi pembelajaran yang disimpan dalam bentuk digital di LMS relatif lebih aman dan terhindar dari risiko kerusakan.</li>
             </ul>
             <p>
-              Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+              Selamat belajar dan semoga setiap langkah yang diambil di dalam platform ini membawa kesuksesan dan pencapaian yang gemilang dalam perjalanan akademis dan profesional kalian!
             </p>
 
           </div>
@@ -49,22 +49,22 @@
         <div class="row counters">
 
           <div class="col-lg-3 col-6 text-center">
-            <span data-purecounter-start="0" data-purecounter-end="1232" data-purecounter-duration="1" class="purecounter"></span>
+            <span data-purecounter-start="0" data-purecounter-end="1245" data-purecounter-duration="1" class="purecounter"></span>
             <p>Siswa/Mahasiswa</p>
           </div>
 
           <div class="col-lg-3 col-6 text-center">
-            <span data-purecounter-start="0" data-purecounter-end="64" data-purecounter-duration="1" class="purecounter"></span>
+            <span data-purecounter-start="0" data-purecounter-end="75" data-purecounter-duration="1" class="purecounter"></span>
             <p>Materi</p>
           </div>
 
           <div class="col-lg-3 col-6 text-center">
-            <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" class="purecounter"></span>
-            <p>Mentor</p>
+            <span data-purecounter-start="0" data-purecounter-end="3" data-purecounter-duration="1" class="purecounter"></span>
+            <p>Kategori</p>
           </div>
 
           <div class="col-lg-3 col-6 text-center">
-            <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" class="purecounter"></span>
+            <span data-purecounter-start="0" data-purecounter-end="5" data-purecounter-duration="1" class="purecounter"></span>
             <p>Mentor</p>
           </div>
 
@@ -80,13 +80,13 @@
         <div class="row">
           <div class="col-lg-4 d-flex align-items-stretch">
             <div class="content">
-              <h3>Why Choose Mentor?</h3>
+              <h3>Why Choose LMS?</h3>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
-                Asperiores dolores sed et. Tenetur quia eos. Autem tempore quibusdam vel necessitatibus optio ad corporis.
+              LMS membantu meningkatkan kualitas dan efektivitas pembelajaran, serta mempersiapkan siswa/mahasiswa untuk tuntutan masa depan 
+              dengan memberikan pengalaman belajar yang lebih interaktif, terstruktur, dan dapat dipersonalisasi.
               </p>
               <div class="text-center">
-                <a href="about.html" class="more-btn">Learn More <i class="bx bx-chevron-right"></i></a>
+                <a href="{{url('about')}}" class="more-btn">Learn More <i class="bx bx-chevron-right"></i></a>
               </div>
             </div>
           </div>
@@ -96,22 +96,22 @@
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box mt-4 mt-xl-0">
                     <i class="bx bx-receipt"></i>
-                    <h4>Corporis voluptates sit</h4>
-                    <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
+                    <h4>Konten yang Terkini</h4>
+                    <p>Materi pembelajaran terkini sesuai dengan perkembangan industri, sehingga siswa/mahasiswa dapat selalu mendapatkan informasi yang relevan dan up-to-date.</p>
                   </div>
                 </div>
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box mt-4 mt-xl-0">
                     <i class="bx bx-cube-alt"></i>
-                    <h4>Ullamco laboris ladore pan</h4>
-                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
+                    <h4>Konten Interaktif</h4>
+                    <p>Materi LMS disajikan dalam format teks, gambar, maupun vidio </p>
                   </div>
                 </div>
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box mt-4 mt-xl-0">
                     <i class="bx bx-images"></i>
-                    <h4>Labore consequatur</h4>
-                    <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
+                    <h4>Kolaborasi dan Diskusi</h4>
+                    <p>Melalui fiturforum diskusi siswa/mahasiswa dapat berinteraksi dengan sesama mereka dan dengan mentor.</p>
                   </div>
                 </div>
               </div>

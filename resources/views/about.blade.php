@@ -7,7 +7,7 @@
     <div class="breadcrumbs" data-aos="fade-in">
       <div class="container">
         <h2>About Us</h2>
-        <p>Est dolorum ut non facere possimus quibusdam eligendi voluptatem. Quia id aut similique quia voluptas sit quaerat debitis. Rerum omnis ipsam aperiam consequatur laboriosam nemo harum praesentium. </p>
+        <p>Kami adalah platform Pembelajaran Berbasis LMS yang bertujuan untuk meningkatkan pengalaman belajar siswa/mahasiswa.</p>
       </div>
     </div><!-- End Breadcrumbs -->
 
@@ -20,18 +20,18 @@
             <img src="{{asset('frontend/assets/img/about.jpg')}}" class="img-fluid" alt="">
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
-            <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
+          <h3>Manfaat LMS</h3>
             <p class="fst-italic">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
+              Sebagai upaya peningkatan pengalaman belajar, LMS ini buat dengan interaktif dan responsif untuk kebutuhan belajar siswa/mahasiswa.
             </p>
             <ul>
-              <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-              <li><i class="bi bi-check-circle"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-              <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+              <li><i class="bi bi-check-circle"></i> Aksesibilitas materi, impelementasi LMS dapat memfasilitasi belajar mandiri dan menghilangkan hambatan terkait aksesibilitas materi bagi siswa/mahasiswa.</li>
+              <li><i class="bi bi-check-circle"></i> Fleksibilitas waktu dan tempat, dengan LMS siswa/mahasiswa tidak terbatas pada jadwal kelas dan ruang fisik.</li>
+              <li><i class="bi bi-check-circle"></i> Pelacakan kemajuan, LMS terdapat pelacakan kemajuan individu siswa/mahasiswa.</li>
+              <li><i class="bi bi-check-circle"></i> Materi pembelajaran yang disimpan dalam bentuk digital di LMS relatif lebih aman dan terhindar dari risiko kerusakan.</li>
             </ul>
             <p>
-              Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+              Selamat belajar dan semoga setiap langkah yang diambil di dalam platform ini membawa kesuksesan dan pencapaian yang gemilang dalam perjalanan akademis dan profesional kalian!
             </p>
 
           </div>

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\CourseDetailController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DetailMateriController;
 use App\Http\Controllers\ForumDiskusiController;
@@ -66,5 +67,7 @@ Route::get('/front', [FrontController::class, 'index']);
 Route::get('/about', [AboutController::class, 'index']);
 // route course 
 Route::get('/course', [CourseController::class, 'index']);
+// route course_detail 
+Route::get('/course_detail', [CourseDetailController::class, 'index']);
 // route contact 
 Route::get('/contact', [ContactController::class, 'index']);

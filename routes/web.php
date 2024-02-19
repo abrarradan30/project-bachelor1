@@ -10,6 +10,8 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DetailMateriController;
 use App\Http\Controllers\ForumDiskusiController;
 use App\Http\Controllers\FrontController;
+use App\Http\Controllers\JawabanController;
+use App\Http\Controllers\KuisController;
 use App\Http\Controllers\MateriController;
 use App\Http\Controllers\ProgresBelajarController;
 use App\Http\Controllers\SertifikatController;
@@ -55,6 +57,12 @@ Route::get('/progres_belajar', [ProgresBelajarController::class, 'index']);
 // route forum diskusi
 Route::get('/forum_diskusi', [ForumDiskusiController::class, 'index']);
 Route::get('/forum_diskusi/create', [ForumDiskusiController::class, 'create']);
+
+// route kuis
+Route::get('/kuis', [KuisController::class, 'index']);
+
+// route jawaban
+Route::get('/jawaban', [JawabanController::class, 'index']);
 
 // route sertifikat
 Route::get('/sertifikat', [SertifikatController::class, 'index']);

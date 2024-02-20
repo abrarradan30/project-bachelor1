@@ -57,13 +57,14 @@ h6 {
 }
 
 .back-to-top:hover {
-  background: #7ed899;
+  background: #9d9d9d;
   color: #fff;
 }
 
 .back-to-top.active {
   visibility: visible;
-  opacity: 1;
+  opacity: 1; 
+  /* border: 2px solid #F5F5F5; */
 }
 
 /*--------------------------------------------------------------
@@ -1525,7 +1526,7 @@ section {
   position: relative;
   border-radius: 50px;
   text-align: left;
-  border: 1px solid #e0e5e2;
+  border: 1px solid #F5F5F5;
 }
 
 #footer .footer-newsletter form input[type=email] {
@@ -1551,7 +1552,8 @@ section {
 }
 
 #footer .footer-newsletter form input[type=submit]:hover {
-  background: #3ac162;
+  background: #fff;
+  color: #4169E1;
 }
 
 #footer .credits {
@@ -1560,7 +1562,7 @@ section {
 }
 
 #footer .credits a {
-  color: #3ac162;
+  color: #4169E1;
   transition: 0.3s;
 }
 
@@ -1584,7 +1586,7 @@ section {
 }
 
 #footer .social-links a:hover {
-  background: #3ac162;
-  color: #fff;
+  background: #fff;
+  color: #4169E1;
   text-decoration: none;
 }

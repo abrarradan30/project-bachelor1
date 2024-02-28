@@ -17,7 +17,7 @@ class Kuis extends Model
         return $this->belongsTo(User::class);
     }
     // Relasi one-to-many dengan model Materi
-    public function materis() {
+    public function materi() {
         return $this->hasMany(Materi::class);
     }
     // Relasi one-to-one dengan model Jawaban

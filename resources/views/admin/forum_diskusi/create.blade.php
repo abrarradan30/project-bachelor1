@@ -14,7 +14,8 @@
         <h6 class="m-0 font-weight-bold text-primary">Form Diskusi</h6>
     </div>
     <div class="card-body">
-        <form>
+        <form method="POST" action="{{ url('admin/forum_diskusi/store') }}" enctype="multipart/form-data">
+        {{ csrf_field() }}
             <!-- Input Nama -->
             <div class="form-group">
                 <label for="nama">Nama:</label>
@@ -29,20 +30,8 @@
 
             <!-- Input Pertanyaan -->
             <div class="form-group">
-                <label for="pertanyaan">Pertanyaan:</label>
-                <textarea class="form-control" id="pertanyaan" name="pertanyaan" rows="3" placeholder="Masukkan Pertanyaan"></textarea>
-            </div>
-
-            <!-- Input Detail Pertanyaan (Upload Foto) -->
-            <div class="form-group">
-                <label for="detailPertanyaan">Detail Pertanyaan (Upload Foto - Opsional):</label>
-                <input type="file" class="form-control-file" id="detailPertanyaan" name="detailPertanyaan">
-            </div>
-
-            <!-- Input Posting (Date) -->
-            <div class="form-group">
-                <label for="posting">Posting:</label>
-                <input type="date" class="form-control" id="posting" name="posting">
+                <label for="">Pertanyaan:</label>
+                <textarea name="pertanyaan" id="pertanyaan" cols="30" rows="10"></textarea>
             </div>
 
             <!-- Input Status Diskusi (Radio Button) -->
@@ -61,11 +50,21 @@
             <!-- Submit Button -->
             <div class="form-group">
                 <button type="submit" class="btn btn-primary">Simpan</button>
-                <button type="button" class="btn btn-danger">Batal</button>
+                <button type="button" class="btn btn-danger">
+                    <a href="{{ url('forum_diskusi') }}" style="text-decoration: none; color: inherit;">Batal</a>
+                </button>
             </div>
         </form>
     </div>
 </div>
+
+<script>
+    $('#pertanyaan').summernote({
+        placeholder: 'pertanyaan...',
+        tabsize:2,
+        height:300
+    });
+</script>
 
 </div>
 <!-- /.container-fluid -->

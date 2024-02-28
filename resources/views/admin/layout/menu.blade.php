@@ -59,13 +59,13 @@
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <!-- <h6 class="collapse-header">Custom Utilities:</h6> -->
-                <a class="collapse-item" href="{{url('detail_materi')}}">Detail Materi</a>
-                <a class="collapse-item" href="{{url('pembayaran')}}">Pembayaran</a>
-                <a class="collapse-item" href="{{url('sertifikat')}}">Sertifikat</a>
-                <a class="collapse-item" href="{{url('progres_belajar')}}">Progres Belajar</a>
-                <a class="collapse-item" href="{{url('kuis')}}">Kuis</a>
-                <a class="collapse-item" href="{{url('jawaban')}}">Jawaban</a>
-                <a class="collapse-item" href="{{url('forum_diskusi')}}">Forum Diskusi</a>
+                <a class="collapse-item" href="{{ url('detail_materi') }}">Detail Materi</a>
+                <a class="collapse-item" href="{{ url('pembayaran') }}">Pembayaran</a>
+                <a class="collapse-item" href="{{ url('sertifikat') }}">Sertifikat</a>
+                <a class="collapse-item" href="{{ url('progres_belajar') }}">Progres Belajar</a>
+                <a class="collapse-item" href="{{ url('kuis') }}">Kuis</a>
+                <a class="collapse-item" href="{{ url('jawaban') }}">Jawaban</a>
+                <a class="collapse-item" href="{{ url('forum_diskusi') }}">Forum Diskusi</a>
             </div>
         </div>
     </li>

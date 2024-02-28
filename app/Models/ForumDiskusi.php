@@ -10,7 +10,7 @@ class ForumDiskusi extends Model
     use HasFactory;
     protected $table = 'forum_diskusi'; // pemanggilan nama tabel
     protected $primaryKey = 'id'; // pemanggilang id atau pk
-    protected $fillable = ['users_id', 'topic', 'pertanyaan', 'detail_pertanyaan', 'post', 'status_diskusi']; // pemanggilan kolom
+    protected $fillable = ['users_id', 'materi_id', 'pertanyaan', 'status_diskusi']; // pemanggilan kolom
 
     // Relasi many-to-one dengan model User
     public function user() {

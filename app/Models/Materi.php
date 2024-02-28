@@ -17,7 +17,7 @@ class Materi extends Model
         return $this->hasOne(Pembayaran::class);
     }
     // Relasi one-to-many dengan model ForumDiskusi
-    public function forumDiskusi() {
+    public function forum_diskusi() {
         return $this->belongsTo(ForumDiskusi::class);
     }
     // Relasi one-to-many dengan model Kuis
@@ -25,7 +25,7 @@ class Materi extends Model
         return $this->belongsTo(Kuis::class);
     }
     // Relasi one-to-one dengan model DetailMateri
-    public function detailMateri() {
+    public function detail_materi() {
         return $this->hasOne(DetailMateri::class);
     }
     // Relasi one-to-one dengan model Sertifikat
@@ -33,7 +33,7 @@ class Materi extends Model
         return $this->hasOne(Sertifikat::class);
     }
     // Relasi one-to-one dengan model ProgresBelajar
-    public function progresBelajar() {
+    public function progres_belajar() {
         return $this->hasOne(ProgresBelajar::class);
     }
 }

@@ -6,12 +6,12 @@
 <div class="container-fluid">
 
 <!-- Page Heading -->
-<h1 class="h3 mb-2 text-gray-800">Tambahkan Diskusi</h1>
+<h1 class="h3 mb-2 text-gray-800">Tambahkan Materi</h1>
 
-<!-- Form Diskusi -->
+<!-- Form Materi -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Form Diskusi</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Form Materi</h6>
     </div>
     <div class="card-body">
         @if ($errors->any())
@@ -23,13 +23,13 @@
                 </ul>
             </div>
         @endif
-        <form method="POST" action="{{ url('admin/forum_diskusi/store') }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ url('admin/materi/store') }}" enctype="multipart/form-data">
         {{ csrf_field() }}
-            <!-- Input Nama -->
+            <!-- Input Judul -->
             <div class="form-group">
-                <label for="nama">Nama :</label>
-                <input id="nama" name="nama" type="text" class="form-control @error('nama') is-invalid @enderror" placeholder="Masukkan Nama">
-                @error('nama')
+                <label for="judul">Judul :</label>
+                <input id="judul" name="judul" type="text" class="form-control @error('judul') is-invalid @enderror" placeholder="Masukkan Judul">
+                @error('judul')
                     <div class="invalid-feedback">
                         {{ $message }}
                     </div>

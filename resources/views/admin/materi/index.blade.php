@@ -22,22 +22,26 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Position</th>
-                        <th>Office</th>
-                        <th>Age</th>
-                        <th>Start date</th>
-                        <th>Salary</th>
+                        <th>No</th>
+                        <th>Judul</th>
+                        <th>Deskripsi</th>
+                        <th>Harga</th>
+                        <th>Kategori</th>
+                        <th>Level</th>
+                        <th>Jenis</th>
+                        <th>Status</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
-                        <th>Name</th>
+                        <th>No</th>
+                        <th>Judul</th>
                         <th>Position</th>
-                        <th>Office</th>
-                        <th>Age</th>
-                        <th>Start date</th>
-                        <th>Salary</th>
+                        <th>Harga</th>
+                        <th>Kategori</th>
+                        <th>Level</th>
+                        <th>Jenis</th>
+                        <th>Status</th>
                     </tr>
                 </tfoot>
                 <tbody>
@@ -48,22 +52,19 @@
                         <td>61</td>
                         <td>2011/04/25</td>
                         <td>$320,800</td>
-                    </tr>
-                    <tr>
-                        <td>Garrett Winters</td>
-                        <td>Accountant</td>
-                        <td>Tokyo</td>
-                        <td>63</td>
-                        <td>2011/07/25</td>
-                        <td>$170,750</td>
-                    </tr>
-                    <tr>
-                        <td>Ashton Cox</td>
-                        <td>Junior Technical Author</td>
-                        <td>San Francisco</td>
-                        <td>66</td>
-                        <td>2009/01/12</td>
-                        <td>$86,000</td>
+                        <td>
+                            <form action="#" method="POST">
+                                <button type="button" class="btn btn-success btn-sm">
+                                    <a href="{{ url('admin/materi/show/' . $m->id) }}" style="text-decoration: none; color: inherit;">Detail</a>
+                                </button>
+                                <button type="button" class="btn btn-warning btn-sm">
+                                    <a href="{{ url('admin/materi/edit/' . $m->id) }}" style="text-decoration: none; color: inherit;">Edit</a>
+                                </button>
+                                <button type="button" class="btn btn-danger btn-sm">
+                                    <a href="{{ url('admin/materi/delete/' . $m->id) }}" style="text-decoration: none; color: inherit;">Hapus</a>
+                                </button>
+                            </form>
+                        </td>
                     </tr>
                 </tbody>
             </table>

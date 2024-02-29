@@ -2,6 +2,7 @@
 
 @section('content')
 
+@include('sweetalert::alert')
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
@@ -23,37 +24,53 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
+                        <th>No</th>
                         <th>Nama</th>
-                        <th>Topik</th>
+                        <th>Judul Materi</th>
                         <th>Pertanyaan</th>
-                        <th>Posting</th>
                         <th>Status Diskusi</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
+                        <th>No</th>
                         <th>Nama</th>
-                        <th>Topik</th>
+                        <th>Judul Materi</th>
                         <th>Pertanyaan</th>
-                        <th>Posting</th>
                         <th>Status Diskusi</th>
                         <th>Aksi</th>
                     </tr>
                 </tfoot>
                 <tbody>
+                    @php 
+                        $no = 1;
+                    @endphp
+                    @foreach ($forum_diskusi as $fd)
                     <tr>
-                        <td>Tiger Nixon</td>
-                        <td>System Architect</td>
-                        <td>61</td>
-                        <td>2011/04/25</td>
-                        <td>$320,800</td>
+                        <td>{{ $no }}</td>
+                        <td>{{ $fd->nama }}</td>
+                        <td>{{ $fd->judul_materi}}</td>
+                        <td>{{ $fd->pertanyaan}}</td>
+                        <td>{{ $status_diskusi }}</td>
                         <td>
-                            <button type="button" class="btn btn-success btn-sm" onclick="showDetail()">Detail</button>
-                            <button type="button" class="btn btn-warning btn-sm" onclick="editData()">Edit</button>
-                            <button type="button" class="btn btn-danger btn-sm" onclick="deleteData()">Hapus</button>
+                            <form action="#" method="POST">
+                                <button type="button" class="btn btn-success btn-sm">
+                                    <a href="{{ url('admin/forum_diskusi/show/' . $fd->id) }}" style="text-decoration: none; color: inherit;">Detail</a>
+                                </button>
+                                <button type="button" class="btn btn-warning btn-sm">
+                                    <a href="{{ url('admin/forum_diskusi/edit/' . $fd->id) }}" style="text-decoration: none; color: inherit;">Edit</a>
+                                </button>
+                                <button type="button" class="btn btn-danger btn-sm">
+                                    <a href="{{ url('admin/forum_diskusi/delete/' . $fd->id) }}" style="text-decoration: none; color: inherit;">Hapus</a>
+                                </button>
+                            </form>
                         </td>
                     </tr>
+                    @php
+                        $no++;
+                    @endphp
+                    @endforeach
                 </tbody>
             </table>
         </div>

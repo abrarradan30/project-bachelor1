@@ -57,6 +57,7 @@ Route::get('/progres_belajar', [ProgresBelajarController::class, 'index']);
 // route forum diskusi
 Route::get('/forum_diskusi', [ForumDiskusiController::class, 'index']);
 Route::get('/forum_diskusi/create', [ForumDiskusiController::class, 'create']);
+Route::get('/forum_diskusi/show', [ForumDiskusiController::class, 'show']);
 
 // route kuis
 Route::get('/kuis', [KuisController::class, 'index']);

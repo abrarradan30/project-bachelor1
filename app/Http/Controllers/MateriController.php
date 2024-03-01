@@ -25,7 +25,8 @@ class MateriController extends Controller
     public function create()
     {
         //
-        return view('admin.materi.create');
+        return view('admin.pelanggan.create');
+        
     }
 
     /**
@@ -34,14 +35,57 @@ class MateriController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'judul'        => 'required|max:50',
+            'bg_materi'    => 'required|image|mimes:jpg,jpeg,png,svg|max:2048',
+            'deskripsi'    => 'required',
+            'harga'        => 'required|numeric',
+            'kategori'     => 'required',
+            'level'        => 'required',
+            'jenis'        => 'required',
+            'status'       => 'required',
+        ],
+        [
+            'judul.required'        => 'Judul materi Wajib Diisi !!!',
+            'bg_materi.image'       => 'File background materi Harus jpg, jpeg, png, svg !!!',
+            'deskripsi.required'    => 'Deskripsi Wajib Diisi !!!',
+            'harga.required'        => 'Harga Wajib Diisi !!!',
+            'kategori.required'     => 'Kategori Wajib Diisi !!!',
+            'level.required'        => 'Level Ruang Wajib Diisi !!!',
+            'jenis.required'        => 'Jenis Wajib Diisi !!!',
+            'status.required'       => 'Status Wajib Diisi !!!',
+        ]);
+
+        if (!empty($request->bg_materi)) {
+            $fileName = 'bg_materi-' . $request->id . '.' . $request->bg_materi->extension();
+            $request->bg_materi->move(public_path('admin/img'), $fileName);
+        } else {
+            $fileName = '';
+        }
+
+        DB::table('materi')->insert([
+            'judul'        => $request->judul,
+            'bg_materi'    => $fileName,
+            'deskripsi'    => $request->deskripsi,
+            'harga'        => $request->harga,
+            'kategori'     => $request->kategori,
+            'level'        => $request->level,
+            'jenis'        => $request->jenis,
+            'status'       => $request->status,
+        ]);
+
+        Alert::success('Materi', 'Berhasil menambahkan materi');
+        return redirect('admin/materi');   
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
         //
+        $materi =  DB::table('materi')->where('id', $id)->get();
+        return view('admin.materi.detail', compact('materi'));
     }
 
     /**
@@ -50,14 +94,62 @@ class MateriController extends Controller
     public function edit(string $id)
     {
         //
+        $materi = DB::table('materi')->where('id', $id)->get();
+        $ar_kategori = ['IT', 'desain', 'softskill'];
+        $ar_level = ['pemula', 'menengah', 'mahir'];
+        $ar_jenis = ['gratis', 'berbayar'];
+        $ar_status = ['proses', 'publik'];
+
+        return view('admin.materi.edit', compact('materi', 'ar_kategori', 'ar_level', 'ar_jenis', 'ar_status'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request)
     {
         //
+        $request->validate(
+            [
+                'judul'        => 'required|max:50',
+                'bg_materi'    => 'required|image|mimes:jpg,jpeg,png,svg|max:2048',
+                'deskripsi'    => 'required',
+                'harga'        => 'required|numeric',
+                'kategori'     => 'required',
+                'level'        => 'required',
+                'jenis'        => 'required',
+                'status'       => 'required',
+            ]
+        );
+        // foto lama apabila mengganti fotonya
+        $bg_materi = DB::table('materi')->select('bg_materi')->where('id', $request->id)->get();
+        foreach ($bg_materi as $bgm) {
+            $namaFileBackgroundLama = $bgm->bg_materi;
+        }
+        //apakah user ingin mengganti foto lama
+        if (!empty($request->bg_materi)) {
+            //jika ada foto lama maka hapus dulu fotonya
+            if (!empty($m->bg_materi)) unlink('admin/img/' . $m->bg_materi);
+            //proses ganti foto
+            $fileName = 'bg_materi-' . $request->id . '.' . $request->bg_materi->extension();
+            $request->bg_materi->move(public_path('admin/img'), $fileName);
+        } else {
+            $fileName = '';
+        }
+
+        DB::table('data_kos')->where('id', $request->id)->update([
+            'judul'        => $request->judul,
+            'bg_materi'    => $fileName,
+            'deskripsi'    => $request->deskripsi,
+            'harga'        => $request->harga,
+            'kategori'     => $request->kategori,
+            'level'        => $request->level,
+            'jenis'        => $request->jenis,
+            'status'       => $request->status,
+        ]);
+
+        Alert::info('Materi', 'Berhasil mengedit materi');
+        return redirect('admin/materi');
     }
 
     /**
@@ -66,5 +158,8 @@ class MateriController extends Controller
     public function destroy(string $id)
     {
         //
+        DB::table('materi')->where('id', $id)->delete();
+
+        return redirect('admin/materi');
     }
 }

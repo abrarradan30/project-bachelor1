@@ -2,13 +2,13 @@
 
 @section('content')
 
+@include('sweetalert::alert')
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
 <!-- Page Heading -->
 <h1 class="h3 mb-2 text-gray-800">Tabel Materi</h1>
-<p class="mb-4">Membantu dalam pengorganisasian dan strukturisasi materi pembelajaran.  <a target="_blank"
-        href="https://datatables.net">official DataTables documentation</a>.</p>
+<p class="mb-4">Membantu dalam pengorganisasian dan strukturisasi materi pembelajaran.</p>
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
@@ -24,34 +24,51 @@
                     <tr>
                         <th>No</th>
                         <th>Judul</th>
+                        <th>BG Materi</th>
                         <th>Deskripsi</th>
                         <th>Harga</th>
                         <th>Kategori</th>
                         <th>Level</th>
                         <th>Jenis</th>
                         <th>Status</th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
                         <th>No</th>
                         <th>Judul</th>
-                        <th>Position</th>
+                        <th>BG Materi</th>
+                        <th>Deskripsi</th>
                         <th>Harga</th>
                         <th>Kategori</th>
                         <th>Level</th>
                         <th>Jenis</th>
                         <th>Status</th>
+                        <th>Aksi</th>
                     </tr>
                 </tfoot>
                 <tbody>
+                    @php 
+                        $no = 1;
+                    @endphp
+                    @foreach ($materi as $m)
                     <tr>
-                        <td>Tiger Nixon</td>
-                        <td>System Architect</td>
-                        <td>Edinburgh</td>
-                        <td>61</td>
-                        <td>2011/04/25</td>
-                        <td>$320,800</td>
+                        <td>{{ $no }}</td>
+                        <td>{{ $m->judul }}</td>
+                        <td>
+                            @empty($m->bg_materi)
+                                <img src="{{ url('admin/img/no_foto.png') }}" width="15%" style="width: 50px;">
+                            @else
+                                <img src="{{ url('admin/img') }}/{{ $dk->gambar }}" width="15%" style="width: 50px;">
+                            @endempty
+                        </td>
+                        <td>{{ $m->deskripsi }}</td>
+                        <td>{{ $m->harga }}</td>
+                        <td>{{ $m->kategori }}</td>
+                        <td>{{ $m->level }}</td>
+                        <td>{{ $m->jenis }}</td>
+                        <td>{{ $m->status }}</td>
                         <td>
                             <form action="#" method="POST">
                                 <button type="button" class="btn btn-success btn-sm">
@@ -66,6 +83,10 @@
                             </form>
                         </td>
                     </tr>
+                    @php 
+                        $no++;
+                    @endphp
+                    @endforeach
                 </tbody>
             </table>
         </div>

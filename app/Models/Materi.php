@@ -10,7 +10,7 @@ class Materi extends Model
     use HasFactory;
     protected $table = 'materi'; 
     protected $primaryKey = 'id'; 
-    protected $fillable = ['judul', 'deskripsi', 'harga', 'kategori', 'level', 'jenis', 'status'];
+    protected $fillable = ['judul', 'bg_materi', 'deskripsi', 'harga', 'kategori', 'level', 'jenis', 'status'];
 
     // Relasi one-to-one dengan model Pembayaran
     public function pembayaran() {

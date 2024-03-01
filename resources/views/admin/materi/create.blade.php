@@ -86,7 +86,7 @@
                 </div>
             </div>
 
-            <!-- Input Kategori -->
+            <!-- Input Level -->
             <div class="form-group">
                 <label>Level :</label>
                 <div class="form-check">

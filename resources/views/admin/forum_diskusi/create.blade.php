@@ -38,13 +38,12 @@
 
             <!-- Input Judul Materi -->
             <div class="form-group">
-                <label for="judul_materi">Judul Materi :</label>
-                <input id="judul_materi" name="judul_materi" type="text" class="form-control @error('judul_materi') is-invalid @enderror" placeholder="Masukkan judul materi">
-                @error('judul_materi')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                @enderror
+                <label for="materi_id">Judul Materi :</label>
+                <select id="materi_id" name="materi_id" class="custom-select">
+                    @foreach ($materi as $m)
+                        <option value="{{ $m->id }}">{{ $m->judul_materi }}</option>
+                    @endforeach
+                </select>
             </div>
 
             <!-- Input Pertanyaan -->

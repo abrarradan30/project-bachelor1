@@ -29,6 +29,7 @@
                         <th>Judul Materi</th>
                         <th>Pertanyaan</th>
                         <th>Status Diskusi</th>
+                        <th>Posting</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -39,6 +40,7 @@
                         <th>Judul Materi</th>
                         <th>Pertanyaan</th>
                         <th>Status Diskusi</th>
+                        <th>Posting</th>
                         <th>Aksi</th>
                     </tr>
                 </tfoot>
@@ -52,7 +54,8 @@
                         <td>{{ $fd->nama }}</td>
                         <td>{{ $fd->judul_materi}}</td>
                         <td>{{ $fd->pertanyaan}}</td>
-                        <td>{{ $status_diskusi }}</td>
+                        <td>{{ $fd->status_diskusi }}</td>
+                        <td>{{ $fd->created_at }}</td>
                         <td>
                             <form action="#" method="POST">
                                 <button type="button" class="btn btn-success btn-sm">

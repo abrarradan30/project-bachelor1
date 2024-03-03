@@ -22,7 +22,11 @@ class Materi extends Model
     }
     // Relasi one-to-many dengan model Kuis
     public function kuis() {
-        return $this->belongsTo(Kuis::class);
+        return $this->hasMany(Kuis::class);
+    }
+     // Relasi one-to-many dengan model Hasil Kuis
+    public function hasil_kuis() {
+        return $this->hasMany(HasilKuis::class);
     }
     // Relasi one-to-one dengan model DetailMateri
     public function detail_materi() {

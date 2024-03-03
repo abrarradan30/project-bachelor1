@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Jawaban;
-use App\Models\Kuis;
+use App\Models\HasilKuis;
+use App\Models\User;
+use App\Models\Materi;
 use RealRashid\SweetAlert\Facades\Alert;
 use DB;
 
-class JawabanController extends Controller
+class HasilKuisController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,11 +17,12 @@ class JawabanController extends Controller
     public function index()
     {
         //
-        $jawaban = DB::table('jawaban')
-            ->join('kuis', 'jawaban.kuis_id', '=', 'kuis.id')
-            ->select('jawaban.*', 'kuis.pertanyaan')
+        $hasil_kuis = HasilKuis::join('users', 'hasil_kuis.users_id', '=', 'users.id')
+            ->join('materi', 'hasil_kuis.materi_id', '=', 'materi.id')
+            ->select('hasil_kuis.*', 'users.name as nama', 'materi.judul as judul_materi')
             ->get();
-        return view('admin.jawaban.index', compact('jawaban'));
+
+        return view('admin.hasil_kuis.index', compact('hasil_kuis'));
     }
 
     /**
@@ -29,13 +31,14 @@ class JawabanController extends Controller
     public function create()
     {
         //
-        $kuis = DB::table('kuis')->get();
-        $jawaban = DB::table('jawaban')
-            ->join('kuis', 'jawaban.kuis_id', '=', 'kuis.id')
-            ->select('jawaban.*', 'kuis.pertanyaan')
+        $users = DB::table('users')->get();
+        $materi = DB::table('materi')->get();
+        $hasil_kuis = HasilKuis::join('users', 'hasil_kuis.users_id', '=', 'users.id')
+            ->join('materi', 'hasil_kuis.materi_id', '=', 'materi.id')
+            ->select('hasil_kuis.*', 'users.name as nama', 'materi.judul as judul_materi')
             ->get();
 
-        return view('admin.jawaban.create', compact('jawaban', 'kuis'));
+        return view('admin.hasil_kuis.create', compact('hasil_kuis', 'users','materi'));
     }
 
     /**

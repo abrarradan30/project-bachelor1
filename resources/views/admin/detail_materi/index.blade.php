@@ -7,8 +7,7 @@
 
 <!-- Page Heading -->
 <h1 class="h3 mb-2 text-gray-800">Tabel Detail Materi</h1>
-<p class="mb-4">Membantu mentor dalam merencanakan dan membuat silabus serta mengelola materi secara terstruktur  <a target="_blank"
-        href="https://datatables.net">official DataTables documentation</a>.</p>
+<p class="mb-4">Membantu mentor dalam merencanakan dan membuat silabus serta mengelola materi secara terstruktur.</p>
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">

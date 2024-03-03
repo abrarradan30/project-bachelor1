@@ -10,7 +10,7 @@ class Kuis extends Model
     use HasFactory;
     protected $table = 'kuis';
     protected $primaryKey = 'id';
-    protected $fillable = ['pertanyaan', 'skor', 'materi_id', 'users_id']; 
+    protected $fillable = ['soal', 'a', 'b', 'c', 'd', 'kunci', 'materi_id']; 
 
     // Relasi many-to-one dengan model User
     public function user() {
@@ -18,10 +18,6 @@ class Kuis extends Model
     }
     // Relasi one-to-many dengan model Materi
     public function materi() {
-        return $this->hasMany(Materi::class);
-    }
-    // Relasi one-to-one dengan model Jawaban
-    public function jawaban() {
-        return $this->hasOne(Jawaban::class);
+        return $this->belongsTo(Materi::class);
     }
 }

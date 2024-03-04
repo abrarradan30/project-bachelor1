@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\BalasanDiskusiController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\CourseDetailController;
@@ -54,11 +55,6 @@ Route::get('/detail_materi/create', [DetailMateriController::class, 'create']);
 // route progres belajar
 Route::get('/progres_belajar', [ProgresBelajarController::class, 'index']);
 
-// route forum diskusi
-Route::get('/forum_diskusi', [ForumDiskusiController::class, 'index']);
-Route::get('/forum_diskusi/create', [ForumDiskusiController::class, 'create']);
-Route::get('/forum_diskusi/show', [ForumDiskusiController::class, 'show']);
-
 // route kuis
 Route::get('/kuis', [KuisController::class, 'index']);
 
@@ -68,6 +64,13 @@ Route::get('/hasil_kuis', [HasilKuisController::class, 'index']);
 // route sertifikat
 Route::get('/sertifikat', [SertifikatController::class, 'index']);
 
+// route forum diskusi
+Route::get('/forum_diskusi', [ForumDiskusiController::class, 'index']);
+Route::get('/forum_diskusi/create', [ForumDiskusiController::class, 'create']);
+Route::get('/forum_diskusi/show', [ForumDiskusiController::class, 'show']);
+
+// route balasan diskusi
+Route::get('/balasan_diskusi', [BalasanDiskusiController::class, 'index']);
 
 // route frontend
 //route front

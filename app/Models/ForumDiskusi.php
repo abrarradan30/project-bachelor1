@@ -20,4 +20,8 @@ class ForumDiskusi extends Model
     public function materi() {
         return $this->hasMany(Materi::class);
     }
+    // Relasi one-to-many dengan model BalasanDiskusi
+    public function balasan_diskusi() {
+        return $this->hasMany(BalasanDiskusi::class);
+    }
 }

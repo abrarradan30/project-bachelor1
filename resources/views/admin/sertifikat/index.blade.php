@@ -21,49 +21,50 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Position</th>
-                        <th>Office</th>
-                        <th>Age</th>
-                        <th>Start date</th>
-                        <th>Salary</th>
+                        <th>No</th>
+                        <th>User</th>
+                        <th>Materi</th>
+                        <th>Tgl Terbit</th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
-                        <th>Name</th>
-                        <th>Position</th>
-                        <th>Office</th>
-                        <th>Age</th>
-                        <th>Start date</th>
-                        <th>Salary</th>
+                        <th>No</th>
+                        <th>User</th>
+                        <th>Materi</th>
+                        <th>Tgl Terbit</th>
+                        <th>Aksi</th>
                     </tr>
                 </tfoot>
                 <tbody>
+                    @php 
+                        $no = 1;
+                    @endphp
+                    @foreach ($sertifikat as $s)
                     <tr>
-                        <td>Tiger Nixon</td>
-                        <td>System Architect</td>
-                        <td>Edinburgh</td>
-                        <td>61</td>
-                        <td>2011/04/25</td>
-                        <td>$320,800</td>
+                        <td>{{ $no }}</td>
+                        <td>{{ $s->nama }}</td>
+                        <td>{{ $s->judul_materi }}</td>
+                        <td>{{ $s->created_at }}</td>
+                        <td>
+                            <form action="#" method="POST">
+                                <button type="button" class="btn btn-success btn-sm">
+                                    <a href="{{ url('admin/sertifikat/show/' . $s->id) }}" style="text-decoration: none; color: inherit;">Detail</a>
+                                </button>
+                                <button type="button" class="btn btn-warning btn-sm">
+                                    <a href="{{ url('admin/sertifikat/edit/' . $s->id) }}" style="text-decoration: none; color: inherit;">Edit</a>
+                                </button>
+                                <button type="button" class="btn btn-danger btn-sm">
+                                    <a href="{{ url('admin/sertifikat/delete/' . $s->id) }}" style="text-decoration: none; color: inherit;">Hapus</a>
+                                </button>
+                            </form>
+                        </td>
                     </tr>
-                    <tr>
-                        <td>Garrett Winters</td>
-                        <td>Accountant</td>
-                        <td>Tokyo</td>
-                        <td>63</td>
-                        <td>2011/07/25</td>
-                        <td>$170,750</td>
-                    </tr>
-                    <tr>
-                        <td>Ashton Cox</td>
-                        <td>Junior Technical Author</td>
-                        <td>San Francisco</td>
-                        <td>66</td>
-                        <td>2009/01/12</td>
-                        <td>$86,000</td>
-                    </tr>
+                    @php 
+                        $no++;
+                    @endphp
+                    @endforeach
                 </tbody>
             </table>
         </div>

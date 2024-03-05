@@ -21,6 +21,7 @@ class ProgresBelajarController extends Controller
             ->join('materi', 'progres_belajar.materi_id', '=', 'materi.id')
             ->select('progres_belajar.*', 'users.name as nama', 'materi.judul')
             ->get();
+
         return view('admin.progres_belajar.index', compact('progres_belajar'));
     }
 
@@ -30,6 +31,14 @@ class ProgresBelajarController extends Controller
     public function create()
     {
         //
+        $users = DB::table('users')->get();
+        $materi = DB::table('materi')->get();
+        $progres_belajar = ProgresBelajar::join('users', 'progres_belajar.users_id', '=', 'users.id')
+            ->join('materi', 'progres_belajar.materi_id', '=', 'materi.id')
+            ->select('progres_belajar.*', 'users.name as nama', 'materi.judul')
+            ->get();
+        
+        return view('admin.progres_belajar.create', compact('progres_belajar', 'users', 'materi'));
     }
 
     /**

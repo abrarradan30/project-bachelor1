@@ -3,6 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\Materi;
+use App\Models\DetailMateri;
+use App\Models\Pembayaran;
+use App\Models\ProgresBelajar;
+use App\Models\Kuis;
+use App\Models\HasilKuis;
+use App\Models\Sertifikat;
+use App\Models\ForumDiskusi;
+use App\Models\BalasanDiskusi;
 use DB;
 
 class DashboardController extends Controller
@@ -13,7 +23,19 @@ class DashboardController extends Controller
     public function index()
     {
         //
-        return view('admin.dashboard');
+        $users = User::count();
+        $materi = Materi::count();
+        $detail_materi = DetailMateri::count();
+        $pembayaran = Pembayaran::count();
+        $progres_belajar = ProgresBelajar::count();
+        $kuis = Kuis::count();
+        $hasil_kuis = HasilKuis::count();
+        $sertifikat = Sertifikat::count();
+        $forum_diskusi = ForumDiskusi::count();
+        $balasan_diskusi = BalasanDiskusi::count();
+
+        return view('admin.dashboard', compact('users', 'materi', 'detail_materi', 'pembayaran', 'progres_belajar',
+                    'kuis', 'hasil_kuis', 'sertifikat', 'forum_diskusi', 'balasan_diskusi'));
     }
 
     /**

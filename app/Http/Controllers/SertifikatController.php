@@ -19,7 +19,7 @@ class SertifikatController extends Controller
         //
         $sertifikat = Sertifikat::join('users', 'sertifikat.users_id', '=', 'users.id')
             ->join('materi', 'sertifikat.materi_id', '=', 'materi.id')
-            ->select('sertifikat.*', 'users.name as nama', 'materi.judul')
+            ->select('sertifikat.*', 'users.name as nama', 'materi.judul as judul_materi')
             ->get();
 
         return view('admin.sertifikat.index', compact('sertifikat'));
@@ -33,9 +33,9 @@ class SertifikatController extends Controller
         //
         $users = DB::table('users')->get();
         $materi = DB::table('materi')->get();
-         $sertifikat = Sertifikat::join('users', 'sertifikat.users_id', '=', 'users.id')
+        $sertifikat = Sertifikat::join('users', 'sertifikat.users_id', '=', 'users.id')
             ->join('materi', 'sertifikat.materi_id', '=', 'materi.id')
-            ->select('sertifikat.*', 'users.name as nama', 'materi.judul')
+            ->select('sertifikat.*', 'users.name as nama', 'materi.judul as judul_materi')
             ->get();
 
         return view('admin.sertifikat.create', compact('sertifikat', 'users', 'materi'));

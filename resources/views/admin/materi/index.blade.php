@@ -31,7 +31,6 @@
                         <th>Harga</th>
                         <th>Kategori</th>
                         <th>Level</th>
-                        <th>Jenis</th>
                         <th>Status</th>
                         <th>Aksi</th>
                     </tr>
@@ -45,7 +44,6 @@
                         <th>Harga</th>
                         <th>Kategori</th>
                         <th>Level</th>
-                        <th>Jenis</th>
                         <th>Status</th>
                         <th>Aksi</th>
                     </tr>
@@ -69,7 +67,6 @@
                         <td>{{ $m->harga }}</td>
                         <td>{{ $m->kategori }}</td>
                         <td>{{ $m->level }}</td>
-                        <td>{{ $m->jenis }}</td>
                         <td>{{ $m->status }}</td>
                         <td>
                             <form action="#" method="POST">

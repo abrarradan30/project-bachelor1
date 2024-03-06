@@ -2,6 +2,7 @@
 
 @section('content')
 
+@include('sweetalert::alert')
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
@@ -46,12 +47,27 @@
                     @foreach ($detail_materi as $dm)    
                     <tr>
                         <td>{{ $no }}</td>
-                        <td>System Architect</td>
-                        <td>Edinburgh</td>
-                        <td>61</td>
-                        <td>2011/04/25</td>
-                        <td>$320,800</td>
+                        <td>{{ $dm->judul_materi }}</td>
+                        <td>{{ $dm->sub_judul }}</td>
+                        <td>{{ $dm->isi_materi }}</td>
+                        <td>
+                            <form action="#" method="POST">
+                                <button type="button" class="btn btn-success btn-sm">
+                                    <a href="{{ url('admin/detail_materi/show/' . $dm->id) }}" style="text-decoration: none; color: inherit;">Detail</a>
+                                </button>
+                                <button type="button" class="btn btn-warning btn-sm">
+                                    <a href="{{ url('admin/detail_materi/edit/' . $dm->id) }}" style="text-decoration: none; color: inherit;">Edit</a>
+                                </button>
+                                <button type="button" class="btn btn-danger btn-sm">
+                                    <a href="{{ url('admin/detail_materi/delete/' . $dm->id) }}" style="text-decoration: none; color: inherit;">Hapus</a>
+                                </button>
+                            </form>
+                        </td>
                     </tr>
+                    @php 
+                        $no++;
+                    @endphp
+                    @endforeach
                 </tbody>
             </table>
         </div>

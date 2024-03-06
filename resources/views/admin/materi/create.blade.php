@@ -27,7 +27,7 @@
         {{ csrf_field() }}
             <!-- Input Judul -->
             <div class="form-group">
-                <label for="judul">Judul :</label>
+                <label for="judul">Judul Materi :</label>
                 <input id="judul" name="judul" type="text" class="form-control @error('judul') is-invalid @enderror" placeholder="Masukkan Judul">
                 @error('judul')
                     <div class="invalid-feedback">
@@ -36,16 +36,17 @@
                 @enderror
             </div>
 
-            <!-- Input Judul Materi -->
+            <!-- Input File BG Materi -->
             <div class="form-group">
-                <label for="judul">Judul Materi :</label>
-                <input id="judul" name="judul" type="text" class="form-control @error('judul') is-invalid @enderror" placeholder="Masukkan judul materi">
-                @error('judul')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
+                <label for="bg_materi">Pilih Background Materi :</label>
+                <input id="bg_materi" name="bg_materi" type="file" class="form-control-file @error('bg_materi') is-invalid @enderror">
+                @error('bg_materi')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
                 @enderror
             </div>
+
 
             <!-- Input Deskripsi -->
             <div class="form-group">
@@ -59,15 +60,21 @@
             </div>
 
             <!-- Input Harga -->
-            <div class="form-group">
-                <label for="harga">Harga :</label>
-                <input id="harga" name="harga" type="text" class="form-control @error('harga') is-invalid @enderror" placeholder="Masukkan judul materi">
-                @error('harga')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                @enderror
+        <div class="form-group">
+            <label for="harga">Harga :</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Rp.</span>
+                </div>
+                <input id="harga" name="harga" type="text" class="form-control @error('harga') is-invalid @enderror" placeholder="Masukkan harga">
             </div>
+            @error('harga')
+            <div class="invalid-feedback">
+                {{ $message }}
+            </div>
+            @enderror
+        </div>
+
 
             <!-- Input Kategori -->
             <div class="form-group">
@@ -100,19 +107,6 @@
                 <div class="form-check">
                     <input name="level" id="mahir" type="radio" class="form-check-input" value="mahir">
                     <label class="form-check-label" for="mahir">Mahir</label>
-                </div>
-            </div>
-
-            <!-- Input Jenis -->
-            <div class="form-group">
-                <label>Jenis :</label>
-                <div class="form-check">
-                    <input name="jenis" id="gratis" type="radio" class="form-check-input" value="gratis">
-                    <label class="form-check-label" for="gratis">Gratis</label>
-                </div>
-                <div class="form-check">
-                    <input name="jenis" id="berbayar" type="radio" class="form-check-input" value="berbayar">
-                    <label class="form-check-label" for="berbayar">Berbayar</label>
                 </div>
             </div>
 

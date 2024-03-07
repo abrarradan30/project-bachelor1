@@ -14,14 +14,9 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
-        <a class="nav-link" href="{{url('dashboard')}}">
+        <a class="nav-link" href="{{ url('dashboard') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="{{url('profil')}}">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Profil</span></a>
     </li>
 
     <!-- Divider -->

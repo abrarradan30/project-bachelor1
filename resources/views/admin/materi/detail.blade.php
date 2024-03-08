@@ -6,13 +6,13 @@
 <div class="container-fluid">
 
 <!-- Page Heading -->
-<h1 class="h3 mb-2 text-gray-800">Detail Materi</h1>
+<h1 class="h3 mb-2 text-gray-800">Materi</h1>
 
 <!-- Form Materi -->
 <div class="card shadow mb-4">
     @foreach ($materi as $m)
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Detail Materi</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Materi</h6>
     </div>
     <div class="card-body">
         <form>

@@ -37,6 +37,7 @@
                         <th>Nama</th>
                         <th>Topik Diskusi</th>
                         <th>Balasan</th>
+                        <th>Tgl Balasan</th>
                         <th>Aksi</th>
                     </tr>
                 </tfoot>
@@ -48,9 +49,8 @@
                     <tr>
                         <td>{{ $no }}</td>
                         <td>{{ $bd->nama }}</td>
-                        <td>{{ $bd->judul_materi}}</td>
-                        <td>{{ $bd->pertanyaan}}</td>
-                        <td>{{ $bd->status_diskusi }}</td>
+                        <td>{{ $bd->topik_diskusi }}</td>
+                        <td>{{ $bd->balasan }}</td>
                         <td>{{ $bd->created_at }}</td>
                         <td>
                             <form action="#" method="POST">

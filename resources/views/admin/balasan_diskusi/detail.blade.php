@@ -21,10 +21,10 @@
                 <input id="nama" name="nama" type="text" class="form-control" value="{{ $bd->nama }}" readonly>
             </div>
 
-            <!-- Input Topik Diskusi -->
+            <!-- Input Pertanyaan -->
             <div class="form-group">
-                <label for="topik_diskusi"> Topik Diskusi :</label>
-                <input id="topik_diskusi" type="text" class="form-control" value="{{ $bd->topik_diskusi }}" readonly>
+                <label for="pertanyaan"> Pertanyaan :</label>
+                <input id="pertanyaan" type="text" class="form-control" value="{{ $bd->pertanyaan }}" readonly>
             </div>
 
             <!-- Input Balasan -->
@@ -38,6 +38,7 @@
                 <a href="{{ url('balasan_diskusi') }}" class="btn btn-secondary">Kembali</a>
             </div>
     </div>
+    @endforeach
 </div>
 
 </div>

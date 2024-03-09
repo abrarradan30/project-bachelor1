@@ -6,7 +6,7 @@
 <div class="container-fluid">
 
 <!-- Page Heading -->
-<h1 class="h3 mb-2 text-gray-800">Tambahkan Balasan Diskusi</h1>
+<h1 class="h3 mb-2 text-gray-800">Edit Balasan Diskusi</h1>
 
 <!-- Form Diskusi -->
 <div class="card shadow mb-4">
@@ -14,6 +14,7 @@
         <h6 class="m-0 font-weight-bold text-primary">Form Balasan Diskusi</h6>
     </div>
     <div class="card-body">
+    @foreach($balasan_diskusi as $bd)
         @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
@@ -23,17 +24,13 @@
                 </ul>
             </div>
         @endif
-        <form method="POST" action="{{ url('admin/balasan_diskusi/store') }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ url('admin/balasan_diskusi/update') }}" enctype="multipart/form-data">
         {{ csrf_field() }}
             <!-- Input Nama -->
             <div class="form-group">
+            <input type="hidden" name="id" value="{{ $fd->id }}">
                 <label for="nama">Nama :</label>
-                <input id="nama" name="nama" type="text" class="form-control @error('nama') is-invalid @enderror" placeholder="Masukkan Nama">
-                @error('nama')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                @enderror
+                <input id="nama" name="nama" type="text" class="form-control" value="{{ $bd->nama }}">
             </div>
 
             <!-- Input Pertanyaan -->
@@ -41,7 +38,8 @@
                 <label for="forum_diskusi_id"> Pertanyaan :</label>
                 <select id="forum_diskusi_id" name="forum_diskusi_id" class="custom-select">
                     @foreach ($forum_diskusi as $fd)
-                        <option value="{{ $fd->id }}">{{ $fd->pertanyaan }}</option>
+                    @php $sel = ($fd->id == $bd->forum_diskusi_id) ? 'selected' : ''; @endphp
+                        <option value="{{ $fd->id }}" {{ $sel }}>{{ $fd->pertanyaan }}</option>
                     @endforeach
                 </select>
             </div>
@@ -49,18 +47,14 @@
             <!-- Input Balasan -->
             <div class="form-group">
                 <label for="balasan">Balasan :</label>
-                <textarea id="balasan" name="balasan" cols="30" rows="10" class="form-control @error('balasan') is-invalid @enderror"></textarea>
-                @error('balasan')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                @enderror
+                <textarea id="balasan" name="balasan" cols="30" rows="10" class="form-control">{{ $bd->balasan }}</textarea>
             </div>
 
             <!-- Submit Button -->
             <div class="form-group">
                 <button type="submit" class="btn btn-primary">Simpan</button> &nbsp;
         </form>
+    @endforeach
             <button type="button" class="btn btn-danger">
                     <a href="{{ url('balasan_diskusi') }}" style="text-decoration: none; color: inherit;">Batal</a>
             </button>

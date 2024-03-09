@@ -42,7 +42,6 @@
     @endforeach
 </div>
 
-@endforeach
 </div>
 <!-- /.container-fluid -->
 @endsection

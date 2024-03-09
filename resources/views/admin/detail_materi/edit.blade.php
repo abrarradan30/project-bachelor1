@@ -54,7 +54,7 @@
             <div class="form-group">
                 <button type="submit" class="btn btn-primary">Simpan</button> &nbsp;
         </form>
-        @endforeach
+    @endforeach
             <button type="button" class="btn btn-danger">
                     <a href="{{ url('detail_materi') }}" style="text-decoration: none; color: inherit;">Batal</a>
             </button>

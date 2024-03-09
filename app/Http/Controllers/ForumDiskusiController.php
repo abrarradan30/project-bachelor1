@@ -39,7 +39,6 @@ class ForumDiskusiController extends Controller
             ->get();
 
         return view('admin.forum_diskusi.create', compact('forum_diskusi', 'users', 'materi'));
-        // return view('admin.forum_diskusi.create');
     }
 
     /**
@@ -123,7 +122,7 @@ class ForumDiskusiController extends Controller
         $forum_diskusi = DB::table('forum_diskusi')->where('id', $id)->get();
         $ar_status_diskusi = ['selesai', 'belum selesai'];
 
-        return view('admin.forum_diskusi.edit', compact('forum_diskusi', 'users', 'ar_status_diskusi'));
+        return view('admin.forum_diskusi.edit', compact('forum_diskusi', 'users', 'materi', 'ar_status_diskusi'));
     }
 
     /**

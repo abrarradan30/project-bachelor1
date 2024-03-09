@@ -66,6 +66,7 @@
             <div class="form-group">
                 <button type="submit" class="btn btn-primary">Simpan</button> &nbsp;
         </form>
+    @endforeach
             <button type="button" class="btn btn-danger">
                     <a href="{{ url('forum_diskusi') }}" style="text-decoration: none; color: inherit;">Batal</a>
             </button>

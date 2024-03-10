@@ -15,17 +15,7 @@
         <h6 class="m-0 font-weight-bold text-primary">Form Kuis</h6>
     </div>
     <div class="card-body">
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-        <form method="POST" action="{{ url('admin/kuis/store') }}" enctype="multipart/form-data">
-        {{ csrf_field() }}
+        
             <!-- Judul Materi -->
             <div class="form-group">
                 <label for="materi_id">Judul Materi :</label>

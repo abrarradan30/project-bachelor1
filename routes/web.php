@@ -57,9 +57,11 @@ Route::get('/progres_belajar', [ProgresBelajarController::class, 'index']);
 
 // route kuis
 Route::get('/kuis', [KuisController::class, 'index']);
+Route::get('/kuis/create', [KuisController::class, 'create']);
 
 // route hasil_kuis
 Route::get('/hasil_kuis', [HasilKuisController::class, 'index']);
+Route::get('/hasil_kuis/create', [HasilKuisController::class, 'create']);
 
 // route sertifikat
 Route::get('/sertifikat', [SertifikatController::class, 'index']);
@@ -71,6 +73,7 @@ Route::get('/forum_diskusi/show', [ForumDiskusiController::class, 'show']);
 
 // route balasan diskusi
 Route::get('/balasan_diskusi', [BalasanDiskusiController::class, 'index']);
+Route::get('/balasan_diskusi/create', [BalasanDiskusiController::class, 'create']);
 
 // route frontend
 //route front

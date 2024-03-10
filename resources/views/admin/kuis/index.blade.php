@@ -15,7 +15,7 @@
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary">Tabel Kuis</h6>
         <br>
-        <a href="{{ url('admin/kuis/create') }}">
+        <a href="{{ url('kuis/create') }}">
         <button class="btn btn-sm btn-primary"><i class="fas fa-plus"></i> &nbsp; Tambah</button>
         </a>
     </div>

@@ -64,7 +64,7 @@
 
             <!-- Submit Button -->
             <div class="form-group">
-                <button type="submit" class="btn btn-primary">Simpan</button> &nbsp;
+                <button type="submit" class="btn btn-primary">Update</button> &nbsp;
         </form>
     @endforeach
             <button type="button" class="btn btn-danger">

@@ -37,7 +37,7 @@ class KuisController extends Controller
             ->select('kuis.*', 'materi.judul as judul_materi')
             ->get();
 
-        return view('admin.jawaban.create', compact('kuis', 'materi'));
+        return view('admin.kuis.create', compact('kuis', 'materi'));
     }
 
     /**

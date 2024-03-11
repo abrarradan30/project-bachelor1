@@ -24,7 +24,7 @@
                 </ul>
             </div>
         @endif
-        <form method="POST" action="{{ url('admin/detail_materi/update') }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ url('detail_materi/update/$dm->id') }}" enctype="multipart/form-data">
         {{ csrf_field() }}
             <!-- Input Judul Materi -->
             <div class="form-group">
@@ -33,7 +33,7 @@
                 <select id="materi_id" name="materi_id" class="custom-select">
                     @foreach ($materi as $m)
                     @php $sel = ($m->id == $dm->materi_id) ? 'selected' : ''; @endphp
-                        <option value="{{ $m->id }}" {{ $sel }}>{{ $m->judul_materi }}</option>
+                        <option value="{{ $m->id }}" {{ $sel }}>{{ $m->judul }}</option>
                     @endforeach
                 </select>
             </div>
@@ -47,7 +47,7 @@
             <!-- Input Isi Materi -->
             <div class="form-group">
                 <label for="isi_materi">Isi Materi :</label>
-                <textarea id="isi_materi" name="isi_materi" cols="30" rows="10" class="form-control">{{ $m->isi_materi }}</textarea>
+                <textarea id="isi_materi" name="isi_materi" cols="30" rows="10" class="form-control">{{ $dm->isi_materi }}</textarea>
             </div>
 
             <!-- Submit Button -->

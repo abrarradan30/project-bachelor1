@@ -53,13 +53,13 @@
                         <td>
                             <form action="#" method="POST">
                                 <button type="button" class="btn btn-success btn-sm">
-                                    <a href="{{ url('admin/detail_materi/show/' . $dm->id) }}" style="text-decoration: none; color: inherit;">Detail</a>
+                                    <a href="{{ url('detail_materi/show/' . $dm->id) }}" style="text-decoration: none; color: inherit;">Detail</a>
                                 </button>
                                 <button type="button" class="btn btn-warning btn-sm">
-                                    <a href="{{ url('admin/detail_materi/edit/' . $dm->id) }}" style="text-decoration: none; color: inherit;">Edit</a>
+                                    <a href="{{ url('detail_materi/edit/' . $dm->id) }}" style="text-decoration: none; color: inherit;">Edit</a>
                                 </button>
                                 <button type="button" class="btn btn-danger btn-sm">
-                                    <a href="{{ url('admin/detail_materi/delete/' . $dm->id) }}" style="text-decoration: none; color: inherit;">Hapus</a>
+                                    <a href="{{ url('detail_materi/delete/' . $dm->id) }}" style="text-decoration: none; color: inherit;">Hapus</a>
                                 </button>
                             </form>
                         </td>

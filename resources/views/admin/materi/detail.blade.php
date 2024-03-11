@@ -26,11 +26,10 @@
             <div class="form-group">
                 <label for="bg_materi">Background Materi :</label>
                 <div class="d-flex align-items-center">
-                    <input id="bg_materi" type="text" class="form-control mr-2" value="{{ $m->bg_materi }}" readonly>
                     @empty($m->bg_materi)
                         <img src="{{ url('admin/img/nofoto.png') }}" alt="project-image" class="rounded" style="max-width: 100px;">
                     @else
-                        <img src="{{ url('admin/img') }}/{{ $dk->gambar }}" alt="project-image" class="rounded" style="max-width: 100px;">
+                        <img src="{{ url('admin/img') }}/{{ $m->bg_materi }}" alt="project-image" class="rounded" style="max-width: 100px;">
                     @endempty
                 </div>
             </div>
@@ -62,12 +61,12 @@
             <!-- Status -->
             <div class="form-group">
                 <label for="status">Status :</label>
-                <input id="status" type="text" class="form-control" value="{{ $materi->status }}" readonly>
+                <input id="status" type="text" class="form-control" value="{{ $m->status }}" readonly>
             </div>
 
             <!-- Link Kembali -->
             <div class="form-group">
-                <a href="{{ url('materi') }}" class="btn btn-secondary">Kembali</a>
+                <a href="{{ url('materi') }}" class="btn btn-info">Kembali</a>
             </div>
         </form>
     </div>

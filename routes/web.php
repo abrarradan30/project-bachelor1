@@ -47,10 +47,20 @@ Route::post('/user/update', [UserController::class, 'update']);
 // route materi
 Route::get('/materi', [MateriController::class, 'index']);
 Route::get('/materi/create', [MateriController::class, 'create']);
+Route::post('/materi/store', [MateriController::class, 'store']);
+Route::get('/materi/edit/{id}', [MateriController::class, 'edit']);
+Route::post('/materi/update', [MateriController::class, 'update']);
+Route::get('/materi/show/{id}', [MateriController::class, 'show']);
+Route::get('/materi/delete/{id}', [MateriController::class, 'destroy']);
 
 // route detail_materi
 Route::get('/detail_materi', [DetailMateriController::class, 'index']);
 Route::get('/detail_materi/create', [DetailMateriController::class, 'create']);
+Route::post('/detail_materi/store', [DetailMateriController::class, 'store']);
+Route::get('/detail_materi/edit/{id}', [DetailMateriController::class, 'edit']);
+Route::post('/detail_materi/update/{id}', [DetailMateriController::class, 'update']);
+Route::get('/detail_materi/show/{id}', [DetailMateriController::class, 'show']);
+Route::get('/detail_materi/delete/{id}', [DetailMateriController::class, 'destroy']);
 
 // route progres belajar
 Route::get('/progres_belajar', [ProgresBelajarController::class, 'index']);

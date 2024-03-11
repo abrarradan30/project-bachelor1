@@ -17,7 +17,9 @@
     <div class="card-body">
         <div class="form-group">
             <label for="judul_materi">Judul Materi :</label>
-            <input id="judul_materi" type="text" class="form-control" value="{{ $dm->judul_materi }}" readonly>
+            @foreach ($materi as $m)
+            <input id="judul_materi" type="text" class="form-control" value="{{ $m->judul }}" readonly>
+            @endforeach
         </div>
 
         <div class="form-group">
@@ -27,7 +29,10 @@
 
         <div class="form-group">
             <label for="isi_materi">Isi Materi :</label>
-            <textarea id="isi_materi" cols="30" rows="10" class="form-control" readonly>{{ $dm->isi_materi }}</textarea>
+            <!-- <textarea id="isi_materi" cols="30" rows="10" class="form-control" readonly>{{ $dm->isi_materi }}</textarea> -->
+            <div>
+                {!! $dm->isi_materi !!}
+            </div>
         </div>
 
         <div class="form-group">

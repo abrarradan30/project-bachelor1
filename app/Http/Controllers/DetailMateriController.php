@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\DetailMateri;
 use App\Models\Materi;
 use RealRashid\SweetAlert\Facades\Alert;
+use DOMDocument;
 use DB;
 
 class DetailMateriController extends Controller
@@ -35,7 +36,7 @@ class DetailMateriController extends Controller
             ->select('detail_materi.*', 'materi.judul as judul_materi')
             ->get();
 
-        return view('admin.detail_materi.create');
+        return view('admin.detail_materi.create', compact('detail_materi', 'materi'));
     }
 
     /**
@@ -59,34 +60,29 @@ class DetailMateriController extends Controller
         $isi_materi = $request->isi_materi;
 
         $dom = new DOMDocument();
-        $dom->loadHTML($isi_materi, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+        $dom->loadHTML($isi_materi,9); 
 
         $images = $dom->getElementsByTagName('img');
 
         foreach ($images as $key => $img) {
-            $data = base64_decode(explode(',', explode(';', $img->getAttribute('src'))[1])[1]);
-            $image_extension = explode('/', explode(';', $img->getAttribute('src'))[0])[1]; // Mendapatkan ekstensi gambar dari tipe MIME
-            $allowed_extensions = ['jpg', 'jpeg', 'png', 'svg']; // Ekstensi yang diizinkan
-
-            if (in_array($image_extension, $allowed_extensions)) {
-                $image_name = "/upload/" . time() . $key . '.' . $image_extension;
-                file_put_contents(public_path() . $image_name, $data);
-
-                $img->removeAttribute('src');
-                $img->setAttribute('src', $image_name);
-            }
+            $data = base64_decode(explode(',',explode(';',$img->getAttribute('src'))[1])[1]);
+            $image_name = "/admin/img" . time(). $key.'.png';
+            file_put_contents(public_path().$image_name,$data);
+ 
+            $img->removeAttribute('src');
+            $img->setAttribute('src',$image_name);
         }
 
         $isi_materi = $dom->saveHTML();
 
         DB::table('detail_materi')->insert([
             'materi_id'          => $request->materi_id,
-            'sub_materi'     => $request->sub_materi,
+            'sub_judul'     => $request->sub_judul,
             'isi_materi'         => $isi_materi, 
         ]);
     
         Alert::success('Detail materi', 'Berhasil menambahkan detail materi');
-        return redirect('admin/detail_materi');
+        return redirect('detail_materi');
     }
 
     /**
@@ -98,7 +94,7 @@ class DetailMateriController extends Controller
         $materi = DB::table('materi')->get();
         $detail_materi = DB::table('detail_materi')->where('id', $id)->get();
 
-        return view('admin.detail_materi.edit', compact('detail_materi', 'materi'));
+        return view('admin.detail_materi.detail', compact('detail_materi', 'materi'));
     }
 
     /**
@@ -116,7 +112,7 @@ class DetailMateriController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
         //
         $request->validate([
@@ -125,29 +121,29 @@ class DetailMateriController extends Controller
             'isi_materi'    => 'required',
         ]);
 
-        $detail_materi = DB::table('detail_materi')->where('id', $id)->first();
+        // $detail_materi = DB::table('detail_materi')->where('id', $id)->first();
+        $detail_materi = DetailMateri::find($id);
 
         $isi_materi = $request->isi_materi;
 
         $dom = new DOMDocument();
-        $dom->loadHTML($isi_materi, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+        $dom->loadHTML($isi_materi,9);
 
         $images = $dom->getElementsByTagName('img');
 
-        foreach ($images as $img) {
+        foreach ($images as $key => $img) {
+ 
             // Check if the image is a new one
-            if (strpos($img->getAttribute('src'), 'data:image/') === 0) {
-                $data = base64_decode(explode(',', explode(';', $img->getAttribute('src'))[1])[1]);
-                $image_extension = explode('/', mime_content_type($img->getAttribute('src')))[1];
-
-            // Validate image extension
-                if (in_array($image_extension, ['jpg', 'jpeg', 'png', 'svg'])) {
-                    $image_name = "/upload/" . time() . '_' . Str::random(10) . '.' . $image_extension;
-                    file_put_contents(public_path() . $image_name, $data);
-                    $img->removeAttribute('src');
-                    $img->setAttribute('src', $image_name);
-                }
+            if (strpos($img->getAttribute('src'),'data:image/') ===0) {
+               
+                $data = base64_decode(explode(',',explode(';',$img->getAttribute('src'))[1])[1]);
+                $image_name = "/admin/img" . time(). $key.'.png';
+                file_put_contents(public_path().$image_name,$data);
+                 
+                $img->removeAttribute('src');
+                $img->setAttribute('src',$image_name);
             }
+ 
         }
 
         $isi_materi = $dom->saveHTML();
@@ -159,7 +155,7 @@ class DetailMateriController extends Controller
         ]);
 
         Alert::info('Detail materi', 'Berhasil mengedit detail materi');
-        return redirect('admin/detail_materi');
+        return redirect('detail_materi');
     }
 
     /**
@@ -170,6 +166,6 @@ class DetailMateriController extends Controller
         //
         DB::table('detail_materi')->where('id', $id)->delete();
 
-        return redirect('admin/detail_materi');
+        return redirect('detail_materi');
     }
 }

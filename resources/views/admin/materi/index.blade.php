@@ -60,7 +60,7 @@
                             @empty($m->bg_materi)
                                 <img src="{{ url('admin/img/no_foto.png') }}" width="15%" style="width: 50px;">
                             @else
-                                <img src="{{ url('admin/img') }}/{{ $dk->gambar }}" width="15%" style="width: 50px;">
+                                <img src="{{ url('admin/img') }}/{{ $m->bg_materi }}" width="15%" style="width: 50px;">
                             @endempty
                         </td>
                         <td>{{ $m->deskripsi }}</td>
@@ -71,10 +71,10 @@
                         <td>
                             <form action="#" method="POST">
                                 <button type="button" class="btn btn-success btn-sm">
-                                    <a href="{{ url('admin/materi/show/' . $m->id) }}" style="text-decoration: none; color: inherit;">Detail</a>
+                                    <a href="{{ url('materi/show/' . $m->id) }}" style="text-decoration: none; color: inherit;">Detail</a>
                                 </button>
                                 <button type="button" class="btn btn-warning btn-sm">
-                                    <a href="{{ url('admin/materi/edit/' . $m->id) }}" style="text-decoration: none; color: inherit;">Edit</a>
+                                    <a href="{{ url('materi/edit/' . $m->id) }}" style="text-decoration: none; color: inherit;">Edit</a>
                                 </button>
                                 <button type="button" class="btn btn-danger btn-sm">
                                     <a href="{{ url('admin/materi/delete/' . $m->id) }}" style="text-decoration: none; color: inherit;">Hapus</a>

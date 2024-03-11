@@ -42,7 +42,6 @@ class MateriController extends Controller
             'harga'        => 'required|numeric',
             'kategori'     => 'required',
             'level'        => 'required',
-            'jenis'        => 'required',
             'status'       => 'required',
         ],
         [
@@ -52,7 +51,6 @@ class MateriController extends Controller
             'harga.required'        => 'Harga Wajib Diisi !!!',
             'kategori.required'     => 'Kategori Wajib Diisi !!!',
             'level.required'        => 'Level Ruang Wajib Diisi !!!',
-            'jenis.required'        => 'Jenis Wajib Diisi !!!',
             'status.required'       => 'Status Wajib Diisi !!!',
         ]);
 
@@ -70,7 +68,6 @@ class MateriController extends Controller
             'harga'        => $request->harga,
             'kategori'     => $request->kategori,
             'level'        => $request->level,
-            'jenis'        => $request->jenis,
             'status'       => $request->status,
         ]);
 
@@ -91,16 +88,15 @@ class MateriController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
         //
         $materi = DB::table('materi')->where('id', $id)->get();
         $ar_kategori = ['IT', 'desain', 'softskill'];
         $ar_level = ['pemula', 'menengah', 'mahir'];
-        $ar_jenis = ['gratis', 'berbayar'];
         $ar_status = ['proses', 'publik'];
 
-        return view('admin.materi.edit', compact('materi', 'ar_kategori', 'ar_level', 'ar_jenis', 'ar_status'));
+        return view('admin.materi.edit', compact('materi', 'ar_kategori', 'ar_level', 'ar_status'));
     }
 
     /**
@@ -117,7 +113,6 @@ class MateriController extends Controller
                 'harga'        => 'required|numeric',
                 'kategori'     => 'required',
                 'level'        => 'required',
-                'jenis'        => 'required',
                 'status'       => 'required',
             ]
         );
@@ -144,7 +139,6 @@ class MateriController extends Controller
             'harga'        => $request->harga,
             'kategori'     => $request->kategori,
             'level'        => $request->level,
-            'jenis'        => $request->jenis,
             'status'       => $request->status,
         ]);
 

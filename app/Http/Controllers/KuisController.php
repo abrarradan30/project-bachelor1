@@ -45,7 +45,25 @@ class KuisController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // 
+        $request->validate([
+            'materi_id'    => 'required',
+            'soal'         => 'required',
+            'a'            => 'required',
+            'b'            => 'required',
+            'c'            => 'required',
+            'd'            => 'required',
+            'kunci'        => 'required',
+        ], 
+        [
+            'materi.required'   => 'Judul materi wajib diisi',
+            'soal.required'     => 'Soal wajib diisi',
+            'a.required'        => 'Pilihan A wajib diisi',
+            'b.required'        => 'Pilihan B wajib diisi',
+            'c.required'        => 'Pilihan C wajib diisi',
+            'd.required'        => 'Pilihan D wajib diisi',
+            'kunci.required'    => 'Kunci jawaban wajib diisi',
+        ]);
     }
 
     /**

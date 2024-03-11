@@ -23,23 +23,23 @@
                 </ul>
             </div>
         @endif
-        <form method="POST" action="{{ url('admin/detail_materi/store') }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ url('detail_materi/store') }}" enctype="multipart/form-data">
         {{ csrf_field() }}
             <!-- Input Judul Materi -->
             <div class="form-group">
                 <label for="materi_id">Judul Materi :</label>
                 <select id="materi_id" name="materi_id" class="custom-select">
                     @foreach ($materi as $m)
-                        <option value="{{ $m->id }}">{{ $m->judul_materi }}</option>
+                        <option value="{{ $m->id }}">{{ $m->judul }}</option>
                     @endforeach
                 </select>
             </div>
 
             <!-- Input Sub Judul -->
             <div class="form-group">
-                <label for="isi_materi">Sub Judul :</label>
-                <input id="isi_materi" name="isi_materi" type="text" class="form-control @error('isi_materi') is-invalid @enderror" placeholder="Masukkan sub judul">
-                @error('isi_materi')
+                <label for="sub_judul">Sub Judul :</label>
+                <input id="sub_judul" name="sub_judul" type="text" class="form-control @error('sub_judul') is-invalid @enderror" placeholder="Masukkan sub judul">
+                @error('sub_judul')
                     <div class="invalid-feedback">
                         {{ $message }}
                     </div>
@@ -68,6 +68,7 @@
     </div>
 </div>
 
+</div>
 <script>
     $('#isi_materi').summernote({
         placeholder: 'isi_materi...',
@@ -75,7 +76,5 @@
         height:300
     });
 </script>
-
-</div>
 <!-- /.container-fluid -->
 @endsection

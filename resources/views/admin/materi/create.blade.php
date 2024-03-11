@@ -23,7 +23,7 @@
                 </ul>
             </div>
         @endif
-        <form method="POST" action="{{ url('admin/materi/store') }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ url('materi/store') }}" enctype="multipart/form-data">
         {{ csrf_field() }}
             <!-- Input Judul -->
             <div class="form-group">
@@ -114,11 +114,11 @@
             <div class="form-group">
                 <label>Status :</label>
                 <div class="form-check">
-                    <input name="jenis" id="proses" type="radio" class="form-check-input" value="proses">
+                    <input name="status" id="proses" type="radio" class="form-check-input" value="proses">
                     <label class="form-check-label" for="proses">Proses</label>
                 </div>
                 <div class="form-check">
-                    <input name="jenis" id="publik" type="radio" class="form-check-input" value="publik">
+                    <input name="status" id="publik" type="radio" class="form-check-input" value="publik">
                     <label class="form-check-label" for="publik">Publik</label>
                 </div>
             </div>

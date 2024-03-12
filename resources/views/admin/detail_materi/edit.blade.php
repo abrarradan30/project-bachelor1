@@ -24,7 +24,7 @@
                 </ul>
             </div>
         @endif
-        <form method="POST" action="{{ url('detail_materi/update/$dm->id') }}" enctype="multipart/form-data">
+        <form method="POST" action="/update/{{ $dm->id }}" enctype="multipart/form-data">
         {{ csrf_field() }}
             <!-- Input Judul Materi -->
             <div class="form-group">
@@ -62,6 +62,7 @@
     </div>
 </div>
 
+</div>
 <script>
     $('#isi_materi').summernote({
         placeholder: 'isi_materi...',
@@ -69,7 +70,5 @@
         height:300
     });
 </script>
-
-</div>
 <!-- /.container-fluid -->
 @endsection

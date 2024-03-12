@@ -46,54 +46,33 @@ class ForumDiskusiController extends Controller
      */
     public function store(Request $request) 
     {
-        // Validasi data
-        $request->validate([
-            'users_id'          => 'required',
-            'materi_id'         => 'required',
-            'pertanyaan'        => 'required',
-            'status_diskusi'    => 'required',
-        ], 
-        [
-            'users_id.required'         => 'Nama wajib diisi',
-            'materi.required'           => 'Judul materi wajib diisi',
-            'pertanyaan.required'       => 'Pertanyaan wajib diisi',
-            'status_diskusi.required'   => 'Status diskusi wajib diisi',
-        ]);
-
-        // Proses pengelolaan gambar
+        //
         $pertanyaan = $request->pertanyaan;
-
+ 
         $dom = new DOMDocument();
-        $dom->loadHTML($pertanyaan, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
-
+        $dom->loadHTML($pertanyaan,9);
+ 
         $images = $dom->getElementsByTagName('img');
-
+ 
         foreach ($images as $key => $img) {
-            $data = base64_decode(explode(',', explode(';', $img->getAttribute('src'))[1])[1]);
-            $image_extension = explode('/', explode(';', $img->getAttribute('src'))[0])[1]; // Mendapatkan ekstensi gambar dari tipe MIME
-            $allowed_extensions = ['jpg', 'jpeg', 'png', 'svg']; // Ekstensi yang diizinkan
-
-            if (in_array($image_extension, $allowed_extensions)) {
-                $image_name = "/upload/" . time() . $key . '.' . $image_extension;
-                file_put_contents(public_path() . $image_name, $data);
-
-                $img->removeAttribute('src');
-                $img->setAttribute('src', $image_name);
-            }
+            $data = base64_decode(explode(',',explode(';',$img->getAttribute('src'))[1])[1]);
+            $image_name = "/admin/img" . time(). $key.'.png';
+            file_put_contents(public_path().$image_name,$data);
+ 
+            $img->removeAttribute('src');
+            $img->setAttribute('src',$image_name);
         }
-
         $pertanyaan = $dom->saveHTML();
-
-        // Simpan data ke database
-        DB::table('forum_diskusi')->insert([
+ 
+        ForumDiskusi::create([
             'users_id'           => $request->users_id,
             'materi_id'          => $request->materi_id,
             'pertanyaan'         => $pertanyaan, 
-            'status_diskusi'     => $request->status_diskusi,
+            'status_diskusi'     => $request->status_diskusi, 
         ]);
-
+ 
         Alert::success('Diskusi', 'Berhasil menambahkan diskusi');
-        return redirect('admin/forum_diskusi');
+        return redirect('forum_diskusi');
     }
 
     /**

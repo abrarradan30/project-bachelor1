@@ -64,6 +64,36 @@ class KuisController extends Controller
             'd.required'        => 'Pilihan D wajib diisi',
             'kunci.required'    => 'Kunci jawaban wajib diisi',
         ]);
+
+        $soal = $request->soal;
+ 
+        $dom = new DOMDocument();
+        $dom->loadHTML($soal,9);
+ 
+        $images = $dom->getElementsByTagName('img');
+ 
+        foreach ($images as $key => $img) {
+            $data = base64_decode(explode(',',explode(';',$img->getAttribute('src'))[1])[1]);
+            $image_name = "/admin/img" . time(). $key.'.png';
+            file_put_contents(public_path().$image_name,$data);
+ 
+            $img->removeAttribute('src');
+            $img->setAttribute('src',$image_name);
+        }
+        $soal = $dom->saveHTML();
+ 
+        DetailMateri::create([
+            'materi_id'     => $request->materi_id,
+            'soal'          => $soal,
+            'a'             => $request->a,
+            'b'             => $request->b,
+            'c'             => $request->c,
+            'd'             => $request->d,
+            'kunci'         => $request->kunci, 
+        ]);
+ 
+        Alert::success('Kuis', 'Berhasil menambahkan kuis');
+        return redirect('kuis');
     }
 
     /**

@@ -132,7 +132,7 @@ class MateriController extends Controller
             $fileName = '';
         }
 
-        DB::table('data_kos')->where('id', $request->id)->update([
+        DB::table('materi')->where('id', $request->id)->update([
             'judul'        => $request->judul,
             'bg_materi'    => $fileName,
             'deskripsi'    => $request->deskripsi,
@@ -143,7 +143,7 @@ class MateriController extends Controller
         ]);
 
         Alert::info('Materi', 'Berhasil mengedit materi');
-        return redirect('admin/materi');
+        return redirect('materi');
     }
 
     /**

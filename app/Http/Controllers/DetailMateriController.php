@@ -46,24 +46,23 @@ class DetailMateriController extends Controller
     {
         //
         $request->validate([
-            'materi_id'     => 'required',
-            'sub_judul'     => 'required',
-            'isi_materi'    => 'required',
+            'materi_id'    => 'required',
+            'sub_judul'    => 'required',
+            'isi_materi'   => 'required',
         ], 
         [
             'materi.required'        => 'Judul materi wajib diisi',
             'sub_judul.required'     => 'Sub judul wajib diisi',
-            'isi_materi.required'    => 'Isi materi diskusi wajib diisi',
+            'isi_materi.required'    => 'Isi materi wajib diisi',
         ]);
 
-        // Proses pengelolaan gambar
         $isi_materi = $request->isi_materi;
-
+ 
         $dom = new DOMDocument();
-        $dom->loadHTML($isi_materi,9); 
-
+        $dom->loadHTML($isi_materi,9);
+ 
         $images = $dom->getElementsByTagName('img');
-
+ 
         foreach ($images as $key => $img) {
             $data = base64_decode(explode(',',explode(';',$img->getAttribute('src'))[1])[1]);
             $image_name = "/admin/img" . time(). $key.'.png';
@@ -72,15 +71,14 @@ class DetailMateriController extends Controller
             $img->removeAttribute('src');
             $img->setAttribute('src',$image_name);
         }
-
         $isi_materi = $dom->saveHTML();
-
-        DB::table('detail_materi')->insert([
-            'materi_id'          => $request->materi_id,
+ 
+        DetailMateri::create([
+            'materi_id'     => $request->materi_id,
             'sub_judul'     => $request->sub_judul,
-            'isi_materi'         => $isi_materi, 
+            'isi_materi'    => $isi_materi, 
         ]);
-    
+ 
         Alert::success('Detail materi', 'Berhasil menambahkan detail materi');
         return redirect('detail_materi');
     }
@@ -115,22 +113,15 @@ class DetailMateriController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $request->validate([
-            'materi_id'     => 'required',
-            'sub_judul'     => 'required',
-            'isi_materi'    => 'required',
-        ]);
-
-        // $detail_materi = DB::table('detail_materi')->where('id', $id)->first();
         $detail_materi = DetailMateri::find($id);
-
+ 
         $isi_materi = $request->isi_materi;
-
+ 
         $dom = new DOMDocument();
         $dom->loadHTML($isi_materi,9);
-
+ 
         $images = $dom->getElementsByTagName('img');
-
+ 
         foreach ($images as $key => $img) {
  
             // Check if the image is a new one
@@ -145,15 +136,14 @@ class DetailMateriController extends Controller
             }
  
         }
-
         $isi_materi = $dom->saveHTML();
-
-        DB::table('detail_materi')->where('id', $id)->update([
+ 
+        $detail_materi->update([
             'materi_id'    => $request->materi_id,
             'sub_judul'    => $request->sub_judul,
             'isi_materi'   => $isi_materi,
         ]);
-
+ 
         Alert::info('Detail materi', 'Berhasil mengedit detail materi');
         return redirect('detail_materi');
     }

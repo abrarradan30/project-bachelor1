@@ -24,7 +24,7 @@
                 </ul>
             </div>
         @endif
-        <form method="POST" action="{{ url('admin/materi/update') }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ url('materi/update') }}" enctype="multipart/form-data">
         {{ csrf_field() }}
             <!-- Input Judul -->
             <div class="form-group">

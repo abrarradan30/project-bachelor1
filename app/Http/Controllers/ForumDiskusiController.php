@@ -47,6 +47,19 @@ class ForumDiskusiController extends Controller
     public function store(Request $request) 
     {
         //
+        $request->validate([
+            'users_id'          => 'required',
+            'materi_id'         => 'required',
+            'pertanyaan'        => 'required',
+            'status_diskusi'    => 'required',
+        ], 
+        [
+            'users.required'             => 'User wajib diisi',
+            'materi.required'            => 'Materi wajib diisi',
+            'pertanyaan.required'        => 'Pertanyaan wajib diisi',
+            'status_diskusi.required'    => 'Status diskusi wajib diisi',
+        ]);
+
         $pertanyaan = $request->pertanyaan;
  
         $dom = new DOMDocument();
@@ -71,7 +84,7 @@ class ForumDiskusiController extends Controller
             'status_diskusi'     => $request->status_diskusi, 
         ]);
  
-        Alert::success('Diskusi', 'Berhasil menambahkan diskusi');
+        Alert::success('Forum Diskusi', 'Berhasil menambahkan diskusi');
         return redirect('forum_diskusi');
     }
 
@@ -107,51 +120,55 @@ class ForumDiskusiController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
         $request->validate([
             'users_id'          => 'required',
             'materi_id'         => 'required',
             'pertanyaan'        => 'required',
             'status_diskusi'    => 'required',
+        ], 
+        [
+            'users.required'             => 'User wajib diisi',
+            'materi.required'            => 'Materi wajib diisi',
+            'pertanyaan.required'        => 'Pertanyaan wajib diisi',
+            'status_diskusi.required'    => 'Status diskusi wajib diisi',
         ]);
 
-        $forum_diskusi = DB::table('forum_diskusi')->where('id', $id)->first();
-
+        $forum_diskusi = ForumDiskusi::find($id);
+ 
         $pertanyaan = $request->pertanyaan;
-
+ 
         $dom = new DOMDocument();
-        $dom->loadHTML($pertanyaan, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
-
+        $dom->loadHTML($pertanyaan,9);
+ 
         $images = $dom->getElementsByTagName('img');
-
-        foreach ($images as $img) {
+ 
+        foreach ($images as $key => $img) {
+ 
             // Check if the image is a new one
-            if (strpos($img->getAttribute('src'), 'data:image/') === 0) {
-                $data = base64_decode(explode(',', explode(';', $img->getAttribute('src'))[1])[1]);
-                $image_extension = explode('/', mime_content_type($img->getAttribute('src')))[1];
-
-            // Validate image extension
-                if (in_array($image_extension, ['jpg', 'jpeg', 'png', 'svg'])) {
-                    $image_name = "/upload/" . time() . '_' . Str::random(10) . '.' . $image_extension;
-                    file_put_contents(public_path() . $image_name, $data);
-                    $img->removeAttribute('src');
-                    $img->setAttribute('src', $image_name);
-                }
+            if (strpos($img->getAttribute('src'),'data:image/') ===0) {
+               
+                $data = base64_decode(explode(',',explode(';',$img->getAttribute('src'))[1])[1]);
+                $image_name = "/admin/img" . time(). $key.'.png';
+                file_put_contents(public_path().$image_name,$data);
+                 
+                $img->removeAttribute('src');
+                $img->setAttribute('src',$image_name);
             }
+ 
         }
-
         $pertanyaan = $dom->saveHTML();
-
-        DB::table('forum_diskusi')->where('id', $id)->update([
+ 
+        $forum_diskusi->update([
             'users_id'          => $request->users_id,
             'materi_id'         => $request->materi_id,
             'pertanyaan'        => $pertanyaan,
             'status_diskusi'    => $request->status_diskusi,
         ]);
-
-        Alert::info('Diskusi', 'Berhasil mengedit diskusi');
-        return redirect('admin/forum_diskusi');
+ 
+        Alert::info('Detail materi', 'Berhasil mengedit detail materi');
+        return redirect('forum_diskusi');
     }
 
 
@@ -163,6 +180,6 @@ class ForumDiskusiController extends Controller
         //
         DB::table('forum_diskusi')->where('id', $id)->delete();
 
-        return redirect('admin/forum_diskusi');
+        return redirect('forum_diskusi');
     }
 }

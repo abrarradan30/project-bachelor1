@@ -72,7 +72,7 @@ class MateriController extends Controller
         ]);
 
         Alert::success('Materi', 'Berhasil menambahkan materi');
-        return redirect('admin/materi');   
+        return redirect('materi');   
     }
 
     /**

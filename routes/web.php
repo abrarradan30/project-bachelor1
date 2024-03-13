@@ -59,7 +59,7 @@ Route::get('/detail_materi/create', [DetailMateriController::class, 'create']);
 Route::post('/detail_materi/store', [DetailMateriController::class, 'store']);
 Route::get('/detail_materi/show/{id}', [DetailMateriController::class, 'show']);
 Route::get('/detail_materi/edit/{id}', [DetailMateriController::class, 'edit']);
-Route::post('update/{id}', [DetailMateriController::class, 'update']);
+Route::post('detail_materi/update/{id}', [DetailMateriController::class, 'update']);
 Route::get('/detail_materi/delete/{id}', [DetailMateriController::class, 'destroy']);
 
 // route progres belajar
@@ -71,7 +71,7 @@ Route::get('/kuis/create', [KuisController::class, 'create']);
 Route::post('/kuis/store', [KuisController::class, 'store']);
 Route::get('/kuis/show/{id}', [KuisController::class, 'show']);
 Route::get('/kuis/edit/{id}', [KuisController::class, 'edit']);
-Route::post('update/{id}', [KuisController::class, 'update']);
+Route::post('kuis/update/{id}', [KuisController::class, 'update']);
 Route::get('/kuis/delete/{id}', [KuisController::class, 'destroy']);
 
 // route hasil_kuis
@@ -84,11 +84,20 @@ Route::get('/sertifikat', [SertifikatController::class, 'index']);
 // route forum diskusi
 Route::get('/forum_diskusi', [ForumDiskusiController::class, 'index']);
 Route::get('/forum_diskusi/create', [ForumDiskusiController::class, 'create']);
-Route::get('/forum_diskusi/show', [ForumDiskusiController::class, 'show']);
+Route::post('/forum_diskusi/store', [ForumDiskusiController::class, 'store']);
+Route::get('/forum_diskusi/show/{id}', [ForumDiskusiController::class, 'show']);
+Route::get('/forum_diskusi/edit/{id}', [ForumDiskusiController::class, 'edit']);
+Route::post('forum_diskusi/update/{id}', [ForumDiskusiController::class, 'update']);
+Route::get('/forum_diskusi/delete/{id}', [ForumDiskusiController::class, 'destroy']);
 
 // route balasan diskusi
 Route::get('/balasan_diskusi', [BalasanDiskusiController::class, 'index']);
 Route::get('/balasan_diskusi/create', [BalasanDiskusiController::class, 'create']);
+Route::post('/balasan_diskusi/store', [BalasanDiskusiController::class, 'store']);
+Route::get('/balasan_diskusi/show/{id}', [BalasanDiskusiController::class, 'show']);
+Route::get('/balasan_diskusi/edit/{id}', [BalasanDiskusiController::class, 'edit']);
+Route::post('balasan_diskusi/update/{id}', [BalasanDiskusiController::class, 'update']);
+Route::get('/balasan_diskusi/delete/{id}', [BalasanDiskusiController::class, 'destroy']);
 
 // route frontend
 //route front

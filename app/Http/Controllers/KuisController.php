@@ -82,7 +82,7 @@ class KuisController extends Controller
         }
         $soal = $dom->saveHTML();
  
-        DetailMateri::create([
+        Kuis::create([
             'materi_id'     => $request->materi_id,
             'soal'          => $soal,
             'a'             => $request->a,
@@ -99,25 +99,89 @@ class KuisController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
         //
+        $materi = DB::table('materi')->get();
+        $kuis = DB::table('kuis')->where('id', $id)->get();
+
+        return view('admin.kuis.detail', compact('kuis', 'materi'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
         //
+        $materi = DB::table('materi')->get();
+        $kuis = DB::table('kuis')->where('id', $id)->get();
+
+        return view('admin.kuis.edit', compact('kuis', 'materi'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
         //
+        $request->validate([
+            'materi_id'    => 'required',
+            'soal'         => 'required',
+            'a'            => 'required',
+            'b'            => 'required',
+            'c'            => 'required',
+            'd'            => 'required',
+            'kunci'        => 'required',
+        ], 
+        [
+            'materi.required'   => 'Judul materi wajib diisi',
+            'soal.required'     => 'Soal wajib diisi',
+            'a.required'        => 'Pilihan A wajib diisi',
+            'b.required'        => 'Pilihan B wajib diisi',
+            'c.required'        => 'Pilihan C wajib diisi',
+            'd.required'        => 'Pilihan D wajib diisi',
+            'kunci.required'    => 'Kunci jawaban wajib diisi',
+        ]);
+
+        $kuis = DetailMateri::find($id);
+ 
+        $soal = $request->soal;
+ 
+        $dom = new DOMDocument();
+        $dom->loadHTML($soal,9);
+ 
+        $images = $dom->getElementsByTagName('img');
+ 
+        foreach ($images as $key => $img) {
+ 
+            // Check if the image is a new one
+            if (strpos($img->getAttribute('src'),'data:image/') ===0) {
+               
+                $data = base64_decode(explode(',',explode(';',$img->getAttribute('src'))[1])[1]);
+                $image_name = "/admin/img" . time(). $key.'.png';
+                file_put_contents(public_path().$image_name,$data);
+                 
+                $img->removeAttribute('src');
+                $img->setAttribute('src',$image_name);
+            }
+ 
+        }
+        $soal = $dom->saveHTML();
+ 
+        $kuis->update([
+            'materi_id'     => $request->materi_id,
+            'soal'          => $soal,
+            'a'             => $request->a,
+            'b'             => $request->b,
+            'c'             => $request->c,
+            'd'             => $request->d,
+            'kunci'         => $request->kunci, 
+        ]);
+ 
+        Alert::info('Kuis', 'Berhasil mengedit kuis');
+        return redirect('kuis');
     }
 
     /**
@@ -126,5 +190,8 @@ class KuisController extends Controller
     public function destroy(string $id)
     {
         //
+        DB::table('kuis')->where('id', $id)->delete();
+
+        return redirect('kuis');
     }
 }

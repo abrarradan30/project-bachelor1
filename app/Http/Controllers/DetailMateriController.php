@@ -113,6 +113,17 @@ class DetailMateriController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $request->validate([
+            'materi_id'    => 'required',
+            'sub_judul'    => 'required',
+            'isi_materi'   => 'required',
+        ], 
+        [
+            'materi.required'        => 'Judul materi wajib diisi',
+            'sub_judul.required'     => 'Sub judul wajib diisi',
+            'isi_materi.required'    => 'Isi materi wajib diisi',
+        ]);
+        
         $detail_materi = DetailMateri::find($id);
  
         $isi_materi = $request->isi_materi;

@@ -47,6 +47,17 @@ class BalasanDiskusiController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'users_id'            => 'required',
+            'forum_diskusi_id'    => 'required',
+            'balasan'             => 'required',
+        ], 
+        [
+            'users_id.required'            => 'User wajib diisi',
+            'forum_diskusi_id.required'    => 'Topik Diskusi wajib diisi',
+            'balasan.required'             => 'Isi materi wajib diisi',
+        ]);
+
         $balasan = $request->balasan;
  
         $dom = new DOMDocument();
@@ -65,9 +76,9 @@ class BalasanDiskusiController extends Controller
         $balasan = $dom->saveHTML();
  
         BalasanDiskusi::create([
-            'users_id'     => $request->users_id,
-            'materi_id'    => $request->materi_id,
-            'balasan'      => $balasan,
+            'users_id'            => $request->users_id,
+            'forum_diskusi_id'    => $request->forum_diskusi_id,
+            'balasan'             => $balasan,
         ]);
  
         Alert::success('Balasan Diskusi', 'Berhasil menambahkan balasan diskusi');
@@ -109,46 +120,49 @@ class BalasanDiskusiController extends Controller
     {
         //
         $request->validate([
-            'users_id'     => 'required',
-            'materi_id'    => 'required',
-            'balasan'      => 'required',
+            'users_id'            => 'required',
+            'forum_diskusi_id'    => 'required',
+            'balasan'             => 'required',
+        ], 
+        [
+            'users_id.required'            => 'User wajib diisi',
+            'forum_diskusi_id.required'    => 'Topik Diskusi wajib diisi',
+            'balasan.required'             => 'Isi materi wajib diisi',
         ]);
 
-        $balasan_diskusi = DB::table('balasan_diskusi')->where('id', $id)->first();
-
+        $balasan_diskusi = BalasanDiskusi::find($id);
+ 
         $balasan = $request->balasan;
-
+ 
         $dom = new DOMDocument();
-        $dom->loadHTML($balasan, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
-
+        $dom->loadHTML($balasan,9);
+ 
         $images = $dom->getElementsByTagName('img');
-
-        foreach ($images as $img) {
+ 
+        foreach ($images as $key => $img) {
+ 
             // Check if the image is a new one
-            if (strpos($img->getAttribute('src'), 'data:image/') === 0) {
-                $data = base64_decode(explode(',', explode(';', $img->getAttribute('src'))[1])[1]);
-                $image_extension = explode('/', mime_content_type($img->getAttribute('src')))[1];
-
-            // Validate image extension
-                if (in_array($image_extension, ['jpg', 'jpeg', 'png', 'svg'])) {
-                    $image_name = "/upload/" . time() . '_' . Str::random(10) . '.' . $image_extension;
-                    file_put_contents(public_path() . $image_name, $data);
-                    $img->removeAttribute('src');
-                    $img->setAttribute('src', $image_name);
-                }
+            if (strpos($img->getAttribute('src'),'data:image/') ===0) {
+               
+                $data = base64_decode(explode(',',explode(';',$img->getAttribute('src'))[1])[1]);
+                $image_name = "/admin/img" . time(). $key.'.png';
+                file_put_contents(public_path().$image_name,$data);
+                 
+                $img->removeAttribute('src');
+                $img->setAttribute('src',$image_name);
             }
+ 
         }
-
         $balasan = $dom->saveHTML();
-
-        DB::table('balasan_diskusi')->where('id', $id)->update([
-            'users_id'     => $request->users_id,
+ 
+        $balasan_diskusi->update([
             'materi_id'    => $request->materi_id,
+            'sub_judul'    => $request->sub_judul,
             'balasan'      => $balasan,
         ]);
-
+ 
         Alert::info('Balasan Diskusi', 'Berhasil mengedit balasan diskusi');
-        return redirect('admin/balasan_diskusi');
+        return redirect('balasan_diskusi');
     }
 
     /**

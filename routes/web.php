@@ -77,6 +77,11 @@ Route::get('/kuis/delete/{id}', [KuisController::class, 'destroy']);
 // route hasil_kuis
 Route::get('/hasil_kuis', [HasilKuisController::class, 'index']);
 Route::get('/hasil_kuis/create', [HasilKuisController::class, 'create']);
+Route::post('/hasil_kuis/store', [HasilKuisController::class, 'store']);
+Route::get('/hasil_kuis/show/{id}', [HasilKuisController::class, 'show']);
+Route::get('/hasil_kuis/edit/{id}', [HasilKuisController::class, 'edit']);
+Route::post('/hasil_kuis/update', [HasilKuisController::class, 'update']);
+Route::get('/hasil_kuis/delete/{id}', [HasilKuisController::class, 'destroy']);
 
 // route sertifikat
 Route::get('/sertifikat', [SertifikatController::class, 'index']);

@@ -65,7 +65,7 @@ class PembayaranController extends Controller
         $pembayaran->status = 'pending';
         $pembayaran->materi_id = $request->materi_id;
         $pembayaran->users_id = $request->users_id;
-        $pembayaran->checkout_link = $request->redirect_url;
+        $pembayaran->checkout_link = $response->redirect_url;
         $pembayaran->save();
 
         return response()->json($response);

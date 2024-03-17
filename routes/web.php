@@ -115,3 +115,6 @@ Route::get('/course', [CourseController::class, 'index']);
 Route::get('/course_detail', [CourseDetailController::class, 'index']);
 // route contact 
 Route::get('/contact', [ContactController::class, 'index']);
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

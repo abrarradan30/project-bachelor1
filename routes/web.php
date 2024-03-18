@@ -29,9 +29,9 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('index');
 
@@ -106,7 +106,7 @@ Route::get('/balasan_diskusi/delete/{id}', [BalasanDiskusiController::class, 'de
 
 // route frontend
 //route front
-Route::get('/front', [FrontController::class, 'index']);
+Route::get('/', [FrontController::class, 'index']);
 // route about 
 Route::get('/about', [AboutController::class, 'index']);
 // route course 

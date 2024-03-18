@@ -66,8 +66,8 @@
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
-      <a href="courses.html" class="get-started-btn">Masuk</a>
-      <a href="courses.html" class="get-started-btn2">Daftar</a>
+      <a href="{{ route('login') }}" class="get-started-btn">Login</a>
+      <a href="{{ route('register') }}" class="get-started-btn2">Register</a>
 
     </div>
   </header><!-- End Header -->

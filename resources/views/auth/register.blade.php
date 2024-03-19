@@ -51,7 +51,7 @@
 
                                 <div class="form-group">
                                     <input type="email" class="form-control form-control-user @error('email') is-invalid @enderror" 
-                                        id="exampleInputEmail" placeholder="Email"
+                                        id="email" placeholder="Email"
                                         name="email" value="{{ old('email') }}" required autocomplete="email">
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
@@ -77,9 +77,10 @@
                                             name="password_confirmation" required autocomplete="new-password">
                                     </div>
                                 </div>
-                                <a href="login.html" class="btn btn-primary btn-user btn-block">
+
+                                <button type="submit" class="btn btn-primary btn-user btn-block">
                                     Register Account
-                                </a>
+                                </button>
                                 <hr>
                                 <a href="index.html" class="btn btn-google btn-user btn-block">
                                     <i class="fab fa-google fa-fw"></i> Register with Google

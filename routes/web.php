@@ -9,6 +9,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\CourseDetailController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DetailMateriController;
+use App\Http\Controllers\ForumController;
 use App\Http\Controllers\ForumDiskusiController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\HasilKuisController;
@@ -115,6 +116,10 @@ Route::get('/course', [CourseController::class, 'index']);
 Route::get('/course_detail', [CourseDetailController::class, 'index']);
 // route contact 
 Route::get('/contact', [ContactController::class, 'index']);
+// route forum 
+Route::get('/forum', [ForumController::class, 'index']);
+
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

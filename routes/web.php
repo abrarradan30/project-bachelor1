@@ -18,6 +18,7 @@ use App\Http\Controllers\MateriController;
 use App\Http\Controllers\ProgresBelajarController;
 use App\Http\Controllers\SertifikatController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\FillPDFController;
 
 /*
 |--------------------------------------------------------------------------
@@ -119,6 +120,9 @@ Route::get('/contact', [ContactController::class, 'index']);
 // route forum 
 Route::get('/forum', [ForumController::class, 'index']);
 
+//Route Sertifikat PDF
+Route::get('/buat', [FillPDFController::class, 'process']);
+//Route::post('/buat', [FillPDFController::class, 'process'])->name('buat');
 
 Auth::routes();
 

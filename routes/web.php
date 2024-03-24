@@ -120,6 +120,14 @@ Route::get('/contact', [ContactController::class, 'index']);
 // route forum 
 Route::get('/forum', [ForumController::class, 'index']);
 
+Route::get('/acces_denied', function () {
+    return view('/acces_denied');
+});
+
+Route::get('/after_register', function () {
+    return view('/after_register');
+});
+
 //Route Sertifikat PDF
 Route::get('/buat', [FillPDFController::class, 'process']);
 //Route::post('/buat', [FillPDFController::class, 'process'])->name('buat');

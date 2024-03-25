@@ -65,9 +65,16 @@
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
-
-      <a href="{{ route('login') }}" class="get-started-btn">Login</a>
-      <a href="{{ route('register') }}" class="get-started-btn2">Register</a>
+      @guest 
+      @if (Route::has('login'))
+        <a href="{{ route('login') }}" class="get-started-btn">Login</a>
+      @endif
+      @if (Route::has('register'))
+        <a href="{{ route('register') }}" class="get-started-btn2">Register</a>
+      @endif
+      @else
+        <a href="{{ url('dashboard') }}" class="get-started-btn">Dashboard</a>
+      @endguest
 
     </div>
   </header><!-- End Header -->

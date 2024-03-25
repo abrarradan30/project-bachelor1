@@ -16,23 +16,24 @@
         <h6 class="m-0 font-weight-bold text-primary">Data Diri</h6>
     </div>
     <div class="card-body">
-    <form>
+        <form method="POST" action="{{ url('admin/user/update') }}" enctype="multipart/form-data">
+        {{ csrf_fiel() }}
             <!-- Input Nama -->
             <div class="form-group">
                 <label for="nama">Nama:</label>
-                <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Nama" required>
+                <input type="text" class="form-control" id="nama" name="nama" value="{{ Auth::user()->name }}" required>
             </div>
 
             <!-- Input Email (Non-Editable) -->
             <div class="form-group">
                 <label for="email">Email:</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="Email Anda" readonly>
+                <input type="email" class="form-control" id="email" name="email" value="{{ Auth::user()->email }}" readonly>
             </div>
 
             <!-- Input Deskripsi Diri -->
             <div class="form-group">
                 <label for="deskripsi">Deskripsi Diri:</label>
-                <textarea class="form-control" id="deskripsi" name="deskripsi" rows="3" placeholder="Masukkan Deskripsi Diri"></textarea>
+                <textarea class="form-control" id="deskripsi" name="deskripsi" rows="3">{{ Auth::user()->deskripsi }}</textarea>
             </div>
 
             <!-- Input Foto -->
@@ -42,7 +43,7 @@
             </div>
 
             <!-- Submit Button -->
-            <button type="submit" class="btn btn-success">Edit</button>
+            <button type="submit" class="btn btn-success">Simpan Perubahan</button>
         </form>
     </div>
 </div>

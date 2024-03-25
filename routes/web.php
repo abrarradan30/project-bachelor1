@@ -42,6 +42,8 @@ Route::get('/profil', function () {
 });
 
 Route::middleware(['peran:admin'])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('index');
+    
     // route user
     Route::get('/user', [UserController::class, 'index']);
     Route::get('/user/edit/{id}', [UserController::class, 'edit']);

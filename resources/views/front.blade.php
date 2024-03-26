@@ -7,7 +7,7 @@
     <div class="container position-relative" data-aos="zoom-in" data-aos-delay="100">
       <h1>Belajar Hari Ini,<br>Berani Mengambil Tantangan Esok Hari</h1>
       <h2>Kalian adalah Pemimpin Masa Depan !</h2>
-      <a href="courses.html" class="btn-get-started">Get Started</a>
+      <a href="{{url('course')}}" class="btn-get-started">Get Started</a>
     </div>
 </section><!-- End Hero -->
 

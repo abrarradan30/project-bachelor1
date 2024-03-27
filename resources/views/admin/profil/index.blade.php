@@ -17,7 +17,7 @@
     </div>
     <div class="card-body">
         <form method="POST" action="{{ url('admin/user/update') }}" enctype="multipart/form-data">
-        {{ csrf_fiel() }}
+        {{ csrf_field() }}
             <!-- Input Nama -->
             <div class="form-group">
                 <label for="nama">Nama:</label>

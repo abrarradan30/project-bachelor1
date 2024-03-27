@@ -48,24 +48,19 @@
 
         <div class="row counters">
 
-          <div class="col-lg-3 col-6 text-center">
+          <div class="col-lg-4 col-6 text-center">
             <span data-purecounter-start="0" data-purecounter-end="1245" data-purecounter-duration="1" class="purecounter"></span>
             <p>Siswa/Mahasiswa</p>
           </div>
 
-          <div class="col-lg-3 col-6 text-center">
+          <div class="col-lg-4 col-6 text-center">
             <span data-purecounter-start="0" data-purecounter-end="75" data-purecounter-duration="1" class="purecounter"></span>
             <p>Materi</p>
           </div>
 
-          <div class="col-lg-3 col-6 text-center">
+          <div class="col-lg-4 col-6 text-center">
             <span data-purecounter-start="0" data-purecounter-end="3" data-purecounter-duration="1" class="purecounter"></span>
             <p>Kategori</p>
-          </div>
-
-          <div class="col-lg-3 col-6 text-center">
-            <span data-purecounter-start="0" data-purecounter-end="5" data-purecounter-duration="1" class="purecounter"></span>
-            <p>Mentor</p>
           </div>
 
         </div>
@@ -95,7 +90,7 @@
               <div class="row">
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box mt-4 mt-xl-0">
-                    <i class="bx bx-receipt"></i>
+                    <i class="bx bx-book-content"></i>
                     <h4>Konten yang Terkini</h4>
                     <p>Materi pembelajaran terkini sesuai dengan perkembangan industri, sehingga siswa/mahasiswa dapat selalu mendapatkan informasi yang relevan dan up-to-date.</p>
                   </div>
@@ -109,9 +104,9 @@
                 </div>
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box mt-4 mt-xl-0">
-                    <i class="bx bx-images"></i>
+                    <i class="bx bx-conversation"></i>
                     <h4>Kolaborasi dan Diskusi</h4>
-                    <p>Melalui fiturforum diskusi siswa/mahasiswa dapat berinteraksi dengan sesama mereka dan dengan mentor.</p>
+                    <p>Melalui fitur forum diskusi siswa/mahasiswa dapat berinteraksi dengan sesama mereka dan dengan mentor.</p>
                   </div>
                 </div>
               </div>
@@ -136,15 +131,15 @@
         <div class="row" data-aos="zoom-in" data-aos-delay="100">
 
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-          <a href="{{ url('halaman-baru') }}" style="text-decoration: none; color: inherit;">
+          <a href="{{ url('course_detail') }}" style="text-decoration: none; color: inherit;">
             <div class="course-item">
               <img src="{{ asset('frontend/assets/img/course-1.jpg') }}" class="img-fluid" alt="...">
               <div class="course-content">
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h4>Web Development</h4>
+                    <h4>Pemula</h4>
                     <p class="price">Rp 150.000</p>
                 </div>
-                <h3>Website Design</h3>
+                <h3>Desain Web</h3>
               </div>
             </div>
           </a>

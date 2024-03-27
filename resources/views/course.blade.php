@@ -19,18 +19,19 @@
     <div class="row" data-aos="zoom-in" data-aos-delay="100">
 
       <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+      <a href="{{ url('course_detail') }}" style="text-decoration: none; color: inherit;">
         <div class="course-item">
-          <img src="{{asset('frontend/assets/img/course-1.jpg')}}" class="img-fluid" alt="...">
-            <div class="course-content">
-              <div class="d-flex justify-content-between align-items-center mb-3">
-                <h4>Web Development</h4>
-                <p class="price">Rp 150.000</p>
-              </div>
-
-              <h3><a href="course-details.html">Website Design</a></h3>
+          <img src="{{ asset('frontend/assets/img/course-1.jpg') }}" class="img-fluid" alt="...">
+          <div class="course-content">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h4>Pemula</h4>
+              <p class="price">Rp 150.000</p>
+            </div>
+            <h3>Desain Web</h3>
           </div>
         </div>
-      </div> <!-- End Course Item-->
+      </a>
+      </div>
 
     </div>
 

@@ -44,7 +44,7 @@
         </div>
 
         <div class="text-left">
-        <a href="#" class="btn btn-primary">Beli Materi</a>
+        <a href="{{ url('checkout') }}" class="btn btn-primary">Beli Materi</a>
         </div>
 
       </div>

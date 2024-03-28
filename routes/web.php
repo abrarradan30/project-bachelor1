@@ -136,6 +136,10 @@ Route::get('/checkout', function () {
     return view('/checkout');
 });
 
+Route::get('/course2', function () {
+    return view('/course2');
+});
+
 //Route Sertifikat PDF
 Route::get('/buat', [FillPDFController::class, 'process']);
 //Route::post('/buat', [FillPDFController::class, 'process'])->name('buat');

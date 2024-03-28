@@ -39,6 +39,16 @@
                 <input type="text" class="form-control" id="harga" name="harga" readonly>
             </div>
             <br>
+            <div class="form-group">
+                <label for="voucher">Voucher (*jika ada) :</label>
+                <input type="text" class="form-control" id="voucher" name="voucher" readonly>
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="harga">Total Bayar :</label>
+                <input type="text" class="form-control" id="harga" name="harga" readonly>
+            </div>
+            <br>
             <!-- Submit Button -->
             <button type="submit" class="btn btn-primary">Bayar Sekarang</button>
         </form>

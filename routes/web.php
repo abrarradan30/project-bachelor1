@@ -20,6 +20,8 @@ use App\Http\Controllers\SertifikatController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\FillPDFController;
 
+use Illuminate\Support\Facades\Auth;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,8 +36,6 @@ use App\Http\Controllers\FillPDFController;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('index');
 
 Route::get('/profil', function () {
     return view('admin/profil/index');

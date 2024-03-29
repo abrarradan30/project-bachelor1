@@ -47,19 +47,18 @@
       <div class="container">
 
         <div class="row counters">
-
           <div class="col-lg-4 col-6 text-center">
-            <span data-purecounter-start="0" data-purecounter-end="1245" data-purecounter-duration="1" class="purecounter"></span>
+            <span>{{ $users }}</span>
             <p>Siswa/Mahasiswa</p>
           </div>
 
           <div class="col-lg-4 col-6 text-center">
-            <span data-purecounter-start="0" data-purecounter-end="75" data-purecounter-duration="1" class="purecounter"></span>
+            <span>{{ $materi }}</span>
             <p>Materi</p>
           </div>
-
+          
           <div class="col-lg-4 col-6 text-center">
-            <span data-purecounter-start="0" data-purecounter-end="3" data-purecounter-duration="1" class="purecounter"></span>
+            <span>{{ $materiKategori }}</span>
             <p>Kategori</p>
           </div>
 

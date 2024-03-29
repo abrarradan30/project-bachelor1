@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\Materi;
+use DB;
 
 class FrontController extends Controller
 {
@@ -12,7 +15,11 @@ class FrontController extends Controller
     public function index()
     {
         //
-        return view('front');
+        $users = User::where('role', 'siswa')->count();
+        $materi = Materi::count();
+        $materiKategori = Materi::select('kategori')->distinct()->count();
+        
+        return view('front', compact('users', 'materi', 'materiKategori'));
     }
 
     /**

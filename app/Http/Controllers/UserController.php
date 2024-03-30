@@ -93,8 +93,8 @@ class UserController extends Controller
             'role'         => $request->role,
         ]);
 
-        Alert::info('User', 'Berhasil mengedit user');
-        return redirect('admin/user');
+        Alert::info('User', 'Berhasil update user');
+        return redirect('user');
     }
 
     /**

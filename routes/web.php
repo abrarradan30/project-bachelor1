@@ -15,6 +15,7 @@ use App\Http\Controllers\FrontController;
 use App\Http\Controllers\HasilKuisController;
 use App\Http\Controllers\KuisController;
 use App\Http\Controllers\MateriController;
+use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\ProgresBelajarController;
 use App\Http\Controllers\SertifikatController;
 use App\Http\Controllers\UserController;
@@ -37,9 +38,9 @@ use Illuminate\Support\Facades\Auth;
 //     return view('welcome');
 // });
 
-Route::get('/profil', function () {
-    return view('admin/profil/index');
-});
+Route::get('/profil', [ProfilController::class, 'index']);
+Route::get('/profil/edit/{id}', [ProfilController::class, 'edit']);
+Route::post('/profil/update', [ProfilController::class, 'update']);
 
 Route::middleware(['peran:admin'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('index');

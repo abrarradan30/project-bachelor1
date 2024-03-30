@@ -30,7 +30,7 @@
             <div class="form-group">
                 <input type="hidden" name="id" value="{{$u->id}}"/><br>
                 <label for="nama">Nama :</label>
-                <input id="nama" name="name" type="text" class="form-control" value="{{ $u->name }}">
+                <input id="name" name="name" type="text" class="form-control" value="{{ $u->name }}">
             </div>
 
             <!-- Input Email -->

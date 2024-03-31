@@ -120,6 +120,7 @@ Route::get('/about', [AboutController::class, 'index']);
 Route::get('/course', [CourseController::class, 'index']);
 // route course_detail 
 Route::get('/course_detail', [CourseDetailController::class, 'index']);
+Route::get('/course_detail/show/{id}', [CourseDetailController::class, 'show']);
 // route contact 
 Route::get('/contact', [ContactController::class, 'index']);
 // route forum 

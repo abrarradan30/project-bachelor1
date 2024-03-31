@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Materi;
+use DB;
 
 class CourseDetailController extends Controller
 {
@@ -34,9 +36,12 @@ class CourseDetailController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
         //
+        $materi =  DB::table('materi')->where('id', $id)->get();
+
+        return view('course_detail', compact('materi'));
     }
 
     /**

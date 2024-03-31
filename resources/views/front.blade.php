@@ -131,7 +131,7 @@
 
           @foreach($ar_materi->take(3) as $m)
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-          <a href="{{ url('course_detail') }}" style="text-decoration: none; color: inherit;">
+          <a href="{{url('course_detail/show/'.$m->id) }}" style="text-decoration: none; color: inherit;">
             <div class="course-item">
               @empty($m->bg_materi)
                 <img src="{{ url('admin/img/no_foto.png') }}" width="100%">

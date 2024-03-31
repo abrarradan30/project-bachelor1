@@ -17,30 +17,31 @@
   <div class="container" data-aos="fade-up">
 
     <div class="row">
+    @foreach($materi as $m)
       <div class="col-lg-8">
-        <img src="{{asset('frontend/assets/img/course-details.jpg')}}" class="img-fluid" alt="">
-        <h3>HTML</h3>
-        <p>
-          Qui et explicabo voluptatem et ab qui vero et voluptas. Sint voluptates temporibus quam autem. Atque nostrum voluptatum laudantium a doloremque enim et ut dicta. Nostrum ducimus est iure minima totam doloribus nisi ullam deserunt. Corporis aut officiis sit nihil est. Labore aut sapiente aperiam.
-          Qui voluptas qui vero ipsum ea voluptatem. Omnis et est. Voluptatem officia voluptatem adipisci et iusto provident doloremque consequatur. Quia et porro est. Et qui corrupti laudantium ipsa.
-          Eum quasi saepe aperiam qui delectus quaerat in. Vitae mollitia ipsa quam. Ipsa aut qui numquam eum iste est dolorum. Rem voluptas ut sit ut.
-        </p>
+          @empty($m->bg_materi)
+            <img src="{{ url('admin/img/no_foto.png') }}" width="100%">
+          @else
+            <img src="{{ url('admin/img') }}/{{ $m->bg_materi }}" width="100%">
+          @endempty
+        <h3>{{ $m->judul }}</h3>
+        <p>{{ $m->deskripsi }}</p>
       </div>
       <div class="col-lg-4">
 
         <div class="course-info d-flex justify-content-between align-items-center">
           <h5>Kategori</h5>
-          <p>IT</p>
+          <p>{{ $m->kategori }}</p>
         </div>
 
         <div class="course-info d-flex justify-content-between align-items-center">
           <h5>Level</h5>
-          <p>Pemula</p>
+          <p>{{ $m->level }}</p>
         </div>
 
         <div class="course-info d-flex justify-content-between align-items-center">
           <h5>Harga</h5>
-          <p>Rp 150.000</p>
+          <p>Rp {{ number_format($m->harga, 0, ',', '.') }}</p>
         </div>
 
         <div class="text-left">
@@ -48,6 +49,7 @@
         </div>
 
       </div>
+    @endforeach
     </div>
 
   </div>

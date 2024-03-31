@@ -76,16 +76,12 @@
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name }}</span>
-                @if(isset($user))
-                    @foreach ($user as $u)
-                        @empty($u->foto)
-                            <img class="img-profile rounded-circle" src="{{ url('admin/img/no_foto.png') }}">
-                        @else
-                            <img class="img-profile rounded-circle" src="{{ url('admin/img') }}/{{ $u->foto }}">
-                        @endempty
-                    @endforeach
+                @if(Auth::user()->foto)
+                    <img class="img-profile rounded-circle" src="{{ asset('admin/img/' . Auth::user()->foto) }}" alt="User Photo" width="15%" height="15%">
+                @else
+                    <img class="img-profile rounded-circle" src="{{ asset('admin/img/no_foto.png') }}" alt="User Photo" width="15%" height="15%">
                 @endif
-            </a>
+            </a> 
             <!-- Dropdown - User Information -->
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                 aria-labelledby="userDropdown">

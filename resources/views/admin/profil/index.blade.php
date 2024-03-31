@@ -31,18 +31,24 @@
 
             <!-- Input Deskripsi Diri -->
             <div class="form-group">
-                <label for="deskripsi">Deskripsi Diri:</label>
-                <textarea class="form-control" id="deskripsi_diri" name="deskripsi" rows="3" readonly>{{ Auth::user()->deskripsi }}</textarea>
+                <label for="deskripsi_diri">Deskripsi Diri :</label>
+                <input id="deskripsi_diri" name="deskripsi_diri" type="text" class="form-control" value="{{ Auth::user()->deskripsi_diri }}" readonly>
             </div>
 
             <!-- Input Foto -->
             <div class="form-group">
-                <label for="foto">Foto:</label>
-                <input type="file" class="form-control-file" id="foto" name="foto">
+                <label for="foto">Foto:</label> 
+                <br>
+                @if(Auth::user()->foto)
+                    <img src="{{ asset('admin/img/' . Auth::user()->foto) }}" alt="User Photo" width="10%" height="15%">
+                @else
+                    <img src="{{ asset('admin/img/no_foto.png') }}" alt="User Photo" width="10%" height="15%">
+                @endif
             </div>
+
             <!-- Submit Button -->
             <button type="button" class="btn btn-warning btn-sm">
-                <a href="{{ url('profil/edit/') }}" style="text-decoration: none; color: inherit;">Edit</a>
+                <a href="{{ url('profil/edit', ['id' => Auth::user()->id]) }}" style="text-decoration: none; color: inherit;">Edit</a>
             </button>
         </form>
     </div>

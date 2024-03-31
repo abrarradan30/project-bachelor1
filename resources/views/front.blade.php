@@ -129,20 +129,26 @@
 
         <div class="row" data-aos="zoom-in" data-aos-delay="100">
 
+          @foreach($ar_materi->take(3) as $m)
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
           <a href="{{ url('course_detail') }}" style="text-decoration: none; color: inherit;">
             <div class="course-item">
-              <img src="{{ asset('frontend/assets/img/course-1.jpg') }}" class="img-fluid" alt="...">
+              @empty($m->bg_materi)
+                <img src="{{ url('admin/img/no_foto.png') }}" width="100%">
+              @else
+                <img src="{{ url('admin/img') }}/{{ $m->bg_materi }}" width="100%">
+              @endempty
               <div class="course-content">
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h4>Pemula</h4>
-                    <p class="price">Rp 150.000</p>
+                    <h4>{{{ $m->level }}}</h4>
+                    <p class="price">Rp {{ number_format($m->harga, 0, ',', '.') }}</p>
                 </div>
-                <h3>Desain Web</h3>
+                <h3>{{ $m->judul }}</h3>
               </div>
             </div>
           </a>
           </div>
+          @endforeach
 
         </div>
 

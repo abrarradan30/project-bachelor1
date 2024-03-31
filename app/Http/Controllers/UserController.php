@@ -85,7 +85,7 @@ class UserController extends Controller
             $fileName = $namaFileFotoLama;
         }
 
-        DB::table('user')->where('id', $request->id)->update([
+        DB::table('users')->where('id', $request->id)->update([
             'name'         => $request->name,
             'email'        => $request->email,
             'deskripsi'    => $request->deskripsi,

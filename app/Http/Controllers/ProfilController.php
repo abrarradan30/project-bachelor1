@@ -18,10 +18,10 @@ class ProfilController extends Controller
         return view('admin.profil.index');
     }
 
-    public function edit()
+    public function edit($id)
     {
         //
-        $user = Auth::user();
+        $user = DB::table('users')->where('id', $id)->get();
 
         return view('admin.profil.edit', compact('user'));
     }
@@ -50,7 +50,7 @@ class ProfilController extends Controller
             $fileName = $namaFileFotoLama;
         }
 
-        DB::table('user')->where('id', $request->id)->update([
+        DB::table('users')->where('id', $request->id)->update([
             'name'              => $request->name,
             'deskripsi_diri'    => $request->deskripsi_diri,
             'foto'              => $fileName,

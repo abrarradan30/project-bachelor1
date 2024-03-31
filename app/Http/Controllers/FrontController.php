@@ -18,8 +18,11 @@ class FrontController extends Controller
         $users = User::where('role', 'siswa')->count();
         $materi = Materi::count();
         $materiKategori = Materi::select('kategori')->distinct()->count();
+
+        $ar_materi = DB::table('materi')->get();
+        $ar_materi = Materi::all();
         
-        return view('front', compact('users', 'materi', 'materiKategori'));
+        return view('front', compact('users', 'materi', 'materiKategori', 'ar_materi'));
     }
 
     /**

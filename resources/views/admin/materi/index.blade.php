@@ -58,9 +58,9 @@
                         <td>{{ $m->judul }}</td>
                         <td>
                             @empty($m->bg_materi)
-                                <img src="{{ url('admin/img/no_foto.png') }}" width="15%" style="width: 50px;">
+                                <img src="{{ url('admin/img/no_foto.png') }}"  width="60%" height="50%">
                             @else
-                                <img src="{{ url('admin/img') }}/{{ $m->bg_materi }}" width="15%" style="width: 50px;">
+                                <img src="{{ url('admin/img') }}/{{ $m->bg_materi }}"   width="60%" height="50%">
                             @endempty
                         </td>
                         <td>{{ $m->deskripsi }}</td>

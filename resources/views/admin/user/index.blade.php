@@ -59,9 +59,6 @@
                         <td>{{ $u->role }}</td>
                         <td>
                             <form action="#" method="POST">
-                                <button type="button" class="btn btn-success btn-sm">
-                                    <a href="{{ url('admin/user/show/' . $u->id) }}" style="text-decoration: none; color: inherit;">Detail</a>
-                                </button>
                                 <button type="button" class="btn btn-warning btn-sm">
                                     <a href="{{ url('admin/user/edit/' . $u->id) }}" style="text-decoration: none; color: inherit;">Edit</a>
                                 </button>

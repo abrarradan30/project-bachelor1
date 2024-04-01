@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Materi;
+use DB;
 
 class CourseController extends Controller
 {
@@ -12,7 +14,10 @@ class CourseController extends Controller
     public function index()
     {
         //
-        return view('course');
+        $ar_materi = DB::table('materi')->get();
+        $ar_materi = Materi::all();
+
+        return view('course', compact('ar_materi'));
     }
 
     /**

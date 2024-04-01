@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\BalasanDiskusiController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\CourseDetailController;
@@ -109,6 +110,9 @@ Route::middleware(['peran:admin'])->group(function () {
     Route::get('/balasan_diskusi/edit/{id}', [BalasanDiskusiController::class, 'edit']);
     Route::post('balasan_diskusi/update/{id}', [BalasanDiskusiController::class, 'update']);
     Route::get('/balasan_diskusi/delete/{id}', [BalasanDiskusiController::class, 'destroy']);
+
+    // route checkout
+    Route::get('/checkout/show/{id}', [CheckoutController::class, 'show']);
 });
 
 // route frontend
@@ -121,6 +125,8 @@ Route::get('/course', [CourseController::class, 'index']);
 // route course_detail 
 Route::get('/course_detail', [CourseDetailController::class, 'index']);
 Route::get('/course_detail/show/{id}', [CourseDetailController::class, 'show']);
+// route checkout 
+Route::get('/checkout', [CheckoutController::class, 'index']);
 // route contact 
 Route::get('/contact', [ContactController::class, 'index']);
 // route forum 
@@ -132,10 +138,6 @@ Route::get('/acces_denied', function () {
 
 Route::get('/after_register', function () {
     return view('/after_register');
-});
-
-Route::get('/checkout', function () {
-    return view('/checkout');
 });
 
 Route::get('/course2', function () {

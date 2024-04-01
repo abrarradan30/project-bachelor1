@@ -3,10 +3,26 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Materi;
+use DB;
 
 class CheckoutController extends Controller
 {
     //
+    public function index()
+    {
+        //
+        return view('checkout');
+    }
+
+    public function show($id)
+    {
+        //
+        $materi =  DB::table('materi')->where('id', $id)->get();
+
+        return view('checkout', compact('materi'));
+    }
+
     public function process(Request $request)
     {
         $data = $request->all();

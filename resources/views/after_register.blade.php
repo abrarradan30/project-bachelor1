@@ -39,7 +39,7 @@
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h3 text-gray-900 mb-4">Thank you for joining our LMS platform!</h1>
+                                        <h1 class="h3 text-gray-900 mb-4">Thank you for joining our LMS platform. Please log in again!</h1>
                                     </div>
                                         <a href="{{ url('/') }}" style="text-decoration: none; color: inherit;">
                                             <button type="submit" class="btn btn-primary btn-user btn-block">

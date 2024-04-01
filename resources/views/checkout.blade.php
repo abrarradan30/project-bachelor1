@@ -1,6 +1,7 @@
 @extends('frontend.index')
 
 @section('content')
+@if(in_array(Auth::user()->role, ['admin', 'siswa', 'mentor']))
 
 <!-- ======= Breadcrumbs ======= -->
 <div class="breadcrumbs" data-aos="fade-in">
@@ -21,22 +22,23 @@
         <h5 class="m-0 font-weight-bold text-primary">Anda akan melakukan pembelian materi</h5>
     </div>
     <div class="card-body">
+    @foreach($materi as $m)
         <form>
         {{ csrf_field() }}
             <!-- Input Nama -->
             <div class="form-group">
                 <label for="judul">Judul Materi :</label>
-                <input type="text" class="form-control" id="judul" name="judul" readonly>
+                <input type="text" class="form-control" id="judul" name="judul" value="{{ $m->judul }}" readonly>
             </div>
             <br>
             <div class="form-group">
                 <label for="level">Level :</label>
-                <input type="text" class="form-control" id="level" name="level" readonly>
+                <input type="text" class="form-control" id="level" name="level" value="{{ $m->level }}" readonly>
             </div>
             <br>
             <div class="form-group">
                 <label for="harga">Harga :</label>
-                <input type="text" class="form-control" id="harga" name="harga" readonly>
+                <input type="text" class="form-control" id="harga" name="harga" value=" {{ $m->harga }}" readonly>
             </div>
             <br>
             <div class="form-group">
@@ -52,9 +54,14 @@
             <!-- Submit Button -->
             <button type="submit" class="btn btn-primary">Bayar Sekarang</button>
         </form>
+    @endforeach
     </div>
 </div>
 
 </div>
+
+@else
+@include('auth.login')
+@endif 
 
 @endsection

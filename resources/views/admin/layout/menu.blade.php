@@ -1,4 +1,4 @@
-@if(Auth::user()->role == 'admin')
+@if(in_array(Auth::user()->role, ['admin', 'siswa', 'mentor']))
 <!-- Sidebar -->
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
@@ -38,8 +38,12 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <!-- <h6 class="collapse-header">Custom Components:</h6> -->
-                <a class="collapse-item" href="{{url('user')}}">User</a>
-                <a class="collapse-item" href="{{url('materi')}}">Materi</a>
+                @if(Auth::check() && Auth::user()->role == 'admin')
+                    <a class="collapse-item" href="{{ url('user') }}">User</a>
+                    <a class="collapse-item" href="{{ url('materi') }}">Materi</a>
+                @elseif(Auth::check() && Auth::user()->role == 'mentor')
+                    <a class="collapse-item" href="{{ url('materi') }}">Materi</a>
+                @endif
             </div>
         </div>
     </li>
@@ -69,7 +73,7 @@
 
     <!-- Nav Item - Materi Saya -->
     <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+        <a class="nav-link" href="{{ url('materi_saya') }}">
             <i class="fas fa-fw fa-table"></i>
             <span>Materi-Ku</span></a>
     </li>

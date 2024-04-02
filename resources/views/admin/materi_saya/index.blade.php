@@ -6,7 +6,7 @@
 <div class="container-fluid">
 
 <!-- Page Heading -->
-<h1 class="h3 mb-2 text-gray-800">Tabel Progres Belajar</h1>
+<h1 class="h3 mb-2 text-gray-800">Progres Belajar Saya</h1>
 <p class="mb-4">Halo {{ Auth::user()->name }} ! Ayo selesaikan materi-<b>Mu</b> dengan semangat dan tekad. Jangan ragu untuk bertanya, berkolaborasi, dan terus berusaha.</p>
 
     <!-- Content Row -->

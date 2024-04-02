@@ -98,7 +98,7 @@
                   <div class="icon-box mt-4 mt-xl-0">
                     <i class="bx bx-cube-alt"></i>
                     <h4>Konten Interaktif</h4>
-                    <p>Materi LMS disajikan dalam format teks, gambar, maupun vidio </p>
+                    <p>Materi LMS disajikan dalam format teks, gambar atau vidio </p>
                   </div>
                 </div>
                 <div class="col-xl-4 d-flex align-items-stretch">

@@ -44,11 +44,15 @@ Route::get('/profil', [ProfilController::class, 'index']);
 Route::get('/profil/edit/{id}', [ProfilController::class, 'edit']);
 Route::post('/profil/update', [ProfilController::class, 'update']);
 
-// route admin dan mentor
-Route::middleware(['peran:admin-mentor'])->group(function () {
+// peran admin, siswa dan mentor
+Route::middleware(['peran:admin-siswa-mentor'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('index');
+});
+
+// peran admin dan mentor
+Route::middleware(['peran:admin-mentor'])->group(function () {
     
-    // Rute materi
+    // route materi
     Route::get('/materi', [MateriController::class, 'index']);
     Route::get('/materi/create', [MateriController::class, 'create']);
     Route::post('/materi/store', [MateriController::class, 'store']);

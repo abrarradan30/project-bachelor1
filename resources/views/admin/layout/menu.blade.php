@@ -23,11 +23,21 @@
     <!-- Divider -->
     <hr class="sidebar-divider">
 
+    @if(in_array(Auth::user()->role, ['admin', 'mentor']))
     <!-- Heading -->
     <div class="sidebar-heading">
         Tabel
     </div>
+    @endif
 
+    @if(Auth::check() && Auth::user()->role == 'siswa')
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        Aktivitas
+    </div>
+    @endif
+
+    @if(in_array(Auth::user()->role, ['admin', 'mentor']))
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
@@ -47,7 +57,9 @@
             </div>
         </div>
     </li>
+    @endif
 
+    @if(in_array(Auth::user()->role, ['admin', 'mentor']))
     <!-- Nav Item - Utilities Collapse Menu -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
@@ -59,6 +71,7 @@
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <!-- <h6 class="collapse-header">Custom Utilities:</h6> -->
+                @if(Auth::check() && Auth::user()->role == 'admin')
                 <a class="collapse-item" href="{{ url('detail_materi') }}">Detail Materi</a>
                 <a class="collapse-item" href="{{ url('pembayaran') }}">Pembayaran</a>
                 <a class="collapse-item" href="{{ url('progres_belajar') }}">Progres Belajar</a>
@@ -67,16 +80,25 @@
                 <a class="collapse-item" href="{{ url('sertifikat') }}">Sertifikat</a>
                 <a class="collapse-item" href="{{ url('forum_diskusi') }}">Forum Diskusi</a>
                 <a class="collapse-item" href="{{ url('balasan_diskusi') }}">Balasan Diskusi</a>
+                @elseif(Auth::check() && Auth::user()->role == 'mentor')
+                <a class="collapse-item" href="{{ url('detail_materi') }}">Detail Materi</a>
+                <a class="collapse-item" href="{{ url('progres_belajar') }}">Progres Belajar</a>
+                <a class="collapse-item" href="{{ url('kuis') }}">Kuis</a>
+                <a class="collapse-item" href="{{ url('hasil_kuis') }}">Hasil Kuis</a>
+                @endif
             </div>
         </div>
     </li>
+    @endif
 
+    @if(in_array(Auth::user()->role, ['admin', 'siswa']))
     <!-- Nav Item - Materi Saya -->
     <li class="nav-item">
         <a class="nav-link" href="{{ url('materi_saya') }}">
             <i class="fas fa-fw fa-table"></i>
             <span>Materi-Ku</span></a>
     </li>
+    @endif
 
     <!-- Divider -->
     <hr class="sidebar-divider">

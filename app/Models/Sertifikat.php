@@ -11,6 +11,7 @@ class Sertifikat extends Model
     protected $table = 'sertifikat'; 
     protected $primaryKey = 'id'; 
     protected $fillable = ['materi_id', 'users_id'];
+    public $timestamps = true;
 
     // Relasi many-to-one dengan model User
     public function user() {

@@ -102,6 +102,8 @@ Route::middleware(['peran:admin'])->group(function () {
 
     // route sertifikat
     Route::get('/sertifikat', [SertifikatController::class, 'index']);
+    Route::get('/sertifikat/create', [SertifikatController::class, 'create']);
+    Route::post('/sertifikat/store', [SertifikatController::class, 'store']);
 
     // route forum diskusi
     Route::get('/forum_diskusi', [ForumDiskusiController::class, 'index']);

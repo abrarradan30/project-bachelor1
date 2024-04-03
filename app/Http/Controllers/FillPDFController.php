@@ -14,7 +14,7 @@ class FillPDFController extends Controller
         $materi = "Laravel";
         $tgl = "1 Januari 2024";
         $outputfile = public_path().'dcs.pdf';
-        $this->fillPDF(public_path().'/sertifikat/dcs.pdf', $outputfile, $nama, $materi, $tgl);
+        $this->fillPDF(public_path().'/sertif/dcs.pdf', $outputfile, $nama, $materi, $tgl);
 
         return response()->file($outputfile);
     }

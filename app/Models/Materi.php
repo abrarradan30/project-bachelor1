@@ -11,6 +11,7 @@ class Materi extends Model
     protected $table = 'materi'; 
     protected $primaryKey = 'id'; 
     protected $fillable = ['judul', 'bg_materi', 'deskripsi', 'harga', 'kategori', 'level', 'jenis', 'status'];
+    public $timestamps = true;
 
     // Relasi one-to-one dengan model Pembayaran
     public function pembayaran() {

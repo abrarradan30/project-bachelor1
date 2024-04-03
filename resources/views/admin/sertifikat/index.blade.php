@@ -13,9 +13,11 @@
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Tabel Materi</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Tabel Sertifikat</h6>
         <br>
+        <a href="{{ url('sertifikat/create') }}">
         <button class="btn btn-sm btn-primary"><i class="fas fa-plus"></i> &nbsp; Tambah</button>
+        </a>
     </div>
     <div class="card-body">
         <div class="table-responsive">

@@ -77,7 +77,7 @@
                                     <a href="{{ url('materi/edit/' . $m->id) }}" style="text-decoration: none; color: inherit;">Edit</a>
                                 </button>
                                 <button type="button" class="btn btn-danger btn-sm">
-                                    <a href="{{ url('admin/materi/delete/' . $m->id) }}" style="text-decoration: none; color: inherit;">Hapus</a>
+                                    <a href="{{ url('materi/delete/' . $m->id) }}" style="text-decoration: none; color: inherit;">Hapus</a>
                                 </button>
                             </form>
                         </td>

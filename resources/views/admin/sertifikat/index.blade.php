@@ -53,13 +53,16 @@
                         <td>
                             <form action="#" method="POST">
                                 <button type="button" class="btn btn-success btn-sm">
-                                    <a href="{{ url('admin/sertifikat/show/' . $s->id) }}" style="text-decoration: none; color: inherit;">Detail</a>
+                                    <a href="{{ url('sertifikat/show/' . $s->id) }}" style="text-decoration: none; color: inherit;">Detail</a>
                                 </button>
                                 <button type="button" class="btn btn-warning btn-sm">
-                                    <a href="{{ url('admin/sertifikat/edit/' . $s->id) }}" style="text-decoration: none; color: inherit;">Edit</a>
+                                    <a href="{{ url('sertifikat/edit/' . $s->id) }}" style="text-decoration: none; color: inherit;">Edit</a>
+                                </button>
+                                <button type="button" class="btn btn-info btn-sm">
+                                    <a href="{{ url('sertifikat/edit/' . $s->id) }}" style="text-decoration: none; color: inherit;">Cetak</a>
                                 </button>
                                 <button type="button" class="btn btn-danger btn-sm">
-                                    <a href="{{ url('admin/sertifikat/delete/' . $s->id) }}" style="text-decoration: none; color: inherit;">Hapus</a>
+                                    <a href="{{ url('sertifikat/delete/' . $s->id) }}" style="text-decoration: none; color: inherit;">Hapus</a>
                                 </button>
                             </form>
                         </td>

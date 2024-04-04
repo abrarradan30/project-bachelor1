@@ -56,7 +56,7 @@ class SertifikatController extends Controller
             'materi_id.required'    => 'Materi wajib diisi',
         ]);
 
-        DB::table('hasil_kuis')->insert([
+        DB::table('sertifikat')->insert([
             'users_id'     => $request->users_id,
             'materi_id'    => $request->materi_id,
         ]);
@@ -74,10 +74,10 @@ class SertifikatController extends Controller
         $sertifikat = Sertifikat::join('users', 'sertifikat.users_id', '=', 'users.id')
             ->join('materi', 'sertifikat.materi_id', '=', 'materi.id')
             ->select('sertifikat.*', 'users.name as nama', 'materi.judul as judul_materi')
-            ->where('sertifikat', $id)
+            ->where('sertifikat.id', $id)
             ->get();
 
-        return view('admin.riwayat_pesanan.detail', compact('riwayat_pesanan'));
+        return view('admin.sertifikat.detail', compact('sertifikat'));
     }
 
     /**

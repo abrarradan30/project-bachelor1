@@ -179,7 +179,7 @@
 
 			<header class="border-bottom mb-4 pb-3">
 				<div class="form-inline">
-					<span class="mr-md-auto">Tersedia 32 Materi </span>
+					<span class="mr-md-auto">Saat ini tersedia <b> {{ $materi }} </b> Materi </span>
 					<select class="mr-2 form-control">
 						<option>Latest items</option>
 						<option>Trending</option>

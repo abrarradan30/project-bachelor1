@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Materi;
+use App\Models\ForumDiskusi;
 use DB;
 
 class FrontController extends Controller
@@ -17,12 +18,13 @@ class FrontController extends Controller
         //
         $users = User::where('role', 'siswa')->count();
         $materi = Materi::count();
-        $materiKategori = Materi::select('kategori')->distinct()->count();
+        $forum_diskusi = ForumDiskusi::count();
+        // $materiKategori = Materi::select('kategori')->distinct()->count();
 
         $ar_materi = DB::table('materi')->get();
         $ar_materi = Materi::all();
         
-        return view('front', compact('users', 'materi', 'materiKategori', 'ar_materi'));
+        return view('front', compact('users', 'materi', 'forum_diskusi', 'ar_materi'));
     }
 
     /**

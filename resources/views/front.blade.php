@@ -58,8 +58,8 @@
           </div>
           
           <div class="col-lg-4 col-6 text-center">
-            <span>{{ $materiKategori }}</span>
-            <p>Kategori</p>
+            <span>{{ $forum_diskusi }}</span>
+            <p>Diskusi</p>
           </div>
 
         </div>

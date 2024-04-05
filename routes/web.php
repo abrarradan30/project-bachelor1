@@ -60,15 +60,6 @@ Route::middleware(['peran:admin-mentor'])->group(function () {
     Route::get('/materi/edit/{id}', [MateriController::class, 'edit']);
     Route::post('/materi/update', [MateriController::class, 'update']);
     Route::get('/materi/delete/{id}', [MateriController::class, 'destroy']);
-});
-
-// peran admin
-Route::middleware(['peran:admin'])->group(function () {
-    
-    // route user
-    Route::get('/user', [UserController::class, 'index']);
-    Route::get('/user/edit/{id}', [UserController::class, 'edit']);
-    Route::post('/user/update', [UserController::class, 'update']);
 
     // route detail_materi
     Route::get('/detail_materi', [DetailMateriController::class, 'index']);
@@ -99,6 +90,15 @@ Route::middleware(['peran:admin'])->group(function () {
     Route::get('/hasil_kuis/edit/{id}', [HasilKuisController::class, 'edit']);
     Route::post('/hasil_kuis/update', [HasilKuisController::class, 'update']);
     Route::get('/hasil_kuis/delete/{id}', [HasilKuisController::class, 'destroy']);
+});
+
+// peran admin
+Route::middleware(['peran:admin'])->group(function () {
+    
+    // route user
+    Route::get('/user', [UserController::class, 'index']);
+    Route::get('/user/edit/{id}', [UserController::class, 'edit']);
+    Route::post('/user/update', [UserController::class, 'update']);
 
     // route sertifikat
     Route::get('/sertifikat', [SertifikatController::class, 'index']);

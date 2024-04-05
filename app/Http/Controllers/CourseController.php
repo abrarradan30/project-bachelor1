@@ -14,10 +14,11 @@ class CourseController extends Controller
     public function index()
     {
         //
+        $materi = Materi::count();
         $ar_materi = DB::table('materi')->get();
         $ar_materi = Materi::all();
 
-        return view('course', compact('ar_materi'));
+        return view('course', compact('materi', 'ar_materi'));
     }
 
     /**

@@ -12,6 +12,11 @@ class Sertifikat extends Model
     protected $primaryKey = 'id'; 
     protected $fillable = ['materi_id', 'users_id'];
 
+    public $timestamps = true;
+
+    const CREATED_AT = 'creation_date';
+    const UPDATED_AT = 'updated_date';
+
     // Relasi many-to-one dengan model User
     public function user() {
         return $this->belongsTo(User::class);

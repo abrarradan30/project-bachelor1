@@ -106,7 +106,7 @@ Route::middleware(['peran:admin'])->group(function () {
     Route::post('/sertifikat/store', [SertifikatController::class, 'store']);
     Route::get('/sertifikat/show/{id}', [SertifikatController::class, 'show']);
     Route::get('/sertifikat/edit/{id}', [SertifikatController::class, 'edit']);
-    Route::post('sertifikat/update/{id}', [SertifikatController::class, 'update']);
+    Route::post('/sertifikat/update', [SertifikatController::class, 'update']);
     Route::get('/sertifikat/delete/{id}', [SertifikatController::class, 'destroy']);
 
     // route forum diskusi

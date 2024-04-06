@@ -100,12 +100,8 @@ class SertifikatController extends Controller
     {
         //
         $request->validate([
-            'users_id'     => 'required',
-            'materi_id'    => 'required',
-        ], 
-        [
-            'users_id.required'     => 'User wajib diisi',
-            'materi_id.required'    => 'Materi wajib diisi',
+            'users_id'     => 'required|integer',
+            'materi_id'    => 'required|integer',
         ]);
 
         DB::table('sertifikat')->where('id', $request->id)->update([

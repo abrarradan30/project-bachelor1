@@ -59,7 +59,7 @@
                                     <a href="{{ url('sertifikat/edit/' . $s->id) }}" style="text-decoration: none; color: inherit;">Edit</a>
                                 </button>
                                 <button type="button" class="btn btn-info btn-sm">
-                                    <a href="{{ url('sertifikat/edit/' . $s->id) }}" style="text-decoration: none; color: inherit;">Cetak</a>
+                                    <a href="{{ url('sertifikat/cetak/' . $s->id) }}" style="text-decoration: none; color: inherit;">Cetak</a>
                                 </button>
                                 <button type="button" class="btn btn-danger btn-sm">
                                     <a href="{{ url('sertifikat/delete/' . $s->id) }}" style="text-decoration: none; color: inherit;">Hapus</a>

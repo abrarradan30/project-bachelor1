@@ -4,15 +4,28 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use setasign\Fpdi\Fpdi;
+use App\Models\User;
+use App\Models\Materi;
+use App\Models\Sertifikat;
+use DB;
 
 class FillPDFController extends Controller
 {
-    public function process()
+    public function process($id)
     {
         // $nama = $request->post('nama');
-        $nama = "JUSTIN HUBNER";
-        $materi = "Laravel";
-        $tgl = "1 Januari 2024";
+        // $nama = "JUSTIN HUBNER";
+        // $materi = "Laravel";
+        // $tgl = "1 Januari 2024";
+
+        // Mengambil data sertifikat berdasarkan id
+        $sertifikat = Sertifikat::findOrFail($id);
+
+        // Mengambil informasi yang dibutuhkan dari sertifikat
+        $user = User::findOrFail($sertifikat->users_id);
+        $materi = Materi::findOrFail($sertifikat->materi_id);
+        $tgl = date('d F Y', strtotime($sertifikat->created_at));
+        $nama = $user->nama;
         $outputfile = public_path().'dcs.pdf';
         $this->fillPDF(public_path().'/sertif/dcs.pdf', $outputfile, $nama, $materi, $tgl);
 
@@ -27,30 +40,7 @@ class FillPDFController extends Controller
         $size = $fpdi->getTemplateSize($template);
         $fpdi->AddPage($size['orientation'], array($size['width'], $size['height']));
         $fpdi->useTemplate($template);
-        /*
-        $top_nama = 85;
-        $right_nama = 110;
-        $name = $nama;
-        $top_materi = 150;
-        $right_materi = 110;
-        $material = $materi;
-        $top_tgl = 20;
-        $right_tgl = 200;
-        $tanggal = $tgl;
-        $fpdi->SetFont("helvetica", "", 17);
-        $fpdi->SetTextColor(25, 26, 25);
-        $fpdi->Text(
-            $right_nama, 
-            $top_nama, 
-            $name,
-            $right_materi,
-            $top_materi,
-            $material,
-            $top_tgl,
-            $right_tgl,
-            $tanggal
-        );
-        */
+        
         // Menambahkan teks nama ke PDF
         $fpdi->SetFont("helvetica", "", 17);
         $fpdi->SetTextColor(25, 26, 25);

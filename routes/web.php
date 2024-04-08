@@ -109,6 +109,9 @@ Route::middleware(['peran:admin'])->group(function () {
     Route::post('/sertifikat/update', [SertifikatController::class, 'update']);
     Route::get('/sertifikat/delete/{id}', [SertifikatController::class, 'destroy']);
 
+    //Route Sertifikat PDF
+    Route::get('/buat/{id}', [FillPDFController::class, 'process']);
+
     // route forum diskusi
     Route::get('/forum_diskusi', [ForumDiskusiController::class, 'index']);
     Route::get('/forum_diskusi/create', [ForumDiskusiController::class, 'create']);
@@ -163,8 +166,6 @@ Route::get('/course2', function () {
     return view('/course2');
 });
 
-//Route Sertifikat PDF
-Route::get('/buat', [FillPDFController::class, 'process']);
 //Route::post('/buat', [FillPDFController::class, 'process'])->name('buat');
 
 Auth::routes();

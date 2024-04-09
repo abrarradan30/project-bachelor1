@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('hasil_kuis', function (Blueprint $table) {
             $table->id();
+            $table->integer('users_id');
+            $table->integer('materi_id');
+            $table->integer('skor')->nullable(false);
             $table->timestamps();
         });
     }

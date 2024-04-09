@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('kuis', function (Blueprint $table) {
             $table->id();
+            $table->integer('materi_id');
+            $table->longText('soal')->nullable(false);
+            $table->string('a', 100)->nullable(false);
+            $table->string('b', 100)->nullable(false);
+            $table->string('c', 100)->nullable(false);
+            $table->string('d', 100)->nullable(false);
+            $table->string('kunci', 100)->nullable(false);
             $table->timestamps();
         });
     }

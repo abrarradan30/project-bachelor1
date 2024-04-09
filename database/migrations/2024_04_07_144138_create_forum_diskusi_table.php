@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('forum_diskusi', function (Blueprint $table) {
             $table->id();
+            $table->integer('users_id');
+            $table->integer('materi_id');
+            $table->longText('pertanyaan')->nullable(false);
+            $table->enum('status_diskusi', ['selesai', 'belum selesai'])->default('belum selesai');
             $table->timestamps();
         });
     }

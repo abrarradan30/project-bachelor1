@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('detail_materi', function (Blueprint $table) {
             $table->id();
+            $table->integer('materi_id');
+            $table->string('sub_judul', 100)->nullable(false);
+            $table->longText('isi_materi')->nullable(false);
             $table->timestamps();
         });
     }

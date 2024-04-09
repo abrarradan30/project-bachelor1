@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('pembayaran', function (Blueprint $table) {
             $table->id();
+            $table->integer('users_id');
+            $table->integer('materi_id');
+            $table->enum('status', ['pending', 'success', 'failed']);
+            $table->string('snap_token')->nullable();
             $table->timestamps();
         });
     }

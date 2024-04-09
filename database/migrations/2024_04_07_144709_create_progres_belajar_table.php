@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('progres_belajar', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('materi_id');
+            $table->unsignedBigInteger('user_id');
+            $table->integer('progres');
+            $table->enum('status_selesai', ['belum selesai', 'selesai']);
             $table->timestamps();
         });
     }

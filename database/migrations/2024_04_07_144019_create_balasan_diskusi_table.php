@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('balasan_diskusi', function (Blueprint $table) {
             $table->id();
+            $table->integer('users_id');
+            $table->integer('forum_diskusi_id');
+            $table->longText('balasan')->nullable(false);
             $table->timestamps();
         });
     }

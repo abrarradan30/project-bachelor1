@@ -13,26 +13,28 @@ class FillPDFController extends Controller
 {
     public function process($id)
     {
-        // $nama = $request->post('nama');
-        // $nama = "JUSTIN HUBNER";
-        // $materi = "Laravel";
-        // $tgl = "1 Januari 2024";
 
-        // Mengambil data sertifikat berdasarkan id
-        $sertifikat = Sertifikat::findOrFail($id);
+        $users = DB::table('users')->get();
+        $materi = DB::table('materi')->get();
+        $sertifikat = Sertifikat::join('users', 'sertifikat.users_id', '=', 'users.id')
+            ->join('materi', 'sertifikat.materi_id', '=', 'materi.id')
+            ->select('sertifikat.*', 'users.name as nama', 'materi.judul as judul_materi', 'materi.level')
+            ->where('sertifikat.id', $id)
+            ->first();
+        
+        // Mengambil data untuk sertifikat
+        $nama = $sertifikat->nama;
+        $judulMateri = $sertifikat->judul_materi;
+        $tgl = date('j  F  Y', strtotime($sertifikat->created_at));
+        $level = $sertifikat->level;
 
-        // Mengambil informasi yang dibutuhkan dari sertifikat
-        $user = User::findOrFail($sertifikat->users_id);
-        $materi = Materi::findOrFail($sertifikat->materi_id);
-        $tgl = date('d F Y', strtotime($sertifikat->created_at));
-        $nama = $user->nama;
         $outputfile = public_path().'dcs.pdf';
-        $this->fillPDF(public_path().'/sertif/dcs.pdf', $outputfile, $nama, $materi, $tgl);
+        $this->fillPDF(public_path().'/sertif/dcs.pdf', $outputfile, $nama, $judulMateri, $tgl, $level);
 
         return response()->file($outputfile);
     }
 
-    public function fillPDF($file, $outputfile, $nama, $materi, $tgl)
+    public function fillPDF($file, $outputfile, $nama, $judulMateri, $tgl, $level)
     {
         $fpdi = new FPDI;
         $fpdi->setSourceFile($file);
@@ -41,21 +43,20 @@ class FillPDFController extends Controller
         $fpdi->AddPage($size['orientation'], array($size['width'], $size['height']));
         $fpdi->useTemplate($template);
         
-        // Menambahkan teks nama ke PDF
+        // Nama ke PDF
         $fpdi->SetFont("helvetica", "", 17);
         $fpdi->SetTextColor(25, 26, 25);
         $fpdi->Text(110, 85, $nama); // Koordinat X dan Y
 
-        // Menambahkan teks materi ke PDF
+        // Judul Materi ke PDF
         $fpdi->SetFont("helvetica", "", 17);
         $fpdi->SetTextColor(25, 26, 25);
-        $fpdi->Text(130, 130, $materi); // Koordinat X dan Y
+        $fpdi->Text(130, 130, $judulMateri . ' - level : ' . $level); 
 
-        // Menambahkan teks tanggal ke PDF
+        // Tanggal ke PDF
         $fpdi->SetFont("helvetica", "", 17);
         $fpdi->SetTextColor(25, 26, 25);
         $fpdi->Text(30, 150, $tgl);
-
 
         return $fpdi->Output($outputfile, 'F');
     }

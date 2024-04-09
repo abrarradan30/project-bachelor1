@@ -110,7 +110,7 @@ Route::middleware(['peran:admin'])->group(function () {
     Route::get('/sertifikat/delete/{id}', [SertifikatController::class, 'destroy']);
 
     //Route Sertifikat PDF
-    Route::get('/buat/{id}', [FillPDFController::class, 'process']);
+    Route::get('/cetak/{id}', [FillPDFController::class, 'process']);
 
     // route forum diskusi
     Route::get('/forum_diskusi', [ForumDiskusiController::class, 'index']);

@@ -86,11 +86,11 @@ class UserController extends Controller
         }
 
         DB::table('users')->where('id', $request->id)->update([
-            'name'         => $request->name,
-            'email'        => $request->email,
-            'deskripsi'    => $request->deskripsi,
-            'foto'         => $fileName,
-            'role'         => $request->role,
+            'name'              => $request->name,
+            'email'             => $request->email,
+            'deskripsi_diri'    => $request->deskripsi_diri,
+            'foto'              => $fileName,
+            'role'              => $request->role,
         ]);
 
         Alert::info('User', 'Berhasil update user');

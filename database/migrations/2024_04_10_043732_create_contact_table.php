@@ -17,7 +17,8 @@ return new class extends Migration
             $table->string('email', 100)->nullable(false);
             $table->string('subject', 100)->nullable(false);
             $table->longText('message')->nullable(false);
-            $table->timestamps();
+            $table->dateTime('created_at')->useCurrent();
+            $table->dateTime('updated_at')->nullable()->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });
     }
 

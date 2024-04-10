@@ -24,7 +24,7 @@
                 </ul>
             </div>
         @endif
-        <form method="POST" action="{{ url('admin/user/update') }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ url('user/update') }}" enctype="multipart/form-data">
         {{csrf_field()}}
             <!-- Input Nama -->
             <div class="form-group">
@@ -61,9 +61,9 @@
             <div class="form-group">
                 <label for="role">Role :</label><br>
                 @foreach($ar_role as $role)
-                    @php $cek = ($role == $u->) ? 'checked' : ''; @endphp
+                    @php $cek = ($role == $u->role) ? 'checked' : ''; @endphp
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="role" id="admin" value="admin" {{ $diskusi->role == 'admin' ? 'checked' : '' }}>
+                    <input class="form-check-input" type="radio" name="role" id="role" value="{{$role}}" {{$cek}}>
                     <label class="form-check-label" for="radio">{{ $role }}</label>
                 </div>
                 @endforeach

@@ -121,6 +121,6 @@ class SertifikatController extends Controller
         //
         DB::table('sertifikat')->where('id', $id)->delete();
 
-        return redirect('admin/sertifikat');
+        return redirect('sertifikat');
     }
 }

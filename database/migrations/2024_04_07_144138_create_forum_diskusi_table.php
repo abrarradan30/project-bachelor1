@@ -17,7 +17,8 @@ return new class extends Migration
             $table->integer('materi_id');
             $table->longText('pertanyaan')->nullable(false);
             $table->enum('status_diskusi', ['selesai', 'belum selesai'])->default('belum selesai');
-            $table->timestamps();
+            $table->dateTime('created_at')->useCurrent();
+            $table->dateTime('updated_at')->nullable()->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });
     }
 

@@ -60,10 +60,10 @@
                         <td>
                             <form action="#" method="POST">
                                 <button type="button" class="btn btn-warning btn-sm">
-                                    <a href="{{ url('admin/user/edit/' . $u->id) }}" style="text-decoration: none; color: inherit;">Edit</a>
+                                    <a href="{{ url('user/edit/' . $u->id) }}" style="text-decoration: none; color: inherit;">Edit</a>
                                 </button>
                                 <button type="button" class="btn btn-danger btn-sm">
-                                    <a href="{{ url('admin/user/delete/' . $u->id) }}" style="text-decoration: none; color: inherit;">Hapus</a>
+                                    <a href="{{ url('user/delete/' . $u->id) }}" style="text-decoration: none; color: inherit;">Hapus</a>
                                 </button>
                             </form>
                         </td>

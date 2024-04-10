@@ -105,8 +105,7 @@ class MateriController extends Controller
     public function update(Request $request)
     {
         //
-        $request->validate(
-            [
+        $request->validate([
                 'judul'        => 'required|max:50',
                 'bg_materi'    => 'required|image|mimes:jpg,jpeg,png,svg|max:2048',
                 'deskripsi'    => 'required',
@@ -114,8 +113,8 @@ class MateriController extends Controller
                 'kategori'     => 'required',
                 'level'        => 'required',
                 'status'       => 'required',
-            ]
-        );
+        ]);
+
         // foto lama apabila mengganti fotonya
         $bg_materi = DB::table('materi')->select('bg_materi')->where('id', $request->id)->get();
         foreach ($bg_materi as $bgm) {
@@ -129,7 +128,7 @@ class MateriController extends Controller
             $fileName = 'bg_materi-' . $request->id . '.' . $request->bg_materi->extension();
             $request->bg_materi->move(public_path('admin/img'), $fileName);
         } else {
-            $fileName = '';
+            $fileName = $namaFileBackgroundLama;
         }
 
         DB::table('materi')->where('id', $request->id)->update([

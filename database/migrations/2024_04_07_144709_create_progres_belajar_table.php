@@ -17,7 +17,8 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->integer('progres');
             $table->enum('status_selesai', ['belum selesai', 'selesai']);
-            $table->timestamps();
+            $table->dateTime('created_at')->useCurrent();
+            $table->dateTime('updated_at')->nullable()->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });
     }
 

@@ -20,7 +20,8 @@ return new class extends Migration
             $table->enum('kategori', ['IT', 'desain', 'softskill']);
             $table->enum('level', ['pemula', 'menengah', 'mahir']);
             $table->enum('status', ['proses', 'publik'])->default('proses');
-            $table->timestamps();
+            $table->dateTime('created_at')->useCurrent();
+            $table->dateTime('updated_at')->nullable()->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });
     }
 

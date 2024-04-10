@@ -16,7 +16,8 @@ return new class extends Migration
             $table->integer('users_id');
             $table->integer('materi_id');
             $table->integer('skor')->nullable(false);
-            $table->timestamps();
+            $table->dateTime('created_at')->useCurrent();
+            $table->dateTime('updated_at')->nullable()->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });
     }
 

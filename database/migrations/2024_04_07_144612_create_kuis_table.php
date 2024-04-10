@@ -20,7 +20,8 @@ return new class extends Migration
             $table->string('c', 100)->nullable(false);
             $table->string('d', 100)->nullable(false);
             $table->string('kunci', 100)->nullable(false);
-            $table->timestamps();
+            $table->dateTime('created_at')->useCurrent();
+            $table->dateTime('updated_at')->nullable()->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });
     }
 

@@ -13,12 +13,23 @@
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
 
+    @if(in_array(Auth::user()->role, ['admin', 'mentor']))
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
         <a class="nav-link" href="{{ url('dashboard') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
+    @endif
+
+    @if(Auth::check() && Auth::user()->role == 'siswa')
+    <!-- Nav Item - Profil Saya -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{ url('dashboard') }}">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Profil Saya</span></a>
+    </li>
+    @endif
 
     <!-- Divider -->
     <hr class="sidebar-divider">

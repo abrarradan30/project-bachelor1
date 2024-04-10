@@ -530,7 +530,7 @@
 <!-- Form Profil Pengguna -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Data Diri</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Profil</h6>
     </div>
     <div class="card-body">
         <form>
@@ -551,21 +551,16 @@
                 <input type="text" class="form-control" id="name" name="nama" value="{{ Auth::user()->name }}" readonly>
             </div>
 
-            <!-- Input Email (Non-Editable) -->
+            <!-- Input Nama -->
             <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" class="form-control" id="email" name="email" value="{{ Auth::user()->email }}" readonly>
+                <label for="role">Role:</label>
+                <input type="text" class="form-control" id="role" name="role" value="{{ Auth::user()->role }}" readonly>
             </div>
 
-            <!-- Input Deskripsi Diri -->
-            <div class="form-group">
-                <label for="deskripsi_diri">Deskripsi Diri :</label>
-                <input id="deskripsi_diri" name="deskripsi_diri" type="text" class="form-control" value="{{ Auth::user()->deskripsi_diri }}" readonly>
-            </div>
 
             <!-- Submit Button -->
-            <button type="button" class="btn btn-warning btn-sm">
-                <a href="{{ url('profil/edit', ['id' => Auth::user()->id]) }}" style="text-decoration: none; color: inherit;">Edit</a>
+            <button type="button" class="btn btn-info btn-sm">
+                <a href="{{ url('profil')}}" style="text-decoration: none; color: inherit;">Detail</a>
             </button>
         </form>
     </div>

@@ -151,6 +151,7 @@ Route::get('/course_detail/show/{id}', [CourseDetailController::class, 'show']);
 Route::get('/checkout', [CheckoutController::class, 'index']);
 // route contact 
 Route::get('/contact', [ContactController::class, 'index']);
+Route::post('/contact/store', [ContactController::class, 'store']);
 // route forum 
 Route::get('/forum', [ForumController::class, 'index']);
 

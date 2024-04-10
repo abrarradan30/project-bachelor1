@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Contact;
+use RealRashid\SweetAlert\Facades\Alert;
+use DB;
 
 class ContactController extends Controller
 {
@@ -29,6 +32,21 @@ class ContactController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'name'       => 'required',
+            'email'      => 'required',
+            'subject'    => 'required',
+            'message'    => 'required',
+        ]);
+
+        DB::table('contact')->insert([
+            'name'       => $request->name,
+            'email'      => $request->email,
+            'subject'    => $request->subject,
+            'message'    => $request->message,
+        ]);
+
+        return redirect('contact');
     }
 
     /**

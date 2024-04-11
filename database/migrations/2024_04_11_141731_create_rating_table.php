@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('progres_belajar', function (Blueprint $table) {
+        Schema::create('rating', function (Blueprint $table) {
             $table->id();
             $table->integer('users_id');
             $table->integer('materi_id');
-            $table->integer('progres');
-            $table->enum('status_selesai', ['belum selesai', 'selesai']);
+            $table->enum('rating', ['1', '2', '3', '4', '5']);
             $table->dateTime('created_at')->useCurrent();
             $table->dateTime('updated_at')->nullable()->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('progres_belajar');
+        Schema::dropIfExists('rating');
     }
 };

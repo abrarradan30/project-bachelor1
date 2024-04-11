@@ -12,8 +12,8 @@
     <!-- Content Row -->
     <div class="row">
 
-        <!-- Earnings (Monthly) Card Example -->
-        <div class="col-xl-12 mb-4">
+    <!-- Earnings (Monthly) Card Example -->
+    <div class="col-xl-12 mb-4">
     <div class="card border-left-primary shadow h-100 py-2">
         <div class="card-body">
             <div class="row no-gutters align-items-center">
@@ -41,7 +41,7 @@
             <button class="btn btn-primary">Lanjutkan</button>
         </div>
     </div>
-</div>
+    </div>
 
     </div>
 

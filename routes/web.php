@@ -19,6 +19,7 @@ use App\Http\Controllers\MateriController;
 use App\Http\Controllers\MateriSayaController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\ProgresBelajarController;
+use App\Http\Controllers\RatingController;
 use App\Http\Controllers\SertifikatController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\FillPDFController;
@@ -90,6 +91,15 @@ Route::middleware(['peran:admin-mentor'])->group(function () {
     Route::get('/hasil_kuis/edit/{id}', [HasilKuisController::class, 'edit']);
     Route::post('/hasil_kuis/update', [HasilKuisController::class, 'update']);
     Route::get('/hasil_kuis/delete/{id}', [HasilKuisController::class, 'destroy']);
+
+    // route rating
+    Route::get('/rating', [RatingController::class, 'index']);
+    Route::get('/rating/create', [RatingController::class, 'create']);
+    Route::post('/rating/store', [RatingController::class, 'store']);
+    Route::get('/rating/show/{id}', [RatingController::class, 'show']);
+    Route::get('/rating/edit/{id}', [RatingController::class, 'edit']);
+    Route::post('/rating/update', [RatingController::class, 'update']);
+    Route::get('/rating/delete/{id}', [RatingController::class, 'destroy']);
 });
 
 // peran admin

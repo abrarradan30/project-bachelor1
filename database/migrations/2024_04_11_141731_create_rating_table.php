@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->integer('users_id');
             $table->integer('materi_id');
-            $table->enum('rating', ['1', '2', '3', '4', '5']);
+            $table->enum('rating', ['1', '2', '3', '4', '5'])->nullable(false);
+            $table->longText('feedback');
             $table->dateTime('created_at')->useCurrent();
             $table->dateTime('updated_at')->nullable()->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });

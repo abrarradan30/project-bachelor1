@@ -88,6 +88,7 @@
                 <a class="collapse-item" href="{{ url('progres_belajar') }}">Progres Belajar</a>
                 <a class="collapse-item" href="{{ url('kuis') }}">Kuis</a>
                 <a class="collapse-item" href="{{ url('hasil_kuis') }}">Hasil Kuis</a>
+                <a class="collapse-item" href="{{ url('rating') }}">Rating</a>
                 <a class="collapse-item" href="{{ url('sertifikat') }}">Sertifikat</a>
                 <a class="collapse-item" href="{{ url('forum_diskusi') }}">Forum Diskusi</a>
                 <a class="collapse-item" href="{{ url('balasan_diskusi') }}">Balasan Diskusi</a>
@@ -96,6 +97,7 @@
                 <a class="collapse-item" href="{{ url('progres_belajar') }}">Progres Belajar</a>
                 <a class="collapse-item" href="{{ url('kuis') }}">Kuis</a>
                 <a class="collapse-item" href="{{ url('hasil_kuis') }}">Hasil Kuis</a>
+                <a class="collapse-item" href="{{ url('rating') }}">Rating</a>
                 @endif
             </div>
         </div>

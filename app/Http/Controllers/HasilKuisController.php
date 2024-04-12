@@ -80,7 +80,7 @@ class HasilKuisController extends Controller
             ->where('hasil_kuis.id', $id)
             ->get();
 
-            return view('admin.hasil_kuis.detail', compact('hasil_kuis'));
+        return view('admin.hasil_kuis.detail', compact('hasil_kuis'));
     }
 
     /**
@@ -131,6 +131,6 @@ class HasilKuisController extends Controller
         //
         DB::table('hasil_kuis')->where('id', $id)->delete();
 
-        return redirect('admin/hasil_kuis');
+        return redirect('hasil_kuis');
     }
 }

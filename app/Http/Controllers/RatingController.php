@@ -38,7 +38,7 @@ class RatingController extends Controller
             ->select('rating.*', 'users.name as nama', 'materi.judul as judul_materi')
             ->get();
 
-        return view('admin.rating.index', compact('rating'));
+        return view('admin.rating.create', compact('rating', 'users', 'materi'));
     }
 
     /**
@@ -54,7 +54,7 @@ class RatingController extends Controller
             'feedback'     => 'required',
         ]);
 
-        DB::table('hasil_kuis')->insert([
+        DB::table('rating')->insert([
             'users_id'     => $request->users_id,
             'materi_id'    => $request->materi_id,
             'rating'       => $request->rating,
@@ -89,8 +89,9 @@ class RatingController extends Controller
         $users = DB::table('users')->get();
         $materi = DB::table('materi')->get();
         $rating = DB::table('rating')->where('id', $id)->get();
+        $ar_rating = ['1', '2', '3', '4', '5'];
 
-        return view('admin.rating.edit', compact('rating', 'users', 'materi'));
+        return view('admin.rating.edit', compact('rating', 'users', 'materi', 'ar_rating'));
     }
 
     /**

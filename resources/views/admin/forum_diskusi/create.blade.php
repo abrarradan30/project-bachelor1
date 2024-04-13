@@ -28,7 +28,7 @@
             <!-- Input Nama -->
             <div class="form-group">
                 <label for="nama">Nama :</label>
-                <input id="nama" name="nama" type="text" class="form-control @error('nama') is-invalid @enderror" placeholder="Masukkan Nama">
+                <input id="nama" name="nama" type="text" class="form-control @error('nama') is-invalid @enderror" value="{{ Auth::user()->name }}" readonly>
                 @error('nama')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -41,7 +41,7 @@
                 <label for="materi_id">Judul Materi :</label>
                 <select id="materi_id" name="materi_id" class="custom-select">
                     @foreach ($materi as $m)
-                        <option value="{{ $m->id }}">{{ $m->judul_materi }}</option>
+                        <option value="{{ $m->id }}">{{ $m->judul }}</option>
                     @endforeach
                 </select>
             </div>
@@ -49,7 +49,7 @@
             <!-- Input Pertanyaan -->
             <div class="form-group">
                 <label for="">Pertanyaan :</label>
-                <textarea id="pertanyaan" name="pertanyaan" cols="30" rows="10" class="form-control @error('judul_materi') is-invalid @enderror"></textarea>
+                <textarea id="pertanyaan" name="pertanyaan" cols="30" rows="10" class="form-control @error('pertanyaan') is-invalid @enderror"></textarea>
                 @error('pertanyaan')
                     <div class="invalid-feedback">
                         {{ $message }}

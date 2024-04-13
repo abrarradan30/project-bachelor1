@@ -80,15 +80,15 @@
             <div class="form-group">
                 <label>Kategori :</label>
                 <div class="form-check">
-                    <input name="kategori" id="it" type="radio" class="form-check-input" value="IT">
+                    <input name="kategori" id="kategori" type="radio" class="form-check-input" value="IT">
                     <label class="form-check-label" for="it">IT</label>
                 </div>
                 <div class="form-check">
-                    <input name="kategori" id="desain" type="radio" class="form-check-input" value="Desain">
+                    <input name="kategori" id="kategori" type="radio" class="form-check-input" value="Desain">
                     <label class="form-check-label" for="desain">Desain</label>
                 </div>
                 <div class="form-check">
-                    <input name="kategori" id="softskill" type="radio" class="form-check-input" value="Softskill">
+                    <input name="kategori" id="kategori" type="radio" class="form-check-input" value="Softskill">
                     <label class="form-check-label" for="softskill">Softskill</label>
                 </div>
             </div>

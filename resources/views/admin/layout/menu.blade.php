@@ -7,7 +7,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
             <!-- <i class="fas fa-laugh-wink"></i> -->
         </div>
-        <div class="sidebar-brand-text mx-3"><img src="{{('admin/img/logo_lms.png')}}" alt="logo_lms" height="30px"></div>
+        <div class="sidebar-brand-text mx-3"><img src="{{ asset('admin/img/logo_lms.png')}}" alt="logo_lms" height="30px"></div>
     </a>
 
     <!-- Divider -->

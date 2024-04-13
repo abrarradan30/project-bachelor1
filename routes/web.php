@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\BalasanDiskusiController;
+use App\Http\Controllers\CekProgresController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CourseController;
@@ -48,6 +49,12 @@ Route::post('/profil/update', [ProfilController::class, 'update']);
 // peran admin, siswa dan mentor
 Route::middleware(['peran:admin-siswa-mentor'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('index');
+
+    // route progres belajar
+    Route::get('/progres_belajar', [ProgresBelajarController::class, 'index']);
+
+    // route forum 
+    Route::get('/forum', [ForumController::class, 'index']);
 });
 
 // peran admin dan mentor
@@ -72,7 +79,7 @@ Route::middleware(['peran:admin-mentor'])->group(function () {
     Route::get('/detail_materi/delete/{id}', [DetailMateriController::class, 'destroy']);
 
     // route progres belajar
-    Route::get('/progres_belajar', [ProgresBelajarController::class, 'index']);
+    Route::get('/cek_progres', [CekProgresController::class, 'index']);
 
     // route kuis
     Route::get('/kuis', [KuisController::class, 'index']);
@@ -162,8 +169,6 @@ Route::get('/checkout', [CheckoutController::class, 'index']);
 // route contact 
 Route::get('/contact', [ContactController::class, 'index']);
 Route::post('/contact/store', [ContactController::class, 'store']);
-// route forum 
-Route::get('/forum', [ForumController::class, 'index']);
 
 Route::get('/acces_denied', function () {
     return view('/acces_denied');

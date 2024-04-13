@@ -6,8 +6,23 @@
 <div class="container-fluid">
 
 <!-- Page Heading -->
-<h1 class="h3 mb-2 text-gray-800">Tabel Progres Belajar</h1>
-<p class="mb-4">Halo {{ Auth::user()->name }} ! Ayo selesaikan materi-<b>Mu</b> dengan semangat dan tekad. Jangan ragu untuk bertanya, berkolaborasi, dan terus berusaha.</p>
+<h1 class="h3 mb-2 text-gray-800">Progres Belajar</h1>
+@if(in_array(Auth::user()->role, ['admin', 'siswa']))
+    <p class="mb-4">Halo {{ Auth::user()->name }} ! Ayo selesaikan materi-<b>Mu</b> dengan semangat dan tekad. 
+        Jangan ragu untuk bertanya dan berkolaborasi pada 
+        <a href="{{ url('forum') }}" style="text-decoration: none; color: inherit;"> <b class="text-warning"> forum diskusi </b> </a>.
+    </p>
+@endif
+
+@if(in_array(Auth::user()->role, ['admin', 'mentor']))
+<button type="button" class="btn btn-danger">
+    <a href="{{ url('cek_progres') }}" style="text-decoration: none; color: inherit;"><i class="fa fa-arrow-left"></i> &nbsp; Kembali</a>
+</button>
+@endif
+
+@foreach(range(1, 2) as $_) 
+    <br>
+@endforeach
 
     <!-- Content Row -->
     <div class="row">

@@ -29,7 +29,7 @@ class CheckoutController extends Controller
 
         $transaction = Transaction::create([
             'users_id' => Auth::users()->id,
-            'product_id' => $data['product_id'],
+            'materi_id' => $data['materi_id'],
             'price' => $data['price'],
             'status' => 'pending',
         ]);
@@ -55,6 +55,9 @@ class CheckoutController extends Controller
         );
         
         $snapToken = \Midtrans\Snap::getSnapToken($params);
+
+        $transaction->snap_token = $snapToken;
+        $transaction->save();
 
         return redirect()->route('checkout', $transaction->id);
     }

@@ -1,6 +1,7 @@
 @extends('frontend.index')
 
 @section('content')
+@if(in_array(Auth::user()->role, ['admin', 'siswa', 'mentor']))
 
 <!-- ======= Breadcrumbs ======= -->
 <div class="breadcrumbs" data-aos="fade-in">
@@ -459,5 +460,9 @@ helpful
 
 </body>
 </html>
+
+@else
+@include('auth.login')
+@endif 
 
 @endsection

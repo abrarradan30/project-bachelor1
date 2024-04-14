@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Materi;
 use App\Models\Transaction;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,7 +16,7 @@ class TransactionController extends Controller
         $transactions = Transaction::where('users_id', Auth::users()->id)->get();
 
         $transactions->transform(function ($transaction, $key) {
-            $transaction->product = collect(config('products'))->firstWhere('id', $transaction->product_id);
+            $transaction->materi = collect(config('materis'))->firstWhere('id', $transaction->materi_id);
             return $transaction;
         });
 

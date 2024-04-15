@@ -7,7 +7,9 @@
 
 <!-- Page Heading -->
 <h1 class="h3 mb-2 text-gray-800">Cek Progres Belajar Siswa/Mahasiswa</h1>
-<p class="mb-4">Halo {{ Auth::user()->name }} ! Cek sejauh mana kemajuan siswa/mahasiswa dalam mempelajari suatu materi. </p>
+<p class="mb-4">Halo {{ Auth::user()->name }} ! Cek sejauh mana kemajuan siswa/mahasiswa dalam mempelajari suatu materi. 
+<a href="{{ url('forum') }}" style="text-decoration: none; color: inherit;"> Cek juga <b class="text-warning"> forum diskusi </b> </a>.
+</p>
 
     <!-- Content Row -->
     <div class="row">

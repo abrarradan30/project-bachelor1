@@ -23,12 +23,10 @@
     </div>
     <div class="card-body">
     @foreach($materi as $m)
-        <form>
-        {{ csrf_field() }}
             <!-- Input Nama -->
             <div class="form-group">
                 <label for="judul">Judul Materi :</label>
-                <input type="text" class="form-control" id="judul" name="judul" value="{{ $m->judul }}" readonly>
+                <input type="text" class="form-control" id="judul" name="judul" value="{{ $m->judul }} " readonly>
             </div>
             <br>
             <div class="form-group">
@@ -51,9 +49,7 @@
                 <input type="text" class="form-control" id="harga" name="harga" readonly>
             </div>
             <br>
-            <!-- Submit Button -->
-            <button type="submit" class="btn btn-primary" id="pay-button">Bayar Sekarang</button>
-        </form>
+            <button type="button" class="btn btn-primary" id="pay-button">Bayar Sekarang</button>
     @endforeach
     </div>
 </div>

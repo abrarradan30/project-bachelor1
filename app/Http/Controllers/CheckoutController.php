@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Materi;
+use App\Models\Transaction;
 use DB;
 
 class CheckoutController extends Controller
@@ -20,7 +21,8 @@ class CheckoutController extends Controller
         //
         $materi =  DB::table('materi')->where('id', $id)->get();
 
-        return view('checkout', compact('materi'));
+        $transaction = new Transaction();
+        return view('checkout', compact('materi', 'transaction'));
     }
 
     public function process(Request $request)

@@ -18,6 +18,7 @@ use App\Http\Controllers\HasilKuisController;
 use App\Http\Controllers\KuisController;
 use App\Http\Controllers\MateriController;
 use App\Http\Controllers\MateriSayaController;
+use App\Http\Controllers\ModulController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\ProgresBelajarController;
 use App\Http\Controllers\RatingController;
@@ -164,11 +165,11 @@ Route::get('/course', [CourseController::class, 'index']);
 // route course_detail 
 Route::get('/course_detail', [CourseDetailController::class, 'index']);
 Route::get('/course_detail/show/{id}', [CourseDetailController::class, 'show']);
-// route checkout 
-Route::get('/checkout', [CheckoutController::class, 'index']);
 // route contact 
 Route::get('/contact', [ContactController::class, 'index']);
 Route::post('/contact/store', [ContactController::class, 'store']);
+
+Route::get('/modul', [ModulController::class, 'index']);
 
 Route::get('/acces_denied', function () {
     return view('/acces_denied');

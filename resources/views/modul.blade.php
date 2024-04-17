@@ -1,4 +1,4 @@
-@extends('modul.index')
+@extends('modul_materi.index')
 
 @section('content')
 

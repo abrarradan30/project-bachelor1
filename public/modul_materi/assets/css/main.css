@@ -2257,17 +2257,17 @@ section,
 }
 
 .service-details .services-list a.active {
-  color: var(--contrast-color);
+  color: #4169E1;
   background-color: #4169E1;
 }
 
 .service-details .services-list a.active i {
-  color: var(--contrast-color);
+  color: #4169E1;
 }
 
 .service-details .services-list a:hover {
-  background-color: rgba(var(--accent-color-rgb), 0.05);
-  color: var(--accent-color);
+  background-color: #4169E1;
+  color: #ffffff;
 }
 
 .service-details .download-catalog a {

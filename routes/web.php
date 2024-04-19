@@ -51,6 +51,12 @@ Route::post('/profil/update', [ProfilController::class, 'update']);
 Route::middleware(['peran:admin-siswa-mentor'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('index');
 
+    // route checkout
+    Route::get('/checkout/show/{id}', [CheckoutController::class, 'show']);
+
+    // route modul
+    Route::get('/modul', [ModulController::class, 'index']);
+
     // route progres belajar
     Route::get('/progres_belajar', [ProgresBelajarController::class, 'index']);
 
@@ -148,8 +154,6 @@ Route::middleware(['peran:admin'])->group(function () {
     Route::post('balasan_diskusi/update/{id}', [BalasanDiskusiController::class, 'update']);
     Route::get('/balasan_diskusi/delete/{id}', [BalasanDiskusiController::class, 'destroy']);
 
-    // route checkout
-    Route::get('/checkout/show/{id}', [CheckoutController::class, 'show']);
 });
 
 // route materi saya
@@ -169,18 +173,12 @@ Route::get('/course_detail/show/{id}', [CourseDetailController::class, 'show']);
 Route::get('/contact', [ContactController::class, 'index']);
 Route::post('/contact/store', [ContactController::class, 'store']);
 
-Route::get('/modul', [ModulController::class, 'index']);
-
 Route::get('/acces_denied', function () {
     return view('/acces_denied');
 });
 
 Route::get('/after_register', function () {
     return view('/after_register');
-});
-
-Route::get('/course2', function () {
-    return view('/course2');
 });
 
 //Route::post('/buat', [FillPDFController::class, 'process'])->name('buat');

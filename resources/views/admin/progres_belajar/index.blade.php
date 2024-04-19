@@ -53,7 +53,9 @@
             </div>
         </div>
         <div class="col-auto ml-auto">
-            <button class="btn btn-primary">Lanjutkan</button>
+            <button class="btn btn-primary">
+                <a href="{{ url('modul') }}" style="text-decoration: none; color: inherit;">Lanjutkan</a>
+            </button>
         </div>
     </div>
     </div>

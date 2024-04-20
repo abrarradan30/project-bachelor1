@@ -67,6 +67,23 @@
               Accusantium labore reprehenderit error temporibus saepe perferendis fuga doloribus vero. Qui omnis quo sit. 
               Dolorem architecto eum et quos deleniti officia qui.
             </p>
+            <div>
+              <hr>
+              <p>
+                Untuk menguji pengetahuan Anda tentang seluruh materi yang telah dipelajari,
+                terdapat beberapa pertanyaan yang harus dikerjakan dalam kuis ini.
+              </p>
+              <p> 
+                Syarat skor lulus = 75%, Jika gagal, maka Anda harus mmengulang pengerjaan kuis kembali.
+              </p>
+              <button id="restart-btn" class="btn btn-success">
+                <a href="{{ url('kuis') }}" style="text-decoration: none; color: inherit;">Mulai Kuis!</a>
+              </button>
+              <p></p>
+              <p>Skor anda : <span id="quiz-score">0%</span></p>
+              <p>Status : Gagal</p>
+              <button id="restart-btn" class="btn btn-warning">Cetak Sertifikat</button>
+            </div>
           </div>
 
         </div>

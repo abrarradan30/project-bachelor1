@@ -31,7 +31,7 @@
   <header id="header" class="header sticky-top d-flex align-items-center">
     <div class="container-fluid d-flex align-items-center justify-content-between">
     
-      <a class="btn-getstarted" href="{{ url('progres_belajar') }}">Materi-Ku</a>
+      <a class="btn-getstarted" href="{{ url('modul') }}">Modul</a>
 
       <!-- Nav Menu -->
       <nav id="navmenu" class="navmenu">
@@ -42,18 +42,48 @@
     </div>
   </header><!-- End Header -->
 
-  <main>
-    <div class="question">
-      <h2>Question 1:</h2>
-      <p>What is the capital of France?</p>
-      <div class="options">
-        <label><input type="radio" name="q1" value="a">a) London</label><br>
-        <label><input type="radio" name="q1" value="b">b) Paris</label><br>
-        <label><input type="radio" name="q1" value="c">c) Berlin</label><br>
-        <label><input type="radio" name="q1" value="d">d) Rome</label><br>
+  <main id="main">
+
+    <!-- Page Title -->
+    <div data-aos="fade" class="page-title">
+      <nav class="breadcrumbs">
+        <div class="container">
+          <ol>
+            <li>Kuis Materi </li>
+            <li class="current">Level </li>
+          </ol>
+        </div>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <!-- Service Details Section -->
+    <section id="service-details" class="service-details">
+
+      <div class="container">
+
+        <div class="row gy-5">
+
+          
+
+          <div class="col-lg-8 ps-lg-5" data-aos="fade-up" data-aos-delay="200">
+            <div class="question">
+              <h3>1. What is the capital of France?</h3>
+              <div class="options">
+                <label><input type="radio" name="q1" value="a">a) London</label><br>
+                <label><input type="radio" name="q1" value="b">b) Paris</label><br>
+                <label><input type="radio" name="q1" value="c">c) Berlin</label><br>
+                <label><input type="radio" name="q1" value="d">d) Rome</label><br>
+              </div>
+            </div>
+            <button class="btn btn-success">Selesai</button>
+          </div>
+
+        </div>
+
       </div>
-    </div>
-    <!-- Add more questions here -->
+
+    </section><!-- End Service-details Section -->
+
   </main>
 
   <!-- Scroll Top Button -->

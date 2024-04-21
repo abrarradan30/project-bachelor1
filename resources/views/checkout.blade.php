@@ -1,7 +1,6 @@
 @extends('frontend.index')
 
 @section('content')
-@if(in_array(Auth::user()->role, ['admin', 'siswa', 'mentor']))
 
 <!-- ======= Breadcrumbs ======= -->
 <div class="breadcrumbs" data-aos="fade-in">
@@ -41,31 +40,38 @@
             <br>
             <div class="form-group">
                 <label for="voucher">Voucher (*jika ada) :</label>
-                <input type="text" class="form-control" id="voucher" name="voucher" readonly>
+                <input type="text" class="form-control" id="voucher" name="voucher">
             </div>
             <br>
-            <div class="form-group">
-                <label for="harga">Total Bayar :</label>
-                <input type="text" class="form-control" id="harga" name="harga" readonly>
-            </div>
-            <br>
-            <button type="button" class="btn btn-primary" id="pay-button">Bayar Sekarang</button>
+            <button type="button" class="btn btn-primary" id="pay-button" onclick="payNow()">Bayar Sekarang</button>
     @endforeach
     </div>
 </div>
 
 </div>
 
-@else
-@include('auth.login')
-@endif 
-
 @endsection
 
 @section('scripts')
     <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ env('MIDTRANS_CLIENT_KEY') }}"></script>
     <script type="text/javascript">
-      document.getElementById('pay-button').onclick = function(){
+      function payNow() {
+        var voucher = document.getElementById('voucher').value;
+
+        // Jika input voucher adalah "LMSHEMAT"
+        if (voucher.toUpperCase() === "LMSHEMAT") {
+            var harga = parseFloat(document.getElementById('harga').value);
+            var hargaDiskon = harga * 0.5; // Diskon 50%
+
+            snap.pay({
+                // Berikan harga diskon pada pembayaran
+                "transaction_details": {
+                    "order_id": "{{ $transaction->order_id }}",
+                    "gross_amount": hargaDiskon
+                }
+            });
+        } else {
+
         // SnapToken acquired from previous step
         snap.pay('{{ $transaction->snap_token }}', {
           // Optional
@@ -84,6 +90,7 @@
             document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
           }
         });
-      };
+      }
+      }
     </script>
 @endsection

@@ -20,6 +20,7 @@ use App\Http\Controllers\KuisFrontController;
 use App\Http\Controllers\MateriController;
 use App\Http\Controllers\MateriSayaController;
 use App\Http\Controllers\ModulController;
+use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\ProgresBelajarController;
 use App\Http\Controllers\RatingController;
@@ -125,6 +126,15 @@ Route::middleware(['peran:admin'])->group(function () {
     Route::get('/user/edit/{id}', [UserController::class, 'edit']);
     Route::post('/user/update', [UserController::class, 'update']);
 
+    // route pembayaran
+    Route::get('/pembayaran', [PembayaranController::class, 'index']);
+    Route::get('/pembayaran/create', [PembayaranController::class, 'create']);
+    Route::post('/pembayaran/store', [PembayaranController::class, 'store']);
+    Route::get('/pembayaran/show/{id}', [PembayaranController::class, 'show']);
+    Route::get('/pembayaran/edit/{id}', [PembayaranController::class, 'edit']);
+    Route::post('/pembayaran/update', [PembayaranController::class, 'update']);
+    Route::get('/pembayaran/delete/{id}', [PembayaranController::class, 'destroy']);
+
     // route sertifikat
     Route::get('/sertifikat', [SertifikatController::class, 'index']);
     Route::get('/sertifikat/create', [SertifikatController::class, 'create']);
@@ -154,7 +164,6 @@ Route::middleware(['peran:admin'])->group(function () {
     Route::get('/balasan_diskusi/edit/{id}', [BalasanDiskusiController::class, 'edit']);
     Route::post('balasan_diskusi/update/{id}', [BalasanDiskusiController::class, 'update']);
     Route::get('/balasan_diskusi/delete/{id}', [BalasanDiskusiController::class, 'destroy']);
-
 });
 
 // route materi saya

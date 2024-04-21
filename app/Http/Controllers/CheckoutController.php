@@ -29,10 +29,13 @@ class CheckoutController extends Controller
     {
         $data = $request->all();
 
+        $materi = Materi::find($data['materi_id']);
+        $hargaMateri = $materi->harga;
+
         $transaction = Transaction::create([
-            'users_id' => Auth::users()->id,
+            'user_id' => Auth::user()->id,
             'materi_id' => $data['materi_id'],
-            'price' => $data['price'],
+            'price' => $hargaMateri,
             'status' => 'pending',
         ]);
 
@@ -48,11 +51,11 @@ class CheckoutController extends Controller
         $params = array(
             'transaction_details' => array(
                 'order_id' => rand(),
-                'gross_amount' => $data['price'],
+                'gross_amount' => $hargaMateri,
             ),
             'customer_details' => array(
-                'first_name' => Auth::users()->name,
-                'email' => Auth::users()->email,
+                'first_name' => Auth::user()->name,
+                'email' => Auth::user()->email,
             )
         );
         
@@ -66,9 +69,9 @@ class CheckoutController extends Controller
 
     public function checkout(Transaction $transaction)
     {
-        $products = config('products');
-        $product = collect($products)->firstWhere('id', $transaction->product_id);
+        $materis = config('materis');
+        $materi = collect($materis)->firstWhere('id', $transaction->materi_id);
 
-        return view('checkout',  compact('transaction', 'product'));
+        return view('checkout',  compact('transaction', 'materi'));
     }
 }

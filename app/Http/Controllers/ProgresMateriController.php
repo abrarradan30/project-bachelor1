@@ -8,7 +8,7 @@ use App\Models\User;
 use App\Models\Materi;
 use DB;
 
-class MateriSayaController extends Controller
+class ProgresMateriController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,7 +21,7 @@ class MateriSayaController extends Controller
             ->select('progres_belajar.*', 'users.name as nama', 'materi.judul')
             ->get();
 
-        return view('admin.materi_saya.index', compact('progres_belajar'));
+        return view('admin.progres_materi.index', compact('progres_belajar'));
     }
 
     /**
@@ -37,7 +37,7 @@ class MateriSayaController extends Controller
             ->select('progres_belajar.*', 'users.name as nama', 'materi.judul')
             ->get();
         
-        return view('admin.materi_saya.create', compact('progres_belajar', 'users', 'materi'));
+        return view('admin.progres_materi.create', compact('progres_belajar', 'users', 'materi'));
     }
 
     /**

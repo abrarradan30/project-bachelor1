@@ -38,7 +38,7 @@
             <!-- Input Sub Judul -->
             <div class="form-group">
                 <label for="sub_judul">Sub Judul :</label>
-                <input id="sub_judul" name="sub_judul" type="text" class="form-control @error('sub_judul') is-invalid @enderror" placeholder="Masukkan sub judul">
+                <input id="sub_judul" name="sub_judul" type="text" class="form-control @error('sub_judul') is-invalid @enderror" placeholder="Masukkan no.urut dan sub judul (1. modul A)">
                 @error('sub_judul')
                     <div class="invalid-feedback">
                         {{ $message }}

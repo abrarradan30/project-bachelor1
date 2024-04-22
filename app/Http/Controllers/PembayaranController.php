@@ -49,6 +49,20 @@ class PembayaranController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            // 'users_id'      => 'required',
+            'materi_id'     => 'required',
+            'status'        => 'required',
+        ]);
+
+        Pembayaran::create([
+            'users_id'       => auth()->user()->id,
+            'materi_id'      => $request->materi_id,
+            'status'         => $request->status, 
+        ]);
+ 
+        Alert::success('Pembayaran', 'Berhasil menambahkan pembayaran');
+        return redirect('pembayaran');
     }
 
     /**
@@ -81,5 +95,8 @@ class PembayaranController extends Controller
     public function destroy(string $id)
     {
         //
+        DB::table('pembayaran')->where('id', $id)->delete();
+
+        return redirect('pembayaran');
     }
 }

@@ -28,6 +28,7 @@
                         <th>Nama</th>
                         <th>Judul Materi</th>
                         <th>Status</th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tfoot>
@@ -36,6 +37,7 @@
                         <th>Nama</th>
                         <th>Judul Materi</th>
                         <th>Status</th>
+                        <th>Aksi</th>
                     </tr>
                 </tfoot>
                 <tbody>

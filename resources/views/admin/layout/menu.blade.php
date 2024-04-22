@@ -85,6 +85,7 @@
                 @if(Auth::check() && Auth::user()->role == 'admin')
                 <a class="collapse-item" href="{{ url('detail_materi') }}">Detail Materi</a>
                 <a class="collapse-item" href="{{ url('pembayaran') }}">Pembayaran</a>
+                <a class="collapse-item" href="{{ url('progres_belajar') }}">Progres Belajar</a>
                 <a class="collapse-item" href="{{ url('cek_progres') }}">Cek Progres Belajar</a>
                 <a class="collapse-item" href="{{ url('kuis') }}">Kuis</a>
                 <a class="collapse-item" href="{{ url('hasil_kuis') }}">Hasil Kuis</a>
@@ -107,7 +108,7 @@
     @if(in_array(Auth::user()->role, ['admin', 'siswa']))
     <!-- Nav Item - Materi Saya -->
     <li class="nav-item">
-        <a class="nav-link" href="{{ url('progres_belajar') }}">
+        <a class="nav-link" href="{{ url('progres_materi') }}">
             <i class="fas fa-fw fa-table"></i>
             <span>Materi-Ku</span></a>
     </li>

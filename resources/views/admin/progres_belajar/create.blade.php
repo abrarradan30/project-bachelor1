@@ -41,20 +41,21 @@
                 </select>
             </div>
 
-            <!-- Input Status Pembayaran (Radio Button) -->
             <div class="form-group">
-                <label>Status Pembayaran :</label>
+                <label for="progres">Progres :</label>
+                <input type="number" id="progres" name="progres" class="form-control @error('progres') is-invalid @enderror" value="0">
+            </div>
+
+            <!-- Input Status Selesai (Radio Button) -->
+            <div class="form-group">
+                <label>Status Selesai :</label>
                 <div class="form-check">
-                    <input name="status" id="status" type="radio" class="form-check-label" value="pending">
-                    <label class="form-check-label" for="pending">Pending</label>
+                    <input name="status_selesai" id="status_selesai" type="radio" class="form-check-label" value="belum selesai">
+                    <label class="form-check-label" for="belum selesai">Belum Selesai</label>
                 </div>
                 <div class="form-check">
-                    <input name="status" id="status" type="radio" class="form-check-label" value="succes">
-                    <label class="form-check-label" for="succes">Succes</label>
-                </div>
-                <div class="form-check">
-                    <input name="status" id="status" type="radio" class="form-check-label" value="failed">
-                    <label class="form-check-label" for="failed">Failed</label>
+                    <input name="status_selesai" id="status_selesai" type="radio" class="form-check-label" value="selesai">
+                    <label class="form-check-label" for="selesai">Selesai</label>
                 </div>
             </div>
 
@@ -63,7 +64,7 @@
                 <button type="submit" class="btn btn-primary">Simpan</button> &nbsp;
         </form>
             <button type="button" class="btn btn-danger">
-                    <a href="{{ url('hasil_kuis') }}" style="text-decoration: none; color: inherit;">Batal</a>
+                    <a href="{{ url('progres_belajar') }}" style="text-decoration: none; color: inherit;">Batal</a>
             </button>
             </div>
     </div>

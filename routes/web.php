@@ -18,7 +18,7 @@ use App\Http\Controllers\HasilKuisController;
 use App\Http\Controllers\KuisController;
 use App\Http\Controllers\KuisFrontController;
 use App\Http\Controllers\MateriController;
-use App\Http\Controllers\MateriSayaController;
+use App\Http\Controllers\ProgresMateriController;
 use App\Http\Controllers\ModulController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\ProfilController;
@@ -58,9 +58,6 @@ Route::middleware(['peran:admin-siswa-mentor'])->group(function () {
 
     // route modul
     Route::get('/modul', [ModulController::class, 'index']);
-
-    // route progres belajar
-    Route::get('/progres_belajar', [ProgresBelajarController::class, 'index']);
 
     // route forum 
     Route::get('/forum', [ForumController::class, 'index']);
@@ -135,6 +132,15 @@ Route::middleware(['peran:admin'])->group(function () {
     Route::post('/pembayaran/update', [PembayaranController::class, 'update']);
     Route::get('/pembayaran/delete/{id}', [PembayaranController::class, 'destroy']);
 
+    // route progres belajar
+    Route::get('/progres_belajar', [ProgresBelajarController::class, 'index']);
+    Route::get('/progres_belajar/create', [ProgresBelajarController::class, 'create']);
+    Route::post('/progres_belajar/store', [ProgresBelajarController::class, 'store']);
+    Route::get('/progres_belajar/show/{id}', [ProgresBelajarController::class, 'show']);
+    Route::get('/progres_belajar/edit/{id}', [ProgresBelajarController::class, 'edit']);
+    Route::post('/progres_belajar/update', [ProgresBelajarController::class, 'update']);
+    Route::get('/progres_belajar/delete/{id}', [ProgresBelajarController::class, 'destroy']);
+
     // route sertifikat
     Route::get('/sertifikat', [SertifikatController::class, 'index']);
     Route::get('/sertifikat/create', [SertifikatController::class, 'create']);
@@ -166,8 +172,8 @@ Route::middleware(['peran:admin'])->group(function () {
     Route::get('/balasan_diskusi/delete/{id}', [BalasanDiskusiController::class, 'destroy']);
 });
 
-// route materi saya
-Route::get('/materi_saya', [MateriSayaController::class, 'index']);
+// route progres materi
+Route::get('/progres_materi', [ProgresMateriController::class, 'index']);
 
 // route frontend
 //route front

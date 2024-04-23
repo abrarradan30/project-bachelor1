@@ -45,7 +45,7 @@
           <li><a href="{{url('/')}}">Home</a></li>
           <li><a href="{{url('about')}}">About</a></li>
           <li><a href="{{url('course')}}">Course</a></li>
-          <li class="dropdown"><a href="#"><span>Category</span> <i class="bi bi-chevron-down"></i></a>
+          <!-- <li class="dropdown"><a href="#"><span>Category</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="#">IT</a></li>
               <li><a href="#">Desain</a></li>
@@ -60,7 +60,7 @@
                 </ul>
               </li>
             </ul>
-          </li>
+          </li> -->
           <li><a href="{{url('contact')}}">Contact</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>

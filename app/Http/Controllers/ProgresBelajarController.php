@@ -19,7 +19,7 @@ class ProgresBelajarController extends Controller
         //
         $progres_belajar = ProgresBelajar::join('users', 'progres_belajar.users_id', '=', 'users.id')
             ->join('materi', 'progres_belajar.materi_id', '=', 'materi.id')
-            ->select('progres_belajar.*', 'users.name as nama', 'materi.judul')
+            ->select('progres_belajar.*', 'users.name as nama', 'materi.judul as judul_materi')
             ->get();
 
         return view('admin.progres_belajar.index', compact('progres_belajar'));
@@ -35,7 +35,7 @@ class ProgresBelajarController extends Controller
         $materi = DB::table('materi')->get();
         $progres_belajar = ProgresBelajar::join('users', 'progres_belajar.users_id', '=', 'users.id')
             ->join('materi', 'progres_belajar.materi_id', '=', 'materi.id')
-            ->select('progres_belajar.*', 'users.name as nama', 'materi.judul')
+            ->select('progres_belajar.*', 'users.name as nama', 'materi.judul as judul_materi')
             ->get();
         
         return view('admin.progres_belajar.create', compact('progres_belajar', 'users', 'materi'));
@@ -47,6 +47,23 @@ class ProgresBelajarController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            // 'users_id'          => 'required',
+            'materi_id'         => 'required',
+            'progres'           => 'required',
+            'status_selesai'    => 'required',
+        ]);
+
+        ProgresBelajar::create([
+            'users_id'           => auth()->user()->id,
+            'materi_id'          => $request->materi_id,
+            'progres'            => $request->progres, 
+            'status_selesai'     => $request->status_selesai, 
+        ]);
+ 
+        Alert::success('Progres Belajar', 'Berhasil menambahkan progres belajar');
+        return redirect('progres_belajar');
+
     }
 
     /**
@@ -79,5 +96,8 @@ class ProgresBelajarController extends Controller
     public function destroy(string $id)
     {
         //
+        DB::table('progres_belajar')->where('id', $id)->delete();
+
+        return redirect('progres_belajar');
     }
 }

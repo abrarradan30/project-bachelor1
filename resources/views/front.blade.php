@@ -140,7 +140,7 @@
               @endempty
               <div class="course-content">
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h4>{{{ $m->level }}}</h4>
+                    <h4>{{ $m->level }}</h4>
                     <p class="price">Rp {{ number_format($m->harga, 0, ',', '.') }}</p>
                 </div>
                 <h3>{{ $m->judul }}</h3>

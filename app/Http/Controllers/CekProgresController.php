@@ -17,17 +17,13 @@ class CekProgresController extends Controller
     public function index()
     {
         //
-        $materi = Materi::count();
-        $ar_cek_progres = DB::table('users')->get();
-        $ar_materi = Materi::all();
-
-        return view('course', compact('materi', 'ar_materi'));
+        $ar_cek_progres = ProgresBelajar::all();
         $cek_progres = ProgresBelajar::join('users', 'progres_belajar.users_id', '=', 'users.id')
             ->join('materi', 'progres_belajar.materi_id', '=', 'materi.id')
             ->select('progres_belajar.*', 'users.name as nama', 'materi.judul')
             ->get();
 
-        return view('admin.cek_progres.index', compact('cek_progres'));
+        return view('admin.cek_progres.index', compact('cek_progres', 'ar_cek_progres'));
     }
 
     /**

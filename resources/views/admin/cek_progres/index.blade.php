@@ -14,24 +14,25 @@
     <!-- Content Row -->
     <div class="row">
 
-    <!-- Earnings (Monthly) Card Example -->
-    <div class="col-xl-12 mb-4">
-    <div class="card border-left-primary shadow h-100 py-2">
-        <div class="card-body">
-            <div class="row no-gutters align-items-center">
-                <div class="col mr-2">
-                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" style="font-size: 20px;">Progres Belajar : </div>
+        <!-- Earnings (Monthly) Card Example -->
+        @foreach($cek_progres->take(10) as $cp)
+        <div class="col-xl-12 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" style="font-size: 20px;">Progres Belajar &#10154; &nbsp; {{ $cp->nama }}</div>
+                        </div>
+                        <div class="col-auto ml-auto">
+                            <a href="{{ url('progres_materi') }}">
+                                <button class="btn btn-primary">Cek Progres</button>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-auto ml-auto">
-            <a href="{{ url('progres_belajar') }}">
-            <button class="btn btn-primary">Cek Progres</button>
-            </a>
-        </div>
             </div>
         </div>
-        
-    </div>
-    </div>
+        @endforeach
 
     </div>
 

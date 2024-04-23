@@ -23,7 +23,7 @@
                 </ul>
             </div>
         @endif
-        <form method="POST" action="{{ url('pembayaran/store') }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ url('progres_belajar/store') }}" enctype="multipart/form-data">
         {{ csrf_field() }}
             <!-- Input Nama -->
             <div class="form-group">
@@ -50,7 +50,7 @@
             <div class="form-group">
                 <label>Status Selesai :</label>
                 <div class="form-check">
-                    <input name="status_selesai" id="status_selesai" type="radio" class="form-check-label" value="belum selesai">
+                    <input name="status_selesai" id="status_selesai" type="radio" class="form-check-label" value="belum selesai" checked>
                     <label class="form-check-label" for="belum selesai">Belum Selesai</label>
                 </div>
                 <div class="form-check">

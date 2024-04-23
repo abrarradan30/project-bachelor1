@@ -51,7 +51,7 @@
                 <input id="foto" name="foto" type="file" class="form-control-file">
                 @if (!empty($u->foto))
                 <div class="mt-2">
-                    <img src="{{ url('admin/img') }}/{{ $u->foto }}" width="50%">
+                    <img src="{{ url('admin/img') }}/{{ $u->foto }}" width="10%" height="15%">
                     <br>{{ $u->foto }}
                 </div>
                 @endif

@@ -24,7 +24,7 @@
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" style="font-size: 20px;">Progres Belajar &#10154; &nbsp; {{ $cp->nama }}</div>
                         </div>
                         <div class="col-auto ml-auto">
-                            <a href="{{ url('progres_materi') }}">
+                            <a href="{{ url('progres_materi/show/'.$cp->id) }}">
                                 <button class="btn btn-primary">Cek Progres</button>
                             </a>
                         </div>

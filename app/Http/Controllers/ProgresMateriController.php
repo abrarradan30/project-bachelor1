@@ -16,12 +16,14 @@ class ProgresMateriController extends Controller
     public function index()
     {
         //
-        $progres_belajar = ProgresBelajar::join('users', 'progres_belajar.users_id', '=', 'users.id')
+        $users = DB::table('users')->get();
+        $materi = DB::table('materi')->get();
+        $progres_materi = ProgresBelajar::join('users', 'progres_belajar.users_id', '=', 'users.id')
             ->join('materi', 'progres_belajar.materi_id', '=', 'materi.id')
             ->select('progres_belajar.*', 'users.name as nama', 'materi.judul')
             ->get();
 
-        return view('admin.progres_materi.index', compact('progres_belajar'));
+        return view('admin.progres_materi.index', compact('progres_materi', 'users', 'materi'));
     }
 
     /**
@@ -30,14 +32,6 @@ class ProgresMateriController extends Controller
     public function create()
     {
         //
-        $users = DB::table('users')->get();
-        $materi = DB::table('materi')->get();
-        $progres_belajar = ProgresBelajar::join('users', 'progres_belajar.users_id', '=', 'users.id')
-            ->join('materi', 'progres_belajar.materi_id', '=', 'materi.id')
-            ->select('progres_belajar.*', 'users.name as nama', 'materi.judul')
-            ->get();
-        
-        return view('admin.progres_materi.create', compact('progres_belajar', 'users', 'materi'));
     }
 
     /**
@@ -51,9 +45,12 @@ class ProgresMateriController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
         //
+        $progres_materi =  DB::table('progres_belajar')->where('id', $id)->get();
+
+        return view('admin.progres_materi.index', compact('progres_materi'));
     }
 
     /**

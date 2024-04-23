@@ -18,11 +18,11 @@ use App\Http\Controllers\HasilKuisController;
 use App\Http\Controllers\KuisController;
 use App\Http\Controllers\KuisFrontController;
 use App\Http\Controllers\MateriController;
-use App\Http\Controllers\ProgresMateriController;
 use App\Http\Controllers\ModulController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\ProgresBelajarController;
+use App\Http\Controllers\ProgresMateriController;
 use App\Http\Controllers\RatingController;
 use App\Http\Controllers\SertifikatController;
 use App\Http\Controllers\UserController;
@@ -188,6 +188,10 @@ Route::get('/course_detail/show/{id}', [CourseDetailController::class, 'show']);
 // route contact 
 Route::get('/contact', [ContactController::class, 'index']);
 Route::post('/contact/store', [ContactController::class, 'store']);
+
+// route course_detail 
+Route::get('/progres_materi', [ProgresMateriController::class, 'index']);
+Route::get('/progres_materi/show/{id}', [ProgresMateriController::class, 'show']);
 
 Route::get('/kuis', [KuisFrontController::class, 'index']);
 

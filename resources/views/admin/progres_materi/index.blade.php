@@ -55,7 +55,7 @@
         </div>
         <div class="col-auto ml-auto">
             <button class="btn btn-primary">
-                <a href="{{ url('modul') }}" style="text-decoration: none; color: inherit;">Lanjutkan</a>
+                <a href="{{ url('modul/show/'.$pm->id) }}" style="text-decoration: none; color: inherit;">Lanjutkan</a>
             </button>
         </div>
     </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\DetailMateri;
+use App\Models\Materi;
 use DB;
 
 class ModulController extends Controller
@@ -14,7 +15,12 @@ class ModulController extends Controller
     public function index()
     {
         //
-        return view('modul');
+        $modul = DB::table('detail_materi')
+            ->join('materi', 'detail_materi.materi_id', '=', 'materi.id')
+            ->select('detail_materi.*', 'materi.judul', 'materi.level')
+            ->get();
+
+        return view('modul', compact('modul'));
     }
 
     /**
@@ -36,9 +42,16 @@ class ModulController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
         //
+        $modul = DB::table('detail_materi')
+            ->join('materi', 'detail_materi.materi_id', '=', 'materi.id')
+            ->select('detail_materi.*', 'materi.judul', 'materi.level')
+            ->where('detail_materi.id', $id)
+            ->get();
+
+        return view('modul', compact('modul'));
     }
 
     /**

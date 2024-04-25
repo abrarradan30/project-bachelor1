@@ -50,10 +50,10 @@ class ProgresMateriController extends Controller
     {
         //
         $progres_materi = ProgresBelajar::join('users', 'progres_belajar.users_id', '=', 'users.id')
-        ->join('materi', 'progres_belajar.materi_id', '=', 'materi.id')
-        ->select('progres_belajar.*', 'users.name as nama', 'materi.judul')
-        ->where('progres_belajar.id', $id)
-        ->get();
+            ->join('materi', 'progres_belajar.materi_id', '=', 'materi.id')
+            ->select('progres_belajar.*', 'users.name as nama', 'materi.judul')
+            ->where('progres_belajar.id', $id)
+            ->get();
 
         return view('admin.progres_materi.index', compact('progres_materi'));
     }

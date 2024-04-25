@@ -21,17 +21,19 @@
 
   <main id="main">
 
+  @foreach($modul as $md)
     <!-- Page Title -->
     <div data-aos="fade" class="page-title">
       <nav class="breadcrumbs">
         <div class="container">
           <ol>
-            <li>Materi </li>
-            <li class="current">Level </li>
+            <li>Materi {{ $md->judul }}</li>
+            <li class="current">Level {{ $md->level }}</li>
           </ol>
         </div>
       </nav>
     </div><!-- End Page Title -->
+    @endforeach
 
     <!-- Service Details Section -->
     <section id="service-details" class="service-details">
@@ -45,9 +47,11 @@
             <div class="service-box">
               <h4>Modul</h4>
               <div class="services-list">
-                <a href="#"><i class="bi bi-check-circle-fill" style="color: green;"></i><span>Web Design</span></a>
-                <a href="#"><i class="bi bi-arrow-right-circle"></i><span>Web Design</span></a>
-                <a href="#"><i class="bi bi-arrow-right-circle"></i><span>Kuis</span></a>
+              @foreach($modul as $md)
+                <a href="#"><i class="bi bi-check-circle-fill" style="color: green;"></i><span>{{ $md->sub_judul }}</span></a>
+                <!-- <a href="#"><i class="bi bi-arrow-right-circle"></i><span>Web Design</span></a>
+                <a href="{{ url('kuis') }}"><i class="bi bi-arrow-right-circle"></i><span>Kuis</span></a> -->
+              @endforeach
               </div>
             </div><!-- End Services List -->
 
@@ -91,7 +95,7 @@
       </div>
 
     </section><!-- End Service-details Section -->
-
+  
   </main>
 
   <!-- Scroll Top Button -->

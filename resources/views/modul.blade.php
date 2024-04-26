@@ -33,7 +33,6 @@
         </div>
       </nav>
     </div><!-- End Page Title -->
-    @endforeach
 
     <!-- Service Details Section -->
     <section id="service-details" class="service-details">
@@ -47,11 +46,10 @@
             <div class="service-box">
               <h4>Modul</h4>
               <div class="services-list">
-              @foreach($modul as $md)
-                <a href="#"><i class="bi bi-check-circle-fill" style="color: green;"></i><span>{{ $md->sub_judul }}</span></a>
-                <!-- <a href="#"><i class="bi bi-arrow-right-circle"></i><span>Web Design</span></a>
-                <a href="{{ url('kuis') }}"><i class="bi bi-arrow-right-circle"></i><span>Kuis</span></a> -->
+              @foreach($sub_judul as $sub)
+                <a href="#"><i class="bi bi-check-circle-fill" style="color: green;"></i><span>{{ $sub }}</span></a>
               @endforeach
+                <!-- <a href="{{ url('kuis') }}"><i class="bi bi-arrow-right-circle"></i><span>Kuis</span></a> -->
               </div>
             </div><!-- End Services List -->
 
@@ -95,7 +93,8 @@
       </div>
 
     </section><!-- End Service-details Section -->
-  
+  @endforeach
+
   </main>
 
   <!-- Scroll Top Button -->

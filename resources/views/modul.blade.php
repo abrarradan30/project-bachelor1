@@ -47,7 +47,7 @@
               <h4>Modul</h4>
               <div class="services-list">
               @foreach($sub_judul as $sub)
-                <a href="#"><i class="bi bi-check-circle-fill" style="color: green;"></i><span>{{ $sub }}</span></a>
+                <a href="{{ url('modul/show/'.$sub->id) }}"><i class="bi bi-check-circle-fill" style="color: green;"></i><span>{{ $sub }}</span></a>
               @endforeach
                 <!-- <a href="{{ url('kuis') }}"><i class="bi bi-arrow-right-circle"></i><span>Kuis</span></a> -->
               </div>
@@ -62,12 +62,11 @@
 
           </div>
 
+          @foreach($isi_materi as $im)
           <div class="col-lg-8 ps-lg-5" data-aos="fade-up" data-aos-delay="200">
-            <img src="{{ asset('modul_materi/assets/img/services.jpg') }}" alt="" class="img-fluid services-img">
+            <!-- <img src="{{ asset('modul_materi/assets/img/services.jpg') }}" alt="" class="img-fluid services-img"> -->
             <p>
-              Blanditiis voluptate odit ex error ea sed officiis deserunt. Cupiditate non consequatur et doloremque consequuntur. 
-              Accusantium labore reprehenderit error temporibus saepe perferendis fuga doloribus vero. Qui omnis quo sit. 
-              Dolorem architecto eum et quos deleniti officia qui.
+              {!! $im->isi_materi !!}
             </p>
             <div>
               <hr>
@@ -87,6 +86,7 @@
               <button id="restart-btn" class="btn btn-warning">Cetak Sertifikat</button>
             </div>
           </div>
+          @endforeach
 
         </div>
 

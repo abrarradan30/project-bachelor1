@@ -53,7 +53,14 @@ class ModulController extends Controller
 
         $sub_judul = DB::table('detail_materi')->pluck('sub_judul');
 
-        return view('modul', compact('modul', 'sub_judul'));
+        /*
+        $isi_materi = DB::table('detail_materi')
+            ->select('detail_materi.isi_materi')
+            ->where('detail_materi.id', $id)
+            ->get();
+        */
+
+        return view('modul', compact('modul', 'sub_judul', 'isi_materi'));
     }
 
     /**

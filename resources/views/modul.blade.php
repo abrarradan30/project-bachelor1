@@ -47,11 +47,11 @@
               <h4>Modul</h4>
               <div class="services-list">
               @foreach($sub_judul as $sub)
-                <a href="{{ url('modul/show/'.$sub->id) }}"><i class="bi bi-check-circle-fill" style="color: green;"></i><span>{{ $sub }}</span></a>
+                <a href="{{ url('modul/show/'.$sub) }}"><i class="bi bi-check-circle-fill" style="color: green;"></i><span>{{ $sub }}</span></a>
               @endforeach
-                <!-- <a href="{{ url('kuis') }}"><i class="bi bi-arrow-right-circle"></i><span>Kuis</span></a> -->
+                <a href="#" id="show-kuis"><i class="bi bi-arrow-right-circle"></i><span>Kuis</span></a>
               </div>
-            </div><!-- End Services List -->
+            </div>
 
             <div class="help-box d-flex flex-column justify-content-center align-items-center">
               <i class="bi bi-question-circle-fill" style="font-size: 4em;"></i>
@@ -64,12 +64,19 @@
 
           @foreach($isi_materi as $im)
           <div class="col-lg-8 ps-lg-5" data-aos="fade-up" data-aos-delay="200">
-            <!-- <img src="{{ asset('modul_materi/assets/img/services.jpg') }}" alt="" class="img-fluid services-img"> -->
-            <p>
-              {!! $im->isi_materi !!}
-            </p>
-            <div>
-              <hr>
+            <div class="materi">
+              <p>
+                {!! $im->isi_materi !!}
+              </p>
+              <div class="d-flex justify-content-between align-items-center" style="background-color: #DCDCDC; padding: 10px;">
+                <h5>Lanjut materi ?</h5>
+                <button type="button" class="btn btn-success btn-sm">
+                  <a href="#" style="text-decoration: none; color: inherit;">Lanjut <i class="bi bi-caret-right-fill"></i></a>
+                </button>
+              </div>
+            </div>
+
+            <div class="kuis" style="display: none;">
               <p>
                 Untuk menguji pengetahuan Anda tentang seluruh materi yang telah dipelajari,
                 terdapat beberapa pertanyaan yang harus dikerjakan dalam kuis ini.
@@ -109,5 +116,18 @@
   </div>
 
 </body>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById("show-kuis").addEventListener("click", function() {
+            document.querySelector(".materi").style.display = "none";
+            document.querySelector(".kuis").style.display = "block";
+        });
+        document.getElementById("show-kuis-btn").addEventListener("click", function() {
+            document.querySelector(".materi").style.display = "none";
+            document.querySelector(".kuis").style.display = "block";
+        });
+    });
+</script>
 
 @endsection

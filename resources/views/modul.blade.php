@@ -85,7 +85,7 @@
                 Syarat skor lulus = 75%, Jika gagal, maka Anda harus mmengulang pengerjaan kuis kembali.
               </p>
               <button id="restart-btn" class="btn btn-success">
-                <a href="{{ url('kuis') }}" style="text-decoration: none; color: inherit;">Mulai Kuis!</a>
+                <a href="{{ url('soal_kuis') }}" style="text-decoration: none; color: inherit;">Mulai Kuis!</a>
               </button>
               <p></p>
               <p>Skor anda : <span id="quiz-score">0%</span></p>

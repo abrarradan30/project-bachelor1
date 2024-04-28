@@ -23,14 +23,14 @@
                 </ul>
             </div>
         @endif
-        <form method="POST" action="{{ url('admin/kuis/store') }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ url('kuis/store') }}" enctype="multipart/form-data">
         {{ csrf_field() }}
             <!-- Input Judul Materi -->
             <div class="form-group">
                 <label for="materi_id">Judul Materi :</label>
                 <select id="materi_id" name="materi_id" class="custom-select">
                     @foreach ($materi as $m)
-                        <option value="{{ $m->id }}">{{ $m->judul_materi }}</option>
+                        <option value="{{ $m->id }}">{{ $m->judul }}</option>
                     @endforeach
                 </select>
             </div>

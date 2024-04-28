@@ -12,7 +12,7 @@ class KuisFrontController extends Controller
     public function index()
     {
         //
-        return view('kuis');
+        return view('soal_kuis');
     }
 
     /**

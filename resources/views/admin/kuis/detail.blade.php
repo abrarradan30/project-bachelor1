@@ -8,9 +8,9 @@
 <!-- Page Heading -->
 <h1 class="h3 mb-2 text-gray-800">Tambahkan Kuis</h1>
 
-<!-- Form Diskusi -->
+<!-- Form Kuis -->
 <div class="card shadow mb-4">
-    @foreach(@kuis as $k)
+    @foreach($kuis as $k)
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary">Form Kuis</h6>
     </div>
@@ -19,13 +19,17 @@
             <!-- Judul Materi -->
             <div class="form-group">
                 <label for="materi_id">Judul Materi :</label>
-                <input id="judul_materi" type="text" class="form-control" value="{{ $k->judul_materi }}" readonly>
+                @foreach ($materi as $m)
+                <input id="judul_materi" type="text" class="form-control" value="{{ $m->judul }}" readonly>
+                @endforeach
             </div>
 
             <!-- Input Soal -->
             <div class="form-group">
                 <label for="soal">Soal :</label>
-                <textarea id="soal" name="soal" cols="30" rows="10" class="form-control">{{ $k->pertanyaan }}</textarea>
+                <div>
+                    {!! $k->soal !!}
+                </div>
             </div>
 
             <!-- Input Pilihan A -->

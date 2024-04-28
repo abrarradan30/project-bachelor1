@@ -32,8 +32,8 @@
                 <label for="materi_id">Judul Materi :</label>
                 <select id="materi_id" name="materi_id" class="custom-select">
                     @foreach ($materi as $m)
-                    @php $sel = ($m->id == $fd->materi_id) ? 'selected' : ''; @endphp
-                        <option value="{{ $m->id }}" {{ $sel }}>{{ $m->judul_materi }}</option>
+                    @php $sel = ($m->id == $k->materi_id) ? 'selected' : ''; @endphp
+                        <option value="{{ $m->id }}" {{ $sel }}>{{ $m->judul }}</option>
                     @endforeach
                 </select>
             </div>

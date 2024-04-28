@@ -194,7 +194,7 @@ Route::post('/contact/store', [ContactController::class, 'store']);
 Route::get('/progres_materi', [ProgresMateriController::class, 'index']);
 Route::get('/progres_materi/show/{id}', [ProgresMateriController::class, 'show']);
 
-Route::get('/kuis', [KuisFrontController::class, 'index']);
+Route::get('/soal_kuis', [KuisFrontController::class, 'index']);
 
 Route::get('/acces_denied', function () {
     return view('/acces_denied');

@@ -7,6 +7,7 @@ use App\Models\Kuis;
 use App\Models\User;
 use App\Models\Materi;
 use RealRashid\SweetAlert\Facades\Alert;
+use DOMDocument;
 use DB;
 
 class KuisController extends Controller

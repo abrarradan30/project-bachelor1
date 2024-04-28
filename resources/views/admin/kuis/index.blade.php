@@ -56,23 +56,29 @@
                     <tr>
                         <td>{{ $no }}</td>
                         <td>{{ $k->judul_materi}}</td>
-                        <td>{{ $k->pertanyaan }}</td>
+                        <td>{!! $k->soal !!}</td>
                         <td>{{ $k->a }}</td>
                         <td>{{ $k->b }}</td>
                         <td>{{ $k->c }}</td>
                         <td>{{ $k->d }}</td>
-                        <td>{{ $k->koreksi }}</td>
+                        <td>{{ $k->kunci }}</td>
                         <td>
                             <form action="#" method="POST">
                                 <button type="button" class="btn btn-success btn-sm">
-                                    <a href="{{ url('admin/kuis/show/' . $k->id) }}" style="text-decoration: none; color: inherit;">Detail</a>
+                                    <a href="{{ url('kuis/show/' . $k->id) }}" style="text-decoration: none; color: inherit;">Detail</a>
                                 </button>
                                 <button type="button" class="btn btn-warning btn-sm">
-                                    <a href="{{ url('admin/kuis/edit/' . $k->id) }}" style="text-decoration: none; color: inherit;">Edit</a>
+                                    <a href="{{ url('kuis/edit/' . $k->id) }}" style="text-decoration: none; color: inherit;">Edit</a>
                                 </button>
-                                <button type="button" class="btn btn-danger btn-sm">
-                                    <a href="{{ url('admin/kuis/delete/' . $k->id) }}" style="text-decoration: none; color: inherit;">Hapus</a>
-                                </button>
+                                <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete()">Hapus</button>
+                                <script>                                  
+                                    function confirmDelete() {
+                                    var confirmation = confirm("Yakin hapus data?");
+                                        if (confirmation) {
+                                            window.location.href = "{{ url('kuis/delete/' . $k->id) }}";
+                                        }
+                                    }
+                                </script>
                             </form>
                         </td>
                     </tr>

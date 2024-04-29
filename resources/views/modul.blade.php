@@ -8,7 +8,7 @@
   <header id="header" class="header sticky-top d-flex align-items-center">
     <div class="container-fluid d-flex align-items-center justify-content-between">
     
-      <a class="btn-getstarted" href="{{ url('progres_belajar') }}">Materi-Ku</a>
+      <a class="btn-getstarted" href="{{ url('progres_materi') }}">Materi-Ku</a>
 
       <!-- Nav Menu -->
       <nav id="navmenu" class="navmenu">
@@ -84,9 +84,11 @@
               <p> 
                 Syarat skor lulus = 75%, Jika gagal, maka Anda harus mmengulang pengerjaan kuis kembali.
               </p>
+              @foreach($modul as $md)
               <button id="restart-btn" class="btn btn-success">
-                <a href="{{ url('soal_kuis') }}" style="text-decoration: none; color: inherit;">Mulai Kuis!</a>
+                <a href="{{ url('soal_kuis/show/'.$md->id) }}" style="text-decoration: none; color: inherit;">Mulai Kuis!</a>
               </button>
+              @endforeach
               <p></p>
               <p>Skor anda : <span id="quiz-score">0%</span></p>
               <p>Status : Gagal</p>

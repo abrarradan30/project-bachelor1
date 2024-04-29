@@ -31,7 +31,7 @@
   <header id="header" class="header sticky-top d-flex align-items-center">
     <div class="container-fluid d-flex align-items-center justify-content-between">
     
-      <a class="btn-getstarted" href="{{ url('modul') }}">Modul</a>
+      <a class="btn-getstarted"href="{{ url('progres_materi') }}">Materi-Ku</a>
 
       <!-- Nav Menu -->
       <nav id="navmenu" class="navmenu">
@@ -44,13 +44,14 @@
 
   <main id="main">
 
+    @foreach($soal_kuis as $sk)
     <!-- Page Title -->
     <div data-aos="fade" class="page-title">
       <nav class="breadcrumbs">
         <div class="container">
           <ol>
-            <li>Kuis Materi </li>
-            <li class="current">Level </li>
+            <li>Kuis Materi {{ $sk->judul }} </li>
+            <li class="current">Level {{ $sk->level }} </li>
           </ol>
         </div>
       </nav>
@@ -84,6 +85,7 @@
 
     </section><!-- End Service-details Section -->
 
+  @endforeach
   </main>
 
   <!-- Scroll Top Button -->

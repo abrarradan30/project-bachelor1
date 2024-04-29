@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Kuis;
+use App\Models\User;
+use App\Models\Materi;
+use DB;
 
 class KuisFrontController extends Controller
 {
@@ -12,7 +16,12 @@ class KuisFrontController extends Controller
     public function index()
     {
         //
-        return view('soal_kuis');
+        $soal_kuis = DB::table('kuis')
+            ->join('materi', 'kuis.materi_id', '=', 'materi.id')
+            ->select('kuis.*', 'materi.judul as judul_materi')
+            ->get();
+
+        return view('soal_kuis', compact('soal_kuis'));
     }
 
     /**
@@ -34,9 +43,16 @@ class KuisFrontController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
         //
+        $soal_kuis = DB::table('kuis')
+            ->join('materi', 'kuis.materi_id', '=', 'materi.id')
+            ->select('kuis.*', 'materi.judul', 'materi.level')
+            ->where('kuis.id', $id)
+            ->get();
+
+        return view('soal_kuis', compact('soal_kuis'));
     }
 
     /**

@@ -52,7 +52,9 @@ class KuisFrontController extends Controller
             ->where('kuis.id', $id)
             ->get();
 
-        return view('soal_kuis', compact('soal_kuis'));
+        $isi_kuis = DB::table('kuis')->pluck('soal', 'a', 'b', 'c', 'd'); 
+
+        return view('soal_kuis', compact('soal_kuis', 'isi_kuis'));
     }
 
     /**

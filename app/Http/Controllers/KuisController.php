@@ -146,7 +146,7 @@ class KuisController extends Controller
             'kunci.required'    => 'Kunci jawaban wajib diisi',
         ]);
 
-        $kuis = DetailMateri::find($id);
+        $kuis = Kuis::find($id);
  
         $soal = $request->soal;
  

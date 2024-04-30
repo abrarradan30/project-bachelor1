@@ -68,13 +68,24 @@
 
           <div class="col-lg-8 ps-lg-5" data-aos="fade-up" data-aos-delay="200">
             <div class="question">
-              <h3>1. What is the capital of France?</h3>
+              @php 
+                $no = 1;
+              @endphp
+
+              @foreach($soal_kuis as $sk)
+              <h3>{{ $no }}. {!! $sk->soal !!}</h3>
               <div class="options">
-                <label><input type="radio" name="q1" value="a">a) London</label><br>
-                <label><input type="radio" name="q1" value="b">b) Paris</label><br>
-                <label><input type="radio" name="q1" value="c">c) Berlin</label><br>
-                <label><input type="radio" name="q1" value="d">d) Rome</label><br>
+                <label><input type="radio" name="q1" value="a">a) {!! $sk->a !!} </label><br>
+                <label><input type="radio" name="q1" value="b">b) {!! $sk->b !!} </label><br>
+                <label><input type="radio" name="q1" value="c">c) {!! $sk->c !!} </label><br>
+                <label><input type="radio" name="q1" value="d">d) {!! $sk->d !!} </label><br>
               </div>
+
+              @php 
+                $no++;
+              @endphp
+
+              @endforeach
             </div>
             <button class="btn btn-success">Selesai</button>
           </div>

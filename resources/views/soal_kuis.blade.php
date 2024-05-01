@@ -72,13 +72,13 @@
                 $no = 1;
               @endphp
 
-              @foreach($soal_kuis as $sk)
-              <h3>{{ $no }}. {!! $sk->soal !!}</h3>
+              @foreach($isi_kuis as $ik)
+              <h3>{{ $no }}. {!! $ik->soal !!}</h3>
               <div class="options">
-                <label><input type="radio" name="q1" value="a">a) {!! $sk->a !!} </label><br>
-                <label><input type="radio" name="q1" value="b">b) {!! $sk->b !!} </label><br>
-                <label><input type="radio" name="q1" value="c">c) {!! $sk->c !!} </label><br>
-                <label><input type="radio" name="q1" value="d">d) {!! $sk->d !!} </label><br>
+                <label><input type="radio" name="q{{ $no }}" value="a">a) {!! $ik->a !!} </label><br>
+                <label><input type="radio" name="q{{ $no }}" value="b">b) {!! $ik->b !!} </label><br>
+                <label><input type="radio" name="q{{ $no }}" value="c">c) {!! $ik->c !!} </label><br>
+                <label><input type="radio" name="q{{ $no }}" value="d">d) {!! $ik->d !!} </label><br>
               </div>
 
               @php 

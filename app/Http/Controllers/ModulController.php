@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\DetailMateri;
 use App\Models\Materi;
+use App\Models\ProgresBelajar;
 use DB;
 
 class ModulController extends Controller
@@ -59,6 +60,14 @@ class ModulController extends Controller
             ->get();
 
         return view('modul', compact('modul', 'sub_judul', 'isi_materi'));
+    }
+
+    public function hitungProgres()
+    {
+        $totalMateri = Materi::count();
+        $totalProgres = ProgresBelajar::where('user_id', auth()->id())->sum('progres_belajar');
+
+        return round(($totalProgres / $totalMateri) * 100);
     }
 
     /**

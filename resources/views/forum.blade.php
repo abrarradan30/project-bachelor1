@@ -236,6 +236,11 @@
                         <a class="nav-link nav-icon rounded-circle nav-link-faded mr-3 d-md-none" href="#" data-toggle="inner-sidebar"><i class="material-icons">arrow_forward_ios</i></a>
                         <select class="custom-select custom-select-sm w-auto mr-1" style="width: 50%;">
                             <option selected>Pilih Materi</option>
+                            <select id="materi_id" name="materi_id" class="custom-select">
+                            @foreach ($materi as $m)
+                                <option value="{{ $m->id }}">{{ $m->judul }}</option>
+                            @endforeach
+                            </select>
                             <option value="1">Bejalar dasar golang</option>
                             <option value="1">Laravel</option>
                         </select>
@@ -378,18 +383,20 @@
                                 <br>
                                 <div class="form-group">
                                     <label for="pertanyaan">Pertanyaan</label>
-                                    <textarea class="form-control" id="pertanyaan" placeholder="Isi pertanyaan" autofocus></textarea>
+                                    <textarea class="form-control" id="pertanyaan" placeholder="Isi pertanyaan" ></textarea>
                                 </div>
-                                <!-- <textarea class="form-control summernote" style="display: none;"></textarea> -->
-                                <!-- <div class="custom-file form-control-sm mt-3" style="max-width: 300px;">
-                                    <input type="file" class="custom-file-input" id="customFile" multiple />
-                                    <label class="custom-file-label" for="customFile">Attachment</label>
-                                </div> -->
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
                                 <button type="button" class="btn btn-primary">Post</button>
                             </div>
+                            <script>
+                                $('#pertanyaan').summernote({
+                                    placeholder: 'Isi pertanyaan...',
+                                    tabsize:2,
+                                    height:150
+                                });
+                            </script>
                         </form>
                     </div>
                 </div>
@@ -399,18 +406,7 @@
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript"></script>
-    <script>
-    $('#pertanyaan').summernote({
-        placeholder: 'pertanyaan...',
-        tabsize:2,
-        height:300
-    });
-    </script>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
-
+    
     @foreach(range(1, 1) as $_)
     <br>
     @endforeach

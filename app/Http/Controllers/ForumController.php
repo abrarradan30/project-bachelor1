@@ -17,12 +17,13 @@ class ForumController extends Controller
     public function index()
     {
         //
+        $materi = DB::table('materi')->get();
         $forum_diskusi = ForumDiskusi::join('users', 'forum_diskusi.users_id', '=', 'users.id')
             ->join('materi', 'forum_diskusi.materi_id', '=', 'materi.id')
             ->select('forum_diskusi.*', 'users.name as nama', 'materi.judul as judul_materi')
             ->get();
 
-        return view('forum');
+        return view('forum', compact('forum_diskusi', 'materi'));
     }
 
     /**

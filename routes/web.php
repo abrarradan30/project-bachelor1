@@ -24,6 +24,7 @@ use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\ProgresBelajarController;
 use App\Http\Controllers\ProgresMateriController;
 use App\Http\Controllers\RatingController;
+use App\Http\Controllers\RatingFrontController;
 use App\Http\Controllers\SertifikatController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\FillPDFController;
@@ -196,6 +197,9 @@ Route::get('/progres_materi/show/{id}', [ProgresMateriController::class, 'show']
 
 Route::get('/soal_kuis', [KuisFrontController::class, 'index']);
 Route::get('/soal_kuis/show/{id}', [KuisFrontController::class, 'show']);
+
+// route rating front
+Route::get('/ratingfe', [RatingFrontController::class, 'index']);
 
 Route::get('/acces_denied', function () {
     return view('/acces_denied');

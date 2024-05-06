@@ -19,7 +19,7 @@
             <!-- Input Nama -->
             <div class="form-group">
                 <label for="nama">Nama :</label>
-                <input id="users_id" type="text" class="form-control" value="{{ $r->name }}" readonly>
+                <input id="users_id" type="text" class="form-control" value="{{ $r->nama }}" readonly>
             </div>
 
             <!-- Input Judul Materi -->

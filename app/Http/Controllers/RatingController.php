@@ -77,7 +77,7 @@ class RatingController extends Controller
             ->where('rating', $id)
             ->get();
 
-        return view('admin.rating.index', compact('rating'));
+        return view('admin.rating.detail', compact('rating'));
     }
 
     /**

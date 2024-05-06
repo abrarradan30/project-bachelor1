@@ -25,12 +25,10 @@
     <!-- Page Title -->
     <div data-aos="fade" class="page-title">
       <nav class="breadcrumbs">
-        <div class="container">
-          <ol>
-            <li>Materi {{ $md->judul }}</li>
-            <li class="current">Level {{ $md->level }}</li>
-          </ol>
-        </div>
+        <ol>
+          <li>Materi {{ $md->judul }}</li>
+          <li class="current">Level {{ $md->level }}</li>
+        </ol>
       </nav>
     </div><!-- End Page Title -->
 
@@ -115,7 +113,9 @@
               <p></p>
               <p>Skor anda : <span id="quiz-score">0%</span></p>
               <p>Status : Gagal</p>
-              <button id="restart-btn" class="btn btn-warning">Cetak Sertifikat</button>
+              <button class="btn btn-warning">
+                <a href="{{ url('ratingfe') }}" style="text-decoration: none; color: inherit;">Cetak Sertifikat</a>
+              </button>
             </div>
           </div>
           @endforeach

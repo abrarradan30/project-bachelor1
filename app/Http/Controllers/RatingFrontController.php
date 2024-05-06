@@ -33,6 +33,14 @@ class RatingFrontController extends Controller
     public function create()
     {
         //
+        $users = DB::table('users')->get();
+        $materi = DB::table('materi')->get();
+        $rating = Rating::join('users', 'rating.users_id', '=', 'users.id')
+            ->join('materi', 'rating.materi_id', '=', 'materi.id')
+            ->select('rating.*', 'users.name as nama', 'materi.judul as judul_materi')
+            ->get();
+
+        return view('ratingfe', compact('rating', 'users', 'materi'));
     }
 
     /**
@@ -41,6 +49,22 @@ class RatingFrontController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'users_id'     => 'required',
+            'materi_id'    => 'required',
+            'rating'       => 'required',
+            'feedback'     => 'required',
+        ]);
+
+        DB::table('rating')->insert([
+            'users_id'     => $request->users_id,
+            'materi_id'    => $request->materi_id,
+            'rating'       => $request->rating,
+            'feedback'     => $request->feedback,
+        ]);
+
+        Alert::success('Rating', 'Berhasil menambahkan rating');
+        return redirect('ratingfe');
     }
 
     /**

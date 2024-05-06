@@ -100,7 +100,8 @@
               <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
               <div class="card-body" style="background-color: #4682B4; margin: 5px; border-radius: 10px;">
-                <form>
+                <form method="POST" action="{{ url('ratingfe/store') }}" enctype="multipart/form-data">
+                {{ csrf_field() }}
                     <div class="form-group row">
                         <label for="text" class="col-2 col-form-label">Nama</label>
                         <div class="col-8">
@@ -110,7 +111,7 @@
                                         <i class="fa fa-address-card"></i>
                                     </div>
                                 </div>
-                                <input id="text" name="text" type="text" class="form-control">
+                                <input id="text" name="text" type="text" class="form-control" value="{{ auth()->user()->name }}" readonly>
                             </div>
                         </div>
                     </div>
@@ -118,9 +119,9 @@
                         <label for="select" class="col-2 col-form-label">Materi</label>
                         <div class="col-8">
                             <select id="select" name="select" class="custom-select">
-                                <option value="rabbit">Rabbit</option>
-                                <option value="duck">Duck</option>
-                                <option value="fish">Fish</option>
+                                @foreach ($materi as $m)
+                                    <option value="{{ $m->id }}">{{ $m->judul }}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
@@ -128,18 +129,18 @@
                         <label class="col-2">Rating</label>
                         <div class="col-8">
                         <div class="rating">
-                          <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
-                          <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
-                          <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
-                          <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
-                          <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
+                          <input type="radio" name="rating" value="5" id="rating"><label for="5">☆</label>
+                          <input type="radio" name="rating" value="4" id="rating"><label for="4">☆</label>
+                          <input type="radio" name="rating" value="3" id="rating"><label for="3">☆</label>
+                          <input type="radio" name="rating" value="2" id="rating"><label for="2">☆</label>
+                          <input type="radio" name="rating" value="1" id="rating"><label for="1">☆</label>
                         </div>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="textarea" class="col-2 col-form-label">Feedback</label>
                         <div class="col-8">
-                            <textarea id="textarea" name="textarea" cols="30" rows="4" class="form-control"></textarea>
+                            <textarea id="feedback" name="feedback" cols="30" rows="4" class="form-control"></textarea>
                         </div>
                     </div>
                     <div class="form-group row">

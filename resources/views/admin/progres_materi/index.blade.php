@@ -30,21 +30,21 @@
     <div class="row">
 
     <!-- Earnings (Monthly) Card Example -->
-    @foreach($progres_materi as $pm)
+    @foreach($ar_progres_materi as $ar_pm)
     <div class="col-xl-12 mb-4">
     <div class="card border-left-primary shadow h-100 py-2">
         <div class="card-body">
             <div class="row no-gutters align-items-center">
                 <div class="col mr-2">
-                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" style="font-size: 20px;">{{ $pm->judul }}</div>
+                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" style="font-size: 20px;">{{ $ar_pm->judul }}</div>
                     <div class="row no-gutters align-items-center">
                         <div class="col-auto">
-                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ $pm->progres }} %</div>
+                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ $ar_pm->progres }} %</div>
                         </div>
                         <div class="col">
                             <div class="progress progress-sm mr-2">
                                 <div class="progress-bar bg-success" role="progressbar"
-                                    style="width: {{ $pm->progres }}%" aria-valuenow="{{ $pm->progres }}" aria-valuemin="0"
+                                    style="width: {{ $ar_pm->progres }}%" aria-valuenow="{{ $ar_pm->progres }}" aria-valuemin="0"
                                     aria-valuemax="100"></div>
                             </div>
                         </div>
@@ -57,12 +57,13 @@
         </div>
         <div class="col-auto ml-auto">
             <button class="btn btn-primary">
-                <a href="{{ url('modul/show/'.$pm->id) }}" style="text-decoration: none; color: inherit;">Lanjutkan</a>
+                <a href="{{ url('modul/show/'.$ar_pm->id) }}" style="text-decoration: none; color: inherit;">Lanjutkan</a>
             </button>
         </div>
     </div>
     </div>
     @endforeach
+    
     </div>
 
 

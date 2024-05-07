@@ -16,15 +16,20 @@ class ProgresMateriController extends Controller
     public function index()
     {
         //
-    
         $users = DB::table('users')->get();
         $materi = DB::table('materi')->get();
         $progres_materi = ProgresBelajar::join('users', 'progres_belajar.users_id', '=', 'users.id')
             ->join('materi', 'progres_belajar.materi_id', '=', 'materi.id')
+            ->select('users.name as nama')
+            ->groupBy('users.name')
+            ->get();
+
+        $ar_progres_materi = ProgresBelajar::join('users', 'progres_belajar.users_id', '=', 'users.id')
+            ->join('materi', 'progres_belajar.materi_id', '=', 'materi.id')
             ->select('progres_belajar.*', 'users.name as nama', 'materi.judul')
             ->get();
 
-        return view('admin.progres_materi.index', compact('progres_materi', 'users', 'materi'));
+        return view('admin.progres_materi.index', compact('progres_materi', 'users', 'materi', 'ar_progres_materi'));
     }
 
     /**

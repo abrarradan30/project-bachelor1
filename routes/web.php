@@ -191,7 +191,7 @@ Route::get('/course_detail/show/{id}', [CourseDetailController::class, 'show']);
 Route::get('/contact', [ContactController::class, 'index']);
 Route::post('/contact/store', [ContactController::class, 'store']);
 
-// route course_detail 
+// route progres_materi
 Route::get('/progres_materi', [ProgresMateriController::class, 'index']);
 Route::get('/progres_materi/show/{id}', [ProgresMateriController::class, 'show']);
 
@@ -200,6 +200,8 @@ Route::get('/soal_kuis/show/{id}', [KuisFrontController::class, 'show']);
 
 // route rating front
 Route::get('/ratingfe', [RatingFrontController::class, 'index']);
+Route::get('/ratingfe/create', [RatingFrontController::class, 'create']);
+Route::post('/ratingfe/store', [RatingFrontController::class, 'store']);
 
 Route::get('/acces_denied', function () {
     return view('/acces_denied');

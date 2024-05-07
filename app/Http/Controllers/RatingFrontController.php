@@ -17,14 +17,12 @@ class RatingFrontController extends Controller
     public function index()
     {
         //
-        $users = DB::table('users')->get();
-        $materi = DB::table('materi')->get();
         $rating = Rating::join('users', 'rating.users_id', '=', 'users.id')
             ->join('materi', 'rating.materi_id', '=', 'materi.id')
             ->select('rating.*', 'users.name as nama', 'materi.judul as judul_materi')
             ->get();
 
-        return view('ratingfe', compact('rating', 'users', 'materi'));
+        return view('ratingfe', compact('rating'));
     }
 
     /**

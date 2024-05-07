@@ -120,6 +120,7 @@
                         <div class="col-8">
                             <select id="select" name="select" class="custom-select">
                                 @foreach ($materi as $m)
+                                <input id="text" name="text" type="text" class="form-control" value="{{ $m->id }}" readonly>
                                     <option value="{{ $m->id }}">{{ $m->judul }}</option>
                                 @endforeach
                             </select>
@@ -129,11 +130,11 @@
                         <label class="col-2">Rating</label>
                         <div class="col-8">
                         <div class="rating">
-                          <input type="radio" name="rating" value="5" id="rating"><label for="5">☆</label>
-                          <input type="radio" name="rating" value="4" id="rating"><label for="4">☆</label>
-                          <input type="radio" name="rating" value="3" id="rating"><label for="3">☆</label>
-                          <input type="radio" name="rating" value="2" id="rating"><label for="2">☆</label>
-                          <input type="radio" name="rating" value="1" id="rating"><label for="1">☆</label>
+                          <input type="radio" name="rating" value="5" id="rating5"><label for="rating5">☆</label>
+                          <input type="radio" name="rating" value="4" id="rating4"><label for="rating4">☆</label>
+                          <input type="radio" name="rating" value="3" id="rating3"><label for="rating3">☆</label>
+                          <input type="radio" name="rating" value="2" id="rating2"><label for="rating2">☆</label>
+                          <input type="radio" name="rating" value="1" id="rating1"><label for="rating1">☆</label>
                         </div>
                         </div>
                     </div>
@@ -142,6 +143,11 @@
                         <div class="col-8">
                             <textarea id="feedback" name="feedback" cols="30" rows="4" class="form-control"></textarea>
                         </div>
+                        @error('feedback')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
                     <div class="form-group row">
                         <div class="offset-2 col-8">

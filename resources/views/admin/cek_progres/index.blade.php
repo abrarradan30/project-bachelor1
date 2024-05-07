@@ -15,7 +15,7 @@
     <div class="row">
 
         <!-- Earnings (Monthly) Card Example -->
-        @foreach($cek_progres->take(10) as $cp)
+        @foreach($cek_progres as $cp)
         <div class="col-xl-12 mb-4">
             <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">

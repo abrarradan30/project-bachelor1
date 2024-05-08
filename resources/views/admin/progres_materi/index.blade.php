@@ -6,9 +6,8 @@
 <div class="container-fluid">
 
 <!-- Page Heading -->
-@foreach($progres_materi as $pm)
-<h1 class="h3 mb-2 text-gray-800">Progres Belajar &raquo; {{ $pm->nama }} </h1>
-@endforeach
+<h1 class="h3 mb-2 text-gray-800">Progres Belajar &raquo; {{ auth()->user()->name }} </h1>
+
 @if(in_array(Auth::user()->role, ['admin', 'siswa']))
     <p class="mb-4">Halo {{ Auth::user()->name }} ! Ayo selesaikan materi-<b>Mu</b> dengan semangat dan tekad. 
         Jangan ragu untuk bertanya dan berkolaborasi pada 

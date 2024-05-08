@@ -111,6 +111,7 @@
             </div>
 
             <!-- Input Status -->
+            @if(Auth::check() && Auth::user()->role == 'admin')
             <div class="form-group">
                 <label>Status :</label>
                 <div class="form-check">
@@ -122,6 +123,16 @@
                     <label class="form-check-label" for="publik">Publik</label>
                 </div>
             </div>
+                @elseif(Auth::check() && Auth::user()->role == 'mentor')
+            <div class="form-group">
+                <label>Status :</label>
+                <div class="form-check">
+                    <input name="status" id="publik" type="radio" class="form-check-input" value="publik">
+                    <label class="form-check-label" for="publik">Publik</label>
+                </div>
+            </div>
+            @endif
+
 
             <!-- Submit Button -->
             <div class="form-group">

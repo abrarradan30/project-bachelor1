@@ -174,9 +174,6 @@ Route::middleware(['peran:admin'])->group(function () {
     Route::get('/balasan_diskusi/delete/{id}', [BalasanDiskusiController::class, 'destroy']);
 });
 
-// route progres materi
-Route::get('/progres_materi', [ProgresMateriController::class, 'index']);
-
 // route frontend
 //route front
 Route::get('/', [FrontController::class, 'index']);

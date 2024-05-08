@@ -16,7 +16,6 @@ class ProgresMateriController extends Controller
     public function index()
     {
         //
-        $users = DB::table('users')->get();
         $materi = DB::table('materi')->get();
         $progres_materi = ProgresBelajar::join('users', 'progres_belajar.users_id', '=', 'users.id')
             ->join('materi', 'progres_belajar.materi_id', '=', 'materi.id')
@@ -24,12 +23,15 @@ class ProgresMateriController extends Controller
             ->groupBy('users.name')
             ->get();
 
+        $user_id = auth()->id();
+
         $ar_progres_materi = ProgresBelajar::join('users', 'progres_belajar.users_id', '=', 'users.id')
             ->join('materi', 'progres_belajar.materi_id', '=', 'materi.id')
             ->select('progres_belajar.*', 'users.name as nama', 'materi.judul')
+            ->where('progres_belajar.users_id', $user_id)
             ->get();
 
-        return view('admin.progres_materi.index', compact('progres_materi', 'users', 'materi', 'ar_progres_materi'));
+        return view('admin.progres_materi.index', compact('progres_materi', 'user_id', 'materi', 'ar_progres_materi'));
     }
 
     /**

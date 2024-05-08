@@ -107,7 +107,7 @@ class MateriController extends Controller
         //
         $request->validate([
                 'judul'        => 'required|max:50',
-                'bg_materi'    => 'required|image|mimes:jpg,jpeg,png,svg|max:2048',
+                'bg_materi'    => 'nullable|image|mimes:jpg,jpeg,png,svg|max:2048',
                 'deskripsi'    => 'required',
                 'harga'        => 'required|numeric',
                 'kategori'     => 'required',
@@ -123,9 +123,9 @@ class MateriController extends Controller
         //apakah user ingin mengganti foto lama
         if (!empty($request->bg_materi)) {
             //jika ada foto lama maka hapus dulu fotonya
-            if (!empty($m->bg_materi)) unlink('admin/img/' . $m->bg_materi);
+            if (!empty($m->bg_materi)) unlink('admin/img/'.$m->bg_materi);
             //proses ganti foto
-            $fileName = 'bg_materi-' . $request->id . '.' . $request->bg_materi->extension();
+            $fileName = 'bg_materi-'.$request->id.'.'.$request->bg_materi->extension();
             $request->bg_materi->move(public_path('admin/img'), $fileName);
         } else {
             $fileName = $namaFileBackgroundLama;

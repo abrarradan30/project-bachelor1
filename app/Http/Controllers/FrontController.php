@@ -21,8 +21,9 @@ class FrontController extends Controller
         $forum_diskusi = ForumDiskusi::count();
         // $materiKategori = Materi::select('kategori')->distinct()->count();
 
-        $ar_materi = DB::table('materi')->get();
-        $ar_materi = Materi::all();
+        // $ar_materi = DB::table('materi')->get();
+        // $ar_materi = Materi::all();
+        $ar_materi = Materi::where('status', 'publik')->take(3)->get();
         
         return view('front', compact('users', 'materi', 'forum_diskusi', 'ar_materi'));
     }

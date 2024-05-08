@@ -39,7 +39,7 @@
                 <input id="bg_materi" name="bg_materi" type="file" class="form-control-file">
                 @if (!empty($m->bg_materi))
                 <div class="mt-2">
-                    <img src="{{ url('admin/img') }}/{{ $m->bg_materi }}" width="50%">
+                    <img src="{{ url('admin/img') }}/{{ $m->bg_materi }}" width="30%">
                     <br>{{ $m->bg_materi }}
                 </div>
                 @endif
@@ -87,6 +87,7 @@
             </div>
 
             <!-- Input Status -->
+            @if(Auth::check() && Auth::user()->role == 'admin')
             <div class="form-group">
                 <label>Status :</label>
                 @foreach ($ar_status as $st)
@@ -97,6 +98,10 @@
                 </div>
                 @endforeach
             </div>
+            @elseif(Auth::check() && Auth::user()->role == 'mentor')
+            <div class="form-group">
+            </div>
+            @endif
 
             <!-- Submit Button -->
             <div class="form-group">

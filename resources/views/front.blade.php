@@ -129,7 +129,7 @@
 
         <div class="row" data-aos="zoom-in" data-aos-delay="100">
 
-          @foreach($ar_materi->take(3) as $m)
+          @foreach($ar_materi as $m)
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
           <a href="{{url('course_detail/show/'.$m->id) }}" style="text-decoration: none; color: inherit;">
             <div class="course-item">

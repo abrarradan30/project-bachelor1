@@ -89,10 +89,13 @@ class DetailMateriController extends Controller
     public function show($id)
     {
         //
-        $materi = DB::table('materi')->get();
-        $detail_materi = DB::table('detail_materi')->where('id', $id)->get();
+        $detail_materi = DB::table('detail_materi')
+            ->join('materi', 'detail_materi.materi_id', '=', 'materi.id')
+            ->select('detail_materi.*', 'materi.judul as judul_materi')
+            ->where('detail_materi.id', $id)
+            ->get();
 
-        return view('admin.detail_materi.detail', compact('detail_materi', 'materi'));
+        return view('admin.detail_materi.detail', compact('detail_materi'));
     }
 
     /**

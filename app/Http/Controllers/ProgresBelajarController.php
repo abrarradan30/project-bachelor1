@@ -48,14 +48,15 @@ class ProgresBelajarController extends Controller
     {
         //
         $request->validate([
-            // 'users_id'          => 'required',
+            'users_id'          => 'required',
             'materi_id'         => 'required',
             'progres'           => 'required',
             'status_selesai'    => 'required',
         ]);
 
         ProgresBelajar::create([
-            'users_id'           => auth()->user()->id,
+            // 'users_id'           => auth()->user()->id,
+            'users_id'           => $request->users_id,
             'materi_id'          => $request->materi_id,
             'progres'            => $request->progres, 
             'status_selesai'     => $request->status_selesai, 

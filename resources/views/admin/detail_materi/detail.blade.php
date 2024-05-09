@@ -17,9 +17,7 @@
     <div class="card-body">
         <div class="form-group">
             <label for="judul_materi">Judul Materi :</label>
-            @foreach ($materi as $m)
-            <input id="judul_materi" type="text" class="form-control" value="{{ $m->judul }}" readonly>
-            @endforeach
+            <input id="judul_materi" type="text" class="form-control" value="{{ $dm->judul_materi }}" readonly>
         </div>
 
         <div class="form-group">

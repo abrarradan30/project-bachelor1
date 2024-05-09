@@ -28,7 +28,12 @@
             <!-- Input Nama -->
             <div class="form-group">
                 <label for="nama">Nama :</label>
-                <input id="users_id" name="nama" type="text" class="form-control" value="{{ auth()->user()->name }}" readonly> 
+                <select id="users_id" name="users_id" class="custom-select @error('users_id') is-invalid @enderror">
+                    @foreach ($users as $u)
+                        <option value="{{ $u->id }}">{{ $u->name }}</option>
+                    @endforeach
+                </select>
+                <!-- <input id="users_id" name="nama" type="text" class="form-control" value="{{ auth()->user()->name }}" readonly>  -->
             </div>
 
             <!-- Input Materi -->

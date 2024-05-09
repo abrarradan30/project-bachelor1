@@ -17,7 +17,7 @@ class FrontController extends Controller
     {
         //
         $users = User::where('role', 'siswa')->count();
-        $materi = Materi::count();
+        $materi = Materi::where('status', 'publik')->count();
         $forum_diskusi = ForumDiskusi::count();
         // $materiKategori = Materi::select('kategori')->distinct()->count();
 

@@ -87,6 +87,15 @@ Route::middleware(['peran:admin-mentor'])->group(function () {
     Route::get('/detail_materi/delete/{id}', [DetailMateriController::class, 'destroy']);
 
     // route progres belajar
+    Route::get('/progres_belajar', [ProgresBelajarController::class, 'index']);
+    Route::get('/progres_belajar/create', [ProgresBelajarController::class, 'create']);
+    Route::post('/progres_belajar/store', [ProgresBelajarController::class, 'store']);
+    Route::get('/progres_belajar/show/{id}', [ProgresBelajarController::class, 'show']);
+    Route::get('/progres_belajar/edit/{id}', [ProgresBelajarController::class, 'edit']);
+    Route::post('/progres_belajar/update', [ProgresBelajarController::class, 'update']);
+    Route::get('/progres_belajar/delete/{id}', [ProgresBelajarController::class, 'destroy']);
+
+    // route progres belajar
     Route::get('/cek_progres', [CekProgresController::class, 'index']);
 
     // route kuis
@@ -133,15 +142,6 @@ Route::middleware(['peran:admin'])->group(function () {
     Route::get('/pembayaran/edit/{id}', [PembayaranController::class, 'edit']);
     Route::post('/pembayaran/update', [PembayaranController::class, 'update']);
     Route::get('/pembayaran/delete/{id}', [PembayaranController::class, 'destroy']);
-
-    // route progres belajar
-    Route::get('/progres_belajar', [ProgresBelajarController::class, 'index']);
-    Route::get('/progres_belajar/create', [ProgresBelajarController::class, 'create']);
-    Route::post('/progres_belajar/store', [ProgresBelajarController::class, 'store']);
-    Route::get('/progres_belajar/show/{id}', [ProgresBelajarController::class, 'show']);
-    Route::get('/progres_belajar/edit/{id}', [ProgresBelajarController::class, 'edit']);
-    Route::post('/progres_belajar/update', [ProgresBelajarController::class, 'update']);
-    Route::get('/progres_belajar/delete/{id}', [ProgresBelajarController::class, 'destroy']);
 
     // route sertifikat
     Route::get('/sertifikat', [SertifikatController::class, 'index']);

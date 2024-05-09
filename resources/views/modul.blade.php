@@ -21,16 +21,17 @@
 
   <main id="main">
 
-  @foreach($modul as $md)
+  @foreach($judul as $jd)
     <!-- Page Title -->
     <div data-aos="fade" class="page-title">
       <nav class="breadcrumbs">
         <ol>
-          <li>Materi {{ $md->judul }}</li>
-          <li class="current">Level {{ $md->level }}</li>
+          <li>Materi {{ $jd->judul }}</li>
+          <li class="current">Level {{ $jd->level }}</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
+    @endforeach
 
     <!-- Service Details Section -->
     <section id="service-details" class="service-details">
@@ -62,40 +63,20 @@
 
           </div>
 
-          @foreach($isi_materi as $key => $im)
+          @foreach($sub_judul as $sub)
           <div class="col-lg-8 ps-lg-5" data-aos="fade-up" data-aos-delay="200">
             <div class="materi">
               <p>
-                {!! $im->isi_materi !!}
+                {!! $isi_materi[$sub] !!}
               </p>
               <div class="d-flex justify-content-between align-items-center" style="background-color: #DCDCDC; padding: 10px;">
                 <h5>Lanjut materi ?</h5>
-                  <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#lanjutModal{{$key}}">
+                  <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="">
                     Lanjut <i class="bi bi-caret-right-fill"></i>
                   </button>
               </div>
             </div>
-
-            <!-- Modal -->
-            <div class="modal fade" id="lanjutModal{{$key}}" tabindex="-1" aria-labelledby="lanjutModalLabel{{$key}}" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="lanjutModalLabel{{$key}}">Lanjut Materi?</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            Apakah Anda yakin ingin melanjutkan ke modul berikutnya?
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                            <a href="{{ url('modul/show/'.$sub_judul[$key+1]) }}" class="btn btn-primary">Iya</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
 
             <div class="kuis" style="display: none;">
               <p>
@@ -118,14 +99,12 @@
               </button>
             </div>
           </div>
-          @endforeach
 
         </div>
 
       </div>
 
     </section><!-- End Service-details Section -->
-  @endforeach
 
   </main>
 

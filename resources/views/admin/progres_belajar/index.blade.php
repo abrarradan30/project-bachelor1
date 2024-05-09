@@ -51,7 +51,7 @@
                         <td>{{ $no }}</td>
                         <td>{{ $pb->nama }}</td>
                         <td>{{ $pb->judul_materi }}</td>
-                        <td>{{ $pb->progres }}</td>
+                        <td>{{ $pb->progres }} %</td>
                         <td>{{ $pb->status_selesai}}</td>
                         <td>
                             <form action="#" method="POST">

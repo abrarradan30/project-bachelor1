@@ -95,7 +95,8 @@
                 <a class="collapse-item" href="{{ url('balasan_diskusi') }}">Balasan Diskusi</a>
                 @elseif(Auth::check() && Auth::user()->role == 'mentor')
                 <a class="collapse-item" href="{{ url('detail_materi') }}">Detail Materi</a>
-                <a class="collapse-item" href="{{ url('cek_progres') }}">Cek Progres Belajar</a>
+                <a class="collapse-item" href="{{ url('progres_belajar') }}">Progres Belajar</a>
+                <!-- <a class="collapse-item" href="{{ url('cek_progres') }}">Cek Progres Belajar</a> -->
                 <a class="collapse-item" href="{{ url('kuis') }}">Kuis</a>
                 <a class="collapse-item" href="{{ url('hasil_kuis') }}">Hasil Kuis</a>
                 <a class="collapse-item" href="{{ url('rating') }}">Rating</a>

@@ -46,20 +46,43 @@ class ModulController extends Controller
     public function show($id)
     {
         //
+        $judul = DB::table('detail_materi')
+            ->join('materi', 'detail_materi.materi_id', '=', 'materi.id')
+            ->select('detail_materi.materi_id', 'materi.judul', 'materi.level') 
+            ->groupBy('detail_materi.materi_id', 'materi.judul', 'materi.level') 
+            ->where('detail_materi.materi_id', $id)
+            ->get();
+
+
         $modul = DB::table('detail_materi')
             ->join('materi', 'detail_materi.materi_id', '=', 'materi.id')
             ->select('detail_materi.*', 'materi.judul', 'materi.level')
             ->where('detail_materi.id', $id)
             ->get();
 
-        $sub_judul = DB::table('detail_materi')->pluck('sub_judul');
+        $sub_judul = DB::table('detail_materi')
+            ->where('detail_materi.materi_id', $id)
+            ->pluck('sub_judul');
 
-        $isi_materi = DB::table('detail_materi')
-            ->select('detail_materi.isi_materi')
-            ->where('detail_materi.id', $id)
-            ->get();
+        // $isi_materi = DB::table('detail_materi')
+        //     ->select('detail_materi.isi_materi')
+        //     ->where('detail_materi.id', $id)
+        //     ->get();
 
-        return view('modul', compact('modul', 'sub_judul', 'isi_materi'));
+        $isi_materi = [];
+foreach ($sub_judul as $sub) {
+    $materi = DB::table('detail_materi')
+        ->join('materi', 'detail_materi.materi_id', '=', 'materi.id')
+        ->select('detail_materi.isi_materi')
+        ->where('materi.id', $id)
+        ->where('detail_materi.sub_judul', $sub)
+        ->first();
+
+    $isi_materi[$sub] = $materi->isi_materi ?? '';
+}
+        
+
+        return view('modul', compact('judul', 'modul', 'sub_judul', 'isi_materi'));
     }
 
     public function hitungProgres()

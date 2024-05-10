@@ -23,12 +23,12 @@
                 </ul>
             </div>
         @endif
-        <form method="POST" action="{{ url('admin/balasan_diskusi/store') }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ url('balasan_diskusi/store') }}" enctype="multipart/form-data">
         {{ csrf_field() }}
             <!-- Input Nama -->
             <div class="form-group">
                 <label for="nama">Nama :</label>
-                <input id="nama" name="nama" type="text" class="form-control @error('nama') is-invalid @enderror" placeholder="Masukkan Nama">
+                <input id="nama" name="nama" type="text" class="form-control @error('nama') is-invalid @enderror" value="{{ Auth::user()->name }}">
                 @error('nama')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -41,7 +41,7 @@
                 <label for="forum_diskusi_id"> Pertanyaan :</label>
                 <select id="forum_diskusi_id" name="forum_diskusi_id" class="custom-select">
                     @foreach ($forum_diskusi as $fd)
-                        <option value="{{ $fd->id }}">{{ $fd->pertanyaan }}</option>
+                        <option value="{{ $fd->id }}">{!! $fd->pertanyaan !!}</option>
                     @endforeach
                 </select>
             </div>

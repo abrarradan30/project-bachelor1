@@ -5,6 +5,7 @@ use App\Models\BalasanDiskusi;
 use App\Models\User;
 use App\Models\ForumDIskusi;
 use RealRashid\SweetAlert\Facades\Alert;
+use DOMDocument;
 use DB;
 
 use Illuminate\Http\Request;
@@ -38,7 +39,7 @@ class BalasanDiskusiController extends Controller
             ->select('balasan_diskusi.*', 'users.name as nama', 'forum_diskusi.pertanyaan')
             ->get();
 
-        return view('admin.balasan_diskusi.index', compact('balasan_diskusi', 'users', 'materi'));
+        return view('admin.balasan_diskusi.create', compact('users', 'forum_diskusi', 'balasan_diskusi'));
     }
 
     /**
@@ -48,14 +49,9 @@ class BalasanDiskusiController extends Controller
     {
         //
         $request->validate([
-            'users_id'            => 'required',
+            //'users_id'            => 'required',
             'forum_diskusi_id'    => 'required',
             'balasan'             => 'required',
-        ], 
-        [
-            'users_id.required'            => 'User wajib diisi',
-            'forum_diskusi_id.required'    => 'Topik Diskusi wajib diisi',
-            'balasan.required'             => 'Isi materi wajib diisi',
         ]);
 
         $balasan = $request->balasan;
@@ -76,7 +72,8 @@ class BalasanDiskusiController extends Controller
         $balasan = $dom->saveHTML();
  
         BalasanDiskusi::create([
-            'users_id'            => $request->users_id,
+            'users_id'           => auth()->user()->id,
+            //'users_id'            => $request->users_id,
             'forum_diskusi_id'    => $request->forum_diskusi_id,
             'balasan'             => $balasan,
         ]);

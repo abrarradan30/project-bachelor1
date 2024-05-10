@@ -234,20 +234,18 @@
 
                     <div class="inner-main-header">
                         <a class="nav-link nav-icon rounded-circle nav-link-faded mr-3 d-md-none" href="#" data-toggle="inner-sidebar"><i class="material-icons">arrow_forward_ios</i></a>
-                        <select class="custom-select custom-select-sm w-auto mr-1" style="width: 50%;">
-                            <option selected>Pilih Materi</option>
-                            <select id="materi_id" name="materi_id" class="custom-select">
-                            @foreach ($materi as $m)
+                        <select id="materi_id" name="materi_id" class="custom-select custom-select-sm w-auto mr-1" style="width: 50%;">
+                            <option value="1">--- Pilih Materi ---</option>
+                            @foreach ($materi as $m)    
                                 <option value="{{ $m->id }}">{{ $m->judul }}</option>
                             @endforeach
-                            </select>
-                            <option value="1">Bejalar dasar golang</option>
-                            <option value="1">Laravel</option>
                         </select>
-                        @for ($i = 0; $i < 5; $i++)
+
+                        @for ($i = 0; $i < 3; $i++)
                             &nbsp;
                         @endfor
-                        <span class="input-icon input-icon-sm ml-auto w-auto" style="width: 50%;">
+
+                        <span class="input-icon input-icon-sm ml-auto w-auto" style="width: 100%;">
                             <input type="text" class="form-control form-control-sm bg-gray-200 border-gray-200 shadow-none mb-4 mt-4" placeholder="Cari diskusi" />
                         </span>
                     </div>
@@ -255,22 +253,29 @@
 
 
                     <div class="inner-main-body p-2 p-sm-3 collapse forum-content show">
+                        @foreach($forum_diskusi as $fd)
                         <div class="card mb-2">
                             <div class="card-body p-2 p-sm-3">
                                 <div class="media forum-item">
-                                    <a href="#" data-toggle="collapse" data-target=".forum-content"><img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="mr-3 rounded-circle" width="50" alt="User" /></a>
+                                    <div class="d-flex align-items-center">
+                                        <a href="#" data-toggle="collapse" data-target=".forum-content">
+                                            <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="mr-3 rounded-circle" width="50" alt="User" />
+                                        </a> &nbsp;
+                                        <h6 class="mb-0">
+                                            <a href="#" data-toggle="collapse" data-target=".forum-content" class="text-body">{{ $fd->nama }}</a>
+                                        </h6>
+                                    </div>
                                     <div class="media-body">
-                                        <h6><a href="#" data-toggle="collapse" data-target=".forum-content" class="text-body">Realtime fetching data</a></h6>
-                                        <p class="text-secondary">
-                                            lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet
-                                        </p>
-                                        <p class="text-muted"><a href="javascript:void(0)">drewdan</a> replied <span class="text-secondary font-weight-bold">13 minutes ago</span></p>
+                                        <p class="text-secondary"> {!! $fd->pertanyaan !!} </p>
+                                        <p class="text-muted"><a href="javascript:void(0)">drewdan</a> replied <span class="text-secondary font-weight-bold">{{ $fd->created_at->format('d-m-Y h:i A') }}</span></p>
                                     </div>
                                     <div class="text-muted small text-center align-self-center">
                                         <span><i class="far fa-comment ml-2"></i> 3</span>
-                                    </div>
                                 </div>
                             </div>
+                        </div>
+                        @endforeach
+
                         </div>
                         <!-- <div class="card mb-2">
                             <div class="card-body p-2 p-sm-3">

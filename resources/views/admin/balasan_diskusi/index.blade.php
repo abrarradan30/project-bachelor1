@@ -26,8 +26,8 @@
                     <tr>
                         <th>No</th>
                         <th>Nama</th>
-                        <th>Topik Diskusi</th>
                         <th>Balasan</th>
+                        <th>Tgl Balasan</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -35,7 +35,6 @@
                     <tr>
                         <th>No</th>
                         <th>Nama</th>
-                        <th>Topik Diskusi</th>
                         <th>Balasan</th>
                         <th>Tgl Balasan</th>
                         <th>Aksi</th>
@@ -49,19 +48,18 @@
                     <tr>
                         <td>{{ $no }}</td>
                         <td>{{ $bd->nama }}</td>
-                        <td>{{ $bd->topik_diskusi }}</td>
-                        <td>{{ $bd->balasan }}</td>
+                        <td>{!! $bd->balasan !!}</td>
                         <td>{{ $bd->created_at }}</td>
                         <td>
                             <form action="#" method="POST">
                                 <button type="button" class="btn btn-success btn-sm">
-                                    <a href="{{ url('admin/balasan_diskusi/show/' . $bd->id) }}" style="text-decoration: none; color: inherit;">Detail</a>
+                                    <a href="{{ url('balasan_diskusi/show/' . $bd->id) }}" style="text-decoration: none; color: inherit;">Detail</a>
                                 </button>
                                 <button type="button" class="btn btn-warning btn-sm">
-                                    <a href="{{ url('admin/balasan_diskusi/edit/' . $bd->id) }}" style="text-decoration: none; color: inherit;">Edit</a>
+                                    <a href="{{ url('balasan_diskusi/edit/' . $bd->id) }}" style="text-decoration: none; color: inherit;">Edit</a>
                                 </button>
                                 <button type="button" class="btn btn-danger btn-sm">
-                                    <a href="{{ url('admin/balasan_diskusi/delete/' . $bd->id) }}" style="text-decoration: none; color: inherit;">Hapus</a>
+                                    <a href="{{ url('balasan_diskusi/delete/' . $bd->id) }}" style="text-decoration: none; color: inherit;">Hapus</a>
                                 </button>
                             </form>
                         </td>

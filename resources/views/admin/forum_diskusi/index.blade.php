@@ -53,19 +53,19 @@
                         <td>{{ $no }}</td>
                         <td>{{ $fd->nama }}</td>
                         <td>{{ $fd->judul_materi}}</td>
-                        <td>{{ $fd->pertanyaan}}</td>
+                        <td>{!! $fd->pertanyaan !!}</td>
                         <td>{{ $fd->status_diskusi }}</td>
                         <td>{{ $fd->created_at }}</td>
                         <td>
                             <form action="#" method="POST">
                                 <button type="button" class="btn btn-success btn-sm">
-                                    <a href="{{ url('admin/forum_diskusi/show/' . $fd->id) }}" style="text-decoration: none; color: inherit;">Detail</a>
+                                    <a href="{{ url('forum_diskusi/show/' . $fd->id) }}" style="text-decoration: none; color: inherit;">Detail</a>
                                 </button>
                                 <button type="button" class="btn btn-warning btn-sm">
-                                    <a href="{{ url('admin/forum_diskusi/edit/' . $fd->id) }}" style="text-decoration: none; color: inherit;">Edit</a>
+                                    <a href="{{ url('forum_diskusi/edit/' . $fd->id) }}" style="text-decoration: none; color: inherit;">Edit</a>
                                 </button>
                                 <button type="button" class="btn btn-danger btn-sm">
-                                    <a href="{{ url('admin/forum_diskusi/delete/' . $fd->id) }}" style="text-decoration: none; color: inherit;">Hapus</a>
+                                    <a href="{{ url('forum_diskusi/delete/' . $fd->id) }}" style="text-decoration: none; color: inherit;">Hapus</a>
                                 </button>
                             </form>
                         </td>

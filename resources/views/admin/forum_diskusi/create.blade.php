@@ -23,7 +23,7 @@
                 </ul>
             </div>
         @endif
-        <form method="POST" action="{{ url('admin/forum_diskusi/store') }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ url('forum_diskusi/store') }}" enctype="multipart/form-data">
         {{ csrf_field() }}
             <!-- Input Nama -->
             <div class="form-group">

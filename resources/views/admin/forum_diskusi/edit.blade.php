@@ -30,7 +30,7 @@
             <div class="form-group">
             <input type="hidden" name="id" value="{{ $fd->id }}">
                 <label for="nama">Nama :</label>
-                <input id="nama" name="nama" type="text" class="form-control" value="{{ $fd->nama }}">
+                <input id="name" name="name" type="text" class="form-control" value="{{ auth()->user()->name }}">
             </div>
 
             <!-- Input Judul Materi -->
@@ -39,7 +39,7 @@
                 <select id="materi_id" name="materi_id" class="custom-select">
                     @foreach ($materi as $m)
                     @php $sel = ($m->id == $fd->materi_id) ? 'selected' : ''; @endphp
-                        <option value="{{ $m->id }}" {{ $sel }}>{{ $m->judul_materi }}</option>
+                        <option value="{{ $m->id }}" {{ $sel }}>{{ $m->judul }}</option>
                     @endforeach
                 </select>
             </div>
@@ -56,10 +56,10 @@
                 @foreach ($ar_status_diskusi as $sd)
                     @php $cek = ($sd == $fd->status_diskusi) ? "checked" : ""; @endphp 
                 <div class="form-check">
-                    <input name="status_diskusi" id="status_diskusi" type="radio" class="form-check-label" value="{{ $ktg }}" {{ $cek }}>
+                    <input name="status_diskusi" id="status_diskusi" type="radio" class="form-check-label" value="{{ $sd }}" {{ $cek }}>
                     <label class="form-check-label" for="status_diskusi">{{ $sd }}</label>
                 </div>
-                endforeach
+                @endforeach
             </div>
 
             <!-- Submit Button -->
@@ -74,6 +74,7 @@
     </div>
 </div>
 
+</div>
 <script>
     $('#pertanyaan').summernote({
         placeholder: 'pertanyaan...',
@@ -81,7 +82,5 @@
         height:300
     });
 </script>
-
-</div>
 <!-- /.container-fluid -->
 @endsection

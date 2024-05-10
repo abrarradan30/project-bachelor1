@@ -7,6 +7,7 @@ use App\Models\ForumDiskusi;
 use App\Models\User;
 use App\Models\Materi;
 use RealRashid\SweetAlert\Facades\Alert;
+use DOMDocument;
 use DB;
 
 class ForumDiskusiController extends Controller
@@ -48,16 +49,10 @@ class ForumDiskusiController extends Controller
     {
         //
         $request->validate([
-            'users_id'          => 'required',
+            //'users_id'          => 'required',
             'materi_id'         => 'required',
             'pertanyaan'        => 'required',
             'status_diskusi'    => 'required',
-        ], 
-        [
-            'users.required'             => 'User wajib diisi',
-            'materi.required'            => 'Materi wajib diisi',
-            'pertanyaan.required'        => 'Pertanyaan wajib diisi',
-            'status_diskusi.required'    => 'Status diskusi wajib diisi',
         ]);
 
         $pertanyaan = $request->pertanyaan;
@@ -78,7 +73,8 @@ class ForumDiskusiController extends Controller
         $pertanyaan = $dom->saveHTML();
  
         ForumDiskusi::create([
-            'users_id'           => $request->users_id,
+            'users_id'           => auth()->user()->id,
+            //'users_id'           => $request->users_id,
             'materi_id'          => $request->materi_id,
             'pertanyaan'         => $pertanyaan, 
             'status_diskusi'     => $request->status_diskusi, 
@@ -123,16 +119,10 @@ class ForumDiskusiController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'users_id'          => 'required',
+            //'users_id'          => 'required',
             'materi_id'         => 'required',
             'pertanyaan'        => 'required',
             'status_diskusi'    => 'required',
-        ], 
-        [
-            'users.required'             => 'User wajib diisi',
-            'materi.required'            => 'Materi wajib diisi',
-            'pertanyaan.required'        => 'Pertanyaan wajib diisi',
-            'status_diskusi.required'    => 'Status diskusi wajib diisi',
         ]);
 
         $forum_diskusi = ForumDiskusi::find($id);
@@ -161,7 +151,7 @@ class ForumDiskusiController extends Controller
         $pertanyaan = $dom->saveHTML();
  
         $forum_diskusi->update([
-            'users_id'          => $request->users_id,
+            //'users_id'          => $request->users_id,
             'materi_id'         => $request->materi_id,
             'pertanyaan'        => $pertanyaan,
             'status_diskusi'    => $request->status_diskusi,

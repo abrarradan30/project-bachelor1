@@ -27,7 +27,7 @@
 
         <div class="form-group">
             <label for="">Pertanyaan :</label>
-            <textarea id="pertanyaan" cols="30" rows="10" class="form-control" readonly>{{ $fd->pertanyaan }}</textarea>
+            <textarea id="pertanyaan" cols="30" rows="10" class="form-control" readonly>{!! $fd->pertanyaan !!}</textarea>
         </div>
 
         <div class="form-group">

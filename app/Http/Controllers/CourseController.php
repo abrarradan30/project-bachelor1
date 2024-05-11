@@ -17,8 +17,10 @@ class CourseController extends Controller
         $materi = Materi::count();
         $ar_materi = DB::table('materi')->get();
         $ar_materi = Materi::all();
+        $kategori_materi = ['IT', 'desain', 'softskill'];
+        $level_materi = ['pemula', 'menengah', 'mahir'];
 
-        return view('course', compact('materi', 'ar_materi'));
+        return view('course', compact('materi', 'ar_materi', 'kategori_materi', 'level_materi'));
     }
 
     /**

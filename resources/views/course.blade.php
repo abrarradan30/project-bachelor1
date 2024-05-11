@@ -90,7 +90,7 @@
 					<header class="card-header">
 						<a href="#" data-toggle="collapse" data-target="#collapse_1" aria-expanded="true" class="">
 							<i class="icon-control fa fa-chevron-down"></i>
-							<h6 class="title">Product type</h6>
+							<h6 class="title">Search Course</h6>
 						</a>
 					</header>
 					<div class="filter-content collapse show" id="collapse_1">
@@ -116,10 +116,11 @@
 					</header>
 					<div class="filter-content collapse show" id="collapse_2">
 						<div class="card-body">
-							<select class="mr-2 form-control">
-								<option>IT</option>
-								<option>Desain</option>
-								<option>Softskill</option>
+							<select id="kategori" class="mr-2 form-control">
+							<option>-- Pilih Kategori --</option>
+								@foreach($kategori_materi as $km)        
+									<option>{{ $km }}</option>
+								@endforeach
 							</select>
 						</div> <!-- card-body.// -->
 					</div>
@@ -134,10 +135,11 @@
 					</header>
 					<div class="filter-content collapse show" id="collapse_2">
 						<div class="card-body">
-							<select class="mr-2 form-control">
-								<option>Pemula</option>
-								<option>Menengah</option>
-								<option>Mahir</option>
+							<select id="kategori" class="mr-2 form-control">
+							<option>-- Pilih Level --</option>
+								@foreach($level_materi as $lm)        
+									<option>{{ $lm }}</option>
+								@endforeach
 							</select>
 						</div> <!-- card-body.// -->
 					</div>
@@ -180,12 +182,6 @@
 			<header class="border-bottom mb-4 pb-3">
 				<div class="form-inline">
 					<span class="mr-md-auto">Saat ini tersedia <b> {{ $materi }} </b> Materi </span>
-					<select class="mr-2 form-control">
-						<option>Latest items</option>
-						<option>Trending</option>
-						<option>Most Popular</option>
-						<option>Cheapest</option>
-					</select>
 				</div>
 			</header><!-- sect-heading -->
 

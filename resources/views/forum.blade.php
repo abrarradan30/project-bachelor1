@@ -253,21 +253,25 @@
 
 
                     <div class="inner-main-body p-2 p-sm-3 collapse forum-content show">
+
+                        <!-- Forum Diskusi -->
                         @foreach($forum_diskusi as $fd)
                         <div class="card mb-2">
                             <div class="card-body p-2 p-sm-3">
                                 <div class="media forum-item">
                                     <div class="d-flex align-items-center">
-                                        <a href="#" data-toggle="collapse" data-target=".forum-content">
-                                            <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="mr-3 rounded-circle" width="50" alt="User" />
-                                        </a> &nbsp;
+                                        <a data-toggle="collapse" data-target=".forum-content">
+                                            <img src="{{ url('admin/img') }}/{{ $fd->foto }}" class="mr-3 rounded-circle" width="50" alt="User" />
+                                        </a> 
+                                            &nbsp; &nbsp;
                                         <h6 class="mb-0">
-                                            <a href="#" data-toggle="collapse" data-target=".forum-content" class="text-body">{{ $fd->nama }}</a>
+                                            <a data-toggle="collapse" data-target=".forum-content" class="text-body"> {{ $fd->nama }} </a>
                                         </h6>
                                     </div>
                                     <div class="media-body">
-                                        <p class="text-secondary"> {!! $fd->pertanyaan !!} </p>
-                                        <p class="text-muted"><a href="javascript:void(0)">drewdan</a> replied <span class="text-secondary font-weight-bold">{{ $fd->created_at->format('d-m-Y h:i A') }}</span></p>
+                                        <a href="#" data-toggle="collapse" data-target=".forum-content" class="text-body"> <p class="text-secondary"> {!! $fd->pertanyaan !!} </p></a>
+                                        <p class="text-muted"><a href="javascript:void(0)"></a> 
+                                        <span class="text-secondary font-weight-bold">{{ \Carbon\Carbon::parse($fd->created_at)->format('d-M-Y') }}</span></p>
                                     </div>
                                     <div class="text-muted small text-center align-self-center">
                                         <span><i class="far fa-comment ml-2"></i> 3</span>
@@ -295,6 +299,7 @@
                                 </div>
                             </div>
                         </div> -->
+
                         <ul class="pagination pagination-sm pagination-circle justify-content-center mb-0">
                             <li class="page-item disabled">
                                 <span class="page-link has-icon"><i class="material-icons"><<</i></span>
@@ -311,53 +316,57 @@
 
                     <div class="inner-main-body p-2 p-sm-3 collapse forum-content">
                         <a href="#" class="btn btn-light btn-sm mb-3 has-icon" data-toggle="collapse" data-target=".forum-content"><i class="fa fa-arrow-left mr-2"></i>Back</a>
+
+                        <!-- Balasan Diskusi -->
+                        @foreach($forum_diskusi as $fd)
                         <div class="card mb-2">
                             <div class="card-body">
                                 <div class="media forum-item">
-                                    <a href="javascript:void(0)" class="card-link">
-                                        <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="rounded-circle" width="50" alt="User" />
-                                        <small class="d-block text-center text-muted">Newbie</small>
-                                    </a>
-                                    <div class="media-body ml-3">
-                                        <a href="javascript:void(0)" class="text-secondary">Mokrani</a>
-                                        <small class="text-muted ml-2">1 hour ago</small>
-                                        <h5 class="mt-1">Realtime fetching data</h5>
-                                        <div class="mt-3 font-size-sm">
-                                            <p>Hellooo :)</p>
-                                            <p>
-                                                I'm newbie with laravel and i want to fetch data from database in realtime for my dashboard anaytics and i found a solution with ajax but it dosen't work if any one have a simple solution it will be
-                                                helpful
-                                            </p>
-                                            <p>Thank</p>
-                                        </div>
+                                    <div class="d-flex align-items-center">
+                                        <a href="javascript:void(0)" class="card-link">
+                                        <img src="{{ url('admin/img') }}/{{ $fd->foto }}" class="mr-3 rounded-circle" width="50" alt="User" />
+                                        </a>
+                                        &nbsp; &nbsp;
+                                        <h6 class="mb-0">
+                                            <a data-toggle="collapse" data-target=".forum-content" class="text-body"> {{ $fd->nama }} </a>
+                                        </h6>
                                     </div>
-                                    <div class="text-muted small text-center">
-                                        <span class="d-none d-sm-inline-block"><i class="far fa-eye"></i> 19</span>
-                                        <span><i class="far fa-comment ml-2"></i> 3</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card mb-2">
-                            <div class="card-body">
-                                <div class="media forum-item">
-                                    <a href="javascript:void(0)" class="card-link">
-                                        <img src="https://bootdey.com/img/Content/avatar/avatar2.png" class="rounded-circle" width="50" alt="User" />
-                                        <small class="d-block text-center text-muted">Pro</small>
-                                    </a>
-                                    <div class="media-body ml-3">
-                                        <a href="javascript:void(0)" class="text-secondary">drewdan</a>
-                                        <small class="text-muted ml-2">1 hour ago</small>
-                                        <div class="mt-3 font-size-sm">
-                                            <p>What exactly doesn't work with your ajax calls?</p>
-                                            <p>Also, WebSockets are a great solution for realtime data on a dashboard. Laravel offers this out of the box using broadcasting</p>
-                                        </div>
-                                        <button class="btn btn-xs text-muted has-icon"><i class="fa fa-heart" aria-hidden="true"></i>1</button>
+                                    <br>
+                                    <div class="media-body">
+                                        <a data-toggle="collapse" data-target=".forum-content" class="text-body"> {!! $fd->pertanyaan !!} </a>
+                                        <p class="text-muted"><a href="javascript:void(0)"></a> 
+                                        <br>
+                                        <span class="text-secondary font-weight-bold">{{ \Carbon\Carbon::parse($fd->created_at)->format('d-M-Y') }}</span></p>
                                         <a href="javascript:void(0)" class="text-muted small">Reply</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        @endforeach
+
+                        <div class="card mb-2">
+                            <div class="card-body">
+                                <div class="media forum-item">
+                                    <div class="d-flex align-items-center">
+                                        <a href="javascript:void(0)" class="card-link">
+                                            <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="rounded-circle" width="50" alt="User" />
+                                        </a>
+                                        &nbsp; &nbsp;
+                                        <h6 class="mb-0">
+                                            <a data-toggle="collapse" data-target=".forum-content" class="text-body"> nama </a>
+                                        </h6>
+                                    </div>
+                                    <br>
+                                    <div class="media-body">
+                                        <a data-toggle="collapse" data-target=".forum-content" class="text-body"> Halo</a>
+                                        <p class="text-muted"><a href="javascript:void(0)"></a> 
+                                        <br>
+                                        <span class="text-secondary font-weight-bold">20 MEI 2024</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
 
 

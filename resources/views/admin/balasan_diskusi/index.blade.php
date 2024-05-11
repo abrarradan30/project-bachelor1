@@ -26,6 +26,7 @@
                     <tr>
                         <th>No</th>
                         <th>Nama</th>
+                        <th>Pertanyaan</th>
                         <th>Balasan</th>
                         <th>Tgl Balasan</th>
                         <th>Aksi</th>
@@ -35,6 +36,7 @@
                     <tr>
                         <th>No</th>
                         <th>Nama</th>
+                        <th>Pertanyaan</th>
                         <th>Balasan</th>
                         <th>Tgl Balasan</th>
                         <th>Aksi</th>
@@ -48,6 +50,7 @@
                     <tr>
                         <td>{{ $no }}</td>
                         <td>{{ $bd->nama }}</td>
+                        <td>{!! $bd->pertanyaan !!}</td>
                         <td>{!! $bd->balasan !!}</td>
                         <td>{{ $bd->created_at }}</td>
                         <td>

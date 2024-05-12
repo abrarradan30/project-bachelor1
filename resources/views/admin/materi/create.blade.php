@@ -60,21 +60,32 @@
             </div>
 
             <!-- Input Harga -->
-        <div class="form-group">
-            <label for="harga">Harga :</label>
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">Rp.</span>
+            @if(Auth::check() && Auth::user()->role == 'admin')
+            <div class="form-group">
+                <label for="harga">Harga :</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Rp.</span>
+                    </div>
+                    <input id="harga" name="harga" type="text" class="form-control @error('harga') is-invalid @enderror" placeholder="Masukkan harga">
                 </div>
-                <input id="harga" name="harga" type="text" class="form-control @error('harga') is-invalid @enderror" placeholder="Masukkan harga">
+                @error('harga')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+                @enderror
             </div>
-            @error('harga')
-            <div class="invalid-feedback">
-                {{ $message }}
+            @elseif(Auth::check() && Auth::user()->role == 'mentor')
+            <div class="form-group">
+                <label for="harga">Harga :</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Rp.</span>
+                    </div>
+                    <input id="harga" name="harga" type="text" class="form-control" value="0" readonly>
+                </div>
             </div>
-            @enderror
-        </div>
-
+            @endif
 
             <!-- Input Kategori -->
             <div class="form-group">

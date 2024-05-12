@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\ForumDiskusi;
 use App\Models\User;
 use App\Models\Materi;
+use App\Models\BalasanDiskusi;
 use RealRashid\SweetAlert\Facades\Alert;
 use DB;
 
@@ -18,12 +19,20 @@ class ForumController extends Controller
     {
         //
         $materi = DB::table('materi')->get();
+
         $forum_diskusi = ForumDiskusi::join('users', 'forum_diskusi.users_id', '=', 'users.id')
             ->join('materi', 'forum_diskusi.materi_id', '=', 'materi.id')
-            ->select('forum_diskusi.*', 'users.name as nama', 'users.foto', 'materi.judul as judul_materi')
+            ->join('balasan_diskusi', 'forum_diskusi.id', '=', 'balasan_diskusi.forum_diskusi_id')
+            ->select('forum_diskusi.*', 'users.name as nama', 'users.foto', 'materi.judul as judul_materi',
+                \DB::raw('(SELECT COUNT(*) FROM balasan_diskusi WHERE forum_diskusi.id = balasan_diskusi.forum_diskusi_id) AS jumlah_balasan'))
+            ->get();
+        
+        $balasan_diskusi = BalasanDiskusi::join('users', 'balasan_diskusi.users_id', '=', 'users.id')
+            ->join('forum_diskusi', 'balasan_diskusi.forum_diskusi_id', '=', 'forum_diskusi.id')
+            ->select('balasan_diskusi.*', 'users.name as nama', 'forum_diskusi.pertanyaan')
             ->get();
 
-        return view('forum', compact('forum_diskusi', 'materi'));
+        return view('forum', compact('forum_diskusi', 'materi', 'balasan_diskusi'));
     }
 
     /**
@@ -81,13 +90,20 @@ class ForumController extends Controller
     public function show($id)
     {
         //
+        $materi = DB::table('materi')->get();
         $forum_diskusi = ForumDiskusi::join('users', 'forum_diskusi.users_id', '=', 'users.id')
             ->join('materi', 'forum_diskusi.materi_id', '=', 'materi.id')
-            ->select('forum_diskusi.*', 'users.name as nama', 'materi.judul as judul_materi')
+            ->select('forum_diskusi.*', 'users.name as nama', 'users.foto', 'materi.judul as judul_materi')
             ->where('forum_diskusi.id', $id)
             ->get();
+        
+        $balasan_diskusi = BalasanDiskusi::join('users', 'balasan_diskusi.users_id', '=', 'users.id')
+            ->join('forum_diskusi', 'balasan_diskusi.forum_diskusi_id', '=', 'forum_diskusi.id')
+            ->select('balasan_diskusi.*', 'users.name as nama', 'forum_diskusi.pertanyaan')
+            ->where('balasan_diskusi.forum_diskusi_id', $id)
+            ->get();
             
-        return view('forum', compact('forum_diskusi'));
+        return view('forum', compact('materi', 'forum_diskusi', 'balasan_diskusi'));
     }
 
     /**

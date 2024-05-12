@@ -187,7 +187,7 @@
                 <div class="inner-sidebar">
 
                     <div class="inner-sidebar-header justify-content-center">
-                        <button class="btn btn-primary has-icon btn-block" type="button" data-toggle="modal" data-target="#threadModal">
+                        <button class="btn btn-primary has-icon btn-block" type="button" data-toggle="modal" data-target="#pertanyaanModal">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus mr-2">
                                 <line x1="12" y1="5" x2="12" y2="19"></line>
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -245,9 +245,9 @@
                             &nbsp;
                         @endfor
 
-                        <span class="input-icon input-icon-sm ml-auto w-auto" style="width: 100%;">
+                        <!-- <span class="input-icon input-icon-sm ml-auto w-auto" style="width: 100%;">
                             <input type="text" class="form-control form-control-sm bg-gray-200 border-gray-200 shadow-none mb-4 mt-4" placeholder="Cari diskusi" />
-                        </span>
+                        </span> -->
                     </div>
 
 
@@ -265,7 +265,7 @@
                                         </a> 
                                             &nbsp; &nbsp;
                                         <h6 class="mb-0">
-                                            <a data-toggle="collapse" data-target=".forum-content" class="text-body"> {{ $fd->nama }} </a>
+                                            <a data-toggle="collapse" data-target=".forum-content" class="text-body"> {{ $fd->nama }} &nbsp; &harr; &nbsp; {{ $fd->judul_materi }} </a>
                                         </h6>
                                     </div>
                                     <div class="media-body">
@@ -274,7 +274,7 @@
                                         <span class="text-secondary font-weight-bold">{{ \Carbon\Carbon::parse($fd->created_at)->format('d-M-Y') }}</span></p>
                                     </div>
                                     <div class="text-muted small text-center align-self-center">
-                                        <span><i class="far fa-comment ml-2"></i> 3</span>
+                                        <span><i class="far fa-comment ml-2"></i> {{ $fd->jumlah_balasan }}</span>
                                 </div>
                             </div>
                         </div>
@@ -333,11 +333,11 @@
                                     </div>
                                     <br>
                                     <div class="media-body">
-                                        <a data-toggle="collapse" data-target=".forum-content" class="text-body"> {!! $fd->pertanyaan !!} </a>
+                                        <a href="{{url('forum/show/'.$fd->id) }}" data-toggle="collapse" data-target=".forum-content" class="text-body"> {!! $fd->pertanyaan !!} </a>
                                         <p class="text-muted"><a href="javascript:void(0)"></a> 
                                         <br>
                                         <span class="text-secondary font-weight-bold">{{ \Carbon\Carbon::parse($fd->created_at)->format('d-M-Y') }}</span></p>
-                                        <a href="javascript:void(0)" class="text-muted small">Reply</a>
+                                        <a href="javascript:void(0)" class="text-muted small" data-toggle="modal" data-target="#balasanModal">Balas</a>
                                     </div>
                                 </div>
                             </div>
@@ -374,12 +374,12 @@
 
             </div>
 
-            <div class="modal fade" id="threadModal" tabindex="-1" role="dialog" aria-labelledby="threadModalLabel" aria-hidden="true">
+            <div class="modal fade" id="pertanyaanModal" tabindex="-1" role="dialog" aria-labelledby="pertanyaanModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <form>
                             <div class="modal-header d-flex align-items-center bg-primary text-white">
-                                <h6 class="modal-title mb-0" id="threadModalLabel">Tambah Diskusi Baru</h6>
+                                <h6 class="modal-title mb-0" id="pertanyaanModalLabel">Tambah Diskusi Baru</h6>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">×</span>
                                 </button>
@@ -415,6 +415,49 @@
                     </div>
                 </div>
             </div>
+
+            <div class="modal fade" id="balasanModal" tabindex="-1" role="dialog" aria-labelledby="balasanModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <form>
+                            <div class="modal-header d-flex align-items-center bg-primary text-white">
+                                <h6 class="modal-title mb-0" id="balasanModalLabel">Balas pertanyaan</h6>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="name">Nama</label>
+                                    <input type="text" class="form-control" id="name" placeholder="nama" autofocus />
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                    <label for="threadTitle">Judul Materi</label>
+                                    <input type="text" class="form-control" id="threadTitle" placeholder="Pilih Judul" autofocus />
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                    <label for="balasan">Balasan</label>
+                                    <textarea class="form-control" id="balasan" placeholder="Isi balasan" ></textarea>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
+                                <button type="button" class="btn btn-primary">Post</button>
+                            </div>
+                            <script>
+                                $('#balasan').summernote({
+                                    placeholder: 'Isi balasan...',
+                                    tabsize:2,
+                                    height:150
+                                });
+                            </script>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>

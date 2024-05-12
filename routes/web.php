@@ -63,6 +63,7 @@ Route::middleware(['peran:admin-siswa-mentor'])->group(function () {
 
     // route forum 
     Route::get('/forum', [ForumController::class, 'index']);
+    Route::get('/forum/show/{id}', [ForumController::class, 'show']);
 });
 
 // peran admin dan mentor

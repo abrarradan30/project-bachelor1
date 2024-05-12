@@ -8,7 +8,7 @@
 
 <!-- Page Heading -->
 <h1 class="h3 mb-2 text-gray-800">Tabel Materi</h1>
-<p class="mb-4">Membantu dalam pengorganisasian dan strukturisasi materi pembelajaran.</p>
+<p class="mb-4">Membantu dalam memanajemen materi pembelajaran.</p>
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">

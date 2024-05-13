@@ -112,6 +112,7 @@ class MateriController extends Controller
                 'harga'        => 'required|numeric',
                 'kategori'     => 'required',
                 'level'        => 'required',
+                'status'       => 'required',
         ]);
 
         // foto lama apabila mengganti fotonya
@@ -137,6 +138,7 @@ class MateriController extends Controller
             'harga'        => $request->harga,
             'kategori'     => $request->kategori,
             'level'        => $request->level,
+            'status'       => $request->status,
         ]);
 
         Alert::info('Materi', 'Berhasil mengedit materi');

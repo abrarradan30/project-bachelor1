@@ -138,7 +138,7 @@
             <div class="form-group">
                 <label>Status :</label>
                 <div class="form-check">
-                    <input name="status" id="proses" type="radio" class="form-check-input" value="proses">
+                    <input name="status" id="proses" type="radio" class="form-check-input" value="proses" checked>
                     <label class="form-check-label" for="proses">Proses</label>
                 </div>
             </div>

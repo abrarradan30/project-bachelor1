@@ -250,55 +250,61 @@
                         </span> -->
                     </div>
 
-
-
                     <div class="inner-main-body p-2 p-sm-3 collapse forum-content show">
 
-                        <!-- Forum Diskusi -->
-                        @foreach($forum_diskusi as $fd)
-                        <div class="card mb-2">
-                            <div class="card-body p-2 p-sm-3">
-                                <div class="media forum-item">
-                                    <div class="d-flex align-items-center">
-                                        <a data-toggle="collapse" data-target=".forum-content">
-                                            <img src="{{ url('admin/img') }}/{{ $fd->foto }}" class="mr-3 rounded-circle" width="50" alt="User" />
-                                        </a> 
-                                            &nbsp; &nbsp;
-                                        <h6 class="mb-0">
-                                            <a data-toggle="collapse" data-target=".forum-content" class="text-body"> {{ $fd->nama }} &nbsp; &harr; &nbsp; {{ $fd->judul_materi }} </a>
-                                        </h6>
-                                    </div>
-                                    <div class="media-body">
-                                        <a href="{{ url('forum_balas/show/' . $fd->id) }}" data-toggle="collapse" data-target=".forum-content" class="text-body"> <p class="text-secondary"> {!! $fd->pertanyaan !!} </p></a>
-                                        <p class="text-muted"><a href="javascript:void(0)"></a> 
-                                        <span class="text-secondary font-weight-bold">{{ \Carbon\Carbon::parse($fd->created_at)->format('d-M-Y') }}</span></p>
-                                    </div>
-                                    <div class="text-muted small text-center align-self-center">
-                                        <span><i class="far fa-comment ml-2"></i> {{ $fd->jumlah_balasan }}</span>
-                                </div>
-                            </div>
-                        </div>
-                        @endforeach
+                    <a href="{{ url('forum') }}" class="btn btn-light btn-sm mb-3 has-icon"><i class="fa fa-arrow-left mr-2"></i>Back</a>
 
-                        </div>
-                        <!-- <div class="card mb-2">
-                            <div class="card-body p-2 p-sm-3">
-                                <div class="media forum-item">
-                                    <a href="#" data-toggle="collapse" data-target=".forum-content"><img src="https://bootdey.com/img/Content/avatar/avatar2.png" class="mr-3 rounded-circle" width="50" alt="User" /></a>
-                                    <div class="media-body">
-                                        <h6><a href="#" data-toggle="collapse" data-target=".forum-content" class="text-body">Laravel 7 database backup</a></h6>
-                                        <p class="text-secondary">
-                                            lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet
-                                        </p>
-                                        <p class="text-muted"><a href="javascript:void(0)">jlrdw</a> replied <span class="text-secondary font-weight-bold">3 hours ago</span></p>
-                                    </div>
-                                    <div class="text-muted small text-center align-self-center">
-                                        <span class="d-none d-sm-inline-block"><i class="far fa-eye"></i> 18</span>
-                                        <span><i class="far fa-comment ml-2"></i> 1</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
+<!-- Balasan Diskusi -->
+@foreach($forum_diskusi as $fd)
+<div class="card mb-2">
+    <div class="card-body">
+        <div class="media forum-item">
+            <div class="d-flex align-items-center">
+                <a href="javascript:void(0)" class="card-link">
+                <img src="{{ url('admin/img') }}/{{ $fd->foto }}" class="mr-3 rounded-circle" width="50" alt="User" />
+                </a>
+                &nbsp; &nbsp;
+                <h6 class="mb-0">
+                    <a data-toggle="collapse" data-target=".forum-content" class="text-body"> {{ $fd->nama }} </a>
+                </h6>
+            </div>
+            <br>
+            <div class="media-body">
+                <a href="{{url('forum/show/'.$fd->id) }}" data-toggle="collapse" data-target=".forum-content" class="text-body"> {!! $fd->pertanyaan !!} </a>
+                <p class="text-muted"><a href="javascript:void(0)"></a> 
+                <br>
+                <span class="text-secondary font-weight-bold">{{ \Carbon\Carbon::parse($fd->created_at)->format('d-M-Y') }}</span></p>
+                <a href="javascript:void(0)" class="text-muted small" data-toggle="modal" data-target="#balasanModal">Balas</a>
+            </div>
+        </div>
+    </div>
+</div>
+@endforeach
+
+@foreach($balasan_diskusi as $bd)
+<div class="card mb-2">
+    <div class="card-body">
+        <div class="media forum-item">
+            <div class="d-flex align-items-center">
+                <a href="javascript:void(0)" class="card-link">
+                <img src="{{ url('admin/img') }}/{{ $bd->foto }}" class="mr-3 rounded-circle" width="50" alt="User" />
+                </a>
+                &nbsp; &nbsp;
+                <h6 class="mb-0">
+                    <a data-toggle="collapse" data-target=".forum-content" class="text-body"> {{ $bd->nama }} </a>
+                </h6>
+            </div>
+            <br>
+            <div class="media-body">
+                <a data-toggle="collapse" data-target=".forum-content" class="text-body"> {!! $bd->balasan !!} </a>
+                <p class="text-muted"><a href="javascript:void(0)"></a> 
+                <br>
+                <span class="text-secondary font-weight-bold">{{ \Carbon\Carbon::parse($bd->created_at)->format('d-M-Y') }}</span></p>
+            </div>
+        </div>
+    </div>
+</div>
+@endforeach
 
                         <ul class="pagination pagination-sm pagination-circle justify-content-center mb-0">
                             <li class="page-item disabled">
@@ -315,59 +321,7 @@
 
 
                     <div class="inner-main-body p-2 p-sm-3 collapse forum-content"  data-toggle="collapse" data-target=".forum-content">
-                        <a href="{{ url('forum') }}" class="btn btn-light btn-sm mb-3 has-icon"><i class="fa fa-arrow-left mr-2"></i>Back</a>
-
-                        <!-- Balasan Diskusi -->
-                        @foreach($forum_diskusi as $fd)
-                        <div class="card mb-2">
-                            <div class="card-body">
-                                <div class="media forum-item">
-                                    <div class="d-flex align-items-center">
-                                        <a href="javascript:void(0)" class="card-link">
-                                        <img src="{{ url('admin/img') }}/{{ $fd->foto }}" class="mr-3 rounded-circle" width="50" alt="User" />
-                                        </a>
-                                        &nbsp; &nbsp;
-                                        <h6 class="mb-0">
-                                            <a data-toggle="collapse" data-target=".forum-content" class="text-body"> {{ $fd->nama }} </a>
-                                        </h6>
-                                    </div>
-                                    <br>
-                                    <div class="media-body">
-                                        <a href="{{url('forum/show/'.$fd->id) }}" data-toggle="collapse" data-target=".forum-content" class="text-body"> {!! $fd->pertanyaan !!} </a>
-                                        <p class="text-muted"><a href="javascript:void(0)"></a> 
-                                        <br>
-                                        <span class="text-secondary font-weight-bold">{{ \Carbon\Carbon::parse($fd->created_at)->format('d-M-Y') }}</span></p>
-                                        <a href="javascript:void(0)" class="text-muted small" data-toggle="modal" data-target="#balasanModal">Balas</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        @endforeach
-
-                        @foreach($balasan_diskusi as $bd)
-                        <div class="card mb-2">
-                            <div class="card-body">
-                                <div class="media forum-item">
-                                    <div class="d-flex align-items-center">
-                                        <a href="javascript:void(0)" class="card-link">
-                                        <img src="{{ url('admin/img') }}/{{ $bd->foto }}" class="mr-3 rounded-circle" width="50" alt="User" />
-                                        </a>
-                                        &nbsp; &nbsp;
-                                        <h6 class="mb-0">
-                                            <a data-toggle="collapse" data-target=".forum-content" class="text-body"> {{ $bd->nama }} </a>
-                                        </h6>
-                                    </div>
-                                    <br>
-                                    <div class="media-body">
-                                        <a data-toggle="collapse" data-target=".forum-content" class="text-body"> {!! $bd->balasan !!} </a>
-                                        <p class="text-muted"><a href="javascript:void(0)"></a> 
-                                        <br>
-                                        <span class="text-secondary font-weight-bold">{{ \Carbon\Carbon::parse($bd->created_at)->format('d-M-Y') }}</span></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        @endforeach
+                        
 
                     </div>
 
@@ -379,8 +333,7 @@
             <div class="modal fade" id="pertanyaanModal" tabindex="-1" role="dialog" aria-labelledby="pertanyaanModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
-                        <form method="POST" action="{{ url('forum/store') }}" enctype="multipart/form-data">
-                        {{ csrf_field() }}
+                        <form>
                             <div class="modal-header d-flex align-items-center bg-primary text-white">
                                 <h6 class="modal-title mb-0" id="pertanyaanModalLabel">Tambah Diskusi Baru</h6>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -390,19 +343,12 @@
                             <div class="modal-body">
                                 <div class="form-group">
                                     <label for="name">Nama</label>
-                                    <input id="nama" name="nama" type="text" class="form-control @error('nama') is-invalid @enderror" value="{{ Auth::user()->name }}" readonly>
+                                    <input type="text" class="form-control" id="name" placeholder="nama" autofocus />
                                 </div>
                                 <br>
                                 <div class="form-group">
-                                    <label for="materi_id">Judul Materi</label>
-                                    <div class="input-group">
-                                        <select id="materi_id" name="materi_id" class="custom-select w-100">
-                                        <option>--- Pilih Materi ---</option>
-                                        @foreach ($materi as $m)
-                                            <option value="{{ $m->id }}">{{ $m->judul }}</option>
-                                        @endforeach
-                                        <select>
-                                    </div>
+                                    <label for="threadTitle">Judul Materi</label>
+                                    <input type="text" class="form-control" id="threadTitle" placeholder="Pilih Judul" autofocus />
                                 </div>
                                 <br>
                                 <div class="form-group">
@@ -411,10 +357,9 @@
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <!-- <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button> -->
-                                <button type="submit" class="btn btn-primary">Post</button>
+                                <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
+                                <button type="button" class="btn btn-primary">Post</button>
                             </div>
-                        </form>
                             <script>
                                 $('#pertanyaan').summernote({
                                     placeholder: 'Isi pertanyaan...',
@@ -422,6 +367,7 @@
                                     height:150
                                 });
                             </script>
+                        </form>
                     </div>
                 </div>
             </div>

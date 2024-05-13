@@ -29,10 +29,10 @@ class ForumController extends Controller
         
         $balasan_diskusi = BalasanDiskusi::join('users', 'balasan_diskusi.users_id', '=', 'users.id')
             ->join('forum_diskusi', 'balasan_diskusi.forum_diskusi_id', '=', 'forum_diskusi.id')
-            ->select('balasan_diskusi.*', 'users.name as nama', 'forum_diskusi.pertanyaan')
+            ->select('balasan_diskusi.*', 'users.name as nama', 'users.foto', 'forum_diskusi.pertanyaan')
             ->get();
 
-        return view('forum', compact('forum_diskusi', 'materi', 'balasan_diskusi'));
+        return view('forum', compact('materi', 'forum_diskusi',  'balasan_diskusi'));
     }
 
     /**
@@ -50,7 +50,7 @@ class ForumController extends Controller
     {
         //
         $request->validate([
-            'users_id'          => 'required',
+            // 'users_id'          => 'required',
             'materi_id'         => 'required',
             'pertanyaan'        => 'required',
             'status_diskusi'    => 'required',
@@ -74,7 +74,8 @@ class ForumController extends Controller
         $pertanyaan = $dom->saveHTML();
 
         ForumDiskusi::create([
-            'users_id'           => $request->users_id,
+            'users_id'           => auth()->user()->id,
+            // 'users_id'           => $request->users_id,
             'materi_id'          => $request->materi_id,
             'pertanyaan'         => $pertanyaan, 
             'status_diskusi'     => $request->status_diskusi, 
@@ -99,11 +100,11 @@ class ForumController extends Controller
         
         $balasan_diskusi = BalasanDiskusi::join('users', 'balasan_diskusi.users_id', '=', 'users.id')
             ->join('forum_diskusi', 'balasan_diskusi.forum_diskusi_id', '=', 'forum_diskusi.id')
-            ->select('balasan_diskusi.*', 'users.name as nama', 'forum_diskusi.pertanyaan')
+            ->select('balasan_diskusi.*', 'users.name as nama', 'users.foto', 'forum_diskusi.pertanyaan')
             ->where('balasan_diskusi.forum_diskusi_id', $id)
             ->get();
             
-        return view('forum', compact('materi', 'forum_diskusi', 'balasan_diskusi'));
+        return view('forum_balas', compact('materi', 'forum_diskusi', 'balasan_diskusi'));
     }
 
     /**

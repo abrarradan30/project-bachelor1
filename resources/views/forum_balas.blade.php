@@ -265,7 +265,7 @@
                 </a>
                 &nbsp; &nbsp;
                 <h6 class="mb-0">
-                    <a data-toggle="collapse" data-target=".forum-content" class="text-body"> {{ $fd->nama }} </a>
+                    <a data-toggle="collapse" data-target=".forum-content" class="text-body"> {{ $fd->nama }} &nbsp; &harr; &nbsp; {{ $fd->judul_materi }} </a>
                 </h6>
             </div>
             <br>

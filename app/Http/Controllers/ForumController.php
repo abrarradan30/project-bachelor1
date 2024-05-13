@@ -22,10 +22,9 @@ class ForumController extends Controller
 
         $forum_diskusi = ForumDiskusi::join('users', 'forum_diskusi.users_id', '=', 'users.id')
             ->join('materi', 'forum_diskusi.materi_id', '=', 'materi.id')
-            ->join('balasan_diskusi', 'forum_diskusi.id', '=', 'balasan_diskusi.forum_diskusi_id')
             ->select('forum_diskusi.*', 'users.name as nama', 'users.foto', 'materi.judul as judul_materi',
                 \DB::raw('(SELECT COUNT(*) FROM balasan_diskusi WHERE forum_diskusi.id = balasan_diskusi.forum_diskusi_id) AS jumlah_balasan'))
-            ->get();
+            ->get()->all();
         
         $balasan_diskusi = BalasanDiskusi::join('users', 'balasan_diskusi.users_id', '=', 'users.id')
             ->join('forum_diskusi', 'balasan_diskusi.forum_diskusi_id', '=', 'forum_diskusi.id')

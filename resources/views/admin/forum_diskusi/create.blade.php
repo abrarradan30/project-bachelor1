@@ -65,8 +65,8 @@
                     <label class="form-check-label" for="selesai">Selesai</label>
                 </div>
                 <div class="form-check">
-                    <input name="status_diskusi" id="belum selesai" type="radio" class="form-check-label" value="belum selesai">
-                    <label class="form-check-label" for="belum selesai">Belum Selesai</label>
+                    <input name="status_diskusi" id="belum selesai" type="radio" class="form-check-label" value="belum selesai" checked>
+                    <label class="form-check-label" for="belum selesai">Belum selesai</label>
                 </div>
             </div>
 

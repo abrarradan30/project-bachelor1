@@ -269,12 +269,20 @@
                                         </h6>
                                     </div>
                                     <div class="media-body">
-                                        <a href="{{ url('forum_balas/show/' . $fd->id) }}" data-toggle="collapse" data-target=".forum-content" class="text-body"> <p class="text-secondary"> {!! $fd->pertanyaan !!} </p></a>
-                                        <p class="text-muted"><a href="javascript:void(0)"></a> 
+                                        <a href="{{ url('forum_balas/show/' . $fd->id) }}" target="_blank" style="text-decoration: none; color: inherit;"> 
+                                            <p class="text-secondary"> {!! $fd->pertanyaan !!} </p>
+                                        </a>
+                                        <!-- data-toggle="collapse" data-target=".forum-content" class="text-body" -->
                                         <span class="text-secondary font-weight-bold">{{ \Carbon\Carbon::parse($fd->created_at)->format('d-M-Y') }}</span></p>
+                                        @if($fd->status_diskusi == 'selesai')
+                                            <span class="btn btn-success btn-sm disabled">{{ $fd->status_diskusi }}</span>
+                                        @else
+                                            <span class="btn btn-danger btn-sm disabled">{{ $fd->status_diskusi }}</span>
+                                        @endif
                                     </div>
                                     <div class="text-muted small text-center align-self-center">
-                                        <span><i class="far fa-comment ml-2"></i> {{ $fd->jumlah_balasan }}</span>
+                                        <span><i class="far fa-comment ml-2"></i> {{ $fd->jumlah_balasan }} </span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -409,11 +417,17 @@
                                     <label for="pertanyaan">Pertanyaan</label>
                                     <textarea class="form-control" id="pertanyaan" placeholder="Isi pertanyaan" ></textarea>
                                 </div>
-                            </div>
-                            <div class="modal-footer">
-                                <!-- <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button> -->
-                                <button type="submit" class="btn btn-primary">Post</button>
-                            </div>
+                                <br>
+                                <div class="form-group">
+                                    <label for="status_diskusi">Status Diskusi</label>
+                                    <br>
+                                    <input name="status_diskusi" id="belum selesai" type="radio" class="form-check-label" value="belum selesai" checked>
+                                    <label class="form-check-label" for="belum selesai">Belum selesai</label>
+                                </div>
+                                <div class="modal-footer">
+                                    <!-- <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button> -->
+                                    <button type="submit" class="btn btn-primary">Tambah Diskusi</button>
+                                </div>
                         </form>
                             <script>
                                 $('#pertanyaan').summernote({

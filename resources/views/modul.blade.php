@@ -95,7 +95,7 @@
               <p>Skor anda : <span id="quiz-score">0%</span></p>
               <p>Status : Gagal</p>
               <button class="btn btn-warning">
-                <a href="{{ url('ratingfe/create') }}" style="text-decoration: none; color: inherit;">Cetak Sertifikat</a>
+                <a href="{{ url('ratingfe/create') }}" style="text-decoration: none; color: inherit;">Rating</a>
               </button>
             </div>
           </div>

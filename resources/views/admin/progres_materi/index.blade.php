@@ -15,11 +15,11 @@
     </p>
 @endif
 
-@if(in_array(Auth::user()->role, ['admin', 'mentor']))
+<!-- @if(in_array(Auth::user()->role, ['admin', 'mentor']))
 <button type="button" class="btn btn-danger">
     <a href="{{ url('cek_progres') }}" style="text-decoration: none; color: inherit;"><i class="fa fa-arrow-left"></i> &nbsp; Kembali</a>
 </button>
-@endif
+@endif -->
 
 @foreach(range(1, 2) as $_) 
     <br>
@@ -57,6 +57,10 @@
         <div class="col-auto ml-auto">
             <button class="btn btn-primary">
                 <a href="{{ url('modul/show/'.$ar_pm->id) }}" style="text-decoration: none; color: inherit;">Lanjutkan</a>
+            </button>
+            <br> <br>
+            <button class="btn btn-warning">
+                <a href="{{ url('input_sertifikat/create/'.$ar_pm->id) }}" style="text-decoration: none; color: inherit;">Sertifikat</a>
             </button>
         </div>
     </div>

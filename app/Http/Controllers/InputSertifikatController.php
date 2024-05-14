@@ -9,7 +9,7 @@ use App\Models\Materi;
 use RealRashid\SweetAlert\Facades\Alert;
 use DB;
 
-class SertifikatController extends Controller
+class InputSertifikatController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,13 +22,13 @@ class SertifikatController extends Controller
             ->select('sertifikat.*', 'users.name as nama', 'materi.judul as judul_materi')
             ->get();
 
-        return view('admin.sertifikat.index', compact('sertifikat'));
+        return view('input_sertifikat', compact('sertifikat'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create($id)
     {
         //
         $users = DB::table('users')->get();
@@ -36,9 +36,10 @@ class SertifikatController extends Controller
         $sertifikat = Sertifikat::join('users', 'sertifikat.users_id', '=', 'users.id')
             ->join('materi', 'sertifikat.materi_id', '=', 'materi.id')
             ->select('sertifikat.*', 'users.name as nama', 'materi.judul as judul_materi')
+            ->where('sertifikat.id', $id)
             ->get();
 
-        return view('admin.sertifikat.create', compact('sertifikat', 'users', 'materi'));
+        return view('input_sertifikat', compact('sertifikat', 'users', 'materi'));
     }
 
     /**
@@ -57,8 +58,8 @@ class SertifikatController extends Controller
             'materi_id'    => $request->materi_id,
         ]);
 
-        Alert::success('Sertifikat', 'Berhasil menambahkan sertifikat');
-        return redirect('sertifikat');  
+        Alert::success('Sertifikat', 'Berhasil membuat sertifikat penyelesaian materi');
+        return redirect('cetak_sertifikat');
     }
 
     /**
@@ -79,34 +80,17 @@ class SertifikatController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($id)
+    public function edit(string $id)
     {
         //
-        $users = DB::table('users')->get();
-        $materi = DB::table('materi')->get();
-        $sertifikat = DB::table('sertifikat')->where('id', $id)->get();
-
-        return view('admin.sertifikat.edit', compact('sertifikat', 'users', 'materi'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request)
+    public function update(Request $request, string $id)
     {
         //
-        $request->validate([
-            'users_id'     => 'required|integer',
-            'materi_id'    => 'required|integer',
-        ]);
-
-        DB::table('sertifikat')->where('id', $request->id)->update([
-            'users_id'     => $request->users_id,
-            'materi_id'    => $request->materi_id,
-        ]);
-
-        Alert::info('Sertifikat', 'Berhasil mengedit sertifikat');
-        return redirect('sertifikat');
     }
 
     /**
@@ -115,8 +99,5 @@ class SertifikatController extends Controller
     public function destroy(string $id)
     {
         //
-        DB::table('sertifikat')->where('id', $id)->delete();
-
-        return redirect('sertifikat');
     }
 }

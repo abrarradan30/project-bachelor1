@@ -15,6 +15,7 @@ use App\Http\Controllers\ForumController;
 use App\Http\Controllers\ForumDiskusiController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\HasilKuisController;
+use App\Http\Controllers\InputSertifikatController;
 use App\Http\Controllers\KuisController;
 use App\Http\Controllers\KuisFrontController;
 use App\Http\Controllers\MateriController;
@@ -201,6 +202,11 @@ Route::get('/soal_kuis/show/{id}', [KuisFrontController::class, 'show']);
 Route::get('/ratingfe', [RatingFrontController::class, 'index']);
 Route::get('/ratingfe/create', [RatingFrontController::class, 'create']);
 Route::post('/ratingfe/store', [RatingFrontController::class, 'store']);
+
+// route rating front
+Route::get('/input_sertifikat', [InputSertifikatController::class, 'index']);
+Route::get('/input_sertifikat/create/{id}', [InputSertifikatController::class, 'create']);
+Route::get('/input_sertifikat/show/{id}', [KuisFrontController::class, 'show']);
 
 Route::get('/acces_denied', function () {
     return view('/acces_denied');

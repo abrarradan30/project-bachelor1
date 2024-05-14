@@ -79,21 +79,22 @@
     <main id="main">
 
         <!-- Page Title -->
-        <div data-aos="fade" class="page-title">
+        <!-- <div data-aos="fade" class="page-title">
             <nav class="breadcrumbs">
               <ol>
                 <li>Rating Materi </li>
                 <li class="current">Level </li>
               </ol>
             </nav>
-        </div><!-- End Page Title -->
+        </div> -->
+        <!-- End Page Title -->
 
         <!-- Service Details Section -->
         <section id="service-details" class="service-details">
 
             <div class="container">
               <div class="card-body" style="background-color: #DCDCDC; margin: 5px; border-radius: 10px;">
-                <h6> Berikan rating-mu untuk materi yang telah dipelajari! Feedback Anda sangat berarti untuk meningkatkan kualitas pembelajaran. </h6>
+                <h6> Buat sertifikat</h6>
               </div>
 
               <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
@@ -120,37 +121,15 @@
                         <div class="col-8">
                             <select id="select" name="select" class="custom-select">
                                 @foreach ($materi as $m)
-                                    <option value="{{ $m->id }}" readonly>{{ $m->judul }}</option>
+                                <input id="text" name="text" type="text" class="form-control" value="{{ $m->id }}" readonly>
+                                    <option value="{{ $m->id }}">{{ $m->judul }}</option>
                                 @endforeach
                             </select>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-2">Rating</label>
-                        <div class="col-8">
-                        <div class="rating">
-                          <input type="radio" name="rating" value="5" id="rating5"><label for="rating5">☆</label>
-                          <input type="radio" name="rating" value="4" id="rating4"><label for="rating4">☆</label>
-                          <input type="radio" name="rating" value="3" id="rating3"><label for="rating3">☆</label>
-                          <input type="radio" name="rating" value="2" id="rating2"><label for="rating2">☆</label>
-                          <input type="radio" name="rating" value="1" id="rating1"><label for="rating1">☆</label>
-                        </div>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="textarea" class="col-2 col-form-label">Feedback</label>
-                        <div class="col-8">
-                            <textarea id="feedback" name="feedback" cols="30" rows="4" class="form-control"></textarea>
-                        </div>
-                        @error('feedback')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                        @enderror
-                    </div>
-                    <div class="form-group row">
                         <div class="offset-2 col-8">
-                            <button name="submit" type="submit" class="btn btn-warning">Send</button>
+                            <button name="submit" type="submit" class="btn btn-warning">Buat Sertifikat</button>
                         </div>
                     </div>
                 </form>

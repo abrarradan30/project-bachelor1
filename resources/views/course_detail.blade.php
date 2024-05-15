@@ -7,7 +7,7 @@
 <!-- ======= Breadcrumbs ======= -->
 <div class="breadcrumbs" data-aos="fade-in">
   <div class="container">
-    <h2>Course Detail</h2>
+    <h2>Detail Materi</h2>
     <p>Selamat datang di halaman detail materi! Anda akan menemukan informasi lengkap tentang materi pembelajaran ini.</p>
   </div>
 </div><!-- End Breadcrumbs -->

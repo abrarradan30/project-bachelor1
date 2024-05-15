@@ -126,8 +126,8 @@
             <div class="form-group">
                 <label>Status :</label>
                 <div class="form-check">
-                    <input name="status" id="proses" type="radio" class="form-check-input" value="proses">
-                    <label class="form-check-label" for="proses">Proses</label>
+                    <input name="status" id="draft" type="radio" class="form-check-input" value="draft">
+                    <label class="form-check-label" for="draft">Draft</label>
                 </div>
                 <div class="form-check">
                     <input name="status" id="publik" type="radio" class="form-check-input" value="publik">
@@ -135,11 +135,11 @@
                 </div>
             </div>
                 @elseif(Auth::check() && Auth::user()->role == 'mentor')
-            <div class="form-group">
+            <div class="form-group" style="display: none;">
                 <label>Status :</label>
                 <div class="form-check">
-                    <input name="status" id="proses" type="radio" class="form-check-input" value="proses" checked>
-                    <label class="form-check-label" for="proses">Proses</label>
+                    <input name="status" id="draft" type="radio" class="form-check-input" value="draft" checked>
+                    <label class="form-check-label" for="draft">Draft</label>
                 </div>
             </div>
             @endif

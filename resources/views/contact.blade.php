@@ -7,7 +7,7 @@
     <!-- ======= Breadcrumbs ======= -->
     <div class="breadcrumbs" data-aos="fade-in">
       <div class="container">
-        <h2>Contact Us</h2>
+        <h2>Kontak</h2>
         <p>Kami siap membantu Anda dengan segala pertanyaan atau kebutuhan yang Anda miliki terkait dengan penggunaan dan manfaat dari platform LMS kami. 
             Jangan ragu untuk menghubungi kami, kami akan dengan senang hati memberikan bantuan yang Anda perlukan.</p>
       </div>

@@ -48,9 +48,9 @@
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a href="{{url('/')}}">Home</a></li>
-          <li><a href="{{url('about')}}">About</a></li>
-          <li><a href="{{url('course')}}">Course</a></li>
+          <li><a href="{{url('/')}}">Beranda</a></li>
+          <li><a href="{{url('about')}}">Tentang</a></li>
+          <li><a href="{{url('course')}}">Materi</a></li>
           <!-- <li class="dropdown"><a href="#"><span>Category</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="#">IT</a></li>
@@ -67,7 +67,7 @@
               </li>
             </ul>
           </li> -->
-          <li><a href="{{url('contact')}}">Contact</a></li>
+          <li><a href="{{url('contact')}}">Kontak</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->

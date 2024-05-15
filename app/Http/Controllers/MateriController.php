@@ -15,7 +15,7 @@ class MateriController extends Controller
     public function index()
     {
         //
-        $materi = DB::table('materi')->get();
+        $materi = DB::table('materi')->orderBy('created_at', 'desc')->get();
         return view('admin.materi.index', compact('materi'));
     }
 
@@ -94,7 +94,7 @@ class MateriController extends Controller
         $materi = DB::table('materi')->where('id', $id)->get();
         $ar_kategori = ['IT', 'desain', 'softskill'];
         $ar_level = ['pemula', 'menengah', 'mahir'];
-        $ar_status = ['proses', 'publik'];
+        $ar_status = ['draft', 'publik'];
 
         return view('admin.materi.edit', compact('materi', 'ar_kategori', 'ar_level', 'ar_status'));
     }

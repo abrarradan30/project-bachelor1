@@ -121,9 +121,9 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>Courses</h2>
+          <h2>Materi</h2>
           <p>
-            <a href="{{ url('/course') }}">Course Options &#10148;</a>
+            <a href="{{ url('/course') }}">Pilihan Materi &#10148;</a>
           </p>
         </div>
 

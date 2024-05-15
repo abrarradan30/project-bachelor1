@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('harga', 10)->nullable(false);
             $table->enum('kategori', ['IT', 'desain', 'softskill']);
             $table->enum('level', ['pemula', 'menengah', 'mahir']);
-            $table->enum('status', ['proses', 'publik'])->default('proses');
+            $table->enum('status', ['draft', 'publik'])->default('draft');
             $table->dateTime('created_at')->useCurrent();
             $table->dateTime('updated_at')->nullable()->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });

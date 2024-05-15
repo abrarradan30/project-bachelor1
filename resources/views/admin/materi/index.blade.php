@@ -67,7 +67,13 @@
                         <td>{{ $m->harga }}</td>
                         <td>{{ $m->kategori }}</td>
                         <td>{{ $m->level }}</td>
-                        <td>{{ $m->status }}</td>
+                        <td>
+                        @if($m->status == 'publik')
+                            <span class="btn btn-success btn-sm" style="pointer-events: none;">{{ $m->status }}</span>
+                        @else
+                            <span class="btn btn-danger btn-sm" style="pointer-events: none;">{{ $m->status }}</span>
+                        @endif
+                        </td>
                         <td>
                             <form action="#" method="POST">
                                 <button type="button" class="btn btn-success btn-sm">

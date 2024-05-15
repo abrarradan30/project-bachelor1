@@ -275,9 +275,9 @@
                                         <!-- data-toggle="collapse" data-target=".forum-content" class="text-body" -->
                                         <span class="text-secondary font-weight-bold">{{ \Carbon\Carbon::parse($fd->created_at)->format('d-M-Y') }}</span></p>
                                         @if($fd->status_diskusi == 'selesai')
-                                            <span class="btn btn-success btn-sm disabled">{{ $fd->status_diskusi }}</span>
+                                            <span class="btn btn-success btn-sm" style="pointer-events: none;">{{ $fd->status_diskusi }}</span>
                                         @else
-                                            <span class="btn btn-danger btn-sm disabled">{{ $fd->status_diskusi }}</span>
+                                            <span class="btn btn-danger btn-sm" style="pointer-events: none;">{{ $fd->status_diskusi }}</span>
                                         @endif
                                     </div>
                                     <div class="text-muted small text-center align-self-center">

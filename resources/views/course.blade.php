@@ -5,7 +5,7 @@
 <!-- ======= Breadcrumbs ======= -->
 <div class="breadcrumbs">
 	<div class="container">
-		<h2>Courses</h2>
+		<h2>Materi</h2>
 		<p>Temukan beragam materi berkualitas untuk meningkatkan keterampilan Anda di berbagai bidang di halaman ini.</p>
 	</div>
 </div><!-- End Breadcrumbs -->
@@ -90,7 +90,7 @@
 					<header class="card-header">
 						<a href="#" data-toggle="collapse" data-target="#collapse_1" aria-expanded="true" class="">
 							<i class="icon-control fa fa-chevron-down"></i>
-							<h6 class="title">Search Course</h6>
+							<h6 class="title">Cari Materi</h6>
 						</a>
 					</header>
 					<div class="filter-content collapse show" id="collapse_1">

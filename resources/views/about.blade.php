@@ -6,7 +6,7 @@
     <!-- ======= Breadcrumbs ======= -->
     <div class="breadcrumbs" data-aos="fade-in">
       <div class="container">
-        <h2>About Us</h2>
+        <h2>Tentang</h2>
         <p>Kami adalah platform Pembelajaran Berbasis LMS yang bertujuan untuk meningkatkan pengalaman belajar siswa/mahasiswa.</p>
       </div>
     </div><!-- End Breadcrumbs -->

@@ -100,6 +100,7 @@ Route::middleware(['peran:admin-mentor'])->group(function () {
 
     // route progres belajar
     Route::get('/cek_progres', [CekProgresController::class, 'index']);
+    Route::get('/cek_progres/show/{id}', [CekProgresController::class, 'show']);
 
     // route kuis
     Route::get('/kuis', [KuisController::class, 'index']);

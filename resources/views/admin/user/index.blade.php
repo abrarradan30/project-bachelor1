@@ -56,7 +56,14 @@
                                 <img src="{{ url('admin/img') }}/{{ $u->foto }}" width="15%" style="width: 50px;">
                             @endempty
                         </td>
-                        <td>{{ $u->role }}</td>
+                        <td>
+                        @if($u->role == 'admin')
+                            <span class="btn btn-primary btn-sm" style="pointer-events: none;">{{ $u->role }}</span>
+                        @elseif($u->role == 'mentor')
+                            <span class="btn btn-info btn-sm" style="pointer-events: none;">{{ $u->role }}</span>
+                        @else
+                            <span class="btn btn-secondary btn-sm" style="pointer-events: none;">{{ $u->role }}</span>
+                        @endif
                         <td>
                             <form action="#" method="POST">
                                 <button type="button" class="btn btn-warning btn-sm">

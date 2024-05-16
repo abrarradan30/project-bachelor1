@@ -17,14 +17,22 @@ class CekProgresController extends Controller
     public function index()
     {
         //
-        $ar_cek_progres = ProgresBelajar::all();
-        $cek_progres = ProgresBelajar::join('users', 'progres_belajar.users_id', '=', 'users.id')
-        ->join('materi', 'progres_belajar.materi_id', '=', 'materi.id')
-        ->select('users.name as nama') 
-        ->groupBy('users.name') 
-        ->get();
+        // $ar_cek_progres = ProgresBelajar::all();
+        // $cek_progres = ProgresBelajar::join('users', 'progres_belajar.users_id', '=', 'users.id')
+        // ->join('materi', 'progres_belajar.materi_id', '=', 'materi.id')
+        // ->select('users.name as nama') 
+        // ->groupBy('users.name') 
+        // ->get();
 
-        return view('admin.cek_progres.index', compact('cek_progres', 'ar_cek_progres'));
+        //return view('admin.cek_progres.index', compact('cek_progres', 'ar_cek_progres'));
+        
+        $progres_belajar = ProgresBelajar::join('users', 'progres_belajar.users_id', '=', 'users.id')
+            ->join('materi', 'progres_belajar.materi_id', '=', 'materi.id')
+            ->select('progres_belajar.materi_id', 'materi.judul as judul_materi')
+            ->groupBy('progres_belajar.materi_id', 'materi.judul')
+            ->get();
+
+        return view('admin.cek_progres.index', compact('progres_belajar'));
     }
 
     /**
@@ -46,9 +54,16 @@ class CekProgresController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
         //
+        $progres_belajar = ProgresBelajar::join('users', 'progres_belajar.users_id', '=', 'users.id')
+            ->join('materi', 'progres_belajar.materi_id', '=', 'materi.id')
+            ->select('progres_belajar.*', 'users.name as nama', 'materi.judul as judul_materi')
+            ->where('progres_belajar.materi_id', $id)
+            ->get();
+
+        return view('admin.cek_progres.detail', compact('progres_belajar'));
     }
 
     /**

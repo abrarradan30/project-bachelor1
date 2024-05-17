@@ -41,13 +41,6 @@
     </div>
     @endif
 
-    @if(Auth::check() && Auth::user()->role == 'siswa')
-    <!-- Heading -->
-    <div class="sidebar-heading">
-        Aktivitas
-    </div>
-    @endif
-
     @if(in_array(Auth::user()->role, ['admin', 'mentor']))
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
@@ -104,8 +97,19 @@
             </div>
         </div>
     </li>
+    
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
     @endif
 
+    @if(in_array(Auth::user()->role, ['admin', 'siswa']))
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        Aktivitas
+    </div>
+    @endif
+    
     @if(in_array(Auth::user()->role, ['admin', 'siswa']))
     <!-- Nav Item - Materi Saya -->
     <li class="nav-item">

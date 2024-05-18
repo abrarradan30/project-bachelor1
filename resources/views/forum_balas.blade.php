@@ -186,7 +186,7 @@
 
                 <div class="inner-sidebar">
 
-                    <div class="inner-sidebar-header justify-content-center">
+                    <div class="inner-sidebar-header justify-content-center" style="display: none;">
                         <button class="btn btn-primary has-icon btn-block" type="button" data-toggle="modal" data-target="#pertanyaanModal">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus mr-2">
                                 <line x1="12" y1="5" x2="12" y2="19"></line>
@@ -274,7 +274,14 @@
                 <p class="text-muted"><a href="javascript:void(0)"></a> 
                 <br>
                 <span class="text-secondary font-weight-bold">{{ \Carbon\Carbon::parse($fd->created_at)->format('d-M-Y') }}</span></p>
-                <a href="javascript:void(0)" class="text-muted small" data-toggle="modal" data-target="#balasanModal">Balas</a>
+                @if($fd->status_diskusi == 'selesai')
+                    <span class="btn btn-success btn-sm" style="pointer-events: none;">{{ $fd->status_diskusi }}</span>
+                @else
+                    <span class="btn btn-danger btn-sm" style="pointer-events: none;">{{ $fd->status_diskusi }}</span>
+                @endif
+                <div class="text-muted small text-center align-self-center">
+                    <a href="javascript:void(0)" class="text-muted small" data-toggle="modal" data-target="#balasanModal"><h6>Balas</h6></a>
+                </div>
             </div>
         </div>
     </div>
@@ -375,7 +382,8 @@
             <div class="modal fade" id="balasanModal" tabindex="-1" role="dialog" aria-labelledby="balasanModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
-                        <form>
+                        <form method="POST" action="{{ url('forum_balas/store_balas') }}" enctype="multipart/form-data">
+                        {{ csrf_field() }}
                             <div class="modal-header d-flex align-items-center bg-primary text-white">
                                 <h6 class="modal-title mb-0" id="balasanModalLabel">Balas pertanyaan</h6>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -385,23 +393,26 @@
                             <div class="modal-body">
                                 <div class="form-group">
                                     <label for="name">Nama</label>
-                                    <input type="text" class="form-control" id="name" placeholder="nama" autofocus />
+                                    <input id="nama" name="nama" type="text" class="form-control @error('nama') is-invalid @enderror" value="{{ Auth::user()->name }}" readonly>
                                 </div>
                                 <br>
                                 <div class="form-group">
-                                    <label for="threadTitle">Judul Materi</label>
-                                    <input type="text" class="form-control" id="threadTitle" placeholder="Pilih Judul" autofocus />
+                                    <label for="threadTitle">Pertanyaan</label>
+                                    @foreach ($forum_diskusi as $fd)
+                            <textarea class="form-control summernote" id="forum_diskusi_id" name="forum_diskusi_id" readonly>{{ strip_tags($fd->pertanyaan) }}</textarea>
+                            <input type="hidden" name="forum_diskusi_id" value="{{ $fd->id }}">
+                        @endforeach
                                 </div>
                                 <br>
                                 <div class="form-group">
                                     <label for="balasan">Balasan</label>
-                                    <textarea class="form-control" id="balasan" placeholder="Isi balasan" ></textarea>
+                                    <textarea class="form-control" id="balasan" name="balasan" placeholder="Isi balasan" ></textarea>
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
-                                <button type="button" class="btn btn-primary">Post</button>
+                                <button type="submit" class="btn btn-primary">Balas</button>
                             </div>
+                        </form>
                             <script>
                                 $('#balasan').summernote({
                                     placeholder: 'Isi balasan...',
@@ -409,7 +420,6 @@
                                     height:150
                                 });
                             </script>
-                        </form>
                     </div>
                 </div>
             </div>

@@ -157,7 +157,7 @@ class ForumDiskusiController extends Controller
             'status_diskusi'    => $request->status_diskusi,
         ]);
  
-        Alert::info('Detail materi', 'Berhasil mengedit detail materi');
+        Alert::info('Forum Diskusi', 'Berhasil mengedit forum diskusi');
         return redirect('forum_diskusi');
     }
 

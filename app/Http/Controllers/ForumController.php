@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Materi;
 use App\Models\BalasanDiskusi;
 use RealRashid\SweetAlert\Facades\Alert;
+use DOMDocument;
 use DB;
 
 class ForumController extends Controller
@@ -84,6 +85,43 @@ class ForumController extends Controller
         return redirect('forum');
     }
 
+    public function store_balas(Request $request)
+    {
+        //
+        $request->validate([
+            //'users_id'            => 'required',
+            'forum_diskusi_id'    => 'required',
+            'balasan'             => 'required',
+        ]);
+
+        $balasan = $request->balasan;
+ 
+        $dom = new DOMDocument();
+        $dom->loadHTML($balasan,9);
+ 
+        $images = $dom->getElementsByTagName('img');
+ 
+        foreach ($images as $key => $img) {
+            $data = base64_decode(explode(',',explode(';',$img->getAttribute('src'))[1])[1]);
+            $image_name = "/admin/img" . time(). $key.'.png';
+            file_put_contents(public_path().$image_name,$data);
+ 
+            $img->removeAttribute('src');
+            $img->setAttribute('src',$image_name);
+        }
+        $balasan = $dom->saveHTML();
+ 
+        BalasanDiskusi::create([
+            'users_id'            => auth()->user()->id,
+            //'users_id'            => $request->users_id,
+            'forum_diskusi_id'    => $request->forum_diskusi_id,
+            'balasan'             => $balasan,
+        ]);
+ 
+        Alert::success('Balasan Diskusi', 'Berhasil membalas pertanyaan');
+        return redirect('forum');
+    }
+
     /**
      * Display the specified resource.
      */
@@ -117,9 +155,19 @@ class ForumController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
         //
+        $request->validate([
+            'status_diskusi'    => 'required',
+        ]);
+ 
+        $forum_diskusi->update([
+            'status_diskusi'    => $request->status_diskusi,
+        ]);
+
+        Alert::info('Forum Diskusi', 'Diskusi selesai');
+        return redirect('forum');
     }
 
     /**

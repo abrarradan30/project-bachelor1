@@ -1,5 +1,6 @@
 <body>
 @include('frontend.header')
+@include('sweetalert::alert')
 
 @yield('content')
 

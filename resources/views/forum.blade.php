@@ -415,10 +415,10 @@
                                 <br>
                                 <div class="form-group">
                                     <label for="pertanyaan">Pertanyaan</label>
-                                    <textarea class="form-control" id="pertanyaan" placeholder="Isi pertanyaan" ></textarea>
+                                    <textarea class="form-control" id="pertanyaan" name="pertanyaan" placeholder="Isi pertanyaan" ></textarea>
                                 </div>
                                 <br>
-                                <div class="form-group">
+                                <div class="form-group" style="display: none;">
                                     <label for="status_diskusi">Status Diskusi</label>
                                     <br>
                                     <input name="status_diskusi" id="belum selesai" type="radio" class="form-check-label" value="belum selesai" checked>
@@ -453,17 +453,19 @@
                             <div class="modal-body">
                                 <div class="form-group">
                                     <label for="name">Nama</label>
-                                    <input type="text" class="form-control" id="name" placeholder="nama" autofocus />
+                                    <input id="nama" name="nama" type="text" class="form-control @error('nama') is-invalid @enderror" value="{{ Auth::user()->name }}" readonly>
                                 </div>
                                 <br>
                                 <div class="form-group">
-                                    <label for="threadTitle">Judul Materi</label>
-                                    <input type="text" class="form-control" id="threadTitle" placeholder="Pilih Judul" autofocus />
+                                    <label for="threadTitle">Pertanyaan</label>
+                                    @foreach ($forum_diskusi as $fd)
+                                        <input type="text" class="form-control" id="threadTitle" value="{{ $fd->id }}" autofocus> {!! $fd->pertanyaan !!} </input>
+                                    @endforeach
                                 </div>
                                 <br>
                                 <div class="form-group">
                                     <label for="balasan">Balasan</label>
-                                    <textarea class="form-control" id="balasan" placeholder="Isi balasan" ></textarea>
+                                    <textarea class="form-control" id="balasan" name="balasan" placeholder="Isi balasan" ></textarea>
                                 </div>
                             </div>
                             <div class="modal-footer">

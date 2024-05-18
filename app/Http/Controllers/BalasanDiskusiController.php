@@ -72,7 +72,7 @@ class BalasanDiskusiController extends Controller
         $balasan = $dom->saveHTML();
  
         BalasanDiskusi::create([
-            'users_id'           => auth()->user()->id,
+            'users_id'            => auth()->user()->id,
             //'users_id'            => $request->users_id,
             'forum_diskusi_id'    => $request->forum_diskusi_id,
             'balasan'             => $balasan,

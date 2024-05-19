@@ -33,9 +33,13 @@ class DashboardController extends Controller
         $sertifikat = Sertifikat::count();
         $forum_diskusi = ForumDiskusi::count();
         $balasan_diskusi = BalasanDiskusi::count();
+        $ar_role = DB::table('users')
+            ->selectRaw('role, count(role) as jumlah')
+            ->groupBy('role')
+            ->get();
 
         return view('admin.dashboard', compact('users', 'materi', 'detail_materi', 'pembayaran', 'progres_belajar',
-                    'kuis', 'hasil_kuis', 'sertifikat', 'forum_diskusi', 'balasan_diskusi'));
+                    'kuis', 'hasil_kuis', 'sertifikat', 'forum_diskusi', 'balasan_diskusi', 'ar_role'));
     }
 
     /**

@@ -13,12 +13,10 @@
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        @foreach ($progres_belajar as $pb)
-        <h6 class="m-0 font-weight-bold text-primary">Progres Belajar {{ $pb->judul_materi }}</h6>
-        @endforeach
+        <h6 class="m-0 font-weight-bold text-primary">Progres Belajar</h6>
         <br>
-        <a href="{{ url('progres_belajar/create') }}">
-        <button class="btn btn-sm btn-primary"><i class="fas fa-plus"></i> &nbsp; Tambah</button>
+        <a href="{{ url('cek_progres') }}">
+        <button class="btn btn-sm btn-danger">Kembali</button>
         </a>
     </div>
     <div class="card-body">
@@ -28,8 +26,9 @@
                     <tr>
                         <th>No</th>
                         <th>Nama</th>
+                        <th>Materi</th>
                         <th>Progres</th>
-                        <th>Status Selesai</th>
+                        
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -37,8 +36,8 @@
                     <tr>
                         <th>No</th>
                         <th>Nama</th>
+                        <th>Materi</th>
                         <th>Progres</th>
-                        <th>Status Selesai</th>
                         <th>Aksi</th>
                     </tr>
                 </tfoot>
@@ -52,7 +51,6 @@
                         <td>{{ $pb->nama }}</td>
                         <td>{{ $pb->judul_materi }}</td>
                         <td>{{ $pb->progres }} %</td>
-                        <td>{{ $pb->status_selesai}}</td>
                         <td>
                             <form action="#" method="POST">
                                 <button type="button" class="btn btn-success btn-sm">

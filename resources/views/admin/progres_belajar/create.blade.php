@@ -51,19 +51,6 @@
                 <input type="number" id="progres" name="progres" class="form-control @error('progres') is-invalid @enderror" value="0">
             </div>
 
-            <!-- Input Status Selesai (Radio Button) -->
-            <div class="form-group">
-                <label>Status Selesai :</label>
-                <div class="form-check">
-                    <input name="status_selesai" id="status_selesai" type="radio" class="form-check-label" value="belum selesai" checked>
-                    <label class="form-check-label" for="belum selesai">Belum Selesai</label>
-                </div>
-                <div class="form-check">
-                    <input name="status_selesai" id="status_selesai" type="radio" class="form-check-label" value="selesai">
-                    <label class="form-check-label" for="selesai">Selesai</label>
-                </div>
-            </div>
-
             <!-- Submit Button -->
             <div class="form-group">
                 <button type="submit" class="btn btn-primary">Simpan</button> &nbsp;

@@ -51,7 +51,6 @@ class ProgresBelajarController extends Controller
             'users_id'          => 'required',
             'materi_id'         => 'required',
             'progres'           => 'required',
-            'status_selesai'    => 'required',
         ]);
 
         ProgresBelajar::create([
@@ -59,7 +58,6 @@ class ProgresBelajarController extends Controller
             'users_id'           => $request->users_id,
             'materi_id'          => $request->materi_id,
             'progres'            => $request->progres, 
-            'status_selesai'     => $request->status_selesai, 
         ]);
  
         Alert::success('Progres Belajar', 'Berhasil menambahkan progres belajar');

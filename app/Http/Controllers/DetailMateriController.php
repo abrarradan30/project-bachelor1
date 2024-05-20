@@ -19,8 +19,10 @@ class DetailMateriController extends Controller
         //
         $detail_materi = DB::table('detail_materi')
             ->join('materi', 'detail_materi.materi_id', '=', 'materi.id')
-            ->select('detail_materi.*', 'materi.judul as judul_materi')
+            ->select('detail_materi.materi_id', 'materi.judul as judul_materi')
+            ->groupBy('detail_materi.materi_id', 'materi.judul')
             ->get();
+
         return view('admin.detail_materi.index', compact('detail_materi'));
     }
 

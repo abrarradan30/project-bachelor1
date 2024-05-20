@@ -69,9 +69,15 @@
                                 <button type="button" class="btn btn-warning btn-sm">
                                     <a href="{{ url('user/edit/' . $u->id) }}" style="text-decoration: none; color: inherit;">Edit</a>
                                 </button>
-                                <button type="button" class="btn btn-danger btn-sm">
-                                    <a href="{{ url('user/delete/' . $u->id) }}" style="text-decoration: none; color: inherit;">Hapus</a>
-                                </button>
+                                <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete()">Hapus</button>
+                                <script>                                  
+                                    function confirmDelete() {
+                                    var confirmation = confirm("Yakin hapus data?");
+                                        if (confirmation) {
+                                            window.location.href = "{{ url('user/delete/' . $u->id) }}";
+                                        }
+                                    }
+                                </script>
                             </form>
                         </td>
                     </tr>

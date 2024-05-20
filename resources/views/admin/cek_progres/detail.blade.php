@@ -13,7 +13,9 @@
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Progres Belajar</h6>
+        @foreach ($progres_belajar2 as $pb2)
+        <h6 class="m-0 font-weight-bold text-primary">Progres Belajar {{ $pb2->judul_materi }}</h6>
+        @endforeach
         <br>
         <a href="{{ url('cek_progres') }}">
         <button class="btn btn-sm btn-danger">Kembali</button>
@@ -26,7 +28,6 @@
                     <tr>
                         <th>No</th>
                         <th>Nama</th>
-                        <th>Materi</th>
                         <th>Progres</th>
                         
                         <th>Aksi</th>
@@ -36,7 +37,6 @@
                     <tr>
                         <th>No</th>
                         <th>Nama</th>
-                        <th>Materi</th>
                         <th>Progres</th>
                         <th>Aksi</th>
                     </tr>
@@ -49,7 +49,6 @@
                     <tr>
                         <td>{{ $no }}</td>
                         <td>{{ $pb->nama }}</td>
-                        <td>{{ $pb->judul_materi }}</td>
                         <td>{{ $pb->progres }} %</td>
                         <td>
                             <form action="#" method="POST">

@@ -1,6 +1,8 @@
 @extends('frontend.index')
 
 @section('content')
+@include('sweetalert::alert')
+
 @if(in_array(Auth::user()->role, ['admin', 'siswa', 'mentor']))
 
     <!-- ======= Breadcrumbs ======= -->

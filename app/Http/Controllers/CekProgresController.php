@@ -62,8 +62,15 @@ class CekProgresController extends Controller
             ->select('progres_belajar.*', 'users.name as nama', 'materi.judul as judul_materi')
             ->where('progres_belajar.materi_id', $id)
             ->get();
+        
+        $progres_belajar2 = ProgresBelajar::join('users', 'progres_belajar.users_id', '=', 'users.id')
+            ->join('materi', 'progres_belajar.materi_id', '=', 'materi.id')
+            ->select('progres_belajar.materi_id', 'materi.judul as judul_materi')
+            ->groupBy('progres_belajar.materi_id', 'materi.judul')
+            ->where('progres_belajar.materi_id', $id)
+            ->get();
 
-        return view('admin.cek_progres.detail', compact('progres_belajar'));
+        return view('admin.cek_progres.detail', compact('progres_belajar', 'progres_belajar2'));
     }
 
     /**

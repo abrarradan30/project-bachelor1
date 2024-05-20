@@ -15,7 +15,7 @@
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary">Tabel Detail Materi</h6>
         <br>
-        <a href="{{ url('progres_belajar/create') }}">
+        <a href="{{ url('detail_materi/create') }}">
         <button class="btn btn-sm btn-primary"><i class="fas fa-plus"></i> &nbsp; Tambah</button>
         </a>
     </div>
@@ -26,6 +26,8 @@
                     <tr>
                         <th>No</th>
                         <th>Judul Materi</th>
+                        <th>Sub Judul</th>
+                        <th>Isi Materi</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -33,6 +35,8 @@
                     <tr>
                         <th>No</th>
                         <th>Judul Materi</th>
+                        <th>Sub Judul</th>
+                        <th>Isi Materi</th>
                         <th>Aksi</th>
                     </tr>
                 </tfoot>
@@ -40,19 +44,33 @@
                     @php 
                         $no = 1;
                     @endphp
-                    @foreach ($detail_materi as $dm)
+                    @foreach ($detail_materi as $dm)    
                     <tr>
                         <td>{{ $no }}</td>
                         <td>{{ $dm->judul_materi }}</td>
+                        <td>{{ $dm->sub_judul }}</td>
+                        <td>{!! $dm->isi_materi !!}</td>
                         <td>
                             <form action="#" method="POST">
                                 <button type="button" class="btn btn-success btn-sm">
-                                    <a href="{{ url('detail_materi/show/' . $dm->materi_id) }}" style="text-decoration: none; color: inherit;">Cek Detail Materi</a>
+                                    <a href="{{ url('detail_materi/show/' . $dm->id) }}" style="text-decoration: none; color: inherit;">Detail</a>
                                 </button>
+                                <button type="button" class="btn btn-warning btn-sm">
+                                    <a href="{{ url('detail_materi/edit/' . $dm->id) }}" style="text-decoration: none; color: inherit;">Edit</a>
+                                </button>
+                                <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete()">Hapus</button>
+                                <script>                                  
+                                    function confirmDelete() {
+                                    var confirmation = confirm("Yakin hapus data?");
+                                        if (confirmation) {
+                                            window.location.href = "{{ url('detail_materi/delete/' . $dm->id) }}";
+                                        }
+                                    }
+                                </script>
                             </form>
                         </td>
                     </tr>
-                    @php
+                    @php 
                         $no++;
                     @endphp
                     @endforeach

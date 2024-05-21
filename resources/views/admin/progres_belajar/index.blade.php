@@ -28,7 +28,6 @@
                         <th>Nama</th>
                         <th>Judul Materi</th>
                         <th>Progres</th>
-                        <th>Status Selesai</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -38,7 +37,6 @@
                         <th>Nama</th>
                         <th>Judul Materi</th>
                         <th>Progres</th>
-                        <th>Status Selesai</th>
                         <th>Aksi</th>
                     </tr>
                 </tfoot>
@@ -52,7 +50,6 @@
                         <td>{{ $pb->nama }}</td>
                         <td>{{ $pb->judul_materi }}</td>
                         <td>{{ $pb->progres }} %</td>
-                        <td>{{ $pb->status_selesai}}</td>
                         <td>
                             <form action="#" method="POST">
                                 <button type="button" class="btn btn-success btn-sm">

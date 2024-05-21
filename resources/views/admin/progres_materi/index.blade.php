@@ -21,9 +21,9 @@
 </button>
 @endif -->
 
-@foreach(range(1, 2) as $_) 
+<!-- @foreach(range(1, 2) as $_) 
     <br>
-@endforeach
+@endforeach -->
 
     <!-- Content Row -->
     <div class="row">
@@ -55,12 +55,16 @@
             </div>
         </div>
         <div class="col-auto ml-auto">
-            <button class="btn btn-primary">
-                <a href="{{ url('modul/show/'.$ar_pm->id) }}" style="text-decoration: none; color: inherit;">Lanjutkan</a>
-            </button>
+            <button class="btn btn-primary btn-sm">
+                <a href="{{ url('modul/show/'.$ar_pm->id) }}" style="text-decoration: none; color: inherit;">
+                Lanjutkan &nbsp; <i class="fa fa-chevron-circle-right"></i>
+                </a>
+            </button> 
             <br> <br>
-            <button class="btn btn-warning">
-                <a href="{{ url('input_sertifikat/create/'.$ar_pm->id) }}" style="text-decoration: none; color: inherit;">Sertifikat</a>
+            <button class="btn btn-warning btn-sm">
+                <a href="{{ url('input_sertifikat/create/'.$ar_pm->id) }}" style="text-decoration: none; color: inherit;">
+                Sertifikat &nbsp; <i class="fa fa-certificate"></i>
+                </a>
             </button>
         </div>
     </div>

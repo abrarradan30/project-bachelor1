@@ -54,7 +54,13 @@
                         <td>{{ $fd->nama }}</td>
                         <td>{{ $fd->judul_materi}}</td>
                         <td>{!! $fd->pertanyaan !!}</td>
-                        <td>{{ $fd->status_diskusi }}</td>
+                        <td>
+                            @if($fd->status_diskusi == 'selesai')
+                                <span class="btn btn-success btn-sm" style="pointer-events: none;">{{ $fd->status_diskusi }}</span>
+                            @else
+                                <span class="btn btn-danger btn-sm" style="pointer-events: none;">{{ $fd->status_diskusi }}</span>
+                            @endif
+                        </td>
                         <td>{{ $fd->created_at }}</td>
                         <td>
                             <form action="#" method="POST">

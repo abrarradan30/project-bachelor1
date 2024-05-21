@@ -10,7 +10,7 @@ class ProgresBelajar extends Model
     use HasFactory;
     protected $table = 'progres_belajar'; 
     protected $primaryKey = 'id';
-    protected $fillable = ['users_id', 'materi_id', 'progres', 'status_selesai'];
+    protected $fillable = ['users_id', 'materi_id', 'progres'];
 
     // Relasi many-to-one dengan model User
     public function user() {

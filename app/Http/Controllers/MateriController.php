@@ -16,6 +16,7 @@ class MateriController extends Controller
     {
         //
         $materi = DB::table('materi')->orderBy('created_at', 'desc')->get();
+        
         return view('admin.materi.index', compact('materi'));
     }
 

@@ -42,6 +42,40 @@
     </div>
 </div>
 @endforeach
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Kuis</h6>
+    </div>
+    <div class="card-body" style="display: none;">
+        <div class="form-group">
+            <p>
+                Untuk menguji pengetahuan Anda tentang seluruh materi yang telah dipelajari,
+                terdapat beberapa pertanyaan yang harus dikerjakan dalam kuis ini.
+            </p>
+            <p> 
+                Syarat skor lulus = 75%, Jika gagal, maka Anda harus mmengulang pengerjaan kuis kembali.
+            </p>
+            <p>Skor anda : <span id="quiz-score">0 %</span></p>
+            <p>Status : Gagal</p>
+            <a href="{{ url('progres_materi') }}" class="btn btn-info btn-sm">
+                Kerjakan &nbsp; <i class="fa fa-list"></i>
+            </a>
+            <a href="{{ url('progres_materi') }}" class="btn btn-warning btn-sm">
+                Rating <i class="fa fa-star"></i>
+            </a>    
+        </div>
+
+        <div class="form-group">
+            
+        </div>
+    </div>
+    <div class="card-header py-2">
+        <i class="fa fa-chevron-circle-down fa-2x chevron-down" style="cursor: pointer;"></i>
+        <i class="fa fa-chevron-circle-up fa-2x chevron-up" style="cursor: pointer; display: none;"></i>
+    </div>
+</div>
+
 <br>
 
 </div>

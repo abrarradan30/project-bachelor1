@@ -17,13 +17,15 @@ class DetailMateriController extends Controller
     public function index()
     {
         //
-        $detail_materi = DB::table('detail_materi')
-            ->join('materi', 'detail_materi.materi_id', '=', 'materi.id')
-            ->select('detail_materi.materi_id', 'materi.judul as judul_materi')
-            ->groupBy('detail_materi.materi_id', 'materi.judul')
-            ->get();
+        // $detail_materi = DB::table('detail_materi')
+        //     ->join('materi', 'detail_materi.materi_id', '=', 'materi.id')
+        //     ->select('detail_materi.materi_id', 'materi.judul as judul_materi')
+        //     ->groupBy('detail_materi.materi_id', 'materi.judul')
+        //     ->get();
+        
+        $materi = DB::table('materi')->get();
 
-        return view('admin.detail_materi.index', compact('detail_materi'));
+        return view('admin.detail_materi.index', compact('materi'));
     }
 
     /**
@@ -94,10 +96,17 @@ class DetailMateriController extends Controller
         $detail_materi = DB::table('detail_materi')
             ->join('materi', 'detail_materi.materi_id', '=', 'materi.id')
             ->select('detail_materi.*', 'materi.judul as judul_materi')
-            ->where('detail_materi.id', $id)
+            ->where('detail_materi.materi_id', $id)
+            ->get();
+        
+        $detail_materi2 = DB::table('detail_materi')
+            ->join('materi', 'detail_materi.materi_id', '=', 'materi.id')
+            ->select('detail_materi.materi_id', 'materi.judul as judul_materi')
+            ->groupBy('detail_materi.materi_id', 'materi.judul')
+            ->where('detail_materi.materi_id', $id)
             ->get();
 
-        return view('admin.detail_materi.detail', compact('detail_materi'));
+        return view('admin.detail_materi.detail', compact('detail_materi', 'detail_materi2'));
     }
 
     /**

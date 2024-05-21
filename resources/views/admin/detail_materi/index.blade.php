@@ -40,14 +40,14 @@
                     @php 
                         $no = 1;
                     @endphp
-                    @foreach ($detail_materi as $dm)
+                    @foreach ($materi as $m)
                     <tr>
                         <td>{{ $no }}</td>
-                        <td>{{ $dm->judul_materi }}</td>
+                        <td>{{ $m->judul }}</td>
                         <td>
                             <form action="#" method="POST">
                                 <button type="button" class="btn btn-success btn-sm">
-                                    <a href="{{ url('detail_materi/show/' . $dm->materi_id) }}" style="text-decoration: none; color: inherit;">Cek Detail Materi</a>
+                                    <a href="{{ url('detail_materi/show/' . $m->id) }}" style="text-decoration: none; color: inherit;">Cek Detail Materi</a>
                                 </button>
                             </form>
                         </td>

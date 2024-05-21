@@ -61,7 +61,7 @@
             <a href="{{ url('progres_materi') }}" class="btn btn-info btn-sm">
                 Kerjakan &nbsp; <i class="fa fa-list"></i>
             </a>
-            <a href="{{ url('progres_materi') }}" class="btn btn-warning btn-sm">
+            <a href="{{ url('ratingfe/create') }}" class="btn btn-warning btn-sm">
                 Rating <i class="fa fa-star"></i>
             </a>    
         </div>

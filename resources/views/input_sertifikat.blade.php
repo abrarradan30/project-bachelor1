@@ -1,158 +1,61 @@
-@extends('modul_materi.index')
+@extends('admin.layout.appadmin')
 
 @section('content')
 
-<style>
-    .question {
-        margin-bottom: 20px;
-    }
+<!-- Begin Page Content -->
+<div class="container-fluid">
 
-    .options {
-        margin-top: 10px;
-    }
+<!-- Page Heading -->
+<h1 class="h3 mb-2 text-gray-800">Tambahkan Sertifikat</h1>
 
-    label {
-        display: block;
-        margin-bottom: 5px;
-        font-weight: bold;
-    }
-
-    input[type="radio"] {
-        margin-right: 5px;
-    }
-
-    input[type="radio"]:checked+label {
-        font-weight: bold;
-    }
-
-    /* rating */
-    .rating {
-      display: flex;
-  flex-direction: row-reverse;
-  justify-content: left;
-}
-
-.rating > input{ display:none;}
-
-.rating > label {
-  position: relative;
-    width: 1em;
-    font-size: 3vw;
-    color: #FFD600;
-    cursor: pointer;
-}
-.rating > label::before{ 
-  content: "\2605";
-  position: absolute;
-  opacity: 0;
-}
-.rating > label:hover:before,
-.rating > label:hover ~ label:before {
-  opacity: 1 !important;
-}
-
-.rating > input:checked ~ label:before{
-  opacity:1;
-}
-
-.rating:hover > input:checked ~ label:before{ opacity: 0.4; }
-
-</style>
-
-<body class="services-details-page" data-bs-spy="scroll" data-bs-target="#navmenu">
-
-    <!-- ======= Header ======= -->
-    <header id="header" class="header sticky-top d-flex align-items-center">
-        <div class="container-fluid d-flex align-items-center justify-content-between">
-
-            <a class="btn-getstarted" href="{{ url('progres_materi') }}">Materi-Ku</a>
-
-            <!-- Nav Menu -->
-            <nav id="navmenu" class="navmenu">
-
-                <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-            </nav><!-- End Nav Menu -->
-
-        </div>
-    </header><!-- End Header -->
-
-    <main id="main">
-
-        <!-- Page Title -->
-        <!-- <div data-aos="fade" class="page-title">
-            <nav class="breadcrumbs">
-              <ol>
-                <li>Rating Materi </li>
-                <li class="current">Level </li>
-              </ol>
-            </nav>
-        </div> -->
-        <!-- End Page Title -->
-
-        <!-- Service Details Section -->
-        <section id="service-details" class="service-details">
-
-            <div class="container">
-              <div class="card-body" style="background-color: #DCDCDC; margin: 5px; border-radius: 10px;">
-                <h6> Buat sertifikat</h6>
-              </div>
-
-              <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-              <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-              <div class="card-body" style="background-color: #4682B4; margin: 5px; border-radius: 10px;">
-                <form method="POST" action="{{ url('ratingfe/store') }}" enctype="multipart/form-data">
-                {{ csrf_field() }}
-                    <div class="form-group row">
-                        <label for="text" class="col-2 col-form-label">Nama</label>
-                        <div class="col-8">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text">
-                                        <i class="fa fa-address-card"></i>
-                                    </div>
-                                </div>
-                                <input id="text" name="text" type="text" class="form-control" value="{{ auth()->user()->name }}" readonly>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="select" class="col-2 col-form-label">Materi</label>
-                        <div class="col-8">
-                            <select id="select" name="select" class="custom-select">
-                                @foreach ($materi as $m)
-                                <input id="text" name="text" type="text" class="form-control" value="{{ $m->id }}" readonly>
-                                    <option value="{{ $m->id }}">{{ $m->judul }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="offset-2 col-8">
-                            <button name="submit" type="submit" class="btn btn-warning">Buat Sertifikat</button>
-                        </div>
-                    </div>
-                </form>
-              </div>
-
-
+<!-- Form Sertifikat -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Form Sertifikat</h6>
+    </div>
+    <div class="card-body">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        <form method="POST" action="{{ url('sertifikat/store') }}" enctype="multipart/form-data">
+        {{ csrf_field() }}
+            <!-- Input Nama -->
+            <div class="form-group">
+                <label for="nama">Nama :</label>
+                <select id="users_id" name="users_id" class="custom-select">
+                    @foreach ($users as $u)
+                        <option value="{{ $u->id }}">{{ $u->name }}</option>
+                    @endforeach
+                </select>
             </div>
 
-        </section><!-- End Service-details Section -->
+            <!-- Input Judul Materi -->
+            <div class="form-group">
+                <label for="materi_id">Judul Materi :</label>
+                <select id="materi_id" name="materi_id" class="custom-select">
+                    @foreach ($materi as $m)
+                        <option value="{{ $m->id }}">{{ $m->judul }}</option>
+                    @endforeach
+                </select>
+            </div>
 
-    </main>
-
-    <!-- Scroll Top Button -->
-    <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-    <!-- Preloader -->
-    <div id="preloader">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
+            <!-- Submit Button -->
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Simpan</button> &nbsp;
+        </form>
+            <button type="button" class="btn btn-danger">
+                    <a href="{{ url('sertifikat') }}" style="text-decoration: none; color: inherit;">Batal</a>
+            </button>
+            </div>
     </div>
+</div>
 
-</body>
-
+</div>
+<!-- /.container-fluid -->
 @endsection

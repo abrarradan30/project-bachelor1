@@ -6,12 +6,12 @@
 <div class="container-fluid">
 
 <!-- Page Heading -->
-<h1 class="h3 mb-2 text-gray-800">Tambahkan Sertifikat</h1>
+<h1 class="h3 mb-2 text-gray-800">Buat Sertifikat</h1>
 
 <!-- Form Sertifikat -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Form Sertifikat</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Form Buat Sertifikat</h6>
     </div>
     <div class="card-body">
         @if ($errors->any())
@@ -23,34 +23,28 @@
                 </ul>
             </div>
         @endif
-        <form method="POST" action="{{ url('sertifikat/store') }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ url('input_sertifikat/store') }}" enctype="multipart/form-data">
         {{ csrf_field() }}
             <!-- Input Nama -->
             <div class="form-group">
                 <label for="nama">Nama :</label>
-                <select id="users_id" name="users_id" class="custom-select">
-                    @foreach ($users as $u)
-                        <option value="{{ $u->id }}">{{ $u->name }}</option>
-                    @endforeach
-                </select>
+                <input id="name" name="nama" type="text" class="form-control" value="{{ Auth::user()->name }}" readonly/>
             </div>
 
             <!-- Input Judul Materi -->
             <div class="form-group">
                 <label for="materi_id">Judul Materi :</label>
-                <select id="materi_id" name="materi_id" class="custom-select">
-                    @foreach ($materi as $m)
-                        <option value="{{ $m->id }}">{{ $m->judul }}</option>
-                    @endforeach
-                </select>
+                @foreach($sertifikat as $s)
+                <input id="materi_id" name="materi_id" type="text" class="form-control" value="{{ $sertifikat->judul }}" readonly>
+                @endforeach
             </div>
 
             <!-- Submit Button -->
             <div class="form-group">
-                <button type="submit" class="btn btn-primary">Simpan</button> &nbsp;
+                <button type="submit" class="btn btn-primary">Buat</button> &nbsp;
         </form>
             <button type="button" class="btn btn-danger">
-                    <a href="{{ url('sertifikat') }}" style="text-decoration: none; color: inherit;">Batal</a>
+                    <a href="{{ url('progres_materi') }}" style="text-decoration: none; color: inherit;">Batal</a>
             </button>
             </div>
     </div>

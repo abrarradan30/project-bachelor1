@@ -48,14 +48,15 @@ class RatingFrontController extends Controller
     {
         //
         $request->validate([
-            'users_id'     => 'required',
+            //'users_id'     => 'required',
             'materi_id'    => 'required',
             'rating'       => 'required',
             'feedback'     => 'required',
         ]);
 
         DB::table('rating')->insert([
-            'users_id'     => $request->users_id,
+            //'users_id'     => $request->users_id,
+            'users_id'     => auth()->user()->id,
             'materi_id'    => $request->materi_id,
             'rating'       => $request->rating,
             'feedback'     => $request->feedback,
@@ -68,7 +69,7 @@ class RatingFrontController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
         //
     }

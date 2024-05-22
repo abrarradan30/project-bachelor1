@@ -34,10 +34,11 @@ class InputSertifikatController extends Controller
         $users = DB::table('users')->get();
         $materi = DB::table('materi')->get();
         $sertifikat = Sertifikat::join('users', 'sertifikat.users_id', '=', 'users.id')
-            ->join('materi', 'sertifikat.materi_id', '=', 'materi.id')
-            ->select('sertifikat.*', 'users.name as nama', 'materi.judul as judul_materi')
-            ->where('sertifikat.id', $id)
-            ->get();
+        ->join('materi', 'sertifikat.materi_id', '=', 'materi.id')
+        ->select('sertifikat.materi_id', 'materi.judul')
+        ->where('sertifikat.materi_id', $id)
+        ->get();
+
 
         return view('input_sertifikat', compact('sertifikat', 'users', 'materi'));
     }
@@ -49,12 +50,13 @@ class InputSertifikatController extends Controller
     {
         //
         $request->validate([
-            'users_id'     => 'required',
+            //'users_id'     => 'required',
             'materi_id'    => 'required',
         ]);
 
         DB::table('sertifikat')->insert([
-            'users_id'     => $request->users_id,
+            //'users_id'     => $request->users_id,
+            'users_id'     => auth()->user()->id,
             'materi_id'    => $request->materi_id,
         ]);
 
@@ -70,11 +72,11 @@ class InputSertifikatController extends Controller
         //
         $sertifikat = Sertifikat::join('users', 'sertifikat.users_id', '=', 'users.id')
             ->join('materi', 'sertifikat.materi_id', '=', 'materi.id')
-            ->select('sertifikat.*', 'users.name as nama', 'materi.judul as judul_materi')
-            ->where('sertifikat.id', $id)
+            ->select('sertifikat.*', 'materi.judul')
+            ->where('sertifikat.materi_id', $id)
             ->get();
 
-        return view('admin.sertifikat.detail', compact('sertifikat'));
+        return view('input_sertifikat', compact('sertifikat'));
     }
 
     /**

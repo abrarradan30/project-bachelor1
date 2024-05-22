@@ -208,7 +208,8 @@ Route::post('/ratingfe/store', [RatingFrontController::class, 'store']);
 // route rating front
 Route::get('/input_sertifikat', [InputSertifikatController::class, 'index']);
 Route::get('/input_sertifikat/create/{id}', [InputSertifikatController::class, 'create']);
-Route::get('/input_sertifikat/show/{id}', [KuisFrontController::class, 'show']);
+Route::post('/input_sertifikat/store', [InputSertifikatController::class, 'store']);
+Route::get('/input_sertifikat/show/{id}', [InputSertifikatController::class, 'show']);
 
 Route::get('/acces_denied', function () {
     return view('/acces_denied');

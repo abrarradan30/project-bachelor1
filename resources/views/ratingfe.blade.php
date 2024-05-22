@@ -64,11 +64,6 @@
             <div class="form-group">
                 <label for="nama">Nama :</label>
                 <input id="nama" name="nama" type="text" class="form-control @error('nama') is-invalid @enderror" value="{{ Auth::user()->name }}" readonly>
-                @error('nama')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                @enderror
             </div>
 
             <!-- Input Materi -->

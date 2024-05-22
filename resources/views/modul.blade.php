@@ -11,8 +11,8 @@
 @endforeach
 
 @if(in_array(Auth::user()->role, ['admin', 'siswa']))
-    <p class="mb-4"> Punya pertanyaan ? &nbsp;
-        <a href="{{ url('forum') }}" style="text-decoration: none; color: inherit;"> <b class="text-warning"> forum diskusi </b> </a>.
+    <p class="mb-4"> Punya pertanyaan ? 
+        <a href="{{ url('forum') }}" style="text-decoration: none; color: inherit;"> klik <b class="text-warning"> disini </b></a>.
     </p>
 @endif
 
@@ -58,7 +58,7 @@
             </p>
             <p>Skor anda : <span id="quiz-score">0 %</span></p>
             <p>Status : Gagal</p>
-            <a href="{{ url('progres_materi') }}" class="btn btn-info btn-sm">
+            <a href="{{ url('soal_kuis') }}" class="btn btn-info btn-sm">
                 Kerjakan &nbsp; <i class="fa fa-list"></i>
             </a>
             <a href="{{ url('ratingfe/create') }}" class="btn btn-warning btn-sm">

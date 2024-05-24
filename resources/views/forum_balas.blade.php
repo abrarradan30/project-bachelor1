@@ -301,6 +301,10 @@
                                                     <span class="btn btn-danger btn-sm"
                                                         style="pointer-events: none;">{{ $fd->status_diskusi }}</span>
                                                 @endif
+                                                <br> <br>
+                                                <button class="btn btn-success btn-sm"> 
+                                                <i class="fa fa-check-square" style="font-size: 25px;"></i>
+                                                </button>
                                                 <div class="text-muted small text-center align-self-center">
                                                     <a href="javascript:void(0)" class="text-muted small" data-toggle="modal"
                                                         data-target="#balasanModal">

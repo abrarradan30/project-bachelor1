@@ -14,10 +14,6 @@
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary">Tabel Kuis</h6>
-        <br>
-        <a href="{{ url('kuis/create') }}">
-        <button class="btn btn-sm btn-primary"><i class="fas fa-plus"></i> &nbsp; Tambah</button>
-        </a>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -25,26 +21,14 @@
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>Nama Materi</th>
-                        <th>Pertanyaan</th>
-                        <th>A</th>
-                        <th>B</th>
-                        <th>C</th>
-                        <th>D</th>
-                        <th>Koreksi</th>
+                        <th>Judul Materi</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
                         <th>No</th>
-                        <th>Nama Materi</th>
-                        <th>Pertanyaan</th>
-                        <th>A</th>
-                        <th>B</th>
-                        <th>C</th>
-                        <th>D</th>
-                        <th>Koreksi</th>
+                        <th>Judul Materi</th>
                         <th>Aksi</th>
                     </tr>
                 </tfoot>
@@ -52,33 +36,15 @@
                     @php 
                         $no = 1;
                     @endphp
-                    @foreach ($kuis as $k)
+                    @foreach ($materi as $m)
                     <tr>
                         <td>{{ $no }}</td>
-                        <td>{{ $k->judul_materi}}</td>
-                        <td>{!! $k->soal !!}</td>
-                        <td>{{ $k->a }}</td>
-                        <td>{{ $k->b }}</td>
-                        <td>{{ $k->c }}</td>
-                        <td>{{ $k->d }}</td>
-                        <td>{{ $k->kunci }}</td>
+                        <td>{{ $m->judul }}</td>
                         <td>
                             <form action="#" method="POST">
                                 <button type="button" class="btn btn-success btn-sm">
-                                    <a href="{{ url('kuis/show/' . $k->id) }}" style="text-decoration: none; color: inherit;">Detail</a>
+                                    <a href="{{ url('kuis/show/' . $m->id) }}" style="text-decoration: none; color: inherit;">Kelola Kuis</a>
                                 </button>
-                                <button type="button" class="btn btn-warning btn-sm">
-                                    <a href="{{ url('kuis/edit/' . $k->id) }}" style="text-decoration: none; color: inherit;">Edit</a>
-                                </button>
-                                <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete()">Hapus</button>
-                                <script>                                  
-                                    function confirmDelete() {
-                                    var confirmation = confirm("Yakin hapus data?");
-                                        if (confirmation) {
-                                            window.location.href = "{{ url('kuis/delete/' . $k->id) }}";
-                                        }
-                                    }
-                                </script>
                             </form>
                         </td>
                     </tr>

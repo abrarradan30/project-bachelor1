@@ -170,6 +170,6 @@ class BalasanDiskusiController extends Controller
         //
         DB::table('balasan_diskusi')->where('id', $id)->delete();
 
-        return redirect('admin/balasan_diskusi');
+        return redirect('balasan_diskusi');
     }
 }

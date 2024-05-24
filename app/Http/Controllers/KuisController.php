@@ -18,12 +18,14 @@ class KuisController extends Controller
     public function index()
     {
         //
-        $kuis = DB::table('kuis')
-            ->join('materi', 'kuis.materi_id', '=', 'materi.id')
-            ->select('kuis.*', 'materi.judul as judul_materi')
-            ->get();
+        // $kuis = DB::table('kuis')
+        //     ->join('materi', 'kuis.materi_id', '=', 'materi.id')
+        //     ->select('kuis.*', 'materi.judul as judul_materi')
+        //     ->get();
+        
+        $materi = DB::table('materi')->get();
 
-        return view('admin.kuis.index', compact('kuis'));
+        return view('admin.kuis.index', compact('materi'));
     }
 
     /**
@@ -103,10 +105,21 @@ class KuisController extends Controller
     public function show($id)
     {
         //
-        $materi = DB::table('materi')->get();
-        $kuis = DB::table('kuis')->where('id', $id)->get();
+        $kuis = DB::table('kuis')
+            ->join('materi', 'kuis.materi_id', '=', 'materi.id')
+            ->select('kuis.*', 'materi.judul as judul_materi')
+            ->where('kuis.materi_id', $id)
+            ->get();
 
-        return view('admin.kuis.detail', compact('kuis', 'materi'));
+        $kuis2 = DB::table('kuis')
+            ->join('materi', 'kuis.materi_id', '=', 'materi.id')
+            ->select('kuis.materi_id', 'materi.judul as judul_materi')
+            ->groupBy('kuis.materi_id', 'materi.judul')
+            ->where('kuis.materi_id', $id)
+            ->get();
+            
+
+        return view('admin.kuis.detail', compact('kuis', 'kuis2'));
     }
 
     /**

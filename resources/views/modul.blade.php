@@ -58,9 +58,13 @@
             </p>
             <p>Skor anda : <span id="quiz-score">0 %</span></p>
             <p>Status : Gagal</p>
-            <a href="{{ url('soal_kuis') }}" class="btn btn-info btn-sm">
-                Kerjakan &nbsp; <i class="fa fa-list"></i>
+
+            @foreach($modul as $md)
+            <a href="{{ url('soal_kuis/show/'.$md->id) }}" class="btn btn-info btn-sm">
+                Mulai Kuis &nbsp; <i class="fa fa-list"></i>
             </a>
+            @endforeach
+
             <a href="{{ url('ratingfe/create') }}" class="btn btn-warning btn-sm">
                 Rating <i class="fa fa-star"></i>
             </a>    

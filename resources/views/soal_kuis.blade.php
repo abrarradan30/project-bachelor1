@@ -2,13 +2,36 @@
 
 @section('content')
 
+<style>
+.question {
+    margin-bottom: 20px;
+  }
+  
+  .options {
+    margin-top: 10px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input[type="radio"] {
+    margin-right: 5px;
+  }
+  
+  input[type="radio"]:checked+label {
+    font-weight: bold;
+  }
+</style>
+
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
 <!-- Page Heading -->
-
-<h1 class="h3 mb-2 text-gray-800">Kuis</h1>
-
+@foreach($soal_kuis as $sk)
+<h1 class="h3 mb-2 text-gray-800">Kuis {{ $sk->judul }} / {{ $sk->level }}</h1>
+@endforeach
 
 <div class="card shadow mb-4">
     <div class="card-header py-3">
@@ -16,21 +39,25 @@
     </div>
     <div class="card-body">
     <form>
-        <div class="form-group">
+        <div class="question">
             @php 
                 $no = 1;
             @endphp
-            <h5> No. Pertanyaan ?</h5>
+
+            @foreach($isi_kuis as $ik)
+            <h5> {{ $no }}.{!! $ik->soal !!}</h5>
               <div class="options">
-                <label><input type="radio" name="q" value="a"> a. a </label><br>
-                <label><input type="radio" name="q" value="b"> b. b </label><br>
-                <label><input type="radio" name="q" value="c"> c. c </label><br>
-                <label><input type="radio" name="q" value="d"> d. d </label><br>
+                <label><input type="radio" name="q{{ $no }}" value="a"> a. {!! $ik->a !!} </label><br>
+                <label><input type="radio" name="q{{ $no }}" value="b"> b. {!! $ik->b !!} </label><br>
+                <label><input type="radio" name="q{{ $no }}" value="c"> c. {!! $ik->c !!} </label><br>
+                <label><input type="radio" name="q{{ $no }}" value="d"> d. {!! $ik->d !!} </label><br>
               </div> 
             
             @php 
                 $no++;
             @endphp
+
+            @endforeach
         </div>
 
         <div class="form-group">

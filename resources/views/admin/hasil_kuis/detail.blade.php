@@ -2,43 +2,79 @@
 
 @section('content')
 
+@include('sweetalert::alert')
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
 <!-- Page Heading -->
-<h1 class="h3 mb-2 text-gray-800">Detail Hasil Kuis</h1>
+<h1 class="h3 mb-2 text-gray-800">Tabel Hasil Kuis</h1>
+<p class="mb-4">Menavigasi hasil nilai user dari setiap kuis materi yang telah dikerjakan</p>
 
-<!-- Form Diskusi -->
+<!-- DataTales Example -->
 <div class="card shadow mb-4">
-    @foreach(@hasil_kuis as $hk)
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Detail Hasil Kuis</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Tabel Hasil Kuis</h6>
+        <br>
+        <a href="{{ url('admin/hasil_kuis/create') }}">
+        <button class="btn btn-sm btn-primary"><i class="fas fa-plus"></i> &nbsp; Tambah</button>
+        </a>
     </div>
     <div class="card-body">
-
-            <!-- Input Nama -->
-            <div class="form-group">
-                <label for="nama">Nama :</label>
-                <input id="nama" name="nama" type="text" class="form-control" value="{{ $hk->nama }}" readonly>
-            </div>
-
-            <!-- Input Materi -->
-            <div class="form-group">
-                <label for="materi_id">Materi :</label>
-                <input id="judul_materi" type="text" class="form-control" value="{{ $hk->judul_materi }}" readonly>
-            </div>
-
-            <!-- Input Skor -->
-            <div class="form-group">
-                <label for="skor">Skor :</label>
-                <input id="skor" name="skor" type="text" class="form-control" value="{{ $hk->skor }}" readonly>
-            </div>
-
-            <div class="form-group">
-                <a href="{{ url('hasil_kuis') }}" class="btn btn-secondary">Kembali</a>
-            </div>
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>User</th>
+                        <th>Materi</th>
+                        <th>Skor</th>
+                        <th>Tgl Mengerjakan</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>No</th>
+                        <th>User</th>
+                        <th>Materi</th>
+                        <th>Skor</th>
+                        <th>Tgl Mengerjakan</th>
+                        <th>Aksi</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    @php 
+                        $no = 1;
+                    @endphp
+                    @foreach ($hasil_kuis as $hk)
+                    <tr>
+                        <td>{{ $no }}</td>
+                        <td>{{ $hk->nama }}</td>
+                        <td>{{ $hk->judul_materi }}</td>
+                        <td>{{ $hk->skor }}</td>
+                        <td>{{ $hk->created_at}}
+                        <td>
+                        <form action="#" method="POST">
+                                <button type="button" class="btn btn-success btn-sm">
+                                    <a href="{{ url('admin/hasil_kuis/show/' . $hk->id) }}" style="text-decoration: none; color: inherit;">Detail</a>
+                                </button>
+                                <button type="button" class="btn btn-warning btn-sm">
+                                    <a href="{{ url('admin/hasil_kuis/edit/' . $hk->id) }}" style="text-decoration: none; color: inherit;">Edit</a>
+                                </button>
+                                <button type="button" class="btn btn-danger btn-sm">
+                                    <a href="{{ url('admin/hasil_kuis/delete/' . $hk->id) }}" style="text-decoration: none; color: inherit;">Hapus</a>
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    @php 
+                        $no++;
+                    @endphp
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
-    @endforeach
 </div>
 
 </div>

@@ -205,7 +205,7 @@
 
                         <div class="inner-sidebar-body p-0">
                             <div class="p-3 h-100" data-simplebar="init">
-                                <div class="simplebar-wrapper" style="margin: -16px;">
+                                <!-- <div class="simplebar-wrapper" style="margin: -16px;">
                                     <div class="simplebar-height-auto-observer-wrapper">
                                         <div class="simplebar-height-auto-observer"></div>
                                     </div>
@@ -228,7 +228,7 @@
                                         </div>
                                     </div>
                                     <div class="simplebar-placeholder" style="width: 234px; height: 292px;"></div>
-                                </div>
+                                </div> -->
                                 <div class="simplebar-track simplebar-horizontal" style="visibility: hidden;">
                                     <div class="simplebar-scrollbar" style="width: 0px; display: none;"></div>
                                 </div>
@@ -247,13 +247,13 @@
                         <div class="inner-main-header">
                             <a class="nav-link nav-icon rounded-circle nav-link-faded mr-3 d-md-none" href="#"
                                 data-toggle="inner-sidebar"><i class="material-icons">arrow_forward_ios</i></a>
-                            <select id="materi_id" name="materi_id" class="custom-select custom-select-sm w-auto mr-1"
+                            <!-- <select id="materi_id" name="materi_id" class="custom-select custom-select-sm w-auto mr-1"
                                 style="width: 50%;">
                                 <option value="1">--- Pilih Materi ---</option>
                                 @foreach ($materi as $m)    
                                     <option value="{{ $m->id }}">{{ $m->judul }}</option>
                                 @endforeach
-                            </select>
+                            </select> -->
 
                             @for ($i = 0; $i < 3; $i++)
                                 &nbsp;
@@ -302,14 +302,27 @@
                                                         style="pointer-events: none;">{{ $fd->status_diskusi }}</span>
                                                 @endif
                                                 <br> <br>
-                                                <button class="btn btn-success btn-sm"> 
-                                                <i class="fa fa-check-square" style="font-size: 25px;"></i>
-                                                </button>
+                                                @if($fd->status_diskusi == 'belum selesai')
+        <button class="btn btn-success btn-sm"> 
+            <a href="{{ url('forum/update/' . $fd->id) }}" style="text-decoration: none; color: inherit;">
+                <i class="fa fa-check-square" style="font-size: 25px;"></i>
+            </a>
+        </button>
+    @else
+        <button class="btn btn-success btn-sm" style="display: none;">
+            <a href="{{ url('forum/update/' . $fd->id) }}" style="text-decoration: none; color: inherit;">
+                <i class="fa fa-check-square" style="font-size: 25px;"></i>
+            </a>
+        </button>
+    @endif
                                                 <div class="text-muted small text-center align-self-center">
-                                                    <a href="javascript:void(0)" class="text-muted small" data-toggle="modal"
-                                                        data-target="#balasanModal">
+                                                @if($fd->status_diskusi == 'belum selesai')
+                                                    <a href="javascript:void(0)" class="text-muted small" data-toggle="modal" data-target="#balasanModal">
                                                         <h6>Balas</h6>
                                                     </a>
+                                                @elseif($fd->status_diskusi == 'selesai')
+                                                    <h6 class="text-muted small" style="display: none;">Balas</h6>
+                                                @endif
                                                 </div>
                                             </div>
                                         </div>

@@ -14,10 +14,6 @@
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary">Tabel Hasil Kuis</h6>
-        <br>
-        <a href="{{ url('admin/hasil_kuis/create') }}">
-        <button class="btn btn-sm btn-primary"><i class="fas fa-plus"></i> &nbsp; Tambah</button>
-        </a>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -25,20 +21,14 @@
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>User</th>
-                        <th>Materi</th>
-                        <th>Skor</th>
-                        <th>Tgl Mengerjakan</th>
+                        <th>Judul Materi</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
                         <th>No</th>
-                        <th>User</th>
                         <th>Materi</th>
-                        <th>Skor</th>
-                        <th>Tgl Mengerjakan</th>
                         <th>Aksi</th>
                     </tr>
                 </tfoot>
@@ -46,23 +36,14 @@
                     @php 
                         $no = 1;
                     @endphp
-                    @foreach ($hasil_kuis as $hk)
+                    @foreach ($materi as $m)
                     <tr>
                         <td>{{ $no }}</td>
-                        <td>{{ $hk->nama }}</td>
-                        <td>{{ $hk->judul_materi }}</td>
-                        <td>{{ $hk->skor }}</td>
-                        <td>{{ $hk->created_at}}
+                        <td>{{ $m->judul }}</td>
                         <td>
                         <form action="#" method="POST">
                                 <button type="button" class="btn btn-success btn-sm">
-                                    <a href="{{ url('admin/hasil_kuis/show/' . $hk->id) }}" style="text-decoration: none; color: inherit;">Detail</a>
-                                </button>
-                                <button type="button" class="btn btn-warning btn-sm">
-                                    <a href="{{ url('admin/hasil_kuis/edit/' . $hk->id) }}" style="text-decoration: none; color: inherit;">Edit</a>
-                                </button>
-                                <button type="button" class="btn btn-danger btn-sm">
-                                    <a href="{{ url('admin/hasil_kuis/delete/' . $hk->id) }}" style="text-decoration: none; color: inherit;">Hapus</a>
+                                    <a href="{{ url('admin/hasil_kuis/show/' . $m->id) }}" style="text-decoration: none; color: inherit;">Cek Hasil Kuis Siswa</a>
                                 </button>
                             </form>
                         </td>

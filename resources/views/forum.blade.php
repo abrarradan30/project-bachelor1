@@ -271,7 +271,7 @@
                                         </h6>
                                     </div>
                                     <div class="media-body">
-                                        <a href="{{ url('forum_balas/show/' . $fd->id) }}" target="_blank" style="text-decoration: none; color: inherit;"> 
+                                        <a href="{{ url('forum_balas/show/' . $fd->id) }}" style="text-decoration: none; color: inherit;"> 
                                             <p class="text-secondary"> {!! $fd->pertanyaan !!} </p>
                                         </a>
                                         <!-- data-toggle="collapse" data-target=".forum-content" class="text-body" -->

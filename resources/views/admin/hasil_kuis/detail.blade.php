@@ -75,6 +75,11 @@
             </table>
         </div>
     </div>
+    <div class="card-header py-3">
+        <a href="{{ url('hasil_kuis') }}">
+        <button class="btn btn-sm btn-danger">Kembali</button>
+        </a>
+    </div>
 </div>
 
 </div>

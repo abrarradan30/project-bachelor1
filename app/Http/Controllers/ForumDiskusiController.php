@@ -18,12 +18,14 @@ class ForumDiskusiController extends Controller
     public function index()
     {
         // query builer
-        $forum_diskusi = ForumDiskusi::join('users', 'forum_diskusi.users_id', '=', 'users.id')
-            ->join('materi', 'forum_diskusi.materi_id', '=', 'materi.id')
-            ->select('forum_diskusi.*', 'users.name as nama', 'materi.judul as judul_materi')
-            ->get();
+        // $forum_diskusi = ForumDiskusi::join('users', 'forum_diskusi.users_id', '=', 'users.id')
+        //     ->join('materi', 'forum_diskusi.materi_id', '=', 'materi.id')
+        //     ->select('forum_diskusi.*', 'users.name as nama', 'materi.judul as judul_materi')
+        //     ->get();
 
-        return view('admin.forum_diskusi.index', compact('forum_diskusi'));
+        $materi = DB::table('materi')->get();
+
+        return view('admin.forum_diskusi.index', compact('materi'));
     }
 
     /**
@@ -95,8 +97,15 @@ class ForumDiskusiController extends Controller
             ->select('forum_diskusi.*', 'users.name as nama', 'materi.judul as judul_materi')
             ->where('forum_diskusi.id', $id)
             ->get();
+
+        $forum_diskusi2 = ForumDiskusi::join('users', 'forum_diskusi.users_id', '=', 'users.id')
+            ->join('materi', 'forum_diskusi.materi_id', '=', 'materi.id')
+            ->select('forum_diskusi.materi_id', 'materi.judul as judul_materi')
+            ->groupBy('forum_diskusi.materi_id', 'materi.judul')
+            ->where('forum_diskusi.id', $id)
+            ->get();
             
-        return view('admin.forum_diskusi.detail', compact('forum_diskusi'));
+        return view('admin.forum_diskusi.detail', compact('forum_diskusi', 'forum_diskusi2'));
     }
 
     /**

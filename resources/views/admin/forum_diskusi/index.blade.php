@@ -8,16 +8,14 @@
 
 <!-- Page Heading -->
 <h1 class="h3 mb-2 text-gray-800">Tabel Forum Diskusi</h1>
-<p class="mb-4">Menavigasi interaksi pengguna satu sama lain dengan mengomentari atau membalas pesan di setiap topik.</p>
+<p class="mb-4">Menavigasi interaksi pengguna satu sama lain dengan mengomentari atau membalas pesan di setiap topik. Cek forum
+    <a href="{{ url('forum') }}" style="text-decoration: none; color: inherit;"> <b class="text-warning"> disini </b></a>.
+</p>
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary">Tabel Forum Diskusi</h6>
-        <br>
-        <a href="{{ url('forum_diskusi/create') }}">
-        <button class="btn btn-sm btn-primary"><i class="fas fa-plus"></i> &nbsp; Tambah</button>
-        </a>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -25,22 +23,14 @@
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>Nama</th>
                         <th>Judul Materi</th>
-                        <th>Pertanyaan</th>
-                        <th>Status Diskusi</th>
-                        <th>Posting</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
                         <th>No</th>
-                        <th>Nama</th>
                         <th>Judul Materi</th>
-                        <th>Pertanyaan</th>
-                        <th>Status Diskusi</th>
-                        <th>Posting</th>
                         <th>Aksi</th>
                     </tr>
                 </tfoot>
@@ -48,37 +38,15 @@
                     @php 
                         $no = 1;
                     @endphp
-                    @foreach ($forum_diskusi as $fd)
+                    @foreach ($materi as $m)
                     <tr>
                         <td>{{ $no }}</td>
-                        <td>{{ $fd->nama }}</td>
-                        <td>{{ $fd->judul_materi}}</td>
-                        <td>{!! $fd->pertanyaan !!}</td>
-                        <td>
-                            @if($fd->status_diskusi == 'selesai')
-                                <span class="btn btn-success btn-sm" style="pointer-events: none;">{{ $fd->status_diskusi }}</span>
-                            @else
-                                <span class="btn btn-danger btn-sm" style="pointer-events: none;">{{ $fd->status_diskusi }}</span>
-                            @endif
-                        </td>
-                        <td>{{ $fd->created_at }}</td>
+                        <td>{{ $m->judul }}</td>
                         <td>
                             <form action="#" method="POST">
                                 <button type="button" class="btn btn-success btn-sm">
-                                    <a href="{{ url('forum_diskusi/show/' . $fd->id) }}" style="text-decoration: none; color: inherit;">Detail</a>
+                                    <a href="{{ url('forum_diskusi/show/' . $m->id) }}" style="text-decoration: none; color: inherit;">Cek Diskusi</a>
                                 </button>
-                                <button type="button" class="btn btn-warning btn-sm">
-                                    <a href="{{ url('forum_diskusi/edit/' . $fd->id) }}" style="text-decoration: none; color: inherit;">Edit</a>
-                                </button>
-                                <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete()">Hapus</button>
-                                <script>                                  
-                                    function confirmDelete() {
-                                    var confirmation = confirm("Yakin hapus data?");
-                                        if (confirmation) {
-                                            window.location.href = "{{ url('forum_diskusi/delete/' . $fd->id) }}";
-                                        }
-                                    }
-                                </script>
                             </form>
                         </td>
                     </tr>

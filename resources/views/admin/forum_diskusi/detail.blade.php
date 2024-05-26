@@ -2,44 +2,97 @@
 
 @section('content')
 
+@include('sweetalert::alert')
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
 <!-- Page Heading -->
-<h1 class="h3 mb-2 text-gray-800">Detail Diskusi</h1>
+<h1 class="h3 mb-2 text-gray-800">Tabel Forum Diskusi</h1>
 
-<!-- Detail Diskusi -->
+<!-- DataTales Example -->
 <div class="card shadow mb-4">
-    @foreach($forum_diskusi as $fd) 
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Detail Diskusi</h6>
+        @foreach($forum_diskusi2 as $fd2)
+        <h6 class="m-0 font-weight-bold text-primary">Forum Diskusi {{ $fd2->judul_materi }}</h6>
+        @endforeach
+        <br>
+        <a href="{{ url('forum_diskusi/create') }}">
+        <button class="btn btn-sm btn-primary"><i class="fas fa-plus"></i> &nbsp; Tambah</button>
+        </a>
     </div>
     <div class="card-body">
-        <div class="form-group">
-            <label for="nama">Nama :</label>
-            <input id="nama" type="text" class="form-control" value="{{ $fd->nama }}" readonly>
-        </div>
-
-        <div class="form-group">
-            <label for="judul_materi">Judul Materi :</label>
-            <input id="judul_materi" type="text" class="form-control" value="{{ $fd->judul_materi }}" readonly>
-        </div>
-
-        <div class="form-group">
-            <label for="">Pertanyaan :</label>
-            <textarea id="pertanyaan" cols="30" rows="10" class="form-control" readonly>{!! $fd->pertanyaan !!}</textarea>
-        </div>
-
-        <div class="form-group">
-            <label>Status Diskusi:</label>
-            <input type="text" class="form-control" value="{{ $fd->status_diskusi }}" readonly>
-        </div>
-
-        <div class="form-group">
-            <a href="{{ url('forum_diskusi') }}" class="btn btn-secondary">Kembali</a>
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Nama</th>
+                        <th>Pertanyaan</th>
+                        <th>Status Diskusi</th>
+                        <th>Posting</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>No</th>
+                        <th>Nama</th>
+                        <th>Pertanyaan</th>
+                        <th>Status Diskusi</th>
+                        <th>Posting</th>
+                        <th>Aksi</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    @php 
+                        $no = 1;
+                    @endphp
+                    @foreach ($forum_diskusi as $fd)
+                    <tr>
+                        <td>{{ $no }}</td>
+                        <td>{{ $fd->nama }}</td>
+                        <td>{!! $fd->pertanyaan !!}</td>
+                        <td>
+                            @if($fd->status_diskusi == 'selesai')
+                                <span class="btn btn-success btn-sm" style="pointer-events: none;">{{ $fd->status_diskusi }}</span>
+                            @else
+                                <span class="btn btn-danger btn-sm" style="pointer-events: none;">{{ $fd->status_diskusi }}</span>
+                            @endif
+                        </td>
+                        <td>{{ $fd->created_at }}</td>
+                        <td>
+                            <form action="#" method="POST">
+                                <!-- <button type="button" class="btn btn-success btn-sm">
+                                    <a href="{{ url('forum_diskusi/show/' . $fd->id) }}" style="text-decoration: none; color: inherit;">Detail</a>
+                                </button> -->
+                                <button type="button" class="btn btn-warning btn-sm">
+                                    <a href="{{ url('forum_diskusi/edit/' . $fd->id) }}" style="text-decoration: none; color: inherit;">Edit</a>
+                                </button>
+                                <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete()">Hapus</button>
+                                <script>                                  
+                                    function confirmDelete() {
+                                    var confirmation = confirm("Yakin hapus data?");
+                                        if (confirmation) {
+                                            window.location.href = "{{ url('forum_diskusi/delete/' . $fd->id) }}";
+                                        }
+                                    }
+                                </script>
+                            </form>
+                        </td>
+                    </tr>
+                    @php
+                        $no++;
+                    @endphp
+                    @endforeach
+                </tbody>
+            </table>
         </div>
     </div>
-    @endforeach
+    <div class="card-header py-3">
+        <a href="{{ url('forum_diskusi') }}">
+        <button class="btn btn-sm btn-danger">Kembali</button>
+        </a>
+    </div>
 </div>
 
 </div>

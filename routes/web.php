@@ -129,6 +129,36 @@ Route::middleware(['peran:admin-mentor'])->group(function () {
     Route::get('/rating/edit/{id}', [RatingController::class, 'edit']);
     Route::post('/rating/update', [RatingController::class, 'update']);
     Route::get('/rating/delete/{id}', [RatingController::class, 'destroy']);
+
+     // route sertifikat
+     Route::get('/sertifikat', [SertifikatController::class, 'index']);
+     Route::get('/sertifikat/create', [SertifikatController::class, 'create']);
+     Route::post('/sertifikat/store', [SertifikatController::class, 'store']);
+     Route::get('/sertifikat/show/{id}', [SertifikatController::class, 'show']);
+     Route::get('/sertifikat/edit/{id}', [SertifikatController::class, 'edit']);
+     Route::post('/sertifikat/update', [SertifikatController::class, 'update']);
+     Route::get('/sertifikat/delete/{id}', [SertifikatController::class, 'destroy']);
+ 
+     //Route Sertifikat PDF
+     Route::get('/cetak/{id}', [FillPDFController::class, 'process']);
+ 
+     // route forum diskusi
+     Route::get('/forum_diskusi', [ForumDiskusiController::class, 'index']);
+     Route::get('/forum_diskusi/create', [ForumDiskusiController::class, 'create']);
+     Route::post('/forum_diskusi/store', [ForumDiskusiController::class, 'store']);
+     Route::get('/forum_diskusi/show/{id}', [ForumDiskusiController::class, 'show']);
+     Route::get('/forum_diskusi/edit/{id}', [ForumDiskusiController::class, 'edit']);
+     Route::post('forum_diskusi/update/{id}', [ForumDiskusiController::class, 'update']);
+     Route::get('/forum_diskusi/delete/{id}', [ForumDiskusiController::class, 'destroy']);
+ 
+     // route balasan diskusi
+     Route::get('/balasan_diskusi', [BalasanDiskusiController::class, 'index']);
+     Route::get('/balasan_diskusi/create', [BalasanDiskusiController::class, 'create']);
+     Route::post('/balasan_diskusi/store', [BalasanDiskusiController::class, 'store']);
+     Route::get('/balasan_diskusi/show/{id}', [BalasanDiskusiController::class, 'show']);
+     Route::get('/balasan_diskusi/edit/{id}', [BalasanDiskusiController::class, 'edit']);
+     Route::post('balasan_diskusi/update/{id}', [BalasanDiskusiController::class, 'update']);
+     Route::get('/balasan_diskusi/delete/{id}', [BalasanDiskusiController::class, 'destroy']);
 });
 
 // peran admin
@@ -148,35 +178,6 @@ Route::middleware(['peran:admin'])->group(function () {
     Route::post('/pembayaran/update', [PembayaranController::class, 'update']);
     Route::get('/pembayaran/delete/{id}', [PembayaranController::class, 'destroy']);
 
-    // route sertifikat
-    Route::get('/sertifikat', [SertifikatController::class, 'index']);
-    Route::get('/sertifikat/create', [SertifikatController::class, 'create']);
-    Route::post('/sertifikat/store', [SertifikatController::class, 'store']);
-    Route::get('/sertifikat/show/{id}', [SertifikatController::class, 'show']);
-    Route::get('/sertifikat/edit/{id}', [SertifikatController::class, 'edit']);
-    Route::post('/sertifikat/update', [SertifikatController::class, 'update']);
-    Route::get('/sertifikat/delete/{id}', [SertifikatController::class, 'destroy']);
-
-    //Route Sertifikat PDF
-    Route::get('/cetak/{id}', [FillPDFController::class, 'process']);
-
-    // route forum diskusi
-    Route::get('/forum_diskusi', [ForumDiskusiController::class, 'index']);
-    Route::get('/forum_diskusi/create', [ForumDiskusiController::class, 'create']);
-    Route::post('/forum_diskusi/store', [ForumDiskusiController::class, 'store']);
-    Route::get('/forum_diskusi/show/{id}', [ForumDiskusiController::class, 'show']);
-    Route::get('/forum_diskusi/edit/{id}', [ForumDiskusiController::class, 'edit']);
-    Route::post('forum_diskusi/update/{id}', [ForumDiskusiController::class, 'update']);
-    Route::get('/forum_diskusi/delete/{id}', [ForumDiskusiController::class, 'destroy']);
-
-    // route balasan diskusi
-    Route::get('/balasan_diskusi', [BalasanDiskusiController::class, 'index']);
-    Route::get('/balasan_diskusi/create', [BalasanDiskusiController::class, 'create']);
-    Route::post('/balasan_diskusi/store', [BalasanDiskusiController::class, 'store']);
-    Route::get('/balasan_diskusi/show/{id}', [BalasanDiskusiController::class, 'show']);
-    Route::get('/balasan_diskusi/edit/{id}', [BalasanDiskusiController::class, 'edit']);
-    Route::post('balasan_diskusi/update/{id}', [BalasanDiskusiController::class, 'update']);
-    Route::get('/balasan_diskusi/delete/{id}', [BalasanDiskusiController::class, 'destroy']);
 });
 
 // route frontend

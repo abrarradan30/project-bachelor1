@@ -16,10 +16,6 @@
         @foreach ($progres_belajar2 as $pb2)
         <h6 class="m-0 font-weight-bold text-primary">Progres Belajar {{ $pb2->judul_materi }}</h6>
         @endforeach
-        <br>
-        <a href="{{ url('cek_progres') }}">
-        <button class="btn btn-sm btn-danger">Kembali</button>
-        </a>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -52,9 +48,9 @@
                         <td>{{ $pb->progres }} %</td>
                         <td>
                             <form action="#" method="POST">
-                                <button type="button" class="btn btn-success btn-sm">
+                                <!-- <button type="button" class="btn btn-success btn-sm">
                                     <a href="{{ url('progres_belajar/show/' . $pb->id) }}" style="text-decoration: none; color: inherit;">Detail</a>
-                                </button>
+                                </button> -->
                                 <button type="button" class="btn btn-warning btn-sm">
                                     <a href="{{ url('progres_belajar/edit/' . $pb->id) }}" style="text-decoration: none; color: inherit;">Edit</a>
                                 </button>
@@ -71,6 +67,11 @@
                 </tbody>
             </table>
         </div>
+    </div>
+    <div class="card-header py-3">
+        <a href="{{ url('cek_progres') }}">
+        <button class="btn btn-sm btn-danger">Kembali</button>
+        </a>
     </div>
 </div>
 

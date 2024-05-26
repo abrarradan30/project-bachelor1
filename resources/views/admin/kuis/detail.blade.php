@@ -63,9 +63,9 @@
                         <td>{{ $k->kunci }}</td>
                         <td>
                             <form action="#" method="POST">
-                                <button type="button" class="btn btn-success btn-sm">
+                                <!-- <button type="button" class="btn btn-success btn-sm">
                                     <a href="{{ url('kuis/show/' . $k->id) }}" style="text-decoration: none; color: inherit;">Detail</a>
-                                </button>
+                                </button> -->
                                 <button type="button" class="btn btn-warning btn-sm">
                                     <a href="{{ url('kuis/edit/' . $k->id) }}" style="text-decoration: none; color: inherit;">Edit</a>
                                 </button>

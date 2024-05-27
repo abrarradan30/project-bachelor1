@@ -140,8 +140,10 @@ class ForumController extends Controller
             ->select('balasan_diskusi.*', 'users.name as nama', 'users.foto', 'forum_diskusi.pertanyaan')
             ->where('balasan_diskusi.forum_diskusi_id', $id)
             ->get();
+        
+        $ar_status_diskusi = ['selesai', 'belum selesai'];
             
-        return view('forum_balas', compact('materi', 'forum_diskusi', 'balasan_diskusi'));
+        return view('forum_balas', compact('materi', 'forum_diskusi', 'balasan_diskusi', 'ar_status_diskusi'));
     }
 
     /**

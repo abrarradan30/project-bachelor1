@@ -10,7 +10,8 @@
             <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
         </div>
 
-        <!-- Content Row -->
+        @if(Auth::check() && Auth::user()->role == 'admin')
+        <!-- Content Row Admin -->
         <div class="row">
 
             <!-- Data User -->
@@ -30,7 +31,7 @@
                                     </div>
                                 </div>
                                 <div class="col-auto">
-                                    <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                    <i class="fas fa-solid fa-user fa-2x text-gray-300"></i>
                                 </div>
                             </div>
                         </div>
@@ -188,14 +189,39 @@
                 </a>
             </div>
 
-            <!-- Data Sertifikat -->
+            <!-- Data Rating -->
             <div class="col-xl-3 col-md-6 mb-4">
-                <a href="{{ url('sertifikat') }}" style="text-decoration: none; color: inherit;">
+                <a href="{{ url('rating') }}" style="text-decoration: none; color: inherit;">
                     <div class="card border-left-warning shadow h-100 py-2">
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
                                     <div class="text-xs font-weight-bold text-warning text-uppercase mb-1"
+                                        style="font-size: 15px;">Tabel Rating</div>
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col-auto">
+                                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">Data :
+                                                {{ $rating }}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-solid fa-star fa-2x text-gray-300"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Data Sertifikat -->
+            <div class="col-xl-3 col-md-6 mb-4">
+                <a href="{{ url('sertifikat') }}" style="text-decoration: none; color: inherit;">
+                    <div class="card border-left-primary shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"
                                         style="font-size: 15px;">Tabel Sertifikat</div>
                                     <div class="row no-gutters align-items-center">
                                         <div class="col-auto">
@@ -216,11 +242,11 @@
             <!-- Data Forum Diskusi -->
             <div class="col-xl-3 col-md-6 mb-4">
                 <a href="{{ url('forum_diskusi') }}" style="text-decoration: none; color: inherit;">
-                    <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card border-left-success shadow h-100 py-2">
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
-                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"
+                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1"
                                         style="font-size: 15px;">Tabel Forum Diskusi</div>
                                     <div class="row no-gutters align-items-center">
                                         <div class="col-auto">
@@ -241,11 +267,11 @@
             <!-- Data Balasan Diskusi -->
             <div class="col-xl-3 col-md-6 mb-4">
                 <a href="{{ url('balasan_diskusi') }}" style="text-decoration: none; color: inherit;">
-                    <div class="card border-left-success shadow h-100 py-2">
+                    <div class="card border-left-info shadow h-100 py-2">
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
-                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1"
+                                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1"
                                         style="font-size: 15px;">Tabel Balasan Diskusi</div>
                                     <div class="row no-gutters align-items-center">
                                         <div class="col-auto">
@@ -264,6 +290,238 @@
             </div>
 
         </div>
+
+        @elseif(Auth::check() && Auth::user()->role == 'mentor')
+        <!-- Content Row Mentor -->
+        <div class="row">
+
+            <!-- Data Materi -->
+            <div class="col-xl-3 col-md-6 mb-4">
+                <a href="{{ url('materi') }}" style="text-decoration: none; color: inherit;">
+                    <div class="card border-left-success shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1"
+                                        style="font-size: 15px;">Tabel Materi</div>
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col-auto">
+                                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">Data : {{ $materi }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Data Detail Materi -->
+            <div class="col-xl-3 col-md-6 mb-4">
+                <a href="{{ url('detail_materi') }}" style="text-decoration: none; color: inherit;">
+                    <div class="card border-left-info shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1"
+                                        style="font-size: 15px;">Tabel Detail Materi</div>
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col-auto">
+                                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">Data :
+                                                {{ $detail_materi }}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Data Progres Belajar -->
+            <div class="col-xl-3 col-md-6 mb-4">
+                <a href="{{ url('cek_progres') }}" style="text-decoration: none; color: inherit;">
+                    <div class="card border-left-primary shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"
+                                        style="font-size: 15px;">Tabel Progres Belajar</div>
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col-auto">
+                                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">Data :
+                                                {{ $progres_belajar }}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Data Kuis -->
+            <div class="col-xl-3 col-md-6 mb-4">
+                <a href="{{ url('kuis') }}" style="text-decoration: none; color: inherit;">
+                    <div class="card border-left-success shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1"
+                                        style="font-size: 15px;">Tabel Kuis</div>
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col-auto">
+                                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">Data : {{ $kuis }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Data Hasil Kuis -->
+            <div class="col-xl-3 col-md-6 mb-4">
+                <a href="{{ url('hasil_kuis') }}" style="text-decoration: none; color: inherit;">
+                    <div class="card border-left-info shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1"
+                                        style="font-size: 15px;">Tabel Hasil Kuis</div>
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col-auto">
+                                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">Data :
+                                                {{ $hasil_kuis }}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Data Rating -->
+            <div class="col-xl-3 col-md-6 mb-4">
+                <a href="{{ url('rating') }}" style="text-decoration: none; color: inherit;">
+                    <div class="card border-left-warning shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-warning text-uppercase mb-1"
+                                        style="font-size: 15px;">Tabel Rating</div>
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col-auto">
+                                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">Data :
+                                                {{ $rating }}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-solid fa-star fa-2x text-gray-300"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Data Sertifikat -->
+            <div class="col-xl-3 col-md-6 mb-4">
+                <a href="{{ url('sertifikat') }}" style="text-decoration: none; color: inherit;">
+                    <div class="card border-left-primary shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"
+                                        style="font-size: 15px;">Tabel Sertifikat</div>
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col-auto">
+                                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">Data :
+                                                {{ $sertifikat }}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Data Forum Diskusi -->
+            <div class="col-xl-3 col-md-6 mb-4">
+                <a href="{{ url('forum_diskusi') }}" style="text-decoration: none; color: inherit;">
+                    <div class="card border-left-success shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1"
+                                        style="font-size: 15px;">Tabel Forum Diskusi</div>
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col-auto">
+                                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">Data :
+                                                {{ $forum_diskusi }}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-comments fa-2x text-gray-300"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Data Balasan Diskusi -->
+            <div class="col-xl-3 col-md-6 mb-4">
+                <a href="{{ url('balasan_diskusi') }}" style="text-decoration: none; color: inherit;">
+                    <div class="card border-left-info shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1"
+                                        style="font-size: 15px;">Tabel Balasan Diskusi</div>
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col-auto">
+                                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">Data :
+                                                {{ $balasan_diskusi }}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-comments fa-2x text-gray-300"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+        @endif
 
         <!-- Content Row -->
         <div class="row">

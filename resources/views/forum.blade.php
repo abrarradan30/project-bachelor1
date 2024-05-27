@@ -398,6 +398,10 @@
                                 </button>
                             </div>
                             <div class="modal-body">
+                                <h6 style="background-color: #F0F8FF; padding: 10px; border-radius: 10px;"> 
+                                Pastikan dahulu membaca <a href="#" data-toggle="modal" data-target="#aturanDiskusi">*aturan menambah dan membalas diskusi</a> sebelum membuat diskusi.</h6>
+                            </div>
+                            <div class="modal-body">
                                 <div class="form-group">
                                     <label for="name">Nama</label>
                                     <input id="nama" name="nama" type="text" class="form-control @error('nama') is-invalid @enderror" value="{{ Auth::user()->name }}" readonly>
@@ -442,45 +446,29 @@
                 </div>
             </div>
 
-            <div class="modal fade" id="balasanModal" tabindex="-1" role="dialog" aria-labelledby="balasanModalLabel" aria-hidden="true">
+            <div class="modal fade" id="aturanDiskusi" tabindex="-1" role="dialog" aria-labelledby="aturanDiskusi" aria-hidden="true">
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <form>
                             <div class="modal-header d-flex align-items-center bg-primary text-white">
-                                <h6 class="modal-title mb-0" id="balasanModalLabel">Balas pertanyaan</h6>
+                                <h6 class="modal-title mb-0" id="aturanDiskusi">Aturan Forum Diskusi</h6>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">×</span>
                                 </button>
                             </div>
                             <div class="modal-body">
                                 <div class="form-group">
-                                    <label for="name">Nama</label>
-                                    <input id="nama" name="nama" type="text" class="form-control @error('nama') is-invalid @enderror" value="{{ Auth::user()->name }}" readonly>
-                                </div>
-                                <br>
-                                <div class="form-group">
-                                    <label for="threadTitle">Pertanyaan</label>
-                                    @foreach ($forum_diskusi as $fd)
-                                        <input type="text" class="form-control" id="threadTitle" value="{{ $fd->id }}" autofocus> {!! $fd->pertanyaan !!} </input>
-                                    @endforeach
-                                </div>
-                                <br>
-                                <div class="form-group">
-                                    <label for="balasan">Balasan</label>
-                                    <textarea class="form-control" id="balasan" name="balasan" placeholder="Isi balasan" ></textarea>
+                                    <h6>
+                                    Saat membuat diskusi baru :
+                                    <br>
+                                    1. Jangan lupa untuk memilih materi yang dirasa terdapat kesulitan saat mempelajari.
+                                    <br>
+                                    2. Mengisi uraian Pertanyaan 
+                                    <br>
+                                    Hal diatas berguna agar tidak membuat bingung yang akan bantu menjawab.
+                                    </h6>
                                 </div>
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
-                                <button type="button" class="btn btn-primary">Post</button>
-                            </div>
-                            <script>
-                                $('#balasan').summernote({
-                                    placeholder: 'Isi balasan...',
-                                    tabsize:2,
-                                    height:150
-                                });
-                            </script>
                         </form>
                     </div>
                 </div>

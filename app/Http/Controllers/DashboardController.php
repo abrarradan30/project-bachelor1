@@ -10,6 +10,7 @@ use App\Models\Pembayaran;
 use App\Models\ProgresBelajar;
 use App\Models\Kuis;
 use App\Models\HasilKuis;
+use App\Models\Rating;
 use App\Models\Sertifikat;
 use App\Models\ForumDiskusi;
 use App\Models\BalasanDiskusi;
@@ -30,6 +31,7 @@ class DashboardController extends Controller
         $progres_belajar = ProgresBelajar::count();
         $kuis = Kuis::count();
         $hasil_kuis = HasilKuis::count();
+        $rating = Rating::count();
         $sertifikat = Sertifikat::count();
         $forum_diskusi = ForumDiskusi::count();
         $balasan_diskusi = BalasanDiskusi::count();
@@ -39,7 +41,7 @@ class DashboardController extends Controller
             ->get();
 
         return view('admin.dashboard', compact('users', 'materi', 'detail_materi', 'pembayaran', 'progres_belajar',
-                    'kuis', 'hasil_kuis', 'sertifikat', 'forum_diskusi', 'balasan_diskusi', 'ar_role'));
+                    'kuis', 'hasil_kuis', 'rating', 'sertifikat', 'forum_diskusi', 'balasan_diskusi', 'ar_role'));
     }
 
     /**

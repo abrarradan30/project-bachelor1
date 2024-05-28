@@ -35,11 +35,11 @@
                 </select>
             </div>
 
-            <!-- Input Sub Judul -->
+            <!-- Input Modul -->
             <div class="form-group">
-                <label for="sub_judul">Sub Judul :</label>
-                <input id="sub_judul" name="sub_judul" type="text" class="form-control @error('sub_judul') is-invalid @enderror" placeholder="Masukkan no.urut dan sub judul (1. modul A)">
-                @error('sub_judul')
+                <label for="modul">Modul :</label>
+                <input id="modul" name="modul" type="text" class="form-control @error('modul') is-invalid @enderror" placeholder="Masukkan no.urut dan modul (1. modul A)">
+                @error('modul')
                     <div class="invalid-feedback">
                         {{ $message }}
                     </div>

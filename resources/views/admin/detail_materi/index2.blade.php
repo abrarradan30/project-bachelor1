@@ -26,7 +26,7 @@
                     <tr>
                         <th>No</th>
                         <th>Judul Materi</th>
-                        <th>Sub Judul</th>
+                        <th>Modul</th>
                         <th>Isi Materi</th>
                         <th>Aksi</th>
                     </tr>
@@ -35,7 +35,7 @@
                     <tr>
                         <th>No</th>
                         <th>Judul Materi</th>
-                        <th>Sub Judul</th>
+                        <th>Modul</th>
                         <th>Isi Materi</th>
                         <th>Aksi</th>
                     </tr>
@@ -48,7 +48,7 @@
                     <tr>
                         <td>{{ $no }}</td>
                         <td>{{ $dm->judul_materi }}</td>
-                        <td>{{ $dm->sub_judul }}</td>
+                        <td>{{ $dm->modul }}</td>
                         <td>{!! $dm->isi_materi !!}</td>
                         <td>
                             <form action="#" method="POST">

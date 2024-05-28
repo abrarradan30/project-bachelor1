@@ -38,10 +38,10 @@
                 </select>
             </div>
 
-            <!-- Input Sub Judul -->
+            <!-- Input Modul -->
             <div class="form-group">
-                <label for="sub_judul">Sub Judul :</label>
-                <input id="sub_judul" name="sub_judul" type="text" class="form-control" value="{{ $dm->sub_judul }}">
+                <label for="modul">Modul :</label>
+                <input id="modul" name="modul" type="text" class="form-control" value="{{ $dm->modul }}">
             </div>
 
             <!-- Input Isi Materi -->

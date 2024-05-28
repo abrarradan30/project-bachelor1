@@ -51,12 +51,12 @@ class DetailMateriController extends Controller
         //
         $request->validate([
             'materi_id'    => 'required',
-            'sub_judul'    => 'required',
+            'modul'        => 'required',
             'isi_materi'   => 'required',
         ], 
         [
             'materi.required'        => 'Judul materi wajib diisi',
-            'sub_judul.required'     => 'Sub judul wajib diisi',
+            'modul.required'         => 'Modul wajib diisi',
             'isi_materi.required'    => 'Isi materi wajib diisi',
         ]);
 
@@ -79,7 +79,7 @@ class DetailMateriController extends Controller
  
         DetailMateri::create([
             'materi_id'     => $request->materi_id,
-            'sub_judul'     => $request->sub_judul,
+            'modul'         => $request->modul,
             'isi_materi'    => $isi_materi, 
         ]);
  
@@ -129,12 +129,12 @@ class DetailMateriController extends Controller
         //
         $request->validate([
             'materi_id'    => 'required',
-            'sub_judul'    => 'required',
+            'modul'        => 'required',
             'isi_materi'   => 'required',
         ], 
         [
             'materi.required'        => 'Judul materi wajib diisi',
-            'sub_judul.required'     => 'Sub judul wajib diisi',
+            'modul.required'         => 'Modul wajib diisi',
             'isi_materi.required'    => 'Isi materi wajib diisi',
         ]);
         
@@ -165,7 +165,7 @@ class DetailMateriController extends Controller
  
         $detail_materi->update([
             'materi_id'    => $request->materi_id,
-            'sub_judul'    => $request->sub_judul,
+            'modul'        => $request->modul,
             'isi_materi'   => $isi_materi,
         ]);
  

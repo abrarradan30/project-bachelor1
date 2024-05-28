@@ -27,7 +27,7 @@
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>Sub Judul</th>
+                        <th>Modul</th>
                         <th>Isi Materi</th>
                         <th>Aksi</th>
                     </tr>
@@ -35,7 +35,7 @@
                 <tfoot>
                     <tr>
                         <th>No</th>
-                        <th>Sub Judul</th>
+                        <th>Modul</th>
                         <th>Isi Materi</th>
                         <th>Aksi</th>
                     </tr>
@@ -47,7 +47,7 @@
                     @foreach ($detail_materi as $dm)    
                     <tr>
                         <td>{{ $no }}</td>
-                        <td>{{ $dm->sub_judul }}</td>
+                        <td>{{ $dm->modul }}</td>
                         <td>{!! $dm->isi_materi !!}</td>
                         <td>
                             <form action="#" method="POST">

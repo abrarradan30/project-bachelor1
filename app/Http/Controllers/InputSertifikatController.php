@@ -32,15 +32,9 @@ class InputSertifikatController extends Controller
     {
         //
         $users = DB::table('users')->get();
-        $materi = DB::table('materi')->get();
-        $sertifikat = Sertifikat::join('users', 'sertifikat.users_id', '=', 'users.id')
-        ->join('materi', 'sertifikat.materi_id', '=', 'materi.id')
-        ->select('sertifikat.materi_id', 'materi.judul')
-        ->where('sertifikat.materi_id', $id)
-        ->get();
+        $materi = DB::table('materi')->where('id', $id)->get();
 
-
-        return view('input_sertifikat', compact('sertifikat', 'users', 'materi'));
+        return view('input_sertifikat', compact('users', 'materi'));
     }
 
     /**
@@ -60,7 +54,7 @@ class InputSertifikatController extends Controller
             'materi_id'    => $request->materi_id,
         ]);
 
-        Alert::success('Sertifikat', 'Berhasil membuat sertifikat penyelesaian materi');
+        Alert::success('Sertifikat', 'Berhasil memproses sertifikat penyelesaian materi');
         return redirect('cetak_sertifikat');
     }
 

@@ -23,7 +23,7 @@
                 </ul>
             </div>
         @endif
-        <form method="POST" action="{{ url('input_sertifikat/store') }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ url('input_sertifikat/store/{id}') }}" enctype="multipart/form-data">
         {{ csrf_field() }}
             <!-- Input Nama -->
             <div class="form-group">
@@ -32,12 +32,17 @@
             </div>
 
             <!-- Input Judul Materi -->
+            @foreach($materi as $m)
             <div class="form-group">
                 <label for="materi_id">Judul Materi :</label>
-                @foreach($sertifikat as $s)
-                <input id="materi_id" name="materi_id" type="text" class="form-control" value="{{ $sertifikat->judul }}" readonly>
-                @endforeach
+                <input id="materi_id" name="materi_id" type="text" class="form-control" value="{{ $m->judul }}" readonly>
             </div>
+
+            <div class="form-group">
+                <label for="materi_id">Level :</label>
+                <input id="materi_id" name="materi_id" type="text" class="form-control" value="{{ $m->level }}" readonly>
+            </div>
+            @endforeach
 
             <!-- Submit Button -->
             <div class="form-group">

@@ -15,16 +15,6 @@
     </p>
 @endif
 
-<!-- @if(in_array(Auth::user()->role, ['admin', 'mentor']))
-<button type="button" class="btn btn-danger">
-    <a href="{{ url('cek_progres') }}" style="text-decoration: none; color: inherit;"><i class="fa fa-arrow-left"></i> &nbsp; Kembali</a>
-</button>
-@endif -->
-
-<!-- @foreach(range(1, 2) as $_) 
-    <br>
-@endforeach -->
-
     <!-- Content Row -->
     <div class="row">
 

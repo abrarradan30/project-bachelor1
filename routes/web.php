@@ -29,6 +29,7 @@ use App\Http\Controllers\RatingFrontController;
 use App\Http\Controllers\SertifikatController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\FillPDFController;
+use App\Http\Controllers\FillSertifikatController;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -67,8 +68,10 @@ Route::middleware(['peran:admin-siswa-mentor'])->group(function () {
     Route::get('/forum_balas/show/{id}', [ForumController::class, 'show']);
     Route::post('/forum/store', [ForumController::class, 'store']);
     Route::post('/forum_balas/store_balas', [ForumController::class, 'store_balas']);
-
     Route::post('/forum/update/{id}', [ForumController::class, 'update']);
+
+    //Route Sertifikat PDF
+    Route::get('/cetak/{id}', [FillPDFController::class, 'process']);
     
 });
 
@@ -142,9 +145,6 @@ Route::middleware(['peran:admin-mentor'])->group(function () {
      Route::post('/sertifikat/update', [SertifikatController::class, 'update']);
      Route::get('/sertifikat/delete/{id}', [SertifikatController::class, 'destroy']);
  
-     //Route Sertifikat PDF
-     Route::get('/cetak/{id}', [FillPDFController::class, 'process']);
- 
      // route forum diskusi
      Route::get('/forum_diskusi', [ForumDiskusiController::class, 'index']);
      Route::get('/forum_diskusi/create', [ForumDiskusiController::class, 'create']);
@@ -209,11 +209,12 @@ Route::get('/ratingfe', [RatingFrontController::class, 'index']);
 Route::get('/ratingfe/create', [RatingFrontController::class, 'create']);
 Route::post('/ratingfe/store', [RatingFrontController::class, 'store']);
 
-// route rating front
+// route buat sertifikat
 Route::get('/input_sertifikat', [InputSertifikatController::class, 'index']);
 Route::get('/input_sertifikat/create/{id}', [InputSertifikatController::class, 'create']);
 Route::post('/input_sertifikat/store', [InputSertifikatController::class, 'store']);
 Route::get('/input_sertifikat/show/{id}', [InputSertifikatController::class, 'show']);
+Route::post('input_sertifikat/store/{id}', [FillSertifikatController::class, 'process']);
 
 Route::get('/acces_denied', function () {
     return view('/acces_denied');

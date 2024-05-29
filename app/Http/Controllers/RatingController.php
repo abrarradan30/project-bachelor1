@@ -17,12 +17,14 @@ class RatingController extends Controller
     public function index()
     {
         //
-        $rating = Rating::join('users', 'rating.users_id', '=', 'users.id')
-            ->join('materi', 'rating.materi_id', '=', 'materi.id')
-            ->select('rating.*', 'users.name as nama', 'materi.judul as judul_materi')
-            ->get();
+        // $rating = Rating::join('users', 'rating.users_id', '=', 'users.id')
+        //     ->join('materi', 'rating.materi_id', '=', 'materi.id')
+        //     ->select('rating.*', 'users.name as nama', 'materi.judul as judul_materi')
+        //     ->get();
 
-        return view('admin.rating.index', compact('rating'));
+        $materi = DB::table('materi')->get();
+
+        return view('admin.rating.index', compact('materi'));
     }
 
     /**
@@ -74,10 +76,17 @@ class RatingController extends Controller
         $rating = Rating::join('users', 'rating.users_id', '=', 'users.id')
             ->join('materi', 'rating.materi_id', '=', 'materi.id')
             ->select('rating.*', 'users.name as nama', 'materi.judul as judul_materi')
-            ->where('rating', $id)
+            ->where('rating.materi_id', $id)
             ->get();
 
-        return view('admin.rating.detail', compact('rating'));
+        $rating2 = Rating::join('users', 'rating.users_id', '=', 'users.id')
+            ->join('materi', 'rating.materi_id', '=', 'materi.id')
+            ->select('rating.materi_id', 'materi.judul')
+            ->groupBy('rating.materi_id', 'materi.judul')
+            ->where('rating.materi_id', $id)
+            ->get();
+
+        return view('admin.rating.detail', compact('rating', 'rating2'));
     }
 
     /**

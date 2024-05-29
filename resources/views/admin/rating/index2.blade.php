@@ -13,9 +13,7 @@
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        @foreach($rating2 as $r2)
-        <h6 class="m-0 font-weight-bold text-primary">Tabel Rating {{ $r2->judul }}</h6>
-        @endforeach
+        <h6 class="m-0 font-weight-bold text-primary">Tabel Rating</h6>
         <br>
         <a href="{{ url('rating/create') }}">
         <button class="btn btn-sm btn-primary"><i class="fas fa-plus"></i> &nbsp; Tambah</button>
@@ -28,6 +26,7 @@
                     <tr>
                         <th>No</th>
                         <th>User</th>
+                        <th>Materi</th>
                         <th>Rating</th>
                         <th>Feedback</th>
                         <th>Aksi</th>
@@ -37,6 +36,7 @@
                     <tr>
                         <th>No</th>
                         <th>User</th>
+                        <th>Materi</th>
                         <th>Rating</th>
                         <th>Feedback</th>
                         <th>Aksi</th>
@@ -50,10 +50,14 @@
                     <tr>
                         <td>{{ $no }}</td>
                         <td>{{ $r->nama }}</td>
+                        <td>{{ $r->judul_materi }}</td>
                         <td>{{ $r->rating }}</td>
                         <td>{{ $r->feedback }}</td>
                         <td>
                             <form action="#" method="POST">
+                                <button type="button" class="btn btn-success btn-sm">
+                                    <a href="{{ url('rating/show/' . $r->id) }}" style="text-decoration: none; color: inherit;">Detail</a>
+                                </button>
                                 <button type="button" class="btn btn-warning btn-sm">
                                     <a href="{{ url('rating/edit/' . $r->id) }}" style="text-decoration: none; color: inherit;">Edit</a>
                                 </button>
@@ -76,11 +80,6 @@
                 </tbody>
             </table>
         </div>
-    </div>
-    <div class="card-header py-3">
-        <a href="{{ url('rating') }}">
-        <button class="btn btn-sm btn-danger">Kembali</button>
-        </a>
     </div>
 </div>
 

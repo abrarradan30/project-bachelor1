@@ -62,7 +62,7 @@ class ModulController extends Controller
 
         $sub_judul = DB::table('detail_materi')
             ->where('detail_materi.materi_id', $id)
-            ->pluck('sub_judul');
+            ->pluck('modul');
 
         // $isi_materi = DB::table('detail_materi')
         //     ->select('detail_materi.isi_materi')
@@ -75,7 +75,7 @@ foreach ($sub_judul as $sub) {
         ->join('materi', 'detail_materi.materi_id', '=', 'materi.id')
         ->select('detail_materi.isi_materi')
         ->where('materi.id', $id)
-        ->where('detail_materi.sub_judul', $sub)
+        ->where('detail_materi.modul', $sub)
         ->first();
 
     $isi_materi[$sub] = $materi->isi_materi ?? '';

@@ -25,20 +25,14 @@
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>User</th>
                         <th>Materi</th>
-                        <th>Rating</th>
-                        <th>Feedback</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
                         <th>No</th>
-                        <th>User</th>
                         <th>Materi</th>
-                        <th>Rating</th>
-                        <th>Feedback</th>
                         <th>Aksi</th>
                     </tr>
                 </tfoot>
@@ -46,30 +40,15 @@
                     @php 
                         $no = 1;
                     @endphp
-                    @foreach ($rating as $r)
+                    @foreach ($materi as $m)
                     <tr>
                         <td>{{ $no }}</td>
-                        <td>{{ $r->nama }}</td>
-                        <td>{{ $r->judul_materi }}</td>
-                        <td>{{ $r->rating }}</td>
-                        <td>{{ $r->feedback }}</td>
+                        <td>{{ $m->judul }}</td>
                         <td>
                             <form action="#" method="POST">
                                 <button type="button" class="btn btn-success btn-sm">
-                                    <a href="{{ url('rating/show/' . $r->id) }}" style="text-decoration: none; color: inherit;">Detail</a>
+                                    <a href="{{ url('rating/show/' . $m->id) }}" style="text-decoration: none; color: inherit;">Cek Rating Materi</a>
                                 </button>
-                                <button type="button" class="btn btn-warning btn-sm">
-                                    <a href="{{ url('rating/edit/' . $r->id) }}" style="text-decoration: none; color: inherit;">Edit</a>
-                                </button>
-                                <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete()">Hapus</button>
-                                <script>                                  
-                                    function confirmDelete() {
-                                    var confirmation = confirm("Yakin hapus data?");
-                                        if (confirmation) {
-                                            window.location.href = "{{ url('rating/delete/' . $r->id) }}";
-                                        }
-                                    }
-                                </script>
                             </form>
                         </td>
                     </tr>

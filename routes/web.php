@@ -206,7 +206,7 @@ Route::get('/soal_kuis/show/{id}', [KuisFrontController::class, 'show']);
 
 // route rating front
 Route::get('/ratingfe', [RatingFrontController::class, 'index']);
-Route::get('/ratingfe/create', [RatingFrontController::class, 'create']);
+Route::get('/ratingfe/create/{id}', [RatingFrontController::class, 'create']);
 Route::post('/ratingfe/store', [RatingFrontController::class, 'store']);
 
 // route buat sertifikat

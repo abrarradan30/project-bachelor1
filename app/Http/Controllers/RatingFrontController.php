@@ -28,11 +28,11 @@ class RatingFrontController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create($id)
     {
         //
         $users = DB::table('users')->get();
-        $materi = DB::table('materi')->get();
+        $materi = DB::table('materi')->where('id', $id)->get();
         $rating = Rating::join('users', 'rating.users_id', '=', 'users.id')
             ->join('materi', 'rating.materi_id', '=', 'materi.id')
             ->select('rating.*', 'users.name as nama', 'materi.judul as judul_materi')
@@ -63,7 +63,7 @@ class RatingFrontController extends Controller
         ]);
 
         Alert::success('Rating', 'Berhasil menambahkan rating');
-        return redirect('ratingfe');
+        return redirect('progres_materi');
     }
 
     /**

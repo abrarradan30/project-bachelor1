@@ -63,11 +63,11 @@
             <a href="{{ url('soal_kuis/show/'.$md->id) }}" class="btn btn-info btn-sm">
                 Mulai Kuis &nbsp; <i class="fa fa-list"></i>
             </a>
-            @endforeach
 
-            <a href="{{ url('ratingfe/create') }}" class="btn btn-warning btn-sm">
+            <a href="{{ url('ratingfe/create/'.$md->id) }}" class="btn btn-warning btn-sm">
                 Rating <i class="fa fa-star"></i>
-            </a>    
+            </a>
+            @endforeach    
         </div>
 
         <div class="form-group">

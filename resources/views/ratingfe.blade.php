@@ -58,7 +58,7 @@
                 </ul>
             </div>
         @endif
-        <form method="POST" action="{{ url('rating/store') }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ url('ratingfe/store') }}" enctype="multipart/form-data">
         {{ csrf_field() }}
             <!-- Input Nama -->
             <div class="form-group">
@@ -69,16 +69,15 @@
             <!-- Input Materi -->
             <div class="form-group">
                 <label for="materi_id">Materi :</label>
-                <select id="materi_id" name="materi_id" class="custom-select @error('materi_id') is-invalid @enderror">
-                    @foreach ($materi as $m)
-                        <option value="{{ $m->id }}">{{ $m->judul }}</option>
-                    @endforeach
-                </select>
+                @foreach($materi as $m)
+                    <input id="materi_id_display" name="materi_id_display" type="text" class="form-control" value="{{ $m->judul }}" readonly>
+                    <input id="materi_id" name="materi_id" type="hidden" value="{{ $m->id }}">
+                @endforeach
             </div>
 
             <!-- Input Rating -->
             <div class="form-group row">
-                <label class="col-2">Rating</label>
+                <label class="col-2">Rating : </label>
                 <div class="col-8">
                     <br>
                     <div class="rating">
@@ -104,11 +103,11 @@
 
             <!-- Submit Button -->
             <div class="form-group">
-                <button type="submit" class="btn btn-primary">Simpan</button> &nbsp;
+                <button type="submit" class="btn btn-primary">Kirim</button> &nbsp;
         </form>
-            <button type="button" class="btn btn-danger">
+            <!-- <button type="button" class="btn btn-danger">
                     <a href="{{ url('rating') }}" style="text-decoration: none; color: inherit;">Batal</a>
-            </button>
+            </button> -->
             </div>
     </div>
 </div>

@@ -63,6 +63,9 @@ Route::middleware(['peran:admin-siswa-mentor'])->group(function () {
     Route::get('/modul', [ModulController::class, 'index']);
     Route::get('/modul/show/{id}', [ModulController::class, 'show']);
 
+    // route progres belajar
+    
+
     // route forum 
     Route::get('/forum', [ForumController::class, 'index']);
     Route::get('/forum_balas/show/{id}', [ForumController::class, 'show']);
@@ -169,6 +172,8 @@ Route::middleware(['peran:admin'])->group(function () {
     
     // route user
     Route::get('/user', [UserController::class, 'index']);
+    Route::get('/user/create', [UserController::class, 'create']);
+    Route::post('/user/store', [UserController::class, 'store']);
     Route::get('/user/edit/{id}', [UserController::class, 'edit']);
     Route::post('/user/update', [UserController::class, 'update']);
 

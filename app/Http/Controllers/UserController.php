@@ -26,6 +26,7 @@ class UserController extends Controller
     public function create()
     {
         //
+        return view('admin.user.create');
     }
 
     /**
@@ -34,6 +35,20 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'name'        => 'required|max:50',
+            'email'       => 'required|email',
+            'password'    => 'required|min:8',
+        ]);
+
+        DB::table('users')->insert([
+            'name'        => $request->name,
+            'email'       => $request->email,
+            'password'    => bcrypt($request->password),
+        ]);
+
+        Alert::success('User', 'Berhasil menambahkan user');
+        return redirect('user');
     }
 
     /**

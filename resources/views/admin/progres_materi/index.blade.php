@@ -18,7 +18,14 @@
     <!-- Content Row -->
     <div class="row">
 
-    <!-- Earnings (Monthly) Card Example -->
+    @if($ar_progres_materi->isEmpty())
+    <div class="col-xl-12 mb-4">
+        <p align="center"> Anda belum memiliki materi ? cari materi
+            <a href="{{ url('course') }}" style="text-decoration: none; color: inherit;"> <b class="text-warning"> disini </b> </a>.
+        </p>
+    </div>
+    @else
+    <!-- Materi dimiliki -->
     @foreach($ar_progres_materi as $ar_pm)
     <div class="col-xl-12 mb-4">
     <div class="card border-left-primary shadow h-100 py-2">
@@ -60,9 +67,8 @@
     </div>
     </div>
     @endforeach
-    
+    @endif
     </div>
-
 
 </div>
 <!-- /.container-fluid -->

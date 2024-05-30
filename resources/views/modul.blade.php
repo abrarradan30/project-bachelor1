@@ -31,7 +31,7 @@
             <a href="{{ url('progres_materi') }}" class="btn btn-secondary btn-sm">
                 Lanjut &nbsp; <i class="fa fa-chevron-circle-right"></i>
             </a>
-            <a href="{{ url('progres_materi') }}" class="btn btn-success btn-sm">
+            <a href="{{ url('#') }}" class="btn btn-success btn-sm">
                 Selesai <i class="fa fa-check-circle"></i>
             </a>
         </div>

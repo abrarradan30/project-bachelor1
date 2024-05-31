@@ -95,11 +95,11 @@
 					</header>
 					<div class="filter-content collapse show" id="collapse_1">
 						<div class="card-body">
-							<form class="pb-3">
+							<form class="pb-3" method="GET" action="{{ url('course') }}">
 								<div class="input-group">
-									<input type="text" class="form-control" placeholder="Search">
+									<input type="text" class="form-control" placeholder="Search" name="search" value="{{ request('search') }}">
 									<div class="input-group-append">
-										<button class="btn btn-light" type="button"><i class="bx bx-search" style="font-size: 25px;"></i></button>
+										<button class="btn btn-light" type="submit"><i class="bx bx-search" style="font-size: 25px;"></i></button>
 									</div>
 								</div>
 							</form>
@@ -116,12 +116,14 @@
 					</header>
 					<div class="filter-content collapse show" id="collapse_2">
 						<div class="card-body">
-							<select id="kategori" class="mr-2 form-control">
-							<option>-- Pilih Kategori --</option>
+							<form method="GET" action="{{ url('course') }}">
+							<select id="kategori" name="kategori" class="mr-2 form-control" onchange="this.form.submit()">
+							<option value="">-- Pilih Kategori --</option>
 								@foreach($kategori_materi as $km)        
-									<option>{{ $km }}</option>
+									<option value="{{ $km }}" {{ request('kategori') == $km ? 'selected' : '' }}>{{ $km }}</option>
 								@endforeach
 							</select>
+							</form>
 						</div> <!-- card-body.// -->
 					</div>
 				</article> <!-- filter-group .// -->
@@ -135,12 +137,14 @@
 					</header>
 					<div class="filter-content collapse show" id="collapse_2">
 						<div class="card-body">
-							<select id="kategori" class="mr-2 form-control">
-							<option>-- Pilih Level --</option>
+							<form method="GET" action="{{ url('course') }}">
+							<select id="level" name="level" class="mr-2 form-control" onchange="this.form.submit()">
+							<option value="">-- Pilih Level --</option>
 								@foreach($level_materi as $lm)        
-									<option>{{ $lm }}</option>
+									<option value="{{ $lm }}" {{ request('level') == $lm ? 'selected' : '' }}>{{ $lm }}</option>
 								@endforeach
 							</select>
+							</form>
 						</div> <!-- card-body.// -->
 					</div>
 				</article> <!-- filter-group .// -->
@@ -190,8 +194,10 @@
 				<div class="container" data-aos="fade-up">
 
 					<div class="row" data-aos="zoom-in" data-aos-delay="100">
-
-					@foreach($ar_materi as $m)
+					@if($ar_materi->isEmpty())
+                            <p>Tidak ada materi yang ditemukan.</p>
+                        @else
+					@forelse($ar_materi as $m)
           			<div class="col-lg-4 col-md-6 d-flex align-items-stretch">
           			<a href="{{url('course_detail/show/'.$m->id) }}" style="text-decoration: none; color: inherit;">
             			<div class="course-item">
@@ -211,13 +217,17 @@
           			</a>
           			</div>
           			@endforeach
+					@endif
 
 					</div>
 
 				</div>
 			</section><!-- End Courses Section -->
 
-			<nav class="mt-4" aria-label="Page navigation sample">
+			<!-- Pagination -->
+            {{ $ar_materi->links() }}
+
+			<!-- <nav class="mt-4" aria-label="Page navigation sample">
 				<ul class="pagination">
 					<li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
 					<li class="page-item active"><a class="page-link" href="#">1</a></li>
@@ -225,12 +235,56 @@
 					<li class="page-item"><a class="page-link" href="#">3</a></li>
 					<li class="page-item"><a class="page-link" href="#">Next</a></li>
 				</ul>
-			</nav>
+			</nav> -->
 
 		</main>
 	</div>
 </div>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const searchInput = document.getElementById('search-input');
+        const searchButton = document.getElementById('search-button');
+        const kategoriSelect = document.getElementById('kategori');
+        const levelSelect = document.getElementById('level');
+        const materiContainer = document.getElementById('materi-container');
 
+        function fetchMateri() {
+            const query = searchInput.value;
+            const kategori = kategoriSelect.value;
+            const level = levelSelect.value;
+
+            fetch(`/search-materi?query=${query}&kategori=${kategori}&level=${level}`)
+                .then(response => response.json())
+                .then(data => {
+                    materiContainer.innerHTML = '';
+                    data.materi.forEach(materi => {
+                        const materiElement = document.createElement('div');
+                        materiElement.classList.add('col-lg-4', 'col-md-6', 'd-flex', 'align-items-stretch');
+                        materiElement.innerHTML = `
+                            <a href="/course_detail/show/${materi.id}" style="text-decoration: none; color: inherit;">
+                                <div class="course-item">
+                                    <img src="/admin/img/${materi.bg_materi || 'no_foto.png'}" width="100%">
+                                    <div class="course-content">
+                                        <div class="d-flex justify-content-between align-items-center mb-3">
+                                            <h4>${materi.level}</h4>
+                                            <p class="price">Rp ${new Intl.NumberFormat('id-ID').format(materi.harga)}</p>
+                                        </div>
+                                        <h3>${materi.judul}</h3>
+                                    </div>
+                                </div>
+                            </a>
+                        `;
+                        materiContainer.appendChild(materiElement);
+                    });
+                    materiCount.innerText = data.materi.length;
+                });
+        }
+
+        searchButton.addEventListener('click', fetchMateri);
+        kategoriSelect.addEventListener('change', fetchMateri);
+        levelSelect.addEventListener('change', fetchMateri);
+    });
+</script>
 
 @endsection

@@ -196,6 +196,7 @@ Route::get('/', [FrontController::class, 'index']);
 Route::get('/about', [AboutController::class, 'index']);
 // route course 
 Route::get('/course', [CourseController::class, 'index']);
+
 // route course_detail 
 Route::get('/course_detail', [CourseDetailController::class, 'index']);
 Route::get('/course_detail/show/{id}', [CourseDetailController::class, 'show']);

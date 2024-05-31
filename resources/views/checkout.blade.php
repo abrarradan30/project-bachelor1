@@ -35,7 +35,13 @@
             <br>
             <div class="form-group">
                 <label for="harga">Harga :</label>
-                <input type="text" class="form-control" id="harga" name="harga" value=" {{ $m->harga }}" readonly>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">Rp.</span>
+                  </div>
+                  <input type="text" class="form-control" id="harga" name="harga" 
+                      value="{{ (strpos(Auth::user()->email, '@mhs.stiki.ac.id') !== false || strpos(Auth::user()->email, '@stiki.ac.id') !== false) ? '0' : $m->harga }}" readonly>
+                </div>
             </div>
             <br>
             <div class="form-group">

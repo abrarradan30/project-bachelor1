@@ -52,7 +52,7 @@
                                 <div class="form-group">
                                     <input type="email" class="form-control form-control-user @error('email') is-invalid @enderror" 
                                         id="email" placeholder="Email"
-                                        name="email" value="{{ old('email') }}" required autocomplete="email">
+                                        name="email" value="{{ old('email') }}" required autocomplete="email" oninput="checkEmail()">
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -66,7 +66,7 @@
                                             id="password" placeholder="Password"
                                             name="password" required autocomplete="new-password">
                                         @error('password')
-                                            <span class="invalid-feedback" role="alert">
+                                            <span class="invalid-feedback" role="alert" disabled>
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
@@ -74,7 +74,7 @@
                                     <div class="col-sm-6">
                                         <input type="password" class="form-control form-control-user"
                                             id="password-confirm" placeholder="Repeat Password"
-                                            name="password_confirmation" required autocomplete="new-password">
+                                            name="password_confirmation" required autocomplete="new-password" disabled>
                                     </div>
                                 </div>
 
@@ -110,6 +110,26 @@
 
     <!-- Custom scripts for all pages-->
     <script src="{{ asset('admin/js/sb-admin-2.min.js') }}"></script>
+
+<script>
+function checkEmail() {
+    const emailField = document.getElementById('email');
+    const passwordField = document.getElementById('password');
+    const passwordConfirmField = document.getElementById('password-confirm');
+    const emailValue = emailField.value;
+
+    // Regular expression to match the specific email formats
+    const regex = /@mhs\.stiki\.ac\.id$|@stiki\.ac\.id$/;
+
+    if (regex.test(emailValue)) {
+        passwordField.disabled = true;
+        passwordConfirmField.disabled = true;
+    } else {
+        passwordField.disabled = false;
+        passwordConfirmField.disabled = false;
+    }
+}
+</script>
 
 </body>
 

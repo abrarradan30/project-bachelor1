@@ -176,6 +176,7 @@ Route::middleware(['peran:admin'])->group(function () {
     Route::post('/user/store', [UserController::class, 'store']);
     Route::get('/user/edit/{id}', [UserController::class, 'edit']);
     Route::post('/user/update', [UserController::class, 'update']);
+    Route::get('/user/delete/{id}', [UserController::class, 'destroy']);
 
     // route pembayaran
     Route::get('/pembayaran', [PembayaranController::class, 'index']);

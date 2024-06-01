@@ -210,9 +210,11 @@
                                         <div class="simplebar-content-wrapper" style="height: 100%; overflow: hidden scroll;">
                                             <div class="simplebar-content" style="padding: 16px;">
                                                 <nav class="nav nav-pills nav-gap-y-1 flex-column">
-                                                    <a href="javascript:void(0)" class="nav-link nav-link-faded has-icon active">Semua Diskusi</a>
-                                                    <a href="javascript:void(0)" class="nav-link nav-link-faded has-icon">Selesai</a>
-                                                    <a href="javascript:void(0)" class="nav-link nav-link-faded has-icon">Belum Selesai</a>
+                                                    <a href="{{ url('forum') }}" class="nav-link nav-link-faded has-icon">Semua Diskusi</a>
+                                                </nav>
+                                                <nav class="nav nav-pills nav-gap-y-1 flex-column">
+                                                    <a href="{{ url('forum?status_diskusi=selesai') }}" class="nav-link nav-link-faded has-icon">Selesai</a>
+                                                    <a href="{{ url('forum?status_diskusi=belum selesai') }}" class="nav-link nav-link-faded has-icon">Belum Selesai</a>
                                                 </nav>
                                             </div>
                                         </div>
@@ -236,12 +238,14 @@
 
                     <div class="inner-main-header">
                         <a class="nav-link nav-icon rounded-circle nav-link-faded mr-3 d-md-none" href="#" data-toggle="inner-sidebar"><i class="material-icons">arrow_forward_ios</i></a>
-                        <select id="materi_id" name="materi_id" class="custom-select custom-select-sm w-auto mr-1" style="width: 50%;">
+                        <form method="GET" action="{{ url('forum') }}">
+                        <select id="materi_id" name="materi_id" class="custom-select custom-select-sm w-auto mr-1" style="width: 50%;" onchange="this.form.submit()">
                             <option value="1">--- Pilih Materi ---</option>
                             @foreach ($materi as $m)    
-                                <option value="{{ $m->id }}">{{ $m->judul }}</option>
+                                <option value="{{ $m->id }}" {{ request('materi_id') == $m->id ? 'selected' : '' }}>{{ $m->judul }}</option>
                             @endforeach
                         </select>
+                        </form>
 
                         @for ($i = 0; $i < 3; $i++)
                             &nbsp;
@@ -256,6 +260,9 @@
 
                     <div class="inner-main-body p-2 p-sm-3 collapse forum-content show">
 
+                        @if($forum_diskusi->isEmpty())
+                            <p>Tidak ada diskusi yang ditemukan.</p>
+                        @else
                         <!-- Forum Diskusi -->
                         @foreach($forum_diskusi as $fd)
                         <div class="card mb-2">
@@ -289,6 +296,7 @@
                             </div>
                         </div>
                         @endforeach
+                        @endif
 
                         </div>
                         <!-- <div class="card mb-2">
@@ -311,7 +319,7 @@
                         </div> -->
 
                         <ul class="pagination pagination-sm pagination-circle justify-content-center mb-0">
-                            <li class="page-item disabled">
+                            <!-- <li class="page-item disabled">
                                 <span class="page-link has-icon"><i class="material-icons"><<</i></span>
                             </li>
                             <li class="page-item active"><a class="page-link" href="javascript:void(0)">1</a></li>
@@ -319,7 +327,8 @@
                             <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
                             <li class="page-item">
                                 <a class="page-link has-icon" href="javascript:void(0)"><i class="material-icons">>></i></a>
-                            </li>
+                            </li> -->
+                            {{ $forum_diskusi->links() }}
                         </ul>
                     </div>
 
@@ -483,6 +492,23 @@
     @foreach(range(1, 1) as $_)
     <br>
     @endforeach
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const selectMateri = document.getElementById('materi_id');
+        selectMateri.addEventListener('change', function() {
+            this.form.submit();
+        });
+
+        const statusLinks = document.querySelectorAll('.nav-link-faded');
+        statusLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.location.href = this.href;
+            });
+        });
+    });
+</script>
 
 </body>
 

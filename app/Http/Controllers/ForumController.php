@@ -16,7 +16,7 @@ class ForumController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         //
         $materi = DB::table('materi')->get();
@@ -31,6 +31,23 @@ class ForumController extends Controller
             ->join('forum_diskusi', 'balasan_diskusi.forum_diskusi_id', '=', 'forum_diskusi.id')
             ->select('balasan_diskusi.*', 'users.name as nama', 'users.foto', 'forum_diskusi.pertanyaan')
             ->get();
+        
+        $query = ForumDiskusi::join('users', 'forum_diskusi.users_id', '=', 'users.id')
+            ->join('materi', 'forum_diskusi.materi_id', '=', 'materi.id')
+            ->select('forum_diskusi.*', 'users.name as nama', 'users.foto', 'materi.judul as judul_materi',
+                \DB::raw('(SELECT COUNT(*) FROM balasan_diskusi WHERE forum_diskusi.id = balasan_diskusi.forum_diskusi_id) AS jumlah_balasan'));
+    
+        // Filter berdasarkan materi
+        if ($request->has('materi_id') && $request->materi_id != '') {
+            $query->where('forum_diskusi.materi_id', $request->materi_id);
+        }
+    
+        // Filter berdasarkan status
+        if ($request->has('status_diskusi')) {
+            $query->where('forum_diskusi.status_diskusi', $request->status_diskusi);
+        }
+    
+        $forum_diskusi = $query->paginate(10);    
 
         return view('forum', compact('materi', 'forum_diskusi',  'balasan_diskusi'));
     }

@@ -474,6 +474,9 @@
                                     <br>
                                     2. Mengisi uraian Pertanyaan 
                                     <br>
+                                    3. Jika diskusi sudah selesai dan mendapatkan solusi yang anda rasa tepat, 
+                                    silahkan menekan tombol Selesai pada kolom tersedia.
+                                    <br>
                                     Hal diatas berguna agar tidak membuat bingung yang akan bantu menjawab.
                                     </h6>
                                 </div>

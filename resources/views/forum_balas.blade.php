@@ -302,13 +302,13 @@
                                             </div>
                                             <br>
                                             @endforeach
-
-                                            <button class="btn btn-success btn-sm" type="submit">
+                                            <p style="font-size: 11px;">*ubah pilihan "selesai" jika selesai dan submit</p>
+                                            <button class="btn btn-success btn-sm" type="submit" title="submit selesai">
                                                 <i class="fa fa-check-square" style="font-size: 25px;"></i>
                                             </button>
                                         </form>
                                         @else
-                                        <h6 class="text-muted small">Selesai</h6>
+                                        <span class="btn btn-success btn-sm" style="pointer-events: none;">Selesai</span>
                                         @endif
 
                                         <div class="text-muted small text-center align-self-center">

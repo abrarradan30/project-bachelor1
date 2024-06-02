@@ -180,6 +180,8 @@ class ForumController extends Controller
         $request->validate([
             'status_diskusi'    => 'required',
         ]);
+
+        $forum_diskusi = ForumDiskusi::findOrFail($id);
  
         $forum_diskusi->update([
             'status_diskusi'    => $request->status_diskusi,

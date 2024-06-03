@@ -290,6 +290,7 @@
                                                 @endif -->
                                         <br> <br>
                                         @if($fd->status_diskusi == 'belum selesai')
+                                        @if(Auth::id() == $fd->users_id)
                                         <form method="POST" action="/forum/update/{{ $fd->id }}">
                                             {{ csrf_field() }}
                                             @foreach ($ar_status_diskusi as $sd)
@@ -307,6 +308,9 @@
                                                 <i class="fa fa-check-square" style="font-size: 25px;"></i>
                                             </button>
                                         </form>
+                                        @else
+                                            <span class="text-muted" style="display: none;">Anda tidak dapat mengubah status diskusi ini.</span>
+                                        @endif
                                         @else
                                         <span class="btn btn-success btn-sm" style="pointer-events: none;">Selesai</span>
                                         @endif

@@ -11,29 +11,28 @@ use DB;
 
 class FillSertifikatController extends Controller
 {
+
     public function process(Request $request, $id)
     {
-
-        $users = DB::table('users')->get();
-        $materi = DB::table('materi')->get();
-        $sertifikat = Sertifikat::join('users', 'sertifikat.users_id', '=', 'users.id')
-            ->join('materi', 'sertifikat.materi_id', '=', 'materi.id')
-            ->select('sertifikat.*', 'users.name as nama', 'materi.judul as judul_materi', 'materi.level')
-            ->where('sertifikat.id', $id)
-            ->first();
-        
-        // Mengambil data untuk sertifikat
-        $nama = auth()->user()->name;
-        $judulMateri = $request->input('judul_materi');
-        $tgl = date('j F Y');
+        // Ambil data dari request
+        $nama = $request->input('nama');
+        $judulMateri = $request->input('materi_id'); // Pastikan input name pada form sesuai
         $level = $request->input('level');
-        
+        $tgl = date('j F Y');
 
-        $outputfile = public_path().'dcs.pdf';
-        $this->fillPDF(public_path().'/sertif/dcs.pdf', $outputfile, $nama, $judulMateri, $tgl, $level);
+        // Validasi data jika perlu
+        $request->validate([
+            'nama' => 'required|string',
+            'materi_id' => 'required|string',
+            'level' => 'required|string'
+        ]);
+
+        $outputfile = public_path('dcs.pdf');
+        $this->fillPDF(public_path('sertif/dcs.pdf'), $outputfile, $nama, $judulMateri, $tgl, $level);
 
         return response()->file($outputfile);
     }
+
 
     public function fillPDF($file, $outputfile, $nama, $judulMateri, $tgl, $level)
     {
@@ -43,21 +42,24 @@ class FillSertifikatController extends Controller
         $size = $fpdi->getTemplateSize($template);
         $fpdi->AddPage($size['orientation'], array($size['width'], $size['height']));
         $fpdi->useTemplate($template);
-        
+
         // Nama ke PDF
         $fpdi->SetFont("helvetica", "", 17);
         $fpdi->SetTextColor(25, 26, 25);
-        $fpdi->Text(110, 85, $nama); // Koordinat X dan Y
+        $namaWidth = $fpdi->GetStringWidth($nama);
+        $namaX = ($size['width'] - $namaWidth) / 2;
+        $fpdi->Text($namaX, 85, $nama); // Koordinat Y tetap
 
         // Judul Materi ke PDF
-        $fpdi->SetFont("helvetica", "", 17);
-        $fpdi->SetTextColor(25, 26, 25);
-        $fpdi->Text(130, 130, $judulMateri . ' - level : ' . $level); 
+        $judul = $judulMateri . ' - Level ' . $level;
+        $judulWidth = $fpdi->GetStringWidth($judul);
+        $judulX = ($size['width'] - $judulWidth) / 2;
+        $fpdi->Text($judulX, 130, $judul); // Koordinat Y tetap
 
         // Tanggal ke PDF
-        $fpdi->SetFont("helvetica", "", 17);
-        $fpdi->SetTextColor(25, 26, 25);
-        $fpdi->Text(30, 150, $tgl);
+        $tglWidth = $fpdi->GetStringWidth($tgl);
+        $tglX = ($size['width'] - $tglWidth) / 2;
+        $fpdi->Text($tglX, 150, $tgl); // Koordinat Y tetap
 
         return $fpdi->Output($outputfile, 'F');
     }

@@ -39,8 +39,8 @@
             </div>
 
             <div class="form-group">
-                <label for="materi_id">Level :</label>
-                <input id="materi_id" name="materi_id" type="text" class="form-control" value="{{ $m->level }}" readonly>
+                <label for="level">Level :</label>
+                <input id="level" name="level" type="text" class="form-control" value="{{ $m->level }}" readonly>
             </div>
             @endforeach
 

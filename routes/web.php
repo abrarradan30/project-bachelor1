@@ -208,6 +208,9 @@ Route::post('/contact/store', [ContactController::class, 'store']);
 Route::get('/progres_materi', [ProgresMateriController::class, 'index']);
 Route::get('/progres_materi/show/{id}', [ProgresMateriController::class, 'show']);
 
+// route modul
+Route::post('/update-progres', [ModulController::class, 'updateProgres']);
+
 Route::get('/soal_kuis', [KuisFrontController::class, 'index']);
 Route::get('/soal_kuis/show/{id}', [KuisFrontController::class, 'show']);
 

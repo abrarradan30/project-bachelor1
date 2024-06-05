@@ -85,12 +85,25 @@ foreach ($sub_judul as $sub) {
         return view('modul', compact('judul', 'modul', 'sub_judul', 'isi_materi'));
     }
 
-    public function hitungProgres()
+    public function updateProgres(Request $request)
     {
-        $totalMateri = Materi::count();
-        $totalProgres = ProgresBelajar::where('user_id', auth()->id())->sum('progres_belajar');
+        $user = Auth::user();
+        $materiId = $request->input('modul_id');
+        
+        // Get total modules for the given materi
+        $totalModules = DetailMateri::where('materi_id', $materiId)->count();
+        $progressIncrement = 100 / $totalModules;
 
-        return round(($totalProgres / $totalMateri) * 100);
+        // Update user's progress
+        $progres = ProgresBelajar::firstOrCreate([
+            'users_id' => $user->id,
+            'materi_id' => $materiId,
+        ]);
+
+        $progres->progres = min(100, $progres->progres + $progressIncrement);
+        $progres->save();
+
+        return response()->json(['success' => true]);
     }
 
     /**

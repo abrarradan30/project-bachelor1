@@ -39,9 +39,15 @@ class DashboardController extends Controller
             ->selectRaw('role, count(role) as jumlah')
             ->groupBy('role')
             ->get();
+        $ar_cek_progres = DB::table('progres_belajar')
+            ->join('materi', 'progres_belajar.materi_id', '=', 'materi.id')
+            ->selectRaw('materi.judul, count(progres_belajar.users_id) as user_count')
+            ->groupBy('progres_belajar.materi_id', 'materi.judul')
+            ->take(5)
+            ->get();
 
         return view('admin.dashboard', compact('users', 'materi', 'detail_materi', 'pembayaran', 'progres_belajar',
-                    'kuis', 'hasil_kuis', 'rating', 'sertifikat', 'forum_diskusi', 'balasan_diskusi', 'ar_role'));
+                    'kuis', 'hasil_kuis', 'rating', 'sertifikat', 'forum_diskusi', 'balasan_diskusi', 'ar_role', 'ar_cek_progres'));
     }
 
     /**

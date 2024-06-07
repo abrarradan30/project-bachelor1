@@ -40,14 +40,14 @@
                     @php 
                         $no = 1;
                     @endphp
-                    @foreach ($progres_belajar as $pb)
+                    @foreach ($materi as $m)
                     <tr>
                         <td>{{ $no }}</td>
-                        <td>{{ $pb->judul_materi }}</td>
+                        <td>{{ $m->judul }}</td>
                         <td>
                             <form action="#" method="POST">
                                 <button type="button" class="btn btn-success btn-sm">
-                                    <a href="{{ url('cek_progres/show/' . $pb->materi_id) }}" style="text-decoration: none; color: inherit;">Cek Siswa</a>
+                                    <a href="{{ url('cek_progres/show/' . $m->id) }}" style="text-decoration: none; color: inherit;">Cek Siswa</a>
                                 </button>
                             </form>
                         </td>

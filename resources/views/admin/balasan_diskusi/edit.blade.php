@@ -28,18 +28,18 @@
         {{ csrf_field() }}
             <!-- Input Nama -->
             <div class="form-group">
-            <input type="hidden" name="id" value="{{ $fd->id }}">
+            <input type="hidden" name="id" value="{{ $bd->id }}">
                 <label for="nama">Nama :</label>
-                <input id="nama" name="nama" type="text" class="form-control" value="{{ $bd->nama }}">
+                <input id="nama" name="nama" type="text" class="form-control" value="{{ $bd->users_id }}">
             </div>
 
             <!-- Input Pertanyaan -->
             <div class="form-group">
                 <label for="forum_diskusi_id"> Pertanyaan :</label>
-                <select id="forum_diskusi_id" name="forum_diskusi_id" class="custom-select">
+                <select id="forum_diskusi_id" name="forum_diskusi_id" class="custom-select" disabled>
                     @foreach ($forum_diskusi as $fd)
                     @php $sel = ($fd->id == $bd->forum_diskusi_id) ? 'selected' : ''; @endphp
-                        <option value="{{ $fd->id }}" {{ $sel }}>{{ $fd->pertanyaan }}</option>
+                        <option value="{{ $fd->id }}" {{ $sel }}>{!! $fd->pertanyaan !!}</option>
                     @endforeach
                 </select>
             </div>

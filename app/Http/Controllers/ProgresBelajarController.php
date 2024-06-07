@@ -76,17 +76,37 @@ class ProgresBelajarController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
         //
+        $users = DB::table('users')->get();
+        $materi = DB::table('materi')->get();
+        $progres_belajar = DB::table('progres_belajar')
+        ->join('users', 'progres_belajar.users_id', '=', 'users.id')
+        ->join('materi', 'progres_belajar.materi_id', '=', 'materi.id')
+        ->select('progres_belajar.*', 'users.name', 'materi.judul')
+        ->where('progres_belajar.id', $id)
+        ->get();
+
+        return view('admin.progres_belajar.edit', compact('progres_belajar', 'materi', 'users'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
         //
+        $request->validate([
+            'progres'    => 'required',
+        ]);
+
+        $detail_materi->update([
+            'progres'    => $request->progres,
+        ]);
+
+        Alert::info('Progres belajar', 'Berhasil mengedit progres belajar');
+        return redirect('progres_belajar');
     }
 
     /**

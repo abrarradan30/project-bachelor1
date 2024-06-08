@@ -28,19 +28,20 @@
         {{ csrf_field() }}
             <!-- Input Nama -->
             <div class="form-group">
-                <label for="nama">Nama :</label>
+            <input type="hidden" name="id" value="{{ $pb->id }}">
+                <label for="user_id">Nama :</label>
                 <input id="name" name="name" type="text" class="form-control" value="{{ $pb->name }}" readonly>
             </div>
 
             <!-- Input Materi -->
             <div class="form-group">
                 <label for="materi_id">Materi :</label>
-                <input id="name" name="name" type="text" class="form-control" value="{{ $pb->judul }}" readonly>
+                <input id="judul" name="judul" type="text" class="form-control" value="{{ $pb->judul }}" readonly>
             </div>
 
             <div class="form-group">
                 <label for="progres">Progres :</label>
-                <input type="number" id="progres" name="progres" class="form-control @error('progres') is-invalid @enderror" value="{{ $pb->progres }}"/>
+                <input type="number" id="progres" name="progres" class="form-control" value="{{ $pb->progres }}" min="0" max="100"/>
             </div>
 
             <!-- Submit Button -->

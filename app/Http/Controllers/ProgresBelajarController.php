@@ -82,11 +82,11 @@ class ProgresBelajarController extends Controller
         $users = DB::table('users')->get();
         $materi = DB::table('materi')->get();
         $progres_belajar = DB::table('progres_belajar')
-        ->join('users', 'progres_belajar.users_id', '=', 'users.id')
-        ->join('materi', 'progres_belajar.materi_id', '=', 'materi.id')
-        ->select('progres_belajar.*', 'users.name', 'materi.judul')
-        ->where('progres_belajar.id', $id)
-        ->get();
+            ->join('users', 'progres_belajar.users_id', '=', 'users.id')
+            ->join('materi', 'progres_belajar.materi_id', '=', 'materi.id')
+            ->select('progres_belajar.*', 'users.name', 'materi.judul')
+            ->where('progres_belajar.id', $id)
+            ->get();
 
         return view('admin.progres_belajar.edit', compact('progres_belajar', 'materi', 'users'));
     }
@@ -94,14 +94,14 @@ class ProgresBelajarController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         //
         $request->validate([
             'progres'    => 'required',
         ]);
 
-        $detail_materi->update([
+        DB::table('progres_belajar')->where('id', $request->id)->update([
             'progres'    => $request->progres,
         ]);
 

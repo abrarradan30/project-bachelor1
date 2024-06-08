@@ -34,7 +34,7 @@ class CheckoutController extends Controller
 
         $transaction = Transaction::create([
             'user_id' => Auth::user()->id,
-            'materi_id' => $data['materi_id'],
+            'product_id' => $data['materi_id'],
             'price' => $hargaMateri,
             'status' => 'pending',
         ]);
@@ -70,7 +70,7 @@ class CheckoutController extends Controller
     public function checkout(Transaction $transaction)
     {
         $materis = config('materis');
-        $materi = collect($materis)->firstWhere('id', $transaction->materi_id);
+        $materi = collect($materis)->firstWhere('id', $transaction->product_id);
 
         return view('checkout',  compact('transaction', 'materi'));
     }

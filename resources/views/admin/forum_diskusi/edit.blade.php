@@ -30,18 +30,13 @@
             <div class="form-group">
             <input type="hidden" name="id" value="{{ $fd->id }}">
                 <label for="nama">Nama :</label>
-                <input id="name" name="name" type="text" class="form-control" value="{{ auth()->user()->name }}">
+                <input id="name" name="name" type="text" class="form-control" value="{{ $fd->name }}" readonly>
             </div>
 
             <!-- Input Judul Materi -->
             <div class="form-group">
                 <label for="materi_id">Judul Materi :</label>
-                <select id="materi_id" name="materi_id" class="custom-select">
-                    @foreach ($materi as $m)
-                    @php $sel = ($m->id == $fd->materi_id) ? 'selected' : ''; @endphp
-                        <option value="{{ $m->id }}" {{ $sel }}>{{ $m->judul }}</option>
-                    @endforeach
-                </select>
+                <input id="judul" name="judul" type="text" class="form-control" value="{{ $fd->judul }}" readonly>
             </div>
 
             <!-- Input Pertanyaan -->

@@ -105,7 +105,11 @@ class BalasanDiskusiController extends Controller
         //
         $users = DB::table('users')->get();
         $forum_diskusi = DB::table('forum_diskusi')->get();
-        $balasan_diskusi = DB::table('balasan_diskusi')->where('id', $id)->get();
+        $balasan_diskusi = BalasanDiskusi::join('users', 'balasan_diskusi.users_id', '=', 'users.id')
+            ->join('forum_diskusi', 'balasan_diskusi.forum_diskusi_id', '=', 'forum_diskusi.id')
+            ->select('balasan_diskusi.*', 'users.name', 'forum_diskusi.pertanyaan')
+            ->where('balasan_diskusi.id', $id)
+            ->get();
 
         return view('admin.balasan_diskusi.edit', compact('balasan_diskusi', 'users', 'forum_diskusi'));
     }

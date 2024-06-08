@@ -116,7 +116,11 @@ class ForumDiskusiController extends Controller
         //
         $users = DB::table('users')->get();
         $materi = DB::table('materi')->get();
-        $forum_diskusi = DB::table('forum_diskusi')->where('id', $id)->get();
+        $forum_diskusi = ForumDiskusi::join('users', 'forum_diskusi.users_id', '=', 'users.id')
+            ->join('materi', 'forum_diskusi.materi_id', '=', 'materi.id')
+            ->select('forum_diskusi.*', 'users.name', 'materi.judul')
+            ->where('forum_diskusi.id', $id)
+            ->get();
         $ar_status_diskusi = ['selesai', 'belum selesai'];
 
         return view('admin.forum_diskusi.edit', compact('forum_diskusi', 'users', 'materi', 'ar_status_diskusi'));

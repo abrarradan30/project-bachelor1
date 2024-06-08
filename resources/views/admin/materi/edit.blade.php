@@ -58,7 +58,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text">Rp.</span>
                     </div>
-                    <input id="harga" name="harga" type="text" class="form-control" value="{{ $m->harga }}">
+                    <input id="harga" name="harga" type="number" class="form-control" value="{{ $m->harga }}">
                 </div>
             </div>
 

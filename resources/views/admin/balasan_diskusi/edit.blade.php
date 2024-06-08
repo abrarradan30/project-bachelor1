@@ -30,18 +30,13 @@
             <div class="form-group">
             <input type="hidden" name="id" value="{{ $bd->id }}">
                 <label for="nama">Nama :</label>
-                <input id="nama" name="nama" type="text" class="form-control" value="{{ $bd->users_id }}">
+                <input id="name" name="name" type="text" class="form-control" value="{{ $bd->name }}" readonly>
             </div>
 
             <!-- Input Pertanyaan -->
             <div class="form-group">
                 <label for="forum_diskusi_id"> Pertanyaan :</label>
-                <select id="forum_diskusi_id" name="forum_diskusi_id" class="custom-select" disabled>
-                    @foreach ($forum_diskusi as $fd)
-                    @php $sel = ($fd->id == $bd->forum_diskusi_id) ? 'selected' : ''; @endphp
-                        <option value="{{ $fd->id }}" {{ $sel }}>{!! $fd->pertanyaan !!}</option>
-                    @endforeach
-                </select>
+                <textarea id="pertanyaan" name="pertanyaan" cols="30" rows="10" class="form-control">{!! $bd->pertanyaan !!}</textarea>
             </div>
 
             <!-- Input Balasan -->

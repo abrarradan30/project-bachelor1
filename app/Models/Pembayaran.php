@@ -10,7 +10,7 @@ class Pembayaran extends Model
     use HasFactory;
     protected $table = 'pembayaran'; 
     protected $primaryKey = 'id'; 
-    protected $fillable = ['order_id', 'users_id', 'materi_id', 'status_pembayaran', 'checkout_link'];
+    protected $fillable = ['code', 'users_id', 'materi_id', 'status', 'snap_token'];
 
     // Relasi many-to-one dengan model User
     public function user() {

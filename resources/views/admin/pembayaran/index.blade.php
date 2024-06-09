@@ -25,18 +25,22 @@
                 <thead>
                     <tr>
                         <th>No</th>
+                        <th>Kode</th>
                         <th>Nama</th>
                         <th>Judul Materi</th>
                         <th>Status</th>
+                        <th>Token</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
                         <th>No</th>
+                        <th>Kode</th>
                         <th>Nama</th>
                         <th>Judul Materi</th>
                         <th>Status</th>
+                        <th>Token</th>
                         <th>Aksi</th>
                     </tr>
                 </tfoot>
@@ -48,8 +52,10 @@
                     <tr>
                         <td>{{ $no }}</td>
                         <td>{{ $py->nama }}</td>
+                        <td>{{ $py->code }}</td>
                         <td>{{ $py->judul_materi}}</td>
                         <td>{{ $py->status}}</td>
+                        <td>{{ $py->snap_token }}</td>
                         <td>
                             <form action="#" method="POST">
                                 <button type="button" class="btn btn-success btn-sm">

@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('pembayaran', function (Blueprint $table) {
             $table->id();
+            $table->string('code')->nullable();
             $table->integer('users_id');
             $table->integer('materi_id');
-            $table->enum('status', ['pending', 'success', 'failed']);
+            $table->enum('status', ['pending', 'success', 'failed'])->default('pending');
             $table->string('snap_token')->nullable();
             $table->dateTime('created_at')->useCurrent();
             $table->dateTime('updated_at')->nullable()->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));

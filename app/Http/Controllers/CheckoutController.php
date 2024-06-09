@@ -69,8 +69,10 @@ class CheckoutController extends Controller
 
     public function checkout(Transaction $transaction)
     {
-        $materis = config('materis');
-        $materi = collect($materis)->firstWhere('id', $transaction->product_id);
+        // $materis = config('materis');
+        // $materi = collect($materis)->firstWhere('id', $transaction->product_id);
+        $materis = Materi::all();
+        $materi = $materis->firstWhere('id', $transaction->product_id);
 
         return view('checkout',  compact('transaction', 'materi'));
     }

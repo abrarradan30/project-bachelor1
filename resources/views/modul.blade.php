@@ -10,11 +10,9 @@
     <h1 class="h3 mb-2 text-gray-800">{{ $jd->judul }} / Level {{ $jd->level }} </h1>
     @endforeach
 
-    @if(in_array(Auth::user()->role, ['admin', 'siswa']))
     <p class="mb-4"> Punya pertanyaan ?
         <a href="{{ url('forum') }}" style="text-decoration: none; color: inherit;"> klik <b class="text-warning"> disini </b></a>.
     </p>
-    @endif
 
     <!-- Detail Materi -->
     @foreach ($sub_judul as $sub)

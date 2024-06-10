@@ -16,8 +16,9 @@
     <!-- ======= Contact Section ======= -->
     <section id="contact" class="contact">
       <div data-aos="fade-up">
-        <iframe style="border:0; width: 100%; height: 350px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3957.086874762684!2d112.60226101477465!3d-7.966399394299297!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7f99f48deff6d%3A0x8d2dd54ab5e27527!2sSekolah%20Tinggi%20Informatika%20%26%20Komputer%20Indonesia%20Malang!5e0!3m2!1sen!2sid!4v1648479393781!5m2!1sen!2sid" frameborder="0" allowfullscreen></iframe>
+        <iframe style="border:0; width: 100%; height: 350px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.6495319330225!2d112.61171361409358!3d-7.97863904353232!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd628211f4820d7%3A0x5027a76e35654d0!2sMalang%2C%20Kota%20Malang%2C%20Jawa%20Timur%2C%20Indonesia!5e0!3m2!1sen!2sid!4v1621844678879!5m2!1sen!2sid" frameborder="0" allowfullscreen></iframe>
       </div>
+
 
 
       <div class="container" data-aos="fade-up">

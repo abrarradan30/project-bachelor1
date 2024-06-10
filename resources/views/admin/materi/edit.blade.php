@@ -52,15 +52,32 @@
             </div>
 
             <!-- Input Harga -->
+            @if(Auth::check() && Auth::user()->role == 'admin')
             <div class="form-group">
                 <label for="harga">Harga :</label>
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text">Rp.</span>
                     </div>
-                    <input id="harga" name="harga" type="number" class="form-control" value="{{ $m->harga }}">
+                    <input id="harga" name="harga" type="text" class="form-control @error('harga') is-invalid @enderror" value="{{ $m->harga }}">
+                </div>
+                @error('harga')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+                @enderror
+            </div>
+            @elseif(Auth::check() && Auth::user()->role == 'mentor')
+            <div class="form-group">
+                <label for="harga">Harga :</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Rp.</span>
+                    </div>
+                    <input id="harga" name="harga" type="text" class="form-control" value="{{ $m->harga }}" readonly>
                 </div>
             </div>
+            @endif
 
             <!-- Input Kategori -->
             <div class="form-group">
@@ -99,7 +116,15 @@
                 @endforeach
             </div>
             @elseif(Auth::check() && Auth::user()->role == 'mentor')
-            <div class="form-group">
+            <div class="form-group" style="display: none;">
+                <label>Status :</label>
+                @foreach ($ar_status as $st)
+                    @php $cek = ($st == $m->status) ? "checked" : ""; @endphp 
+                <div class="form-check">
+                    <input name="status" id="status" type="radio" class="form-check-input" value="{{ $st }}" {{ $cek }}>
+                    <label class="form-check-label" for="status">{{ $st }}</label>
+                </div>
+                @endforeach
             </div>
             @endif
 

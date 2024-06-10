@@ -53,13 +53,13 @@
         </div>
         <div class="col-auto ml-auto">
             <button class="btn btn-primary btn-sm">
-                <a href="{{ url('modul/show/'.$ar_pm->id) }}" style="text-decoration: none; color: inherit;">
+                <a href="{{ url('modul/show/'.$ar_pm->materi_id) }}" style="text-decoration: none; color: inherit;">
                 Lanjutkan &nbsp; <i class="fa fa-chevron-circle-right"></i>
                 </a>
             </button> 
             <br> <br>
             <button class="btn btn-warning btn-sm">
-                <a href="{{ url('input_sertifikat/create/'.$ar_pm->id) }}" style="text-decoration: none; color: inherit;">
+                <a href="{{ url('input_sertifikat/create/'.$ar_pm->materi_id) }}" style="text-decoration: none; color: inherit;">
                 Sertifikat &nbsp; <i class="fa fa-certificate"></i>
                 </a>
             </button>

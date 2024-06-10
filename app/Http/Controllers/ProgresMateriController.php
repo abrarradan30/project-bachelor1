@@ -29,7 +29,7 @@ class ProgresMateriController extends Controller
             ->join('materi', 'progres_belajar.materi_id', '=', 'materi.id')
             ->select('progres_belajar.*', 'users.name as nama', 'materi.judul')
             ->where('progres_belajar.users_id', $user_id)
-            ->get();
+            ->get(); 
 
         return view('admin.progres_materi.index', compact('progres_materi', 'user_id', 'materi', 'ar_progres_materi'));
     }

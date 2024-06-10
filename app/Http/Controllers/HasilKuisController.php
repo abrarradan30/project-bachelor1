@@ -79,14 +79,14 @@ class HasilKuisController extends Controller
         $hasil_kuis = HasilKuis::join('users', 'hasil_kuis.users_id', '=', 'users.id')
             ->join('materi', 'hasil_kuis.materi_id', '=', 'materi.id')
             ->select('hasil_kuis.*', 'users.name as nama', 'materi.judul as judul_materi')
-            ->where('hasil_kuis.id', $id)
+            ->where('hasil_kuis.materi_id', $id)
             ->get();
 
         $hasil_kuis2 = HasilKuis::join('users', 'hasil_kuis.users_id', '=', 'users.id')
             ->join('materi', 'hasil_kuis.materi_id', '=', 'materi.id')
-            ->select('hasil_kuis.materi_id', 'users.name as nama', 'materi.judul as judul_materi')
-            ->groupBy('kuis.materi_id', 'materi.judul')
-            ->where('hasil_kuis.id', $id)
+            ->select('hasil_kuis.materi_id', 'materi.judul as judul_materi')
+            ->groupBy('hasil_kuis.materi_id', 'materi.judul')
+            ->where('hasil_kuis.materi_id', $id)
             ->get();
 
         return view('admin.hasil_kuis.detail', compact('hasil_kuis','hasil_kuis2'));

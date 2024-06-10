@@ -43,7 +43,7 @@
                         <td>
                         <form action="#" method="POST">
                                 <button type="button" class="btn btn-success btn-sm">
-                                    <a href="{{ url('admin/hasil_kuis/show/' . $m->id) }}" style="text-decoration: none; color: inherit;">Cek Hasil Kuis Siswa</a>
+                                    <a href="{{ url('hasil_kuis/show/' . $m->id) }}" style="text-decoration: none; color: inherit;">Cek Hasil Kuis Siswa</a>
                                 </button>
                             </form>
                         </td>

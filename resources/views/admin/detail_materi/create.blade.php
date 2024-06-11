@@ -37,8 +37,8 @@
 
             <!-- Input Modul -->
             <div class="form-group">
-                <label for="modul">Modul :</label>
-                <input id="modul" name="modul" type="text" class="form-control @error('modul') is-invalid @enderror" placeholder="Masukkan no.urut dan modul (1. modul A)">
+                <label for="modul">Modul (Masukkan urutan modul (1. nama_modul) ):</label>
+                <input id="modul" name="modul" type="text" class="form-control @error('modul') is-invalid @enderror" placeholder="Masukkan urutan modul (1. nama_modul)">
                 @error('modul')
                     <div class="invalid-feedback">
                         {{ $message }}

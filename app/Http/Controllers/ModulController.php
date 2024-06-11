@@ -70,17 +70,14 @@ class ModulController extends Controller
         //     ->get();
 
         $isi_materi = [];
-foreach ($sub_judul as $sub) {
-    $materi = DB::table('detail_materi')
-        ->join('materi', 'detail_materi.materi_id', '=', 'materi.id')
-        ->select('detail_materi.isi_materi')
-        ->where('materi.id', $id)
-        ->where('detail_materi.modul', $sub)
-        ->first();
+        foreach ($sub_judul as $sub) {
+        $materi = DB::table('detail_materi')
+            ->where('materi_id', $id)
+            ->where('modul', $sub)
+            ->first();
 
-    $isi_materi[$sub] = $materi->isi_materi ?? '';
-}
-        
+        $isi_materi[$sub] = $materi->isi_materi ?? '';
+        }
 
         return view('modul', compact('judul', 'modul', 'sub_judul', 'isi_materi'));
     }

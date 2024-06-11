@@ -88,7 +88,7 @@
 			<div class="card">
 				<article class="filter-group">
 					<header class="card-header">
-						<a href="#" data-toggle="collapse" data-target="#collapse_1" aria-expanded="true" class="">
+						<a href="{{ url('course') }}" data-target="#collapse_1" aria-expanded="true" class="">
 							<i class="icon-control fa fa-chevron-down"></i>
 							<h6 class="title">Cari Materi</h6>
 						</a>
@@ -109,7 +109,7 @@
 				</article> <!-- filter-group  .// -->
 				<article class="filter-group">
 					<header class="card-header">
-						<a href="#" data-toggle="collapse" data-target="#collapse_2" aria-expanded="true" class="">
+						<a href="#" data-target="#collapse_2" aria-expanded="true" class="">
 							<i class="icon-control fa fa-chevron-down"></i>
 							<h6 class="title">Kategori </h6>
 						</a>
@@ -130,7 +130,7 @@
 
 				<article class="filter-group">
 					<header class="card-header">
-						<a href="#" data-toggle="collapse" data-target="#collapse_2" aria-expanded="true" class="">
+						<a href="#" data-target="#collapse_2" aria-expanded="true" class="">
 							<i class="icon-control fa fa-chevron-down"></i>
 							<h6 class="title">Level </h6>
 						</a>

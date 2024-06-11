@@ -14,14 +14,7 @@ class CourseController extends Controller
     public function index(Request $request)
     {
         //
-        //$ar_materi = Materi::all();
-        // $materi = Materi::count();
-        // $ar_materi = Materi::where('status', 'publik')->get();
-        // $kategori_materi = ['IT', 'desain', 'softskill'];
-        // $level_materi = ['pemula', 'menengah', 'mahir'];
-
-        // Dapatkan jumlah total materi
-        $materi = Materi::count();
+        $materi = Materi::where('status', 'publik')->count();
 
         // Dapatkan semua kategori dan level materi
         $kategori_materi = ['IT', 'desain', 'softskill'];

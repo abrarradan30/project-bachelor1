@@ -27,6 +27,7 @@ use App\Http\Controllers\ProgresMateriController;
 use App\Http\Controllers\RatingController;
 use App\Http\Controllers\RatingFrontController;
 use App\Http\Controllers\SertifikatController;
+use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\FillPDFController;
 use App\Http\Controllers\FillSertifikatController;
@@ -59,9 +60,12 @@ Route::middleware(['peran:admin-siswa-mentor'])->group(function () {
     // route checkout
     Route::get('/checkout/show/{id}', [CheckoutController::class, 'show']);
     Route::get('/checkout/{id}', [CheckoutController::class, 'show'])->name('checkout.show');
-    Route::post('/checkout/process', [CheckoutController::class, 'process'])->name('checkout.process');
+    Route::post('/checkout', [CheckoutController::class, 'process'])->name("checkout-process");
     Route::get('/checkout/success/{transaction}', [CheckoutController::class, 'success'])->name('checkout.success');
     Route::get('/checkout/pending/{transaction}', [CheckoutController::class, 'pending'])->name('checkout.pending');
+
+    // route transaction 
+    Route::get('/transactions', [TransactionController::class, 'index']);
 
     // route modul
     Route::get('/modul', [ModulController::class, 'index']);

@@ -78,6 +78,7 @@
                 @if(Auth::check() && Auth::user()->role == 'admin')
                 <a class="collapse-item" href="{{ url('detail_materi') }}">Detail Materi</a>
                 <a class="collapse-item" href="{{ url('pembayaran') }}">Pembayaran</a>
+                <a class="collapse-item" href="{{ url('transactions') }}">Transaksi</a>
                 <a class="collapse-item" href="{{ url('progres_belajar') }}">Progres Belajar</a>
                 <a class="collapse-item" href="{{ url('cek_progres') }}">Cek Progres Belajar</a>
                 <a class="collapse-item" href="{{ url('kuis') }}">Kuis</a>

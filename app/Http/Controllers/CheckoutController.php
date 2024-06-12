@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Materi;
 use App\Models\Transaction;
+use Illuminate\Support\Facades\Auth;
 use DB;
 
 class CheckoutController extends Controller
@@ -29,12 +30,26 @@ class CheckoutController extends Controller
     {
         $data = $request->all();
 
+        // $materi = Materi::find($data['materi_id']);
+        // $hargaMateri = $materi->harga;
+
+        // Ambil data materi berdasarkan materi_id
         $materi = Materi::find($data['materi_id']);
+        if (!$materi) {
+        return redirect()->back()->with('error', 'Materi tidak ditemukan.');
+        }
+
         $hargaMateri = $materi->harga;
 
+        if (strpos(auth()->user()->email, '@mhs.stiki.ac.id') !== false || strpos(auth()->user()->email, '@stiki.ac.id') !== false) {
+            $hargaMateri = 0;
+        } elseif (isset($data['voucher']) && $data['voucher'] === 'LMSHEMAT') {
+            $hargaMateri *= 0.5; // diskon 50%
+        }
+
         $transaction = Transaction::create([
-            'user_id' => Auth::user()->id,
-            'product_id' => $data['materi_id'],
+            'users_id' => auth()->user()->id,
+            'product_id' => $materi->id,
             'price' => $hargaMateri,
             'status' => 'pending',
         ]);
@@ -54,8 +69,8 @@ class CheckoutController extends Controller
                 'gross_amount' => $hargaMateri,
             ),
             'customer_details' => array(
-                'first_name' => Auth::user()->name,
-                'email' => Auth::user()->email,
+                'first_name' => auth()->user()->name,
+                'email' => auth()->user()->email,
             )
         );
         
@@ -65,15 +80,17 @@ class CheckoutController extends Controller
         $transaction->save();
 
         return redirect()->route('checkout', $transaction->id);
+
+        //return view('admin.transaksi.index', compact('transaction'));
     }
 
     public function checkout(Transaction $transaction)
     {
-        // $materis = config('materis');
-        // $materi = collect($materis)->firstWhere('id', $transaction->product_id);
-        $materis = Materi::all();
-        $materi = $materis->firstWhere('id', $transaction->product_id);
+        $products = config('products');
+        $product = collect($products)->firstWhere('id', $transaction->product_id);
+        // $materis = Materi::all();
+        // $materi = $materis->firstWhere('id', $transaction->product_id);
 
-        return view('checkout',  compact('transaction', 'materi'));
+        return view('admin.transaksi.index',  compact('transaction', 'product'));
     }
 }

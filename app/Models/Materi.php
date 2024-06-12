@@ -17,6 +17,10 @@ class Materi extends Model
     public function pembayaran() {
         return $this->hasOne(Pembayaran::class);
     }
+    // Relasi one-to-one dengan model Transaction
+    public function transaction() {
+        return $this->hasOne(Transaction::class);
+    }
     // Relasi one-to-many dengan model ForumDiskusi
     public function forum_diskusi() {
         return $this->belongsTo(ForumDiskusi::class);

@@ -22,6 +22,8 @@
     </div>
     <div class="card-body">
     @foreach($materi as $m)
+    <form action="{{ route('checkout-process') }}" method="POST">
+    {{ csrf_field() }}
             <!-- Input Nama -->
             <div class="form-group">
                 <label for="judul">Judul Materi :</label>
@@ -39,64 +41,47 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text">Rp.</span>
                   </div>
-                  <input type="text" class="form-control" id="harga" name="harga" 
-                      value="{{ (strpos(Auth::user()->email, '@mhs.stiki.ac.id') !== false || strpos(Auth::user()->email, '@stiki.ac.id') !== false) ? '0' : $m->harga }}" readonly>
+                  @php
+                    $formattedPrice = (strpos(Auth::user()->email, '@mhs.stiki.ac.id') !== false || strpos(Auth::user()->email, '@stiki.ac.id') !== false) ? '0' : number_format($m->harga, 0, ',', '.');
+                  @endphp
+                  <input type="text" class="form-control" id="harga" name="harga" value="{{ $formattedPrice }}" readonly>
                 </div>
             </div>
             <br>
             <div class="form-group">
-                <label for="voucher">Voucher (*jika ada) :</label>
-                <input type="text" class="form-control" id="voucher" name="voucher">
+              <label for="voucher">Voucher (*jika ada) :</label>
+                @if(strpos(auth()->user()->email, '@mhs.stiki.ac.id') !== false || strpos(auth()->user()->email, '@stiki.ac.id') !== false)
+                  <input type="text" class="form-control" id="voucher" name="voucher" readonly>
+                @else
+                  <input type="text" class="form-control" id="voucher" name="voucher">
+                @endif  
             </div>
             <br>
-            <button type="button" class="btn btn-primary" id="pay-button" onclick="payNow()">Bayar Sekarang</button>
+            <input type="hidden" name="materi_id" value="{{ $m->id }}">
+            <input type="hidden" name="price" value="{{ (strpos(Auth::user()->email, '@mhs.stiki.ac.id') !== false || strpos(Auth::user()->email, '@stiki.ac.id') !== false) ? '0' : $m->harga }}">
+            <button type="submit" class="btn btn-primary">Beli Sekarang</button>
+    </form>
     @endforeach
     </div>
 </div>
 
 </div>
 
-@endsection
+<script>
+function applyVoucher(materiId, originalPrice) {
+    var voucher = document.getElementById('voucher-' + materiId).value;
+    var priceInput = document.getElementById('price-' + materiId);
+    var hargaInput = document.getElementById('harga-' + materiId);
 
-@section('scripts')
-    <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ env('MIDTRANS_CLIENT_KEY') }}"></script>
-    <script type="text/javascript">
-      function payNow() {
-        var voucher = document.getElementById('voucher').value;
+    if (voucher === "LMSHEMAT") {
+        var discountedPrice = originalPrice * 0.5;
+        priceInput.value = discountedPrice;
+        hargaInput.value = discountedPrice;
+    } else {
+        priceInput.value = originalPrice;
+        hargaInput.value = originalPrice;
+    }
+}
+</script>
 
-        // Jika input voucher adalah "LMSHEMAT"
-        if (voucher.toUpperCase() === "LMSHEMAT") {
-            var harga = parseFloat(document.getElementById('harga').value);
-            var hargaDiskon = harga * 0.5; // Diskon 50%
-
-            snap.pay({
-                // Berikan harga diskon pada pembayaran
-                "transaction_details": {
-                    "order_id": "{{ $transaction->order_id }}",
-                    "gross_amount": hargaDiskon
-                }
-            });
-        } else {
-
-        // SnapToken acquired from previous step
-        snap.pay('{{ $transaction->snap_token }}', {
-          // Optional
-          onSuccess: function(result){
-            /* You may add your own js here, this is just example */ 
-            document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
-          },
-          // Optional
-          onPending: function(result){
-            /* You may add your own js here, this is just example */ 
-            document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
-          },
-          // Optional
-          onError: function(result){
-            /* You may add your own js here, this is just example */ 
-            document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
-          }
-        });
-      }
-      }
-    </script>
 @endsection

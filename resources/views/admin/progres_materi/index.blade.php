@@ -8,13 +8,6 @@
 <!-- Page Heading -->
 <h1 class="h3 mb-2 text-gray-800">Progres Belajar &raquo; {{ auth()->user()->name }} </h1>
 
-@if(in_array(Auth::user()->role, ['admin', 'siswa']))
-    <p class="mb-4">Halo {{ Auth::user()->name }} ! Ayo selesaikan materi-<b>Mu</b> dengan semangat dan tekad. 
-        Jangan ragu untuk bertanya dan berkolaborasi pada 
-        <a href="{{ url('forum') }}" style="text-decoration: none; color: inherit;"> <b class="text-warning"> forum diskusi </b> </a>.
-    </p>
-@endif
-
     <!-- Content Row -->
     <div class="row">
 
@@ -25,9 +18,14 @@
         </p>
     </div>
     @else
+    <div class="col-xl-12 mb-4">
+    <p class="mb-4">Halo {{ Auth::user()->name }} ! Ayo selesaikan materi-<b>Mu</b>. Jangan ragu untuk bertanya dan berkolaborasi pada 
+        <a href="{{ url('forum') }}" style="text-decoration: none; color: inherit;"> <b class="text-warning"> forum diskusi </b> </a>.
+        Atau cari materi lainnya
+        <a href="{{ url('course') }}" style="text-decoration: none; color: inherit;"> <b class="text-primary"> disini </b> </a>.
+    </p>
     <!-- Materi dimiliki -->
     @foreach($ar_progres_materi as $ar_pm)
-    <div class="col-xl-12 mb-4">
     <div class="card border-left-primary shadow h-100 py-2">
         <div class="card-body">
             <div class="row no-gutters align-items-center">

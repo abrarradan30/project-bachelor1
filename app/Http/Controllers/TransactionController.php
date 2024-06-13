@@ -27,12 +27,12 @@ class TransactionController extends Controller
 
     public function index()
     {
-        $transaction = Transaction::leftJoin('users', 'transaction.users_id', '=', 'users.id')
+        $transactions = Transaction::leftJoin('users', 'transaction.users_id', '=', 'users.id')
             ->leftJoin('materi', 'transaction.product_id', '=', 'materi.id')
             ->select('transaction.*', 'users.name', 'materi.judul')
             ->orderBy('transaction.created_at', 'desc')
             ->get();
 
-        return view('admin.transaksi.index', compact('transaction'));
+        return view('admin.transaksi.index', compact('transactions'));
     }
 }

@@ -57,7 +57,7 @@
                 <label for="harga">Harga :</label>
                 <div class="input-group">
                     <div class="input-group-prepend">
-                        <span class="input-group-text">Rp.</span>
+                        <span class="input-group-text">Rp. </span>
                     </div>
                     <input id="harga" name="harga" type="text" class="form-control @error('harga') is-invalid @enderror" value="{{ $m->harga }}">
                 </div>

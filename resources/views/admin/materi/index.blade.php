@@ -64,7 +64,7 @@
                             @endempty
                         </td>
                         <td>{{ $m->deskripsi }}</td>
-                        <td>{{ $m->harga }}</td>
+                        <td>{{ number_format($m->harga, 0, ',', '.') }}</td>
                         <td>{{ $m->kategori }}</td>
                         <td>{{ $m->level }}</td>
                         <td>

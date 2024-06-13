@@ -22,18 +22,15 @@ class CheckoutController extends Controller
         //
         $materi =  DB::table('materi')->where('id', $id)->get();
 
-        $transaction = new Transaction();
-        return view('checkout', compact('materi', 'transaction'));
+        //$transaction = new Transaction();
+        //return view('checkout', compact('materi', 'transaction'));
+        return view('checkout', compact('materi',));
     }
 
     public function process(Request $request)
     {
         $data = $request->all();
 
-        // $materi = Materi::find($data['materi_id']);
-        // $hargaMateri = $materi->harga;
-
-        // Ambil data materi berdasarkan materi_id
         $materi = Materi::find($data['materi_id']);
         if (!$materi) {
         return redirect()->back()->with('error', 'Materi tidak ditemukan.');
@@ -79,17 +76,15 @@ class CheckoutController extends Controller
         $transaction->snap_token = $snapToken;
         $transaction->save();
 
-        return redirect()->route('checkout', $transaction->id);
-
-        //return view('admin.transaksi.index', compact('transaction'));
+        //return redirect()->route('checkout', $transaction->id);
+        //return redirect()->route('admin.transaksi.index');
+        return redirect()->route('admin.transaksi.detail', ['id' => $transaction->id]);
     }
 
     public function checkout(Transaction $transaction)
     {
         $products = config('products');
         $product = collect($products)->firstWhere('id', $transaction->product_id);
-        // $materis = Materi::all();
-        // $materi = $materis->firstWhere('id', $transaction->product_id);
 
         return view('admin.transaksi.index',  compact('transaction', 'product'));
     }

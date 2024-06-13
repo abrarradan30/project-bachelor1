@@ -41,6 +41,7 @@
 
         <div class="course-info d-flex justify-content-between align-items-center">
           <h5>Harga</h5>
+          <!-- <p>Rp {{ $m->harga }}</p> -->
           <p>Rp {{ number_format($m->harga, 0, ',', '.') }}</p>
         </div>
 

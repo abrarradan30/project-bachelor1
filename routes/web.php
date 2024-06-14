@@ -219,8 +219,11 @@ Route::get('/progres_materi/show/{id}', [ProgresMateriController::class, 'show']
 // route modul
 Route::post('/update-progres', [ModulController::class, 'updateProgres']);
 
+// route mengerjakan kuis
 Route::get('/soal_kuis', [KuisFrontController::class, 'index']);
 Route::get('/soal_kuis/show/{id}', [KuisFrontController::class, 'show']);
+
+Route::post('/kuis_front/store', [KuisFrontController::class, 'store']);
 
 // route rating front
 Route::get('/ratingfe', [RatingFrontController::class, 'index']);

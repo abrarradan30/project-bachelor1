@@ -34,7 +34,12 @@ input[type="radio"]:checked+label {
         <h6 class="m-0 font-weight-bold text-primary">Kerjakan dengan teliti dan sungguh-sungguh!</h6>
     </div>
     <div class="card-body">
-      <form>
+      <form method="POST" action="{{ url('kuis_front/store') }}">
+      {{ csrf_field() }} 
+
+      <input type="hidden" name="users_id" value="{{ auth()->user()->id }}">
+      <input type="hidden" name="materi_id" value="{{ $isi_kuis[0]->materi_id }}">
+
         <div class="question">
             @php 
                 $no = 1;
@@ -57,9 +62,7 @@ input[type="radio"]:checked+label {
         </div>
 
         <div class="form-group">
-            <a href="{{ url('#') }}" class="btn btn-info btn-sm">
-                Selesai <i class="fa fa-flag-checkered"></i>
-            </a>
+            <button type="submit" class="btn btn-info btn-sm">Selesai <i class="fa fa-flag-checkered"></i></button>
         </div>
       </form>
     </div>

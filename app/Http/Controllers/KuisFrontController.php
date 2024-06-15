@@ -7,6 +7,7 @@ use App\Models\Kuis;
 use App\Models\User;
 use App\Models\Materi;
 use App\Models\HasilKuis;
+use RealRashid\SweetAlert\Facades\Alert;
 use DB;
 
 class KuisFrontController extends Controller
@@ -48,26 +49,28 @@ class KuisFrontController extends Controller
         $user_id = $request->users_id;
 
         // Ambil soal dan kunci jawaban dari database
-        $kuis = Kuis::where('materi_id', $materi_id)->get();
+        $kuis = Kuis::where('materi_id', $materi_id)->select('id', 'soal', 'a', 'b', 'c', 'd', 'kunci')->get();
 
         $total_questions = $kuis->count();
-        $correct_answers = 0;
 
+        // mengkoreksi jawaban benar berdasarkan kunci
+        $correct_answers = 0;
         foreach ($kuis as $index => $soal) {
-            $question_number = $index + 1; // Nomor pertanyaan dimulai dari 1
-            $user_answer = $request->input('q' . $question_number);
-    
-            if ($user_answer == $soal->kunci) {
-                $correct_answers += 1; // Setiap jawaban benar bernilai 5 poin
+            $user_answer = $request->input('q' . ($index + 1));
+
+            // Ambil kunci jawaban dari soal
+            $correct_key = $soal->kunci;
+
+            // Ambil jawaban yang benar berdasarkan kunci
+            $correct_answer = $soal->$correct_key;
+
+            if ($user_answer == $correct_key) {
+                $correct_answers += 5; // Setiap jawaban benar bernilai 5 poin
             }
         }
 
         // Hitung skor
-        if ($total_questions > 0) {
-            $score = ($correct_answers / $total_questions) * 100;
-        } else {
-            $score = 0;
-        }
+        $score = ($correct_answers / $total_questions) * 100;
 
         DB::table('hasil_kuis')->insert([
             'users_id'     => $user_id,
@@ -75,6 +78,7 @@ class KuisFrontController extends Controller
             'skor'         => $score,
         ]);
 
+        Alert::success('Kuis', 'Selesai mengerjakan kuis');
         return redirect('progres_materi');
     }
 

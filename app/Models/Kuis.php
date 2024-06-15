@@ -10,7 +10,7 @@ class Kuis extends Model
     use HasFactory;
     protected $table = 'kuis';
     protected $primaryKey = 'id';
-    protected $fillable = ['soal', 'a', 'b', 'c', 'd', 'kunci', 'materi_id']; 
+    protected $fillable = ['materi_id', 'soal', 'a', 'b', 'c', 'd', 'kunci']; 
 
     // Relasi many-to-one dengan model User
     public function user() {

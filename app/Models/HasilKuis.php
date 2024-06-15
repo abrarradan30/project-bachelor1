@@ -10,7 +10,7 @@ class HasilKuis extends Model
     use HasFactory;
     protected $table = 'hasil_kuis'; 
     protected $primaryKey = 'id'; 
-    protected $fillable = ['skor', 'users_id', 'materi_id'];
+    protected $fillable = ['users_id', 'materi_id', 'skor'];
 
     public function user()
     {

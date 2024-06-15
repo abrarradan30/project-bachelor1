@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer('users_id');
             $table->integer('materi_id');
-            $table->decimal('skor', 5);
+            $table->integer('skor');
             $table->dateTime('created_at')->useCurrent();
             $table->dateTime('updated_at')->nullable()->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });

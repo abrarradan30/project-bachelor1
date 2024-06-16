@@ -41,22 +41,15 @@ input[type="radio"]:checked+label {
       <input type="hidden" name="materi_id" value="{{ $isi_kuis[0]->materi_id }}">
 
         <div class="question">
-            @php 
-                $no = 1;
-            @endphp
 
             @foreach($isi_kuis as $ik)
-            <h6> {{ $no }}.{!! $ik->soal !!}</h6>
+            <h6> {{ $loop->iteration }}.{!! $ik->soal !!}</h6>
               <div class="options">
-                <label><input type="radio" name="q{{ $no }}" value="a"> a. {!! $ik->a !!} </label><br>
-                <label><input type="radio" name="q{{ $no }}" value="b"> b. {!! $ik->b !!} </label><br>
-                <label><input type="radio" name="q{{ $no }}" value="c"> c. {!! $ik->c !!} </label><br>
-                <label><input type="radio" name="q{{ $no }}" value="d"> d. {!! $ik->d !!} </label><br>
+                <label><input type="radio" name="q{{ $ik->id }}" value="a"> a. {!! $ik->a !!} </label><br>
+                <label><input type="radio" name="q{{ $ik->id }}" value="b"> b. {!! $ik->b !!} </label><br>
+                <label><input type="radio" name="q{{ $ik->id }}" value="c"> c. {!! $ik->c !!} </label><br>
+                <label><input type="radio" name="q{{ $ik->id }}" value="d"> d. {!! $ik->d !!} </label><br>
               </div> 
-            
-            @php 
-                $no++;
-            @endphp
 
             @endforeach
         </div>

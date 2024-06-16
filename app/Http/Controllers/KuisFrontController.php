@@ -49,28 +49,34 @@ class KuisFrontController extends Controller
         $user_id = $request->users_id;
 
         // Ambil soal dan kunci jawaban dari database
-        $kuis = Kuis::where('materi_id', $materi_id)->select('id', 'soal', 'a', 'b', 'c', 'd', 'kunci')->get();
+        $kuis = Kuis::where('materi_id', $materi_id)
+            ->select('id', 'soal', 'a', 'b', 'c', 'd', 'kunci')
+            ->get();
 
         $total_questions = $kuis->count();
 
-        // mengkoreksi jawaban benar berdasarkan kunci
+        // koreksi jawaban
         $correct_answers = 0;
         foreach ($kuis as $index => $soal) {
             $user_answer = $request->input('q' . ($index + 1));
+        // Ambil kunci jawaban dari soal
+        $correct_key = $soal->kunci;
 
-            // Ambil kunci jawaban dari soal
-            $correct_key = $soal->kunci;
+        // Ambil jawaban yang benar berdasarkan kunci
+        $correct_answer = $soal->$correct_key;
 
-            // Ambil jawaban yang benar berdasarkan kunci
-            $correct_answer = $soal->$correct_key;
-
-            if ($user_answer == $correct_key) {
-                $correct_answers += 5; // Setiap jawaban benar bernilai 5 poin
-            }
+        // Ubah pengecekan jawaban benar berdasarkan kemiripan dengan kunci
+        if (stripos($soal->a, $correct_answer) !== false ||
+            stripos($soal->b, $correct_answer) !== false ||
+            stripos($soal->c, $correct_answer) !== false ||
+            stripos($soal->d, $correct_answer) !== false) {
+            $correct_answers += 5; // Setiap jawaban benar bernilai 5 poin
+        } else {
+            $correct_answers += 0; // Jawaban salah bernilai 0 poin
         }
-
+        }
         // Hitung skor
-        $score = ($correct_answers / $total_questions) * 100;
+        $score = (($correct_answers / 5) / $total_questions) * 100;
 
         DB::table('hasil_kuis')->insert([
             'users_id'     => $user_id,

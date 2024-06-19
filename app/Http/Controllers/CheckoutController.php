@@ -39,7 +39,7 @@ class CheckoutController extends Controller
         $hargaMateri = $materi->harga;
 
         if (strpos(auth()->user()->email, '@mhs.stiki.ac.id') !== false || strpos(auth()->user()->email, '@stiki.ac.id') !== false) {
-            $hargaMateri = 0;
+            $hargaMateri = 1;
         } elseif (isset($data['voucher']) && $data['voucher'] === 'LMSHEMAT') {
             $hargaMateri *= 0.5; // diskon 50%
         }

@@ -112,6 +112,16 @@
         Aktivitas
     </div>
     @endif
+
+    @if(in_array(Auth::user()->role, ['siswa']))
+    <!-- Nav Item - Materi Saya -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{ url('transactions') }}">
+            <i class="fas fa-fw fa-dollar-sign"></i>
+            <span>Transaksi</span>
+        </a>
+    </li>
+    @endif
     
     @if(in_array(Auth::user()->role, ['admin', 'siswa']))
     <!-- Nav Item - Materi Saya -->

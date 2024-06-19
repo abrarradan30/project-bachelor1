@@ -42,7 +42,7 @@
                     <span class="input-group-text">Rp.</span>
                   </div>
                   @php
-                    $formattedPrice = (strpos(Auth::user()->email, '@mhs.stiki.ac.id') !== false || strpos(Auth::user()->email, '@stiki.ac.id') !== false) ? '0' : number_format($m->harga, 0, ',', '.');
+                    $formattedPrice = (strpos(Auth::user()->email, '@mhs.stiki.ac.id') !== false || strpos(Auth::user()->email, '@stiki.ac.id') !== false) ? '1' : number_format($m->harga, 0, ',', '.');
                   @endphp
                   <input type="text" class="form-control" id="harga" name="harga" value="{{ $formattedPrice }}" readonly>
                 </div>
@@ -58,7 +58,7 @@
             </div>
             <br>
             <input type="hidden" name="materi_id" value="{{ $m->id }}">
-            <input type="hidden" name="price" value="{{ (strpos(Auth::user()->email, '@mhs.stiki.ac.id') !== false || strpos(Auth::user()->email, '@stiki.ac.id') !== false) ? '0' : $m->harga }}">
+            <input type="hidden" name="price" value="{{ (strpos(Auth::user()->email, '@mhs.stiki.ac.id') !== false || strpos(Auth::user()->email, '@stiki.ac.id') !== false) ? '1' : $m->harga }}">
             <button type="submit" class="btn btn-primary">Beli Sekarang</button>
     </form>
     @endforeach

@@ -45,6 +45,12 @@
     <!-- Topbar Navbar -->
     <ul class="navbar-nav ml-auto">
 
+        <li class="nav-item dropdown no-arrow mx-1">
+            <a class="nav-link dropdown-toggle text-primary"  style="pointer-events: none;" aria-haspopup="true" aria-expanded="false">
+                <b>{{ Auth::user()->role }}</b>
+            </a>
+        </li>
+    
         <!-- Nav Item - Search Dropdown (Visible Only XS) -->
         <li class="nav-item dropdown no-arrow d-sm-none">
             <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"

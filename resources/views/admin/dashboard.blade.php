@@ -79,7 +79,7 @@
                                 </div>
                             </div>
                             <div class="col-auto">
-                                <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                <i class="fas fa-list-ul fa-2x text-gray-300"></i>
                             </div>
                         </div>
                     </div>
@@ -129,7 +129,7 @@
                                 </div>
                             </div>
                             <div class="col-auto">
-                                <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                <i class="fas fa-book fa-2x text-gray-300"></i>
                             </div>
                         </div>
                     </div>
@@ -153,7 +153,7 @@
                                 </div>
                             </div>
                             <div class="col-auto">
-                                <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                <i class="fas fa-bars fa-2x text-gray-300"></i>
                             </div>
                         </div>
                     </div>
@@ -178,7 +178,7 @@
                                 </div>
                             </div>
                             <div class="col-auto">
-                                <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                <i class="fas fa-flag fa-2x text-gray-300"></i>
                             </div>
                         </div>
                     </div>
@@ -228,7 +228,7 @@
                                 </div>
                             </div>
                             <div class="col-auto">
-                                <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                <i class="fas fa-file-alt fa-2x text-gray-300"></i>
                             </div>
                         </div>
                     </div>
@@ -278,7 +278,7 @@
                                 </div>
                             </div>
                             <div class="col-auto">
-                                <i class="fas fa-comments fa-2x text-gray-300"></i>
+                                <i class="fas fa-comment fa-2x text-gray-300"></i>
                             </div>
                         </div>
                     </div>
@@ -333,7 +333,7 @@
                                 </div>
                             </div>
                             <div class="col-auto">
-                                <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                <i class="fas fa-list-ul fa-2x text-gray-300"></i>
                             </div>
                         </div>
                     </div>
@@ -358,7 +358,7 @@
                                 </div>
                             </div>
                             <div class="col-auto">
-                                <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                <i class="fas fa-book fa-2x text-gray-300"></i>
                             </div>
                         </div>
                     </div>
@@ -382,7 +382,7 @@
                                 </div>
                             </div>
                             <div class="col-auto">
-                                <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                <i class="fas fa-bars fa-2x text-gray-300"></i>
                             </div>
                         </div>
                     </div>
@@ -407,7 +407,7 @@
                                 </div>
                             </div>
                             <div class="col-auto">
-                                <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                <i class="fas fa-flag fa-2x text-gray-300"></i>
                             </div>
                         </div>
                     </div>
@@ -457,7 +457,7 @@
                                 </div>
                             </div>
                             <div class="col-auto">
-                                <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                <i class="fas fa-file-alt fa-2x text-gray-300"></i>
                             </div>
                         </div>
                     </div>
@@ -507,7 +507,7 @@
                                 </div>
                             </div>
                             <div class="col-auto">
-                                <i class="fas fa-comments fa-2x text-gray-300"></i>
+                                <i class="fas fa-comment fa-2x text-gray-300"></i>
                             </div>
                         </div>
                     </div>
@@ -555,6 +555,7 @@
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                     <h6 class="m-0 font-weight-bold text-primary">Statistik User</h6>
+                    @if(Auth::check() && Auth::user()->role == 'admin')
                     <div class="dropdown no-arrow">
                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
@@ -564,6 +565,7 @@
                             <a class="dropdown-item" href="{{ url('user') }}">Detail</a>
                         </div>
                     </div>
+                    @endif
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">

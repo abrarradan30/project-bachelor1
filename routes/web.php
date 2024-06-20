@@ -66,6 +66,8 @@ Route::middleware(['peran:admin-siswa-mentor'])->group(function () {
 
     // route transaction 
     Route::get('/transactions', [TransactionController::class, 'index']);
+    Route::get('/transactions/success/{id}', [TransactionController::class, 'success']);
+    Route::get('/transactions/delete/{id}', [TransactionController::class, 'destroy']); 
 
     // route modul
     Route::get('/modul', [ModulController::class, 'index']);

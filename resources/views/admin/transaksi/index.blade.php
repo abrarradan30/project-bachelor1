@@ -69,7 +69,8 @@
                                 snap.pay('{{ $ts->snap_token }}', {
                                     // Optional
                                     onSuccess: function(result){
-                                        /* You may add your own js here, this is just example */ document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+                                        /* You may add your own js here, this is just example  document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);*/
+                                        window.location.href = "{{ url('/transactions/success', $ts->id) }}";
                                     },
                                     // Optional
                                     onPending: function(result){
@@ -112,7 +113,7 @@
                                             $('#confirmDeleteModal').on('show.bs.modal', function(event) {
                                                 var button = $(event.relatedTarget);
                                                 var userId = button.data('id');
-                                                var deleteUrl = "{{ url('transaction/delete') }}/" + userId;
+                                                var deleteUrl = "{{ url('transactions/delete') }}/" + userId;
 
                                                 $('#confirmDeleteButton').off('click').on('click', function() {
                                                     window.location.href = deleteUrl;

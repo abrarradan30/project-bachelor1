@@ -56,12 +56,20 @@ class TransactionController extends Controller
     return view('admin.transaksi.index', compact('transactions'));
     }
 
+    public function success(string $id)
+    {
+        $trasanction->status = 'success';
+        $transaction->save();
+
+        return view('admin.transaksi.index',  compact('transaction'));
+    }
+
     public function destroy(string $id)
     {
         //
         DB::table('transaction')->where('id', $id)->delete();
 
-        return redirect('admin/transaction');
+        return redirect('transaksi');
     }
 
 }

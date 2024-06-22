@@ -60,7 +60,7 @@ Route::middleware(['peran:admin-siswa-mentor'])->group(function () {
     // route checkout
     Route::get('/checkout/show/{id}', [CheckoutController::class, 'show']);
     Route::get('/checkout/{id}', [CheckoutController::class, 'show'])->name('checkout.show');
-    Route::post('/checkout', [CheckoutController::class, 'process'])->name("checkout-process");
+    Route::post('/transactions', [CheckoutController::class, 'process'])->name("checkout-process");
     Route::get('/checkout/success/{transaction}', [CheckoutController::class, 'success'])->name('checkout.success');
     Route::get('/checkout/pending/{transaction}', [CheckoutController::class, 'pending'])->name('checkout.pending');
 

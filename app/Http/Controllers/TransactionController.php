@@ -69,7 +69,7 @@ class TransactionController extends Controller
         //
         DB::table('transaction')->where('id', $id)->delete();
 
-        return redirect('transaksi');
+        return redirect('transactions');
     }
 
 }

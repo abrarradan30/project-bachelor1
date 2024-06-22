@@ -90,7 +90,7 @@
     </div>
     <div class="card-header py-3">
         <a href="{{ url('forum_diskusi') }}">
-        <button class="btn btn-sm btn-danger">Kembali</button>
+        <button class="btn btn-sm btn-secondary">Kembali</button>
         </a>
     </div>
 </div>

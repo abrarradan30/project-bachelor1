@@ -38,10 +38,9 @@ class CheckoutController extends Controller
 
         $hargaMateri = $materi->harga;
 
-        if (strpos(auth()->user()->email, '@mhs.stiki.ac.id') !== false || strpos(auth()->user()->email, '@stiki.ac.id') !== false) {
-            $hargaMateri = 1;
-        } elseif (isset($data['voucher']) && $data['voucher'] === 'LMSHEMAT') {
-            $hargaMateri *= 0.5; // diskon 50%
+        // voucher diskon 50%
+        if (isset($data['voucher']) && $data['voucher'] === 'LMSHEMAT') {
+            $hargaMateri *= 0.5; 
         }
 
         $transaction = Transaction::create([
@@ -76,9 +75,14 @@ class CheckoutController extends Controller
         $transaction->snap_token = $snapToken;
         $transaction->save();
 
-        //return redirect()->route('checkout', $transaction->id);
-        //return redirect()->route('admin.transaksi.index');
-        return redirect()->route('admin.transaksi.detail', ['id' => $transaction->id]);
+        $transactions = Transaction::leftJoin('users', 'transaction.users_id', '=', 'users.id')
+            ->leftJoin('materi', 'transaction.product_id', '=', 'materi.id')
+            ->select('transaction.*', 'users.name', 'materi.judul')
+            ->orderBy('transaction.created_at', 'desc')
+            ->get();
+
+        //return redirect()->route('admin.transaksi.detail', ['id' => $transaction->id]);
+        return view('admin.transaksi.index', compact('transactions'));
     }
 
     public function checkout(Transaction $transaction)

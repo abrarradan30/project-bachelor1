@@ -112,8 +112,8 @@
                                         $(document).ready(function() {
                                             $('#confirmDeleteModal').on('show.bs.modal', function(event) {
                                                 var button = $(event.relatedTarget);
-                                                var userId = button.data('id');
-                                                var deleteUrl = "{{ url('transactions/delete') }}/" + userId;
+                                                var transactionId = button.data('id');
+                                                var deleteUrl = "{{ url('transactions/delete') }}/" + transactionId;
 
                                                 $('#confirmDeleteButton').off('click').on('click', function() {
                                                     window.location.href = deleteUrl;

@@ -84,7 +84,7 @@
                             };
                             </script>
                         </td>
-                        <td>
+                        <!-- <td>
                         <form action="#" method="POST">
                                     <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDeleteModal" data-id="{{ $ts->id }}">Hapus</button>
 
@@ -123,7 +123,7 @@
                                     </script>
 
                             </form>
-                        </td>
+                        </td> -->
                     </tr>
                     @php
                         $no++;

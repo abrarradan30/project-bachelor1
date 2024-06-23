@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Materi;
 use App\Models\Transaction;
+use App\Models\ProgresBelajar;
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 use DB;
 
 class CheckoutController extends Controller
@@ -82,6 +84,7 @@ class CheckoutController extends Controller
             ->get();
 
         //return redirect()->route('admin.transaksi.detail', ['id' => $transaction->id]);
+        Alert::success('Checkout', 'Segera lakukan transaksi pembayaran dalam waktu kurang dari 5 menit');
         return view('admin.transaksi.index', compact('transactions'));
     }
 
@@ -91,5 +94,25 @@ class CheckoutController extends Controller
         $product = collect($products)->firstWhere('id', $transaction->product_id);
 
         return view('admin.transaksi.index',  compact('transaction', 'product'));
+    }
+
+    public function store(Request $request)
+    {
+        $exists = ProgresBelajar::where('users_id', auth()->user()->id)
+                            ->where('materi_id', $request->materi_id)
+                            ->exists();
+
+        if ($exists) {
+            Alert::info('Materi', 'Materi sudah terambil');
+        } else {
+            ProgresBelajar::create([
+                'users_id' => auth()->user()->id,
+                'materi_id' => $request->materi_id,
+                'progres' => $request->progres, 
+            ]);
+
+            Alert::success('Materi', 'Berhasil mengambil materi');
+        }
+        return redirect('progres_materi');
     }
 }

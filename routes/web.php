@@ -57,12 +57,15 @@ Route::post('/profil/update', [ProfilController::class, 'update']);
 Route::middleware(['peran:admin-siswa-mentor'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('index');
 
-    // route checkout
+    // route checkout user general
     Route::get('/checkout/show/{id}', [CheckoutController::class, 'show']);
     Route::get('/checkout/{id}', [CheckoutController::class, 'show'])->name('checkout.show');
     Route::post('/transactions', [CheckoutController::class, 'process'])->name("checkout-process");
     Route::get('/checkout/success/{transaction}', [CheckoutController::class, 'success'])->name('checkout.success');
     Route::get('/checkout/pending/{transaction}', [CheckoutController::class, 'pending'])->name('checkout.pending');
+
+    // route user stiki
+    Route::post('/progres_materi', [CheckoutController::class, 'store'])->name("ambil_materi");
 
     // route transaction 
     Route::get('/transactions', [TransactionController::class, 'index']);

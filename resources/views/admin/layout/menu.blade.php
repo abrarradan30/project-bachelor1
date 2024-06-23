@@ -113,7 +113,7 @@
     </div>
     @endif
 
-    @if(in_array(Auth::user()->role, ['siswa']))
+    @if(in_array(Auth::user()->role, ['siswa']) && !preg_match('/@(mhs\.stiki\.ac\.id|stiki\.ac\.id)$/i', Auth::user()->email))
     <!-- Nav Item - Materi Saya -->
     <li class="nav-item">
         <a class="nav-link" href="{{ url('transactions') }}">

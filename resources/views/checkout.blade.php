@@ -23,7 +23,7 @@
     </div>
     <div class="card-body">
     @foreach($materi as $m)
-    <form action="{{ route('checkout-process') }}" method="POST">
+    <form action="{{ route('ambil_materi') }}" method="POST">
     {{ csrf_field() }}
             <!-- Input Nama -->
             <div class="form-group">
@@ -36,7 +36,9 @@
                 <input type="text" class="form-control" id="level" name="level" value="{{ $m->level }}" readonly>
             </div>
             <br>
+            <input type="hidden" name="users_id" value="{{ Auth::user()->id }}">
             <input type="hidden" name="materi_id" value="{{ $m->id }}">
+            <input type="hidden" name="progres" value="0">
             <button type="submit" class="btn btn-primary">Ambil Sekarang</button>
     </form>
     @endforeach

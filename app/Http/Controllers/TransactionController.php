@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Materi;
 use App\Models\Transaction;
+use App\Models\ProgresBelajar;
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 use DB;
 
 class TransactionController extends Controller
@@ -46,6 +48,12 @@ class TransactionController extends Controller
         ->orderBy('transaction.created_at', 'desc')
         ->get();
 
+    // Delete transactions older than 1 minutes
+    $expiredTransactions = Transaction::where('created_at', '<', now()->subMinutes(1))->get();
+    foreach ($expiredTransactions as $transaction) {
+        $transaction->delete();
+    }
+
     //If additional transformation is needed, it can be done here
     $transactions->transform(function ($transaction, $key) {
         // Add any additional processing here if needed
@@ -58,12 +66,38 @@ class TransactionController extends Controller
 
     public function success(string $id)
     {
-        $trasanction->status = 'success';
+        // Temukan transaksi berdasarkan ID
+        $transaction = Transaction::find($id);
+        if (!$transaction) {
+            return redirect()->back()->with('error', 'Transaksi tidak ditemukan.');
+        }
+
+        // Update status tabel transaksi 
+        $transaction->status = 'success';
         $transaction->save();
 
-        return view('admin.transaksi.index',  compact('transaction'));
+        // Cek apakah progres belajar sudah ada
+        $progresBelajar = ProgresBelajar::where('users_id', auth()->user()->id)
+                            ->where('materi_id', $transaction->product_id)
+                            ->first();
+
+        if (!$progresBelajar) {
+            // Menambahkan progres belajar jika belum ada
+            ProgresBelajar::create([
+                'users_id' => auth()->user()->id,
+                'materi_id' => $transaction->product_id,
+                'progres' => 0,  
+            ]);
+
+            Alert::success('Materi', 'Berhasil mengambil materi');
+        } else {
+            Alert::success('Materi', 'Materi sudah terambil');
+        }
+
+        return redirect('progres_materi');
     }
 
+    /*
     public function destroy(string $id)
     {
         //
@@ -71,5 +105,5 @@ class TransactionController extends Controller
 
         return redirect('transactions');
     }
-
+    */
 }

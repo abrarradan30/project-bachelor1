@@ -48,8 +48,8 @@ class TransactionController extends Controller
         ->orderBy('transaction.created_at', 'desc')
         ->get();
 
-    // Delete transactions older than 1 minutes
-    $expiredTransactions = Transaction::where('created_at', '<', now()->subMinutes(1))->get();
+    // Delete transactions older than 5 minutes
+    $expiredTransactions = Transaction::where('created_at', '<', now()->subMinutes(5))->get();
     foreach ($expiredTransactions as $transaction) {
         $transaction->delete();
     }

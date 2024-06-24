@@ -26,7 +26,7 @@
                         <th>Harga</th>
                         <th>Status</th>
                         <th>Tanggal</th>
-                        <th colspan="2">Aksi</th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tfoot>
@@ -37,7 +37,7 @@
                         <th>Harga</th>
                         <th>Status</th>
                         <th>Tanggal</th>
-                        <th colspan="2">Aksi</th>
+                        <th>Aksi</th>
                     </tr>
                 </tfoot>
                 <tbody>
@@ -61,6 +61,7 @@
                         </td>
                         <td>{{ $ts->created_at }}</td>
                         <td>
+                        @if($ts->status == 'pending')
                             <button type="button" class="btn btn-primary btn-sm" id="pay-button">Bayar</button>
                             <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ env('MIDTRANS_CLIENT_KEY') }}"></script>
                             <script type="text/javascript">
@@ -83,47 +84,10 @@
                                 });
                             };
                             </script>
+                        @else
+                            <span class="btn btn-info btn-sm" style="pointer-events: none;">Selesai</span>
+                        @endif
                         </td>
-                        <!-- <td>
-                        <form action="#" method="POST">
-                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDeleteModal" data-id="{{ $ts->id }}">Hapus</button>
-
-                                    <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="confirmDeleteModalLabel">Konfirmasi Hapus Data</h5>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    Apakah Anda yakin ingin menghapus data ?
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                                                    <button type="button" class="btn btn-danger" id="confirmDeleteButton">Hapus</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <script>
-                                        $(document).ready(function() {
-                                            $('#confirmDeleteModal').on('show.bs.modal', function(event) {
-                                                var button = $(event.relatedTarget);
-                                                var transactionId = button.data('id');
-                                                var deleteUrl = "{{ url('transactions/delete') }}/" + transactionId;
-
-                                                $('#confirmDeleteButton').off('click').on('click', function() {
-                                                    window.location.href = deleteUrl;
-                                                });
-                                            });
-                                        });
-                                    </script>
-
-                            </form>
-                        </td> -->
                     </tr>
                     @php
                         $no++;

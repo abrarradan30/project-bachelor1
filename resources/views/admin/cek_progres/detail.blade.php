@@ -25,8 +25,7 @@
                         <th>No</th>
                         <th>Nama</th>
                         <th>Progres</th>
-                        
-                        <th>Aksi</th>
+                        <!-- <th>Aksi</th> -->
                     </tr>
                 </thead>
                 <tfoot>
@@ -34,7 +33,7 @@
                         <th>No</th>
                         <th>Nama</th>
                         <th>Progres</th>
-                        <th>Aksi</th>
+                        <!-- <th>Aksi</th> -->
                     </tr>
                 </tfoot>
                 <tbody>
@@ -46,11 +45,11 @@
                         <td>{{ $no }}</td>
                         <td>{{ $pb->nama }}</td>
                         <td>{{ $pb->progres }} %</td>
-                        <td>
+                        <!-- <td>
                             <form action="#" method="POST">
-                                <!-- <button type="button" class="btn btn-success btn-sm">
+                                <button type="button" class="btn btn-success btn-sm">
                                     <a href="{{ url('progres_belajar/show/' . $pb->id) }}" style="text-decoration: none; color: inherit;">Detail</a>
-                                </button> -->
+                                </button>
                                 <button type="button" class="btn btn-warning btn-sm">
                                     <a href="{{ url('progres_belajar/edit/' . $pb->id) }}" style="text-decoration: none; color: inherit;">Edit</a>
                                 </button>
@@ -58,7 +57,7 @@
                                     <a href="{{ url('progres_belajar/delete/' . $pb->id) }}" style="text-decoration: none; color: inherit;">Hapus</a>
                                 </button>
                             </form>
-                        </td>
+                        </td> -->
                     </tr>
                     @php
                         $no++;

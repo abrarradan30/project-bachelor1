@@ -18,7 +18,7 @@
     @foreach ($sub_judul as $sub)
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Modul {{ $sub }}</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Modul {{ $loop->iteration }}. {{ $sub }}</h6>
         </div>
         <div class="card-body" style="display: none;">
             <div class="form-group">
@@ -73,10 +73,10 @@
                     terdapat beberapa pertanyaan yang harus dikerjakan dalam kuis ini.
                 </p>
                 <p>
-                    Syarat skor lulus = 75%, Jika gagal, maka Anda harus mmengulang pengerjaan kuis kembali.
+                    Syarat skor "Lulus" >= 60 %, Jika status <b>gagal</b>, maka Anda harus mmengulang pengerjaan kuis kembali.
                 </p>
                 <p>Skor anda : <span id="quiz-score">0 %</span></p>
-                <p>Status : Gagal</p>
+                <p>Status : <b>Gagal</b> </p>
 
                 @foreach($modul as $md)
                 <a href="{{ url('soal_kuis/show/'.$md->id) }}" class="btn btn-info btn-sm">

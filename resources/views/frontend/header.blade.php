@@ -79,7 +79,11 @@
         <a href="{{ route('register') }}" class="get-started-btn2">Register</a>
       @endif
       @else
-        <a href="{{ url('dashboard') }}" class="get-started-btn">Dashboard</a>
+        @if (Auth::user()->role === 'siswa')
+          <a href="{{ url('progres_materi') }}" class="get-started-btn">Dashboard</a>
+        @else
+          <a href="{{ url('dashboard') }}" class="get-started-btn">Dashboard</a>
+        @endif  
       @endguest
 
     </div>

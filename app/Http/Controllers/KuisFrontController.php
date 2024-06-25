@@ -58,23 +58,19 @@ class KuisFrontController extends Controller
         // koreksi jawaban
         $correct_answers = 0;
         foreach ($kuis as $index => $soal) {
-            $user_answer = $request->input('q' . ($index + 1));
-        // Ambil kunci jawaban dari soal
-        $correct_key = $soal->kunci;
+            $user_answer = $request->input('q' . $soal->id);
+        
+            // Ambil kunci jawaban dari soal
+            $correct_answer = $soal->kunci;
 
-        // Ambil jawaban yang benar berdasarkan kunci
-        $correct_answer = $soal->$correct_key;
-
-        // Ubah pengecekan jawaban benar berdasarkan kemiripan dengan kunci
-        if (stripos($soal->a, $correct_answer) !== false ||
-            stripos($soal->b, $correct_answer) !== false ||
-            stripos($soal->c, $correct_answer) !== false ||
-            stripos($soal->d, $correct_answer) !== false) {
-            $correct_answers += 5; // Setiap jawaban benar bernilai 5 poin
-        } else {
-            $correct_answers += 0; // Jawaban salah bernilai 0 poin
+            // Koreksi jawaban dengan LIKE
+            if (stripos($soal->$user_answer, $correct_answer) !== false) {
+                $correct_answers += 5; // Setiap jawaban benar bernilai 5 poin
+            } else {
+                $correct_answers += 0; // Jawaban salah bernilai 0 poin
+            }
         }
-        }
+        
         // Hitung skor
         $score = (($correct_answers / 5) / $total_questions) * 100;
 

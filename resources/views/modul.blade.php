@@ -75,8 +75,19 @@
                 <p>
                     Syarat skor "Lulus" >= 60 %, Jika status <b>gagal</b>, maka Anda harus mmengulang pengerjaan kuis kembali.
                 </p>
-                <p>Skor anda : <span id="quiz-score">0 %</span></p>
-                <p>Status : <b>Gagal</b> </p>
+                <hr>
+                @php
+                $skor = 0;
+                $status = 'Gagal';
+                if ($skor_akhir && $skor_akhir->skor >= 60) {
+                    $skor = $skor_akhir->skor;
+                    $status = 'Lulus';
+                } elseif ($skor_akhir) {
+                    $skor = $skor_akhir->skor;
+                }
+                @endphp
+                <p>Skor anda : <span id="quiz-score">{{ $skor }} %</span></p>
+                <p>Status : <b>{{ $status }}</b> </p>
 
                 @foreach($modul as $md)
                 <a href="{{ url('soal_kuis/show/'.$md->id) }}" class="btn btn-info btn-sm">

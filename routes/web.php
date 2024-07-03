@@ -49,13 +49,14 @@ use Illuminate\Support\Facades\Auth;
 //     return view('welcome');
 // });
 
-Route::get('/profil', [ProfilController::class, 'index']);
-Route::get('/profil/edit/{id}', [ProfilController::class, 'edit']);
-Route::post('/profil/update', [ProfilController::class, 'update']);
-
 // peran admin, siswa dan mentor
 Route::middleware(['peran:admin-siswa-mentor'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('index');
+
+    // route profil
+    Route::get('/profil', [ProfilController::class, 'index']);
+    Route::get('/profil/edit/{id}', [ProfilController::class, 'edit']);
+    Route::post('/profil/update', [ProfilController::class, 'update']);
 
     // route checkout user general
     Route::get('/checkout/show/{id}', [CheckoutController::class, 'show']);
@@ -72,12 +73,23 @@ Route::middleware(['peran:admin-siswa-mentor'])->group(function () {
     Route::get('/transactions/success/{id}', [TransactionController::class, 'success']);
     Route::get('/transactions/delete/{id}', [TransactionController::class, 'destroy']); 
 
+    // route progres_materi
+    Route::get('/progres_materi', [ProgresMateriController::class, 'index']);
+    Route::get('/progres_materi/show/{id}', [ProgresMateriController::class, 'show']);
+
     // route modul
     Route::get('/modul', [ModulController::class, 'index']);
     Route::get('/modul/show/{id}', [ModulController::class, 'show']);
 
-    // route progres belajar
-    
+    // route mengerjakan kuis
+    Route::get('/soal_kuis', [KuisFrontController::class, 'index']);
+    Route::get('/soal_kuis/show/{id}', [KuisFrontController::class, 'show']);
+    Route::post('/kuis_front/store', [KuisFrontController::class, 'store']);
+
+    // route rating front
+    Route::get('/ratingfe', [RatingFrontController::class, 'index']);
+    Route::get('/ratingfe/create/{id}', [RatingFrontController::class, 'create']);
+    Route::post('/ratingfe/store', [RatingFrontController::class, 'store']);
 
     // route forum 
     Route::get('/forum', [ForumController::class, 'index']);
@@ -85,6 +97,13 @@ Route::middleware(['peran:admin-siswa-mentor'])->group(function () {
     Route::post('/forum/store', [ForumController::class, 'store']);
     Route::post('/forum_balas/store_balas', [ForumController::class, 'store_balas']);
     Route::post('/forum/update/{id}', [ForumController::class, 'update']);
+
+    // route buat sertifikat
+    Route::get('/input_sertifikat', [InputSertifikatController::class, 'index']);
+    Route::get('/input_sertifikat/create/{id}', [InputSertifikatController::class, 'create']);
+    Route::post('/input_sertifikat/store', [InputSertifikatController::class, 'store']);
+    Route::get('/input_sertifikat/show/{id}', [InputSertifikatController::class, 'show']);
+    Route::post('input_sertifikat/store/{id}', [FillSertifikatController::class, 'process']);
 
     //Route Sertifikat PDF
     Route::get('/cetak/{id}', [FillPDFController::class, 'process']);
@@ -217,30 +236,8 @@ Route::get('/course_detail/show/{id}', [CourseDetailController::class, 'show']);
 Route::get('/contact', [ContactController::class, 'index']);
 Route::post('/contact/store', [ContactController::class, 'store']);
 
-// route progres_materi
-Route::get('/progres_materi', [ProgresMateriController::class, 'index']);
-Route::get('/progres_materi/show/{id}', [ProgresMateriController::class, 'show']);
-
-// route modul
+// route progres
 Route::post('/update-progres', [ModulController::class, 'updateProgres']);
-
-// route mengerjakan kuis
-Route::get('/soal_kuis', [KuisFrontController::class, 'index']);
-Route::get('/soal_kuis/show/{id}', [KuisFrontController::class, 'show']);
-
-Route::post('/kuis_front/store', [KuisFrontController::class, 'store']);
-
-// route rating front
-Route::get('/ratingfe', [RatingFrontController::class, 'index']);
-Route::get('/ratingfe/create/{id}', [RatingFrontController::class, 'create']);
-Route::post('/ratingfe/store', [RatingFrontController::class, 'store']);
-
-// route buat sertifikat
-Route::get('/input_sertifikat', [InputSertifikatController::class, 'index']);
-Route::get('/input_sertifikat/create/{id}', [InputSertifikatController::class, 'create']);
-Route::post('/input_sertifikat/store', [InputSertifikatController::class, 'store']);
-Route::get('/input_sertifikat/show/{id}', [InputSertifikatController::class, 'show']);
-Route::post('input_sertifikat/store/{id}', [FillSertifikatController::class, 'process']);
 
 Route::get('/acces_denied', function () {
     return view('/acces_denied');

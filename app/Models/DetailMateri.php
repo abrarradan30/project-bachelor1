@@ -16,4 +16,7 @@ class DetailMateri extends Model
     public function materi() {
         return $this->belongsTo(Materi::class);
     }
+    public function progres_belajar() {
+        return $this->belongsTo(ProgresBelajar::class);
+    }
 }

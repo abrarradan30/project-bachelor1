@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->integer('users_id');
             $table->integer('materi_id');
-            $table->integer('progres')->default(0);
+            $table->integer('modul_id')->nullable();
+            $table->decimal('progres', 5, 1)->default(0);
             $table->dateTime('created_at')->useCurrent();
             $table->dateTime('updated_at')->nullable()->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });

@@ -237,7 +237,9 @@ Route::get('/contact', [ContactController::class, 'index']);
 Route::post('/contact/store', [ContactController::class, 'store']);
 
 // route progres
-Route::post('/update-progres', [ModulController::class, 'updateProgres']);
+//Route::post('/update-progres', [ModulController::class, 'updateProgres']);
+Route::post('/update-progres', [ModulController::class, 'updateProgres'])->name('update.progres');
+
 
 Route::get('/acces_denied', function () {
     return view('/acces_denied');

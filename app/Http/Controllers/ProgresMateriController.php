@@ -24,14 +24,28 @@ class ProgresMateriController extends Controller
             ->get();
 
         $user_id = auth()->id();
-
-        $ar_progres_materi = ProgresBelajar::join('users', 'progres_belajar.users_id', '=', 'users.id')
+        
+        $ar_progres_materi = DB::table('progres_belajar')
+            ->join('users', 'progres_belajar.users_id', '=', 'users.id')
             ->join('materi', 'progres_belajar.materi_id', '=', 'materi.id')
-            ->select('progres_belajar.*', 'users.name as nama', 'materi.judul')
+            ->select(
+                'progres_belajar.users_id',
+                'progres_belajar.materi_id',
+                'users.name as nama',
+                'materi.judul',
+                DB::raw('SUM(progres_belajar.progres) as total_progres')
+            )
             ->where('progres_belajar.users_id', $user_id)
-            ->get(); 
+            ->groupBy('progres_belajar.users_id', 'progres_belajar.materi_id', 'users.name', 'materi.judul')
+            ->get();
 
-        return view('admin.progres_materi.index', compact('progres_materi', 'user_id', 'materi', 'ar_progres_materi'));
+        $user_id = auth()->user();
+        $total_progres = DB::table('progres_belajar')
+            ->where('users_id', $user_id)
+            ->where('materi_id',)
+            ->sum('progres');
+
+        return view('admin.progres_materi.index', compact('progres_materi', 'user_id', 'materi', 'ar_progres_materi', 'total_progres'));
     }
 
     /**

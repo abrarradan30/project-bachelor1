@@ -44,11 +44,11 @@
                             </div>
                             <div class="row no-gutters align-items-center">
                                 <div class="col-auto">
-                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ $ar_pm->progres }}%</div>
+                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ min(floor($ar_pm->total_progres), 100) }}%</div>
                                 </div>
                                 <div class="col">
                                     <div class="progress progress-sm mr-2">
-                                        <div class="progress-bar bg-success" role="progressbar" style="width: {{ $ar_pm->progres }}%" aria-valuenow="{{ $ar_pm->progres }}" aria-valuemin="0" aria-valuemax="100"></div>
+                                        <div class="progress-bar bg-success" role="progressbar" style="width: {{ $ar_pm->total_progres }}%" aria-valuenow="{{ $ar_pm->total_progres }}" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
                             </div>
@@ -59,12 +59,18 @@
                     </div>
                     <div class="row mt-3">
                         <div class="ml-auto">
+                            @if($total_progres >= 100)
                             <a href="{{ url('modul/show/'.$ar_pm->materi_id) }}" class="btn btn-primary btn-sm">
                                 Lanjutkan &nbsp; <i class="fa fa-chevron-circle-right"></i>
                             </a>
                             <a href="{{ url('input_sertifikat/create/'.$ar_pm->materi_id) }}" class="btn btn-warning btn-sm ml-2">
                                 Sertifikat &nbsp; <i class="fa fa-certificate"></i>
                             </a>
+                            @else
+                            <a href="{{ url('modul/show/'.$ar_pm->materi_id) }}" class="btn btn-primary btn-sm">
+                                Lanjutkan &nbsp; <i class="fa fa-chevron-circle-right"></i>
+                            </a>
+                            @endif
                         </div>
                     </div>
                 </div>

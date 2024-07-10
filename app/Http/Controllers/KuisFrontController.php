@@ -81,7 +81,8 @@ class KuisFrontController extends Controller
         ]);
 
         Alert::success('Kuis', 'Selesai mengerjakan kuis');
-        return redirect('progres_materi');
+        //return redirect('progres_materi');
+        return redirect()->route('modul.show', ['id' => $modul_id]);
     }
 
     /**

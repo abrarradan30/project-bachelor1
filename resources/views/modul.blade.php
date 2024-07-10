@@ -23,38 +23,18 @@
         <div class="card-body" style="display: none;">
             <div class="form-group">
                 <p>{!! $isi_materi[$sub] !!}</p>
-            </div>
-
-            <div class="form-group">
-                <a href="#" class="btn btn-secondary btn-sm lanjut-btn" data-modul="{{ $sub }}" data-toggle="modal" data-target="#confirmationModal">
-                    Lanjut &nbsp; <i class="fa fa-chevron-circle-right"></i>
-                </a>
-                <a href="{{ url('#') }}" class="btn btn-success btn-sm" style="display: none;">
-                    Selesai <i class="fa fa-check-circle"></i>
-                </a>
-            </div>
-        </div>
-
-        <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="confirmationModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="confirmationModalLabel">Konfirmasi</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <h4>Sudah memahami modul ?</h4>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Belum</button>
-                        <button type="button" class="btn btn-success confirm-sudah-btn">Sudah</button>
-                    </div>
-                </div>
+                @if(isset($progres_materi[$sub]) && $progres_materi[$sub])
+                    <button type="button" class="btn btn-success btn-sm selesai-btn" style="pointer-events: none;">Selesai <i class="fa fa-check-circle"></i></button>
+                @else
+                    <form action="{{ route('update.progres') }}" method="POST" class="progres-form">
+                        @csrf
+                        <input type="hidden" name="materi_id" value="{{ $modul[0]->materi_id }}">
+                        <input type="hidden" name="modul_id" value="{{ $id_materi[$sub] }}">
+                        <button type="submit" class="btn btn-secondary btn-sm lanjut-btn">Lanjut &nbsp; <i class="fa fa-chevron-circle-right"></i></button>
+                    </form>
+                @endif
             </div>
         </div>
-
         <div class="card-header py-2">
             <i class="fa fa-chevron-circle-down fa-2x chevron-down" style="cursor: pointer;"></i>
             <i class="fa fa-chevron-circle-up fa-2x chevron-up" style="cursor: pointer; display: none;"></i>
@@ -90,14 +70,21 @@
                 <p>Status : <b>{{ $status }}</b> </p>
 
                 @foreach($modul as $md)
-                <a href="{{ url('soal_kuis/show/'.$md->id) }}" class="btn btn-info btn-sm">
-                    Mulai Kuis &nbsp; <i class="fa fa-list"></i>
-                </a>
+                    @if($total_progres >= 100)
+                    <a href="{{ url('soal_kuis/show/'.$md->id) }}" class="btn btn-info btn-sm">
+                        Mulai Kuis &nbsp; <i class="fa fa-list"></i>
+                    </a>
 
-                <a href="{{ url('ratingfe/create/'.$md->id) }}" class="btn btn-warning btn-sm">
-                    Rating <i class="fa fa-star"></i>
-                </a>
+                    <a href="{{ url('ratingfe/create/'.$md->id) }}" class="btn btn-warning btn-sm">
+                        Rating <i class="fa fa-star"></i>
+                    </a>
+                    @else
+                    <a href="javascript:void(0)" class="btn btn-info btn-sm" onclick="alert('Selesaikan semua modul materi yang tersedia')">
+                        Mulai Kuis &nbsp; <i class="fa fa-list"></i>
+                    </a>
+                    @endif
                 @endforeach
+
             </div>
 
             <div class="form-group">
@@ -138,20 +125,6 @@
                 chevronUp.style.display = 'none';
                 chevronDown.style.display = 'inline';
             });
-        });
-    });
-</script>
-
-<script>
-    $(document).ready(function() {
-        $('#confirmationModal').on('show.bs.modal', function(event) {
-            var button = $(event.relatedTarget); 
-            var modal = $(this);
-        });
-
-        $('#confirmationModal .btn-primary').click(function() {
-            console.log("User confirmed they understand the module");
-            $('#confirmationModal').modal('hide');
         });
     });
 </script>

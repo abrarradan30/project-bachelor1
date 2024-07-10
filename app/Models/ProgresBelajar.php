@@ -10,7 +10,7 @@ class ProgresBelajar extends Model
     use HasFactory;
     protected $table = 'progres_belajar'; 
     protected $primaryKey = 'id';
-    protected $fillable = ['users_id', 'materi_id', 'progres'];
+    protected $fillable = ['users_id', 'materi_id', 'modul_id', 'progres'];
 
     // Relasi many-to-one dengan model User
     public function user() {
@@ -19,5 +19,9 @@ class ProgresBelajar extends Model
     // Relasi one-to-one dengan model Materi
     public function materi() {
         return $this->belongsTo(Materi::class);
+    }
+    // Relasi many-to-one dengan model User
+    public function detail_materi() {
+        return $this->belongsTo(DetailMateri::class);
     }
 }

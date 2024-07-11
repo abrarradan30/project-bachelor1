@@ -70,18 +70,39 @@
                 <p>Status : <b>{{ $status }}</b> </p>
 
                 @foreach($modul as $md)
-                    @if($total_progres >= 100)
-                    <a href="{{ url('soal_kuis/show/'.$md->id) }}" class="btn btn-info btn-sm">
-                        Mulai Kuis &nbsp; <i class="fa fa-list"></i>
-                    </a>
-
-                    <a href="{{ url('ratingfe/create/'.$md->id) }}" class="btn btn-warning btn-sm">
-                        Rating <i class="fa fa-star"></i>
-                    </a>
+                    @if($status === 'Lulus')
+                        <a href="{{ url('ratingfe/create/'.$md->id) }}" class="btn btn-warning btn-sm">
+                            Rating <i class="fa fa-star"></i>
+                        </a>
                     @else
-                    <a href="javascript:void(0)" class="btn btn-info btn-sm" onclick="alert('Selesaikan semua modul materi yang tersedia')">
-                        Mulai Kuis &nbsp; <i class="fa fa-list"></i>
-                    </a>
+                        @if($total_progres >= 100)
+                            <a href="{{ url('soal_kuis/show/'.$md->id) }}" class="btn btn-info btn-sm">
+                                Mulai Kuis &nbsp; <i class="fa fa-list"></i>
+                            </a>
+                        @else
+                            <a href="javascript:void(0)" class="btn btn-info btn-sm" data-toggle="modal" data-target="#alertModal">
+                                Mulai Kuis &nbsp; <i class="fa fa-list"></i>
+                            </a>
+                            <!-- Modal -->
+                            <div class="modal fade" id="alertModal" tabindex="-1" role="dialog" aria-labelledby="alertModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="alertModalLabel">Pemberitahuan</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <b>Selesaikan semua modul materi yang tersedia !</b> agar dapat memulai kuis.
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                </div>
+                                </div>
+                            </div>
+                            </div>
+                        @endif
                     @endif
                 @endforeach
 

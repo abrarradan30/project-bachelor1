@@ -131,11 +131,10 @@ class ModulController extends Controller
             ['progres' => $overallProgress]
         );
     
-        return response()->json(['success' => true, 'message' => 'Progress updated successfully.']);
+        // return response()->json(['success' => true, 'message' => 'Progress updated successfully.']);
 
-        // Alert::success('Progres Belajar', 'Modul telah dipahami');
-
-        // return back();
+        Alert::success('Modul', 'Modul telah dipahami');
+        return redirect()->back();
     }
     
     /** 

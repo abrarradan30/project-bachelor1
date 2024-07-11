@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\ProgresBelajar;
 use App\Models\User;
 use App\Models\Materi;
+use App\Models\HasilKuis;
 use DB;
 
 class ProgresMateriController extends Controller
@@ -28,24 +29,23 @@ class ProgresMateriController extends Controller
         $ar_progres_materi = DB::table('progres_belajar')
             ->join('users', 'progres_belajar.users_id', '=', 'users.id')
             ->join('materi', 'progres_belajar.materi_id', '=', 'materi.id')
+            ->leftJoin('hasil_kuis', function ($join) {
+                $join->on('progres_belajar.users_id', '=', 'hasil_kuis.users_id')
+                ->on('progres_belajar.materi_id', '=', 'hasil_kuis.materi_id');
+            })
             ->select(
                 'progres_belajar.users_id',
                 'progres_belajar.materi_id',
                 'users.name as nama',
                 'materi.judul',
-                DB::raw('SUM(progres_belajar.progres) as total_progres')
+                DB::raw('SUM(progres_belajar.progres) as total_progres'),
+                DB::raw('MAX(hasil_kuis.skor) as skor_akhir') // Ambil skor_akhir terbaru
             )
             ->where('progres_belajar.users_id', $user_id)
             ->groupBy('progres_belajar.users_id', 'progres_belajar.materi_id', 'users.name', 'materi.judul')
             ->get();
 
-        $user_id = auth()->user();
-        $total_progres = DB::table('progres_belajar')
-            ->where('users_id', $user_id)
-            ->where('materi_id',)
-            ->sum('progres');
-
-        return view('admin.progres_materi.index', compact('progres_materi', 'user_id', 'materi', 'ar_progres_materi', 'total_progres'));
+        return view('admin.progres_materi.index', compact('progres_materi', 'user_id', 'materi', 'ar_progres_materi'));
     }
 
     /**

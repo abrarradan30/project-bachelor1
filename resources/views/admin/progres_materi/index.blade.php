@@ -44,7 +44,7 @@
                             </div>
                             <div class="row no-gutters align-items-center">
                                 <div class="col-auto">
-                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ min(floor($ar_pm->total_progres), 100) }}%</div>
+                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ min(floor($ar_pm->total_progres), 100) }} %</div>
                                 </div>
                                 <div class="col">
                                     <div class="progress progress-sm mr-2">
@@ -59,11 +59,11 @@
                     </div>
                     <div class="row mt-3">
                         <div class="ml-auto">
-                            @if($total_progres >= 100)
+                            @if($ar_pm->total_progres >= 100 && $ar_pm->skor_akhir >= 60)
                             <a href="{{ url('modul/show/'.$ar_pm->materi_id) }}" class="btn btn-primary btn-sm">
                                 Lanjutkan &nbsp; <i class="fa fa-chevron-circle-right"></i>
                             </a>
-                            <a href="{{ url('input_sertifikat/create/'.$ar_pm->materi_id) }}" class="btn btn-warning btn-sm ml-2">
+                            <a href="{{ url('input_sertifikat/create/'.$ar_pm->materi_id) }}" class="btn btn-warning btn-sm ml-2" target="_blank">
                                 Sertifikat &nbsp; <i class="fa fa-certificate"></i>
                             </a>
                             @else

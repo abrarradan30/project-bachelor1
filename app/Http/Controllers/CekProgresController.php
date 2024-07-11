@@ -51,11 +51,28 @@ class CekProgresController extends Controller
     public function show($id)
     {
         //
-        $progres_belajar = ProgresBelajar::join('users', 'progres_belajar.users_id', '=', 'users.id')
+        // $progres_belajar = ProgresBelajar::join('users', 'progres_belajar.users_id', '=', 'users.id')
+        //     ->join('materi', 'progres_belajar.materi_id', '=', 'materi.id')
+        //     ->select('progres_belajar.*', 'users.name as nama', 'materi.judul as judul_materi')
+        //     ->where('progres_belajar.materi_id', $id)
+        //     ->get();
+        
+        $progres_belajar = DB::table('progres_belajar')
+            ->join('users', 'progres_belajar.users_id', '=', 'users.id')
             ->join('materi', 'progres_belajar.materi_id', '=', 'materi.id')
-            ->select('progres_belajar.*', 'users.name as nama', 'materi.judul as judul_materi')
-            ->where('progres_belajar.materi_id', $id)
+            ->join('detail_materi', 'progres_belajar.modul_id', '=', 'detail_materi.id')
+            ->select(
+                'progres_belajar.users_id',
+                'progres_belajar.materi_id',
+                'users.name as nama',
+                'materi.judul',
+                DB::raw('GROUP_CONCAT(detail_materi.modul ORDER BY detail_materi.modul SEPARATOR ", ") as modul'),
+                DB::raw('SUM(progres_belajar.progres) as total_progres')
+            )
+            ->where('progres_belajar.users_id', $id)
+            ->groupBy('progres_belajar.users_id', 'progres_belajar.materi_id', 'users.name', 'materi.judul')
             ->get();
+    
         
         $progres_belajar2 = ProgresBelajar::join('users', 'progres_belajar.users_id', '=', 'users.id')
             ->join('materi', 'progres_belajar.materi_id', '=', 'materi.id')

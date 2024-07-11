@@ -25,7 +25,7 @@
                         <th>No</th>
                         <th>Nama</th>
                         <th>Progres</th>
-                        <!-- <th>Aksi</th> -->
+                        <th>Modul</th>
                     </tr>
                 </thead>
                 <tfoot>
@@ -33,7 +33,7 @@
                         <th>No</th>
                         <th>Nama</th>
                         <th>Progres</th>
-                        <!-- <th>Aksi</th> -->
+                        <th>Modul</th>
                     </tr>
                 </tfoot>
                 <tbody>
@@ -44,20 +44,8 @@
                     <tr>
                         <td>{{ $no }}</td>
                         <td>{{ $pb->nama }}</td>
-                        <td>{{ $pb->progres }} %</td>
-                        <!-- <td>
-                            <form action="#" method="POST">
-                                <button type="button" class="btn btn-success btn-sm">
-                                    <a href="{{ url('progres_belajar/show/' . $pb->id) }}" style="text-decoration: none; color: inherit;">Detail</a>
-                                </button>
-                                <button type="button" class="btn btn-warning btn-sm">
-                                    <a href="{{ url('progres_belajar/edit/' . $pb->id) }}" style="text-decoration: none; color: inherit;">Edit</a>
-                                </button>
-                                <button type="button" class="btn btn-danger btn-sm">
-                                    <a href="{{ url('progres_belajar/delete/' . $pb->id) }}" style="text-decoration: none; color: inherit;">Hapus</a>
-                                </button>
-                            </form>
-                        </td> -->
+                        <td>{{ min(floor($pb->total_progres), 100) }} %</td>
+                        <td>{{ $pb->modul }} </td>
                     </tr>
                     @php
                         $no++;

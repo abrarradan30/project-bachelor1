@@ -80,9 +80,9 @@ class KuisFrontController extends Controller
             'skor'         => $score,
         ]);
 
-        Alert::success('Kuis', 'Selesai mengerjakan kuis');
-        //return redirect('progres_materi');
-        return redirect()->route('modul.show', ['id' => $modul_id]);
+        Alert::success('Kuis', 'Selesai mengerjakan kuis, cek skor/status Anda pada menu kuis');
+
+        return redirect()->route('modul.show', ['id' => $materi_id]);
     }
 
     /**

@@ -80,6 +80,8 @@ Route::middleware(['peran:admin-siswa-mentor'])->group(function () {
     // route modul
     Route::get('/modul', [ModulController::class, 'index']);
     Route::get('/modul/show/{id}', [ModulController::class, 'show']);
+    Route::get('/modul/show/{id}', [ModulController::class, 'show'])->name('modul.show');
+
 
     // route mengerjakan kuis
     Route::get('/soal_kuis', [KuisFrontController::class, 'index']);

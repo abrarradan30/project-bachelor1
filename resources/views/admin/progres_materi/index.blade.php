@@ -29,6 +29,49 @@
             <a href="{{ url('course') }}" style="text-decoration: none; color: inherit;">
                 <b class="text-primary">di sini</b>
             </a>.
+            <br>
+            Panduan mempelajari modul materi, klik disini
+            <a href="#" style="text-decoration: none; color: inherit;" data-toggle="modal" data-target="#alertModul">
+                <b class="text-primary">di sini</b>
+            </a>.
+            <!-- Modal -->
+            <div class="modal fade" id="alertModul" tabindex="-1" role="dialog" aria-labelledby="alertModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="alertModalLabel">Panduan mempelajari modul materi</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>1. Klik <a href="#" class="btn btn-primary btn-sm" style="pointer-events: none;">
+                                Lanjutkan &nbsp; <i class="fa fa-chevron-circle-right"></i>
+                                </a> pada awal tampilan materi yang anda miliki </p>
+                            <p>2. Klik down-up pada tampilan modul materi, untuk melihat isi modul</p>
+                            <p>3. Klik <button type="submit" class="btn btn-secondary btn-sm lanjut-btn" style="pointer-events: none;">Lanjut &nbsp; <i class="fa fa-chevron-circle-right"></i></button>
+                             pada setiap modul (jika modul sudah Anda anggap paham)</p>
+                            <p>4. <button type="button" class="btn btn-success btn-sm selesai-btn" style="pointer-events: none;">Selesai <i class="fa fa-check-circle"></i></button>
+                             akan ditampilkan pada setiap modul yang Anda anggap paham (termasuk progres belajar Anda)</p>
+                            <p>5. Jika progres belajar Anda sudah mencapai 100 %, maka anda dapat mengerjakan kuis pada menu 
+                                <a href="#" class="btn btn-info btn-sm" style="pointer-events: none;">
+                                Mulai Kuis &nbsp; <i class="fa fa-list"></i>
+                            </a></p>
+                            <p>6. Kerjakan kuis hingga mencapai skor yang ditetapkan / "Lulus"</p>
+                            <p>7. Jika "Lulus", silahkan Anda berikan <a href="#" class="btn btn-warning btn-sm" style="pointer-events: none;">
+                                Rating <i class="fa fa-star"></i>
+                                </a>
+                                 yang telah disediakan pada menu kuis</p>
+                            <p>8. Terakhir, Anda bisa mencetak sertifikat penyelesaian materi pada <a href="#" class="btn btn-warning btn-sm ml-2" style="pointer-events: none;">
+                                Sertifikat &nbsp; <i class="fa fa-certificate"></i>
+                            </a></p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </p>
     </div>
 

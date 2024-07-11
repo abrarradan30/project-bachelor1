@@ -28,7 +28,7 @@
                 @else
                     <form action="{{ route('update.progres') }}" method="POST" class="progres-form">
                         @csrf
-                        <input type="hidden" name="materi_id" value="{{ $modul[0]->materi_id }}">
+                        <input type="hidden" name="materi_id" value="{{ $jd->materi_id }}">
                         <input type="hidden" name="modul_id" value="{{ $id_materi[$sub] }}">
                         <button type="submit" class="btn btn-secondary btn-sm lanjut-btn">Lanjut &nbsp; <i class="fa fa-chevron-circle-right"></i></button>
                     </form>

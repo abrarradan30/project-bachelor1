@@ -308,7 +308,18 @@
                             <li class="page-item">
                                 <a class="page-link has-icon" href="javascript:void(0)"><i class="material-icons">>></i></a>
                             </li> -->
-                            {{ $forum_diskusi->links() }}
+                            
+                            @if ($forum_diskusi->onFirstPage())
+                                <span class="btn btn-secondary disabled"><<</span>
+                            @else
+                                <a href="{{ $forum_diskusi->previousPageUrl() }}" class="btn btn-secondary"><<</a>
+                            @endif
+
+                            @if ($forum_diskusi->hasMorePages())
+                                <a href="{{ $forum_diskusi->nextPageUrl() }}" class="btn btn-secondary">>></a>
+                            @else
+                                <span class="btn btn-secondary disabled">>></span>
+                            @endif
                         </ul>
                     </div>
 
@@ -457,7 +468,7 @@
                                     3. Jika diskusi sudah selesai dan mendapatkan solusi yang anda rasa tepat, 
                                     silahkan menekan tombol Selesai pada kolom tersedia.
                                     <br>
-                                    Hal diatas berguna agar tidak membuat bingung yang akan bantu menjawab.
+                                    Hal diatas berguna agar tidak membuat bingung yang akan mem bantu menjawab.
                                     </h6>
                                 </div>
                             </div>

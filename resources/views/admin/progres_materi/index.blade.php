@@ -67,7 +67,7 @@
                             </a></p>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
                         </div>
                     </div>
                 </div>
@@ -104,7 +104,7 @@
                         <div class="ml-auto">
                             @if($ar_pm->total_progres >= 100 && $ar_pm->skor_akhir >= 60)
                             <a href="{{ url('modul/show/'.$ar_pm->materi_id) }}" class="btn btn-primary btn-sm">
-                                Lanjutkan &nbsp; <i class="fa fa-chevron-circle-right"></i>
+                                Modul &nbsp; <i class="fa fa-chevron-circle-right"></i>
                             </a>
                             <a href="{{ url('input_sertifikat/create/'.$ar_pm->materi_id) }}" class="btn btn-warning btn-sm ml-2" target="_blank">
                                 Sertifikat &nbsp; <i class="fa fa-certificate"></i>
@@ -120,6 +120,20 @@
             </div>
         </div>
     @endforeach
+    <div class="col-xl-12 mb-4 text-center">
+        @if ($ar_progres_materi->onFirstPage())
+            <span class="btn btn-secondary disabled"><<</span>
+        @else
+            <a href="{{ $ar_progres_materi->previousPageUrl() }}" class="btn btn-secondary"><<</a>
+        @endif
+
+        @if ($ar_progres_materi->hasMorePages())
+            <a href="{{ $ar_progres_materi->nextPageUrl() }}" class="btn btn-secondary">>></a>
+        @else
+            <span class="btn btn-secondary disabled">>></span>
+        @endif
+    </div>
+
 @endif
 
 </div>

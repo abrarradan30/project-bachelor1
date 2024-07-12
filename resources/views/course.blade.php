@@ -226,17 +226,27 @@
 			</section><!-- End Courses Section -->
 
 			<!-- Pagination -->
-            {{ $ar_materi->links() }}
 
-			<!-- <nav class="mt-4" aria-label="Page navigation sample">
-				<ul class="pagination">
+			<nav class="mt-4" aria-label="Page navigation sample">
+				<!-- <ul class="pagination">
 					<li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
 					<li class="page-item active"><a class="page-link" href="#">1</a></li>
 					<li class="page-item"><a class="page-link" href="#">2</a></li>
 					<li class="page-item"><a class="page-link" href="#">3</a></li>
 					<li class="page-item"><a class="page-link" href="#">Next</a></li>
-				</ul>
-			</nav> -->
+				</ul> -->
+				@if ($ar_materi->onFirstPage())
+            		<span class="btn btn-secondary disabled"><<</span>
+        		@else
+            		<a href="{{ $ar_materi->previousPageUrl() }}" class="btn btn-secondary"><<</a>
+        		@endif
+
+        		@if ($ar_materi->hasMorePages())
+            		<a href="{{ $ar_materi->nextPageUrl() }}" class="btn btn-secondary">>></a>
+        		@else
+            		<span class="btn btn-secondary disabled">>></span>
+        		@endif
+			</nav>
 
 		</main>
 	</div>

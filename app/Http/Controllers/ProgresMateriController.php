@@ -43,7 +43,8 @@ class ProgresMateriController extends Controller
             )
             ->where('progres_belajar.users_id', $user_id)
             ->groupBy('progres_belajar.users_id', 'progres_belajar.materi_id', 'users.name', 'materi.judul')
-            ->get();
+            //->get();
+            ->paginate(3);
 
         return view('admin.progres_materi.index', compact('progres_materi', 'user_id', 'materi', 'ar_progres_materi'));
     }

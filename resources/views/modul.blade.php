@@ -97,7 +97,7 @@
                                     <b>Selesaikan semua modul materi yang tersedia !</b> agar dapat memulai kuis.
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
                                 </div>
                                 </div>
                             </div>

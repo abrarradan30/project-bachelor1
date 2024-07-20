@@ -154,6 +154,6 @@ class MateriController extends Controller
         //
         DB::table('materi')->where('id', $id)->delete();
 
-        return redirect('admin/materi');
+        return redirect('materi');
     }
 }

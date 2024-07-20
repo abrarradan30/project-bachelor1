@@ -82,15 +82,41 @@
                                 <button type="button" class="btn btn-warning btn-sm">
                                     <a href="{{ url('materi/edit/' . $m->id) }}" style="text-decoration: none; color: inherit;">Edit</a>
                                 </button>
-                                <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete()">Hapus</button>
-                                <script>                                  
-                                    function confirmDelete() {
-                                    var confirmation = confirm("Yakin hapus data?");
-                                        if (confirmation) {
-                                            window.location.href = "{{ url('materi/delete/' . $m->id) }}";
-                                        }
-                                    }
-                                </script>
+                                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDeleteModal" data-id="{{ $m->id }}">Hapus</button>
+
+                                    <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="confirmDeleteModalLabel">Konfirmasi Hapus Data</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Apakah Anda yakin ingin menghapus data ?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                                    <button type="button" class="btn btn-danger" id="confirmDeleteButton">Hapus</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <script>
+                                        $(document).ready(function() {
+                                            $('#confirmDeleteModal').on('show.bs.modal', function(event) {
+                                                var button = $(event.relatedTarget);
+                                                var userId = button.data('id');
+                                                var deleteUrl = "{{ url('materi/delete') }}/" + userId;
+
+                                                $('#confirmDeleteButton').off('click').on('click', function() {
+                                                    window.location.href = deleteUrl;
+                                                });
+                                            });
+                                        });
+                                    </script>
                             </form>
                         </td>
                     </tr>

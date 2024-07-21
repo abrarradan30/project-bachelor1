@@ -198,7 +198,7 @@
                             <p>Tidak ada materi yang ditemukan.</p>
                         @else
 					@forelse($ar_materi as $m)
-          			<div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+          			<div class="col-lg-4 col-md-6 d-flex align-items-stretch mb-4">
           			<a href="{{url('course_detail/show/'.$m->id) }}" style="text-decoration: none; color: inherit;">
             			<div class="course-item">
               			@empty($m->bg_materi)
@@ -208,7 +208,15 @@
               			@endempty
               			<div class="course-content">
                 			<div class="d-flex justify-content-between align-items-center mb-3">
-                    			<h4>{{{ $m->level }}}</h4>
+                    			<p>
+								@if($m->level == 'pemula')
+                            		<span class="btn btn-primary btn-sm" style="pointer-events: none;">{{ $m->level }}</span>
+                        		@elseif($m->level == 'menengah')
+                            		<span class="btn btn-warning btn-sm" style="pointer-events: none; color: white;">{{ $m->level }}</span>
+                        		@else
+                            		<span class="btn btn-danger btn-sm" style="pointer-events: none; color: white;">{{ $m->level }}</span>
+                        		@endif
+								</p>
 								<!-- <p style="font-size: 20px;">Rp {{ $m->harga }}</p> -->
                     			<p class="price">Rp {{ number_format($m->harga, 0, ',', '.') }}</p>
                 			</div>
@@ -227,7 +235,7 @@
 
 			<!-- Pagination -->
 
-			<nav class="mt-4" aria-label="Page navigation sample">
+			<nav class="mt-4 d-flex justify-content-center" aria-label="Page navigation sample">
 				<!-- <ul class="pagination">
 					<li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
 					<li class="page-item active"><a class="page-link" href="#">1</a></li>
@@ -240,7 +248,7 @@
         		@else
             		<a href="{{ $ar_materi->previousPageUrl() }}" class="btn btn-secondary"><<</a>
         		@endif
-
+				&nbsp;
         		@if ($ar_materi->hasMorePages())
             		<a href="{{ $ar_materi->nextPageUrl() }}" class="btn btn-secondary">>></a>
         		@else

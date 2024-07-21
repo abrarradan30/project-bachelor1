@@ -115,6 +115,16 @@ class MateriSeeder extends Seeder
                 'level' => 'pemula',
                 'status' => 'publik', 
             ],
+            [
+                // id 11
+                'judul' => 'Keamanan Informasi',
+                'bg_materi' => 'bg_materi.jpg',
+                'deskripsi' => 'Belajar dan dapat memahami tentang konsep keamanan informasi.',
+                'harga' => 10000,
+                'kategori' => 'IT',
+                'level' => 'mahir',
+                'status' => 'publik', 
+            ],
         ]);
     }
 }

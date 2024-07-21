@@ -314,7 +314,7 @@
                             @else
                                 <a href="{{ $forum_diskusi->previousPageUrl() }}" class="btn btn-secondary"><<</a>
                             @endif
-
+                            &nbsp;
                             @if ($forum_diskusi->hasMorePages())
                                 <a href="{{ $forum_diskusi->nextPageUrl() }}" class="btn btn-secondary">>></a>
                             @else

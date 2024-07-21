@@ -21,6 +21,12 @@ class ProgresBelajarSeeder extends Seeder
                 'materi_id' => 1,
                 'progres' => 0,
             ],
+            [
+                // id 1
+                'users_id' => 4,
+                'materi_id' => 1,
+                'progres' => 0,
+            ],
         ]);
     }
 }

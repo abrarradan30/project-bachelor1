@@ -66,7 +66,15 @@
                         <td>{{ $m->deskripsi }}</td>
                         <td>{{ number_format($m->harga, 0, ',', '.') }}</td>
                         <td>{{ $m->kategori }}</td>
-                        <td>{{ $m->level }}</td>
+                        <td>
+                        @if($m->level == 'pemula')
+                            <span class="btn btn-primary btn-sm" style="pointer-events: none;">{{ $m->level }}</span>
+                        @elseif($m->level == 'menengah')
+                            <span class="btn btn-warning btn-sm" style="pointer-events: none;">{{ $m->level }}</span>
+                        @else
+                            <span class="btn btn-danger btn-sm" style="pointer-events: none;">{{ $m->level }}</span>
+                        @endif
+                        </td>
                         <td>
                         @if($m->status == 'publik')
                             <span class="btn btn-success btn-sm" style="pointer-events: none;">{{ $m->status }}</span>

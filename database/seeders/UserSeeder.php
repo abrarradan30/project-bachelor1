@@ -45,6 +45,15 @@ class UserSeeder extends Seeder
             ],
             [
                 // id 4
+                'name' => 'Dede',
+                'email' => 'dede@gmail.com',
+                'password' => Hash::make('dede1234'),
+                'deskripsi_diri' => 'seorang siswa/mahasiswa',
+                'foto' => 'foto-siswa.jpg',
+                'role' => 'siswa',
+            ],
+            [
+                // id 5
                 'name' => 'Bobi',
                 'email' => 'bobi@gmail.com',
                 'password' => Hash::make('bobi1234'),
@@ -53,7 +62,7 @@ class UserSeeder extends Seeder
                 'role' => 'siswa',
             ],
             [
-                // id 5
+                // id 6
                 'name' => 'Sari',
                 'email' => 'sari@gmail.com',
                 'password' => Hash::make('sari1234'),
@@ -62,7 +71,7 @@ class UserSeeder extends Seeder
                 'role' => 'siswa',
             ],
             [
-                // id 6
+                // id 7
                 'name' => 'Dewi',
                 'email' => 'dewi@gmail.com',
                 'password' => Hash::make('dewi1234'),
@@ -71,7 +80,7 @@ class UserSeeder extends Seeder
                 'role' => 'siswa',
             ],
             [
-                // id 7
+                // id 8
                 'name' => 'Budi',
                 'email' => 'budi@gmail.com',
                 'password' => Hash::make('budi1234'),
@@ -80,7 +89,7 @@ class UserSeeder extends Seeder
                 'role' => 'siswa',
             ],
             [
-                // id 8
+                // id 9
                 'name' => 'Rina',
                 'email' => 'rina@gmail.com',
                 'password' => Hash::make('rina1234'),
@@ -89,7 +98,7 @@ class UserSeeder extends Seeder
                 'role' => 'siswa',
             ],
             [
-                // id 9
+                // id 10
                 'name' => '201131001@mhs.stiki.ac.id Andi',
                 'email' => '201131001@mhs.stiki.ac.id',
                 'password' => Hash::make('andi1234'),
@@ -98,7 +107,7 @@ class UserSeeder extends Seeder
                 'role' => 'siswa',
             ],
             [
-                // id 10
+                // id 11
                 'name' => '201131002@mhs.stiki.ac.id Lina',
                 'email' => '201131002@mhs.stiki.ac.id',
                 'password' => Hash::make('lina1234'),
@@ -107,7 +116,7 @@ class UserSeeder extends Seeder
                 'role' => 'siswa',
             ],
             [
-                // id 11
+                // id 12
                 'name' => '201131003@mhs.stiki.ac.id Joko',
                 'email' => '201131003@mhs.stiki.ac.id',
                 'password' => Hash::make('joko1234'),
@@ -116,7 +125,7 @@ class UserSeeder extends Seeder
                 'role' => 'siswa',
             ],
             [
-                // id 12
+                // id 13
                 'name' => '201131004@mhs.stiki.ac.id Maya',
                 'email' => '201131004@mhs.stiki.ac.id',
                 'password' => Hash::make('maya1234'),
@@ -125,7 +134,7 @@ class UserSeeder extends Seeder
                 'role' => 'siswa',
             ],
             [
-                // id 13
+                // id 14
                 'name' => '201131005@mhs.stiki.ac.id Rudi',
                 'email' => '201131005@mhs.stiki.ac.id',
                 'password' => Hash::make('rudi1234'),

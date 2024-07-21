@@ -140,7 +140,15 @@
               @endempty
               <div class="course-content">
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h4>{{ $m->level }}</h4>
+                    <p>
+								      @if($m->level == 'pemula')
+                        <span class="btn btn-primary btn-sm" style="pointer-events: none;">{{ $m->level }}</span>
+                      @elseif($m->level == 'menengah')
+                        <span class="btn btn-warning btn-sm" style="pointer-events: none; color: white;">{{ $m->level }}</span>
+                      @else
+                        <span class="btn btn-danger btn-sm" style="pointer-events: none; color: white;">{{ $m->level }}</span>
+                      @endif
+								    </p>
                     <!-- <p class="price">Rp {{ $m->harga }}</p> -->
                     <p class="price">Rp {{ number_format($m->harga, 0, ',', '.') }}</p>
                 </div>

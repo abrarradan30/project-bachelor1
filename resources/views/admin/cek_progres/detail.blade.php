@@ -45,7 +45,7 @@
                         <td>{{ $no }}</td>
                         <td>{{ $pb->nama }}</td>
                         <td>{{ min(floor($pb->total_progres), 100) }} %</td>
-                        <td>{{ $pb->modul }} </td>
+                        <td>{{ $pb->modul ?? '-' }} </td>
                     </tr>
                     @php
                         $no++;

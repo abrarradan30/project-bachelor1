@@ -59,7 +59,7 @@ class CekProgresController extends Controller
         
         $progres_belajar =ProgresBelajar::join('users', 'progres_belajar.users_id', '=', 'users.id')
             ->join('materi', 'progres_belajar.materi_id', '=', 'materi.id')
-            ->join('detail_materi', 'progres_belajar.modul_id', '=', 'detail_materi.id')
+            ->leftJoin('detail_materi', 'progres_belajar.modul_id', '=', 'detail_materi.id')
             ->select(
                 'progres_belajar.users_id',
                 'progres_belajar.materi_id',

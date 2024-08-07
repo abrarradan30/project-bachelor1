@@ -53,16 +53,17 @@
                              pada setiap modul (jika modul sudah Anda anggap paham)</p>
                             <p>4. <button type="button" class="btn btn-success btn-sm selesai-btn" style="pointer-events: none;">Selesai <i class="fa fa-check-circle"></i></button>
                              akan ditampilkan pada setiap modul yang Anda anggap paham (termasuk progres belajar Anda)</p>
-                            <p>5. Jika progres belajar Anda sudah mencapai 100 %, maka anda dapat mengerjakan kuis pada menu 
+                            <p>5. Jika dirasa ada modul yang kurang paham, maka Anda dapat bertanya pada <b style="color: orange;">forum diskusi</b> </p>
+                            <p>6. Jika progres belajar Anda sudah mencapai 100 %, maka anda dapat mengerjakan kuis pada menu 
                                 <a href="#" class="btn btn-info btn-sm" style="pointer-events: none;">
                                 Mulai Kuis &nbsp; <i class="fa fa-list"></i>
                             </a></p>
-                            <p>6. Kerjakan kuis hingga mencapai skor yang ditetapkan / "Lulus"</p>
-                            <p>7. Jika "Lulus", silahkan Anda berikan <a href="#" class="btn btn-warning btn-sm" style="pointer-events: none;">
+                            <p>7. Kerjakan kuis hingga mencapai skor yang ditetapkan / "Lulus"</p>
+                            <p>8. Jika "Lulus", silahkan Anda berikan <a href="#" class="btn btn-warning btn-sm" style="pointer-events: none;">
                                 Rating <i class="fa fa-star"></i>
                                 </a>
                                  yang telah disediakan pada menu kuis</p>
-                            <p>8. Terakhir, Anda bisa mencetak sertifikat penyelesaian materi pada <a href="#" class="btn btn-warning btn-sm ml-2" style="pointer-events: none;">
+                            <p>9. Terakhir, Anda bisa mencetak sertifikat penyelesaian materi pada <a href="#" class="btn btn-warning btn-sm ml-2" style="pointer-events: none;">
                                 Sertifikat &nbsp; <i class="fa fa-certificate"></i>
                             </a></p>
                         </div>

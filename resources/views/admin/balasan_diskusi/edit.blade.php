@@ -42,7 +42,7 @@
             <!-- Input Balasan -->
             <div class="form-group">
                 <label for="balasan">Balasan :</label>
-                <textarea id="balasan" name="balasan" cols="30" rows="10" class="form-control">{{ $bd->balasan }}</textarea>
+                <textarea id="balasan" name="balasan" cols="30" rows="10" class="form-control">{!! $bd->balasan !!}</textarea>
             </div>
 
             <!-- Submit Button -->
@@ -57,6 +57,13 @@
     </div>
 </div>
 
+<script>
+    $('#pertanyaan').summernote({
+        placeholder: 'pertanyaan...',
+        tabsize:2,
+        height:300
+    });
+</script>
 <script>
     $('#balasan').summernote({
         placeholder: 'balasan...',

@@ -15,7 +15,7 @@
     <div class="card-header py-3">
         @foreach ($kuis2 as $k2)
         <h6 class="m-0 font-weight-bold text-primary">Kelola Kuis {{ $k2->judul_materi }}</h6>
-        <h6 class="m-0 font-weight-bold text-danger">*Buat 5 kuis saja setiap materi</h6>
+        <h6 class="m-0 font-weight-bold text-danger">*Buat 10 kuis saja setiap materi</h6>
         @endforeach
         <br>
         <a href="{{ url('kuis/create') }}">

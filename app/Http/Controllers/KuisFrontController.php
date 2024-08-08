@@ -93,8 +93,9 @@ class KuisFrontController extends Controller
         //
         $soal_kuis = DB::table('kuis')
             ->join('materi', 'kuis.materi_id', '=', 'materi.id')
-            ->select('kuis.*', 'materi.judul', 'materi.level')
-            ->where('kuis.id', $id)
+            ->select('kuis.materi_id', 'materi.judul', 'materi.level')
+            ->groupBy('kuis.materi_id', 'materi.judul', 'materi.level')
+            ->where('kuis.materi_id', $id)
             ->get();
 
         $isi_kuis = DB::table('kuis')

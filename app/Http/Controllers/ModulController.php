@@ -123,7 +123,7 @@ class ModulController extends Controller
             ->where('progres', 100)
             ->count();
     
-        $overallProgress = ($completedModules / $totalModules) * 110;
+        $overallProgress = ($completedModules / $totalModules) * 105;
     
         // Update overall progress record
         ProgresBelajar::updateOrCreate(

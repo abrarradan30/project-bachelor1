@@ -43,7 +43,7 @@ input[type="radio"]:checked+label {
         <div class="question">
 
             @foreach($isi_kuis as $ik)
-            <h6> {{ $loop->iteration }}.{!! $ik->soal !!}</h6>
+            <h6> {{ $loop->iteration }}. {!! $ik->soal !!}</h6>
               <div class="options">
                 <label><input type="radio" name="q{{ $ik->id }}" value="a"> a. {!! $ik->a !!} </label><br>
                 <label><input type="radio" name="q{{ $ik->id }}" value="b"> b. {!! $ik->b !!} </label><br>

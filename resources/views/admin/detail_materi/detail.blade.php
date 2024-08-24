@@ -16,6 +16,7 @@
         @foreach ($detail_materi2 as $dm2)
         <h6 class="m-0 font-weight-bold text-primary">Tabel Detail Materi {{ $dm2->judul_materi }}</h6>
         @endforeach
+        <p style="color:red; ">*Buatlah modul materi sebanyak 14 modul saja!</p>
         <br>
         <a href="{{ url('detail_materi/create') }}">
         <button class="btn btn-sm btn-primary"><i class="fas fa-plus"></i> &nbsp; Tambah</button>
@@ -29,6 +30,12 @@
                         <th>No</th>
                         <th>Modul</th>
                         <th>Isi Materi</th>
+                        <th>Pertanyaan</th>
+                        <th>A</th>
+                        <th>B</th>
+                        <th>C</th>
+                        <th>D</th>
+                        <th>Kunci</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -37,6 +44,12 @@
                         <th>No</th>
                         <th>Modul</th>
                         <th>Isi Materi</th>
+                        <th>Pertanyaan</th>
+                        <th>A</th>
+                        <th>B</th>
+                        <th>C</th>
+                        <th>D</th>
+                        <th>Kunci</th>
                         <th>Aksi</th>
                     </tr>
                 </tfoot>
@@ -49,6 +62,12 @@
                         <td>{{ $no }}</td>
                         <td>{{ $dm->modul }}</td>
                         <td>{!! $dm->isi_materi !!}</td>
+                        <td>{!! $dm->soal !!}</td>
+                        <td>{{ $dm->a }}</td>
+                        <td>{{ $dm->b }}</td>
+                        <td>{{ $dm->c }}</td>
+                        <td>{{ $dm->d }}</td>
+                        <td>{{ $dm->kunci }}</td>
                         <td>
                             <form action="#" method="POST">
                                 <!-- <button type="button" class="btn btn-success btn-sm">

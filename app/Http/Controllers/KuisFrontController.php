@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Kuis;
+use App\Models\DetailMateri;
 use App\Models\User;
 use App\Models\Materi;
 use App\Models\HasilKuis;
@@ -18,9 +19,9 @@ class KuisFrontController extends Controller
     public function index()
     {
         //
-        $soal_kuis = DB::table('kuis')
-            ->join('materi', 'kuis.materi_id', '=', 'materi.id')
-            ->select('kuis.*', 'materi.judul as judul_materi')
+        $soal_kuis = DB::table('detail_materi')
+            ->join('materi', 'detail_materi.materi_id', '=', 'materi.id')
+            ->select('detail_materi.*', 'materi.judul as judul_materi')
             ->get();
 
         return view('soal_kuis', compact('soal_kuis'));
@@ -49,7 +50,7 @@ class KuisFrontController extends Controller
         $user_id = $request->users_id;
 
         // Ambil soal dan kunci jawaban dari database
-        $kuis = Kuis::where('materi_id', $materi_id)
+        $kuis = DetailMateri::where('materi_id', $materi_id)
             ->select('id', 'soal', 'a', 'b', 'c', 'd', 'kunci')
             ->get();
 
@@ -91,14 +92,14 @@ class KuisFrontController extends Controller
     public function show($id)
     {
         //
-        $soal_kuis = DB::table('kuis')
-            ->join('materi', 'kuis.materi_id', '=', 'materi.id')
-            ->select('kuis.materi_id', 'materi.judul', 'materi.level')
-            ->groupBy('kuis.materi_id', 'materi.judul', 'materi.level')
-            ->where('kuis.materi_id', $id)
+        $soal_kuis = DB::table('detail_materi')
+            ->join('materi', 'detail_materi.materi_id', '=', 'materi.id')
+            ->select('detail_materi.materi_id', 'materi.judul', 'materi.level')
+            ->groupBy('detail_materi.materi_id', 'materi.judul', 'materi.level')
+            ->where('detail_materi.materi_id', $id)
             ->get();
 
-        $isi_kuis = DB::table('kuis')
+        $isi_kuis = DB::table('detail_materi')
             ->where('materi_id', $id)
             ->get();
 

@@ -10,7 +10,7 @@ class DetailMateri extends Model
     use HasFactory;
     protected $table = 'detail_materi'; 
     protected $primaryKey = 'id'; 
-    protected $fillable = ['materi_id', 'modul', 'isi_materi'];
+    protected $fillable = ['materi_id', 'modul', 'isi_materi', 'soal', 'a', 'b', 'c', 'd', 'kunci'];
 
     // Relasi one-to-one dengan model Materi
     public function materi() {

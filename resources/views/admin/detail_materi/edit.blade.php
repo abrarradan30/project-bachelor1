@@ -50,6 +50,42 @@
                 <textarea id="isi_materi" name="isi_materi" cols="30" rows="10" class="form-control">{{ $dm->isi_materi }}</textarea>
             </div>
 
+            <!-- Input Soal -->
+            <div class="form-group">
+                <label for="soal">Soal :</label>
+                <textarea id="soal" name="soal" cols="30" rows="10" class="form-control">{{ $dm->soal }}</textarea>
+            </div>
+
+            <!-- Input Pilihan A -->
+            <div class="form-group">
+                <label for="a">Pilihan A :</label>
+                <input id="a" name="a" type="text" class="form-control" value="{{ $dm->a }}">
+            </div>
+
+            <!-- Input Pilihan B -->
+            <div class="form-group">
+                <label for="b">Pilihan B :</label>
+                <input id="b" name="b" type="text" class="form-control" value="{{ $dm->b }}">
+            </div>
+
+            <!-- Input Pilihan C -->
+            <div class="form-group">
+                <label for="c">Pilihan C :</label>
+                <input id="c" name="c" type="text" class="form-control" value="{{ $dm->c }}">
+            </div>
+
+            <!-- Input Pilihan D -->
+            <div class="form-group">
+                <label for="d">Pilihan D :</label>
+                <input id="d" name="d" type="text" class="form-control" value="{{ $dm->d }}">
+            </div>
+
+            <!-- Input Kunci Jawaban -->
+            <div class="form-group">
+                <label for="kunci">Kunci Jawaban :</label>
+                <input id="kunci" name="kunci" type="text" class="form-control" value="{{ $dm->kunci }}">
+            </div>
+
             <!-- Submit Button -->
             <div class="form-group">
                 <button type="submit" class="btn btn-primary">Simpan</button> &nbsp;

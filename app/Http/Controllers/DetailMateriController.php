@@ -53,11 +53,12 @@ class DetailMateriController extends Controller
             'materi_id'    => 'required',
             'modul'        => 'required',
             'isi_materi'   => 'required',
-        ], 
-        [
-            'materi.required'        => 'Judul materi wajib diisi',
-            'modul.required'         => 'Modul wajib diisi',
-            'isi_materi.required'    => 'Isi materi wajib diisi',
+            'soal'         => 'required',
+            'a'            => 'required',
+            'b'            => 'required',
+            'c'            => 'required',
+            'd'            => 'required',
+            'kunci'        => 'required',
         ]);
 
         $isi_materi = $request->isi_materi;
@@ -76,11 +77,35 @@ class DetailMateriController extends Controller
             $img->setAttribute('src',$image_name);
         }
         $isi_materi = $dom->saveHTML();
+
+        // soal
+        $soal = $request->soal;
+ 
+        $dom = new DOMDocument();
+        $dom->loadHTML($soal,9);
+ 
+        $images = $dom->getElementsByTagName('img');
+ 
+        foreach ($images as $key => $img) {
+            $data = base64_decode(explode(',',explode(';',$img->getAttribute('src'))[1])[1]);
+            $image_name = "/admin/img" . time(). $key.'.png';
+            file_put_contents(public_path().$image_name,$data);
+ 
+            $img->removeAttribute('src');
+            $img->setAttribute('src',$image_name);
+        }
+        $soal = $dom->saveHTML();
  
         DetailMateri::create([
             'materi_id'     => $request->materi_id,
             'modul'         => $request->modul,
             'isi_materi'    => $isi_materi, 
+            'soal'          => $soal,
+            'a'             => $request->a,
+            'b'             => $request->b,
+            'c'             => $request->c,
+            'd'             => $request->d,
+            'kunci'         => $request->kunci,
         ]);
  
         Alert::success('Detail materi', 'Berhasil menambahkan detail materi');
@@ -131,11 +156,12 @@ class DetailMateriController extends Controller
             'materi_id'    => 'required',
             'modul'        => 'required',
             'isi_materi'   => 'required',
-        ], 
-        [
-            'materi.required'        => 'Judul materi wajib diisi',
-            'modul.required'         => 'Modul wajib diisi',
-            'isi_materi.required'    => 'Isi materi wajib diisi',
+            'soal'         => 'required',
+            'a'            => 'required',
+            'b'            => 'required',
+            'c'            => 'required',
+            'd'            => 'required',
+            'kunci'        => 'required',
         ]);
         
         $detail_materi = DetailMateri::find($id);
@@ -162,11 +188,43 @@ class DetailMateriController extends Controller
  
         }
         $isi_materi = $dom->saveHTML();
+        
+        // soal
+        $detail_materi = DetailMateri::find($id);
+ 
+        $soal = $request->soal;
+ 
+        $dom = new DOMDocument();
+        $dom->loadHTML($soal,9);
+ 
+        $images = $dom->getElementsByTagName('img');
+ 
+        foreach ($images as $key => $img) {
+ 
+            // Check if the image is a new one
+            if (strpos($img->getAttribute('src'),'data:image/') ===0) {
+               
+                $data = base64_decode(explode(',',explode(';',$img->getAttribute('src'))[1])[1]);
+                $image_name = "/admin/img" . time(). $key.'.png';
+                file_put_contents(public_path().$image_name,$data);
+                 
+                $img->removeAttribute('src');
+                $img->setAttribute('src',$image_name);
+            }
+ 
+        }
+        $soal = $dom->saveHTML();
  
         $detail_materi->update([
             'materi_id'    => $request->materi_id,
             'modul'        => $request->modul,
             'isi_materi'   => $isi_materi,
+            'soal'          => $soal,
+            'a'             => $request->a,
+            'b'             => $request->b,
+            'c'             => $request->c,
+            'd'             => $request->d,
+            'kunci'         => $request->kunci, 
         ]);
  
         Alert::info('Detail materi', 'Berhasil mengedit detail materi');

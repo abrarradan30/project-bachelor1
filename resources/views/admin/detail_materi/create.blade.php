@@ -57,6 +57,71 @@
                 @enderror
             </div>
 
+            <div class="form-group">
+                <label for="soal">Soal :</label>
+                <textarea id="soal" name="soal" cols="30" rows="10" class="form-control @error('soal') is-invalid @enderror"></textarea>
+                @error('soal')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div>
+
+            <!-- Input Pilihan A -->
+            <div class="form-group">
+                <label for="a">Pilihan A :</label>
+                <input id="a" name="a" type="text" class="form-control @error('a') is-invalid @enderror" placeholder="Masukkan Pilihan A">
+                @error('a')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div>
+
+            <!-- Input Pilihan B -->
+            <div class="form-group">
+                <label for="b">Pilihan B :</label>
+                <input id="b" name="b" type="text" class="form-control @error('b') is-invalid @enderror" placeholder="Masukkan Pilihan B">
+                @error('b')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div>
+
+            <!-- Input Pilihan C -->
+            <div class="form-group">
+                <label for="c">Pilihan C :</label>
+                <input id="c" name="c" type="text" class="form-control @error('c') is-invalid @enderror" placeholder="Masukkan Pilihan C">
+                @error('c')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div>
+
+            <!-- Input Pilihan D -->
+            <div class="form-group">
+                <label for="d">Pilihan D :</label>
+                <input id="d" name="d" type="text" class="form-control @error('d') is-invalid @enderror" placeholder="Masukkan Pilihan D">
+                @error('d')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div>
+
+            <!-- Input Kunci Jawaban -->
+            <div class="form-group">
+                <label for="kunci">Kunci Jawaban :</label>
+                <input id="kunci" name="kunci" type="text" class="form-control @error('kunci') is-invalid @enderror" placeholder="Masukkan Kunci Jawaban">
+                @error('kunci')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div>
+
             <!-- Submit Button -->
             <div class="form-group">
                 <button type="submit" class="btn btn-primary">Simpan</button> &nbsp;
@@ -72,6 +137,14 @@
 <script>
     $('#isi_materi').summernote({
         placeholder: 'isi_materi...',
+        tabsize:2,
+        height:300
+    });
+</script>
+
+<script>
+    $('#soal').summernote({
+        placeholder: 'soal...',
         tabsize:2,
         height:300
     });

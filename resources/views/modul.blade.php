@@ -53,12 +53,12 @@
                     terdapat beberapa pertanyaan yang harus dikerjakan dalam kuis ini.
                 </p>
                 <p>
-                    Syarat skor "Lulus" >= 60 %, Jika status <b>gagal</b>, maka Anda harus mmengulang pengerjaan kuis kembali.
+                    Syarat skor "Lulus" >= 60 %, Jika status <b>belum kompeten</b>, maka Anda harus mmengulang pengerjaan kuis kembali.
                 </p>
                 <hr>
                 @php
                 $skor = 0;
-                $status = 'Gagal';
+                $status = 'Belum kompeten';
                 if ($skor_akhir && $skor_akhir->skor >= 60) {
                     $skor = $skor_akhir->skor;
                     $status = 'Lulus';

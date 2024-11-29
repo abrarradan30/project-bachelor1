@@ -6,9 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Materi;
 use App\Models\DetailMateri;
-use App\Models\Pembayaran;
 use App\Models\ProgresBelajar;
-use App\Models\Kuis;
 use App\Models\HasilKuis;
 use App\Models\Rating;
 use App\Models\Sertifikat;
@@ -27,9 +25,7 @@ class DashboardController extends Controller
         $users = User::count();
         $materi = Materi::count();
         $detail_materi = DetailMateri::count();
-        $pembayaran = Pembayaran::count();
         $progres_belajar = ProgresBelajar::count();
-        $kuis = Kuis::count();
         $hasil_kuis = HasilKuis::count();
         $rating = Rating::count();
         $sertifikat = Sertifikat::count();
@@ -46,8 +42,8 @@ class DashboardController extends Controller
             ->take(5)
             ->get();
 
-        return view('admin.dashboard', compact('users', 'materi', 'detail_materi', 'pembayaran', 'progres_belajar',
-                    'kuis', 'hasil_kuis', 'rating', 'sertifikat', 'forum_diskusi', 'balasan_diskusi', 'ar_role', 'ar_cek_progres'));
+        return view('admin.dashboard', compact('users', 'materi', 'detail_materi', 'progres_belajar',
+                    'hasil_kuis', 'rating', 'sertifikat', 'forum_diskusi', 'balasan_diskusi', 'ar_role', 'ar_cek_progres'));
     }
 
     /**
